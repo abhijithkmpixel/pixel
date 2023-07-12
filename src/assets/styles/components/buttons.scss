@@ -1,0 +1,55 @@
+.cta_primary {
+  @include fontFace(14px, 1, 500, $color-cod-gray);
+  text-transform: uppercase;
+  border: 1px solid $color-black;
+  padding: 16px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  svg {
+    width: 15px;
+    flex: 0 0 15px;
+    margin-left: 10px;
+    path,
+    line {
+      stroke: $color-cod-gray;
+    }
+  }
+}
+.cta_secondary {
+  width: 148px;
+  height: 148px;
+  flex: 0 0 148px;
+  border: 0;
+  background-color: $color-cinnabar;
+  padding: 25px;
+  padding-top: 40px;
+  @include fontFace(14px, 1.1, 500, $color-gallery);
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: .3s all ease-in-out;
+  svg {
+    width: 15px;
+    height: auto;
+    flex: 0 0 15px;
+    margin-top: 12px;
+    path,
+    line {
+      stroke: $color-white;
+    }
+  }
+  &:hover {
+    color: $color-gallery;
+    @include above($tablet-lg) {
+      color: $color-gallery;
+      background-color: $color-pomegranate;
+    }
+  }
+}

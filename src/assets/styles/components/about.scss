@@ -1,0 +1,117 @@
+.about_us_banner {
+  width: 100%;
+  padding: 150px 0 127px;
+  .scroller_text {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    span {
+      @include fontFace(18px, 1.65, 400, $color-cod-gray);
+      text-transform: uppercase;
+      letter-spacing: 7px;
+      transform: rotate(-90deg);
+      display: inline-block;
+    }
+    svg {
+      width: 14px;
+      height: auto;
+      margin-top: 80px;
+    }
+  }
+  .title_primary {
+    margin-bottom: 120px;
+    max-width: 80%;
+  }
+  .intro_block {
+    h3 {
+      @include fontFace(20px, 1.2, 600, $color-cod-gray);
+      text-transform: uppercase;
+    }
+    .banner_image {
+      position: relative;
+      width: 70%;
+      z-index: 1;
+      &::after {
+        content: "";
+        z-index: 2;
+        position: absolute;
+        inset: 0;
+        display: block;
+        background: linear-gradient(
+          180deg,
+          rgba($color-white, 0) 0,
+          rgba($color-white, 0.8) 70%,
+          rgba($color-white, 1) 100%
+        );
+      }
+
+      img {
+        position: relative;
+        z-index: 1;
+      }
+    }
+    .about_bodycopy {
+      margin-left: 140px;
+      margin-top: -75px;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 55px;
+      p {
+        @include fontFace(20px, 1.8, 400, $color-tundora);
+        margin-bottom: 54px;
+      }
+      .about_footer {
+        display: flex;
+        h4 {
+          @include fontFace(24px, 1.65, 600, $color-cod-gray);
+          max-width: 60%;
+        }
+        .cta_secondary {
+          margin-left: auto;
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+  .achievements_row {
+    .achievement_cards {
+      .cardheader {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        img {
+          width: 50px;
+          height: 50px;
+          margin-right: 17px;
+        }
+        h3 {
+          @include fontFace(60px, 0.9, 800, transparent);
+          background-image: linear-gradient(to right, #e74847, #f84c26);
+          -webkit-background-clip: text;
+        }
+      }
+      h4 {
+        @include fontFace(24px, 1.1, 500, $color-cod-gray);
+        text-transform: capitalize;
+        margin-bottom: 5px;
+      }
+      p {
+        @include fontFace(14px, 1.1, 300, $color-abbey);
+      }
+    }
+    & > div {
+      &:nth-child(even) {
+        .achievement_cards {
+          .cardheader {
+            h3 {
+              background-image: linear-gradient(to right, #f84c26, #e74847);
+            }
+          }
+        }
+      }
+    }
+  }
+}
