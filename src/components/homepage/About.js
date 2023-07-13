@@ -34,16 +34,20 @@ const About = () => {
             />
           </svg>
         </span>
-        <h2 className="title_primary" data-scroll>
+        <h2 className="title_primary" data-scroll data-scroll-offset='200'>
           We Are a Professional Agency In DubaI
         </h2>
         <div className="intro_block" data-scroll>
           <div className="row">
             <div className="col-12 col-xl-2">
-              <h3 data-scroll>About</h3>
+              <h3 data-scroll  data-scroll-speed='1.5'>About</h3>
             </div>
             <div className="col-12 col-xl-10">
-              <div className="banner_image">
+              <div
+                className="banner_image"
+                data-scroll
+                data-scroll-offset="300"
+              >
                 <Image
                   src={"/uploads/about.jpg"}
                   alt={"about us image"}
@@ -51,7 +55,7 @@ const About = () => {
                   height={570}
                 />
               </div>
-              <div className="about_bodycopy" data-scroll>
+              <div className="about_bodycopy" data-scroll data-scroll-speed='1.2' data-scroll-direction="horizontal">
                 <p>
                   Pixelflames is web design agency based in Dubai, UAE. Their
                   main services include UX/UI design, web development, app
@@ -65,41 +69,43 @@ const About = () => {
                     Pixelflames is web design agency based in Dubai, UAE. Their
                     main services
                   </h4>
-                  <Link href={"#"} className="cta_secondary" data-scroll>
-                    learn more{" "}
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <line
-                        x1="4.34872"
-                        y1="11.7146"
-                        x2="10.7539"
-                        y2="4.08125"
-                        stroke="#F0F0F0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                        stroke="#F0F0F0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
+                  <div data-scroll data-scroll-speed="1.5" className="ms-auto">
+                    <Link href={"#"} className="cta_secondary" data-scroll>
+                      learn more{" "}
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <line
+                          x1="4.34872"
+                          y1="11.7146"
+                          x2="10.7539"
+                          y2="4.08125"
+                          stroke="#F0F0F0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
+                          stroke="#F0F0F0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="row achievements_row" data-scroll>
             <div className="col-12 col-xl-4" data-scroll>
-              <div className="achievement_cards" data-scroll>
+              <div className="achievement_cards" data-scroll data-scroll-offset='200' >
                 <div className="cardheader">
                   <Image
                     src={"/uploads/ga.png"}
@@ -115,7 +121,7 @@ const About = () => {
               </div>
             </div>
             <div className="col-12 col-xl-4" data-scroll>
-              <div className="achievement_cards" data-scroll>
+              <div className="achievement_cards" data-scroll data-scroll-offset='200'>
                 <div className="cardheader">
                   <Image
                     src={"/uploads/client.png"}
@@ -131,7 +137,7 @@ const About = () => {
               </div>
             </div>
             <div className="col-12 col-xl-4" data-scroll>
-              <div className="achievement_cards" data-scroll>
+              <div className="achievement_cards" data-scroll data-scroll-offset='200'>
                 <div className="cardheader">
                   <Image
                     src={"/uploads/exp.png"}

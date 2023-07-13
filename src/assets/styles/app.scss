@@ -1,3 +1,6 @@
+//plugins
+@import "./plugins/scroll";
+
 // base files
 @import "./base/mixins";
 @import "./base/variables";
@@ -8,9 +11,14 @@
 @import "./components/title";
 @import "./components/buttons";
 
-//components
+//includes
 @import "./components/header";
+@import "./components/footer";
+
+//components
 @import "./components/banner";
 @import "./components/about";
 @import "./components/serviceslist";
 @import "./components/testimony";
+@import "./components/branches";
+@import "./components/worktogether";

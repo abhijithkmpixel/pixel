@@ -52,6 +52,7 @@ const Banner = () => {
                   width={400}
                   height={500}
                   alt=""
+                  priority
                 />
                 <div className="link_footer">
                   <span>01</span>
@@ -67,6 +68,7 @@ const Banner = () => {
                   width={400}
                   height={500}
                   alt=""
+                  priority
                 />
                 <div className="link_footer">
                   <span>02</span>
@@ -82,6 +84,7 @@ const Banner = () => {
                   width={400}
                   height={500}
                   alt=""
+                  priority
                 />
                 <div className="link_footer">
                   <span>03</span>

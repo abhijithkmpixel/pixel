@@ -7,16 +7,22 @@ import Banner from "@/components/homepage/Banner";
 import About from "@/components/homepage/About";
 import Services from "@/components/homepage/Services";
 import Testimonials from "@/components/homepage/Testimonials";
+import Branches from "@/components/homepage/Branches";
+import WorkTogether from "@/components/homepage/WorkTogether";
+import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Banner />
       <About />
       <Services />
       <Testimonials />
+      <Branches />
+      <WorkTogether />
+      <Footer />
     </>
   );
 }

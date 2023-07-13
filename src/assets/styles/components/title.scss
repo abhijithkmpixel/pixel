@@ -1,7 +1,19 @@
 .title_primary {
   @include fontFace(75px, 1.2, 700, $color-cod-gray);
   text-transform: uppercase;
-  span{
+  transition: 0.8s all ease-in-out;
+  span {
     @include fontStyleInherit();
+  }
+  @include below(1366px) {
+    font-size: 65px;
+  }
+  &[data-scroll] {
+    opacity: 0;
+    transform: translateY(200px);
+    &.is-inview {
+      opacity: 1;
+      transform: translateY(0px);
+    }
   }
 }

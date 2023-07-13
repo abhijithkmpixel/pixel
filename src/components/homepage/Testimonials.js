@@ -16,13 +16,30 @@ const Testimonials = () => {
   var settings2 = {
     dots: false,
     infinite: true,
-    arrows: true,
-    speed: 5000,
+    arrows: false,
+    speed: 4000,
     autoplay: true,
     autoplaySpeed: 0,
-    slidesToShow: 5,
+    slidesToShow: 4,
     // variableWidth: true,
-    easing: "linear",
+    cssEase: "linear",
+    // easing: "linear",
+    slidesToScroll: -1,
+    rtl:false,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+  };
+  var settings3 = {
+    dots: false,
+    infinite: true,
+    arrows: false,
+    speed: 4000,
+    autoplay: true,
+    autoplaySpeed: 0,
+    slidesToShow: 4,
+    // variableWidth: true,
+    cssEase: "linear",
+    // easing: "linear",
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
@@ -39,7 +56,7 @@ const Testimonials = () => {
             </span>{" "}
             About Us !
           </h2>
-          <div className="testimony_slider_wrap">
+          <div className="testimony_slider_wrap" data-scroll data-scroll-offset='200'>
             <Slider {...settings} className="testimony_slider" data-scroll>
               <div className="testimony_wrap" data-scroll>
                 <div className="bodycopy" data-scroll>
@@ -120,6 +137,56 @@ const Testimonials = () => {
           <div className="client">
             <Image
               src={"/uploads/sam.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+          <div className="client">
+            <Image
+              src={"/uploads/intra.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+        </Slider>
+        <Slider {...settings3} className="clients_slider">
+          <div className="client">
+            <Image
+              src={"/uploads/one.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+          <div className="client">
+            <Image
+              src={"/uploads/bri.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+          <div className="client">
+            <Image
+              src={"/uploads/net.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+          <div className="client">
+            <Image
+              src={"/uploads/adi.svg"}
+              alt="logo"
+              width={250}
+              height={70}
+            />
+          </div>
+          <div className="client">
+            <Image
+              src={"/uploads/flip.svg"}
               alt="logo"
               width={250}
               height={70}

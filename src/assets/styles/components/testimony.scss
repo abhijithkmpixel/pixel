@@ -12,6 +12,15 @@
     .testimony_slider_wrap {
       position: relative;
       margin-bottom: 162px;
+      transition: 0.7s all ease-in-out;
+      &[data-scroll] {
+        opacity: 0;
+        transform: translateY(200px);
+        &.is-inview {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
     }
     .testimony_slider {
       max-width: 840px;
@@ -22,7 +31,7 @@
         border-radius: 50%;
         bottom: 0;
         top: auto;
-        transform:  translate(0, 0%);
+        transform: translate(0, 0%);
 
         &::before {
           background-repeat: no-repeat;
@@ -31,9 +40,23 @@
           display: flex;
           background-size: 26px 14px;
           background-position: center;
-
+          transition: 0.2s all ease-in-out;
+          background-repeat: no-repeat;
           background-image: url(../../icons/arow.svg);
           content: "";
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border: 1px solid $color-cinnabar;
+          border-radius: 50%;
+          top: 0;
+          left: 0;
+          transition: 0.2s all ease-in-out;
+          transform: scale(0.7);
+          opacity: 0;
         }
         &.slick-next {
           transform: scaleX(-1) translate(0, 0%);
@@ -42,6 +65,17 @@
         &.slick-prev {
           right: 80px;
           left: auto;
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            &::after {
+              transform: scale(1);
+              opacity: 1;
+            }
+            &::before {
+             transform: scale(.8);
+            }
+          }
         }
       }
       .testimony_wrap {
@@ -67,6 +101,27 @@
           display: block;
         }
       }
+    }
+  }
+}
+.clients_sliders_wrap {
+  .clients_slider {
+    & + .clients_slider {
+      margin-top: 30px;
+    }
+  }
+  .client {
+    width: 23vw !important;
+    background-color: $color-gallery;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 55px 30px;
+    margin: 0 5px;
+    img {
+      width: 230px;
+      height: 72px;
+      object-fit: contain;
     }
   }
 }

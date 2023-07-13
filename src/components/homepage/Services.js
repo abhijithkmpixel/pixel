@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <section className="services_listing" data-scroll-section>
       <div className="container-fluid">
-        <h2 className="title" data-scroll>
+        <h2 className="title" data-scroll data-scroll-offset='200'>
           <span>
             We are <br />
             here to{" "}
@@ -17,11 +17,14 @@ const Services = () => {
             alt="pixelated sphere  icon"
             width={249}
             height={249}
+            data-scroll
+            data-scroll-speed="1"
+            data-scroll-direction="horizontal"
           />
         </h2>
         <div className="services_outer_wrap">
           <div className="services_row" data-scroll>
-            <div className="services_item">
+            <div className="services_item" data-scroll data-scroll-offset="300">
               <span data-scroll>01</span>
               <Link href={"#"} className="item_inner" data-scroll>
                 <Image
@@ -92,7 +95,7 @@ const Services = () => {
                 </div>
               </Link>
             </div>
-            <div className="services_item">
+            <div className="services_item" data-scroll data-scroll-offset="300">
               <span data-scroll>02</span>
               <Link href={"#"} className="item_inner" data-scroll>
                 <Image
@@ -163,7 +166,7 @@ const Services = () => {
                 </h4>
               </Link>
             </div>
-            <div className="services_item">
+            <div className="services_item" data-scroll data-scroll-offset="300">
               <span data-scroll>03</span>
               <Link href={"#"} className="item_inner" data-scroll>
                 <Image

@@ -1,0 +1,57 @@
+.work_together {
+  padding: 150px 0 125px;
+  .title_primary {
+    margin-bottom: 44px;
+  }
+  h5 {
+    @include fontFace(30px, 1.4, 400, $color-abbey);
+    margin-bottom: 106px;
+    max-width: 720px;
+  }
+  .work_footer {
+    h4 {
+      @include fontFace(26px, 1.6, 600, $color-cod-gray);
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+    .wrk_contact_info {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+      .contact_info {
+        @include fontFace(40px, 1.1, 700, $color-cod-gray);
+        display: block;
+        position: relative;
+        overflow: hidden;
+        & + .contact_info {
+          margin-top: 25px;
+        }
+        span {
+          @include fontStyleInherit();
+          display: block;
+          transition: 0.4s all ease-in-out;
+        }
+        &::after {
+          content: attr(data-animate-text);
+          @include fontStyleInherit();
+          transition: 0.4s all ease-in-out;
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
+        &:hover {
+          span {
+            transform: translateY(-50px);
+          }
+          &::after {
+            transform: translateY(-45px);
+          }
+        }
+      }
+      .cta_secondary {
+        margin-top: -80px;
+      }
+    }
+  }
+}

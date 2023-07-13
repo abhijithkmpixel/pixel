@@ -16,6 +16,59 @@
       stroke: $color-cod-gray;
     }
   }
+  &.cta_light {
+    border-color: $color-gallery;
+    color: $color-gallery;
+  }
+}
+.cta_tertiary {
+  @include fontFace(15px, 1, 500, $color-cod-gray);
+  text-transform: uppercase;
+  border: 1px solid $color-black;
+  padding: 16px 35px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  transition: 0.3s all ease-in-out;
+  position: relative;
+  overflow: hidden;
+  svg {
+    width: 15px;
+    flex: 0 0 15px;
+    margin-left: 10px;
+    path,
+    line {
+      stroke: $color-cod-gray;
+    }
+  }
+  &.cta_light {
+    &::after {
+      transition: 0.3s transform ease-in-out;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $color-gallery;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      transform-origin: bottom;
+      transform: scaleY(0);
+    }
+    border-color: $color-gallery;
+    color: $color-gallery;
+    &:hover {
+      @include above($tablet-lg) {
+        background-color: $color-gallery;
+        color: $color-cod-gray;
+        &::after {
+          transform: scaleY(1);
+          transform-origin: top;
+        }
+      }
+    }
+  }
 }
 .cta_secondary {
   width: 148px;
@@ -34,7 +87,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: .3s all ease-in-out;
+  transition: 0.3s all ease-in-out;
   svg {
     width: 15px;
     height: auto;
