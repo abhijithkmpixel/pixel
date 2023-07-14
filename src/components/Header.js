@@ -15,9 +15,9 @@ const Header = () => {
             data-scroll
           />
         </Link>
-        <div className="menu_icon_wrap" data-scroll>
+        <div className="menu_icon_wrap" data-scroll data-cursor-stick="#stick-me" data-cursor-text=" ">
           <span>Menu+</span>
-          <ul>
+          <ul  id="stick-me">
             <li></li>
             <li></li>
           </ul>

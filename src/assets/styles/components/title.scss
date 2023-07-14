@@ -8,12 +8,23 @@
   @include below(1366px) {
     font-size: 65px;
   }
+  @include below($desktop-sm) {
+    font-size: 58px;
+  }
+  @include below($tablet-sm) {
+    font-size: 50px;
+  }
+  @include below($mobile-lg) {
+    font-size: 35px;
+  }
   &[data-scroll] {
-    opacity: 0;
-    transform: translateY(200px);
-    &.is-inview {
-      opacity: 1;
-      transform: translateY(0px);
+    @include above($tablet-lg) {
+      opacity: 0;
+      transform: translateY(200px);
+      &.is-inview {
+        opacity: 1;
+        transform: translateY(0px);
+      }
     }
   }
 }

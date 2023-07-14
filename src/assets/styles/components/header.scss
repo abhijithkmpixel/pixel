@@ -7,6 +7,23 @@ header {
   padding: 50px 90px;
   transition: 0.5s all ease-in-out;
   z-index: 100;
+  overflow: hidden;
+  &::before {
+    content: "";
+    background-color: $color-white;
+    inset: 0;
+    transition: 0.3s all ease-in-out;
+    position: absolute;
+    z-index: -1;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  @include below($tablet-lg) {
+    padding: 25px 50px;
+  }
+  @include below($mobile-lg) {
+    padding: 25px 15px;
+  }
   .header_inner_wrap {
     display: flex;
     align-items: center;
@@ -14,7 +31,10 @@ header {
     .brand_logo {
       width: 160px;
       height: auto;
-      img{
+      @include below($mobile-lg) {
+        width: 120px;
+      }
+      img {
         height: auto;
       }
     }
@@ -27,11 +47,14 @@ header {
         display: inline-block;
         margin-right: 22px;
         text-transform: uppercase;
+        @include below($mobile-lg) {
+          display: none;
+        }
       }
       ul {
         li {
           display: block;
-          height: 1.5px;
+          height: 2px;
           border-radius: 10px;
           background-color: $color-cod-gray;
           width: 50px;
@@ -41,5 +64,17 @@ header {
         }
       }
     }
+  }
+}
+.sticky_header {
+  header {
+    &::before {
+      transform: scaleY(1);
+    }
+  }
+}
+.desktop_sticky {
+  header {
+    padding: 20px 30px;
   }
 }

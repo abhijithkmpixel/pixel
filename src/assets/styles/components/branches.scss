@@ -4,6 +4,9 @@
   position: relative;
   padding: 182px 0 172px;
   overflow: hidden;
+  @include below($tablet-sm) {
+    padding: 100px 0 100px;
+  }
   &::after {
     content: "";
     position: absolute;
@@ -24,15 +27,25 @@
       display: flex;
       align-items: flex-end;
       margin-bottom: 70px;
+      @include below($tablet-lg) {
+        flex-flow: column;
+        align-items: flex-start;
+      }
       .title_primary {
         color: $color-white;
         max-width: 980px;
+        @include below($tablet-lg) {
+          margin-bottom: 30px;
+        }
       }
       h4 {
         @include fontFace(14px, 1.5, 500, $color-cinnabar);
         max-width: 290px;
         display: block;
         position: relative;
+        @include below($tablet-lg) {
+          position: static;
+        }
         &::before {
           content: "";
           position: absolute;
@@ -44,14 +57,23 @@
           z-index: 5;
           left: -70px;
           top: 20%;
+          @include below($tablet-lg) {
+            content: "";
+          }
         }
       }
     }
     p {
       @include fontFace(36px, 1.5, 400, $color-white);
       max-width: 980px;
-      @include below(1366px){
+      @include below(1366px) {
         font-size: 30px;
+      }
+      @include below($tablet-sm) {
+        font-size: 25px;
+      }
+      @include below($mobile-lg) {
+        font-size: 18px;
       }
     }
   }

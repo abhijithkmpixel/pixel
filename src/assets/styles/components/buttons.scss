@@ -7,6 +7,13 @@
   display: flex;
   align-items: center;
   width: max-content;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s all ease-in-out;
+  @include below($mobile-lg) {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
   svg {
     width: 15px;
     flex: 0 0 15px;
@@ -19,6 +26,35 @@
   &.cta_light {
     border-color: $color-gallery;
     color: $color-gallery;
+  }
+  &::after {
+    transition: 0.3s transform ease-in-out;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $color-cod-gray;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform-origin: bottom;
+    transform: scaleY(0);
+  }
+  &:hover {
+    @include above($tablet-lg) {
+      background-color: $color-cod-gray;
+      color: $color-gallery;
+      svg {
+        path,
+        line {
+          stroke: $color-gallery;
+        }
+      }
+      &::after {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+    }
   }
 }
 .cta_tertiary {

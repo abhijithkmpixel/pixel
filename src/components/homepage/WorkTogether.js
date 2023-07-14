@@ -15,7 +15,7 @@ const WorkTogether = () => {
           </h5>
           <div className="row work_footer" data-scroll>
             <div className="col-12 col-xl-2" data-scroll>
-              <h4 data-scroll>Say hellow</h4>
+              <h4 data-scroll>Say hello</h4>
             </div>
             <div className="col-12 col-xl-10" data-scroll>
               <div className="d-flex wrk_contact_info" data-scroll>

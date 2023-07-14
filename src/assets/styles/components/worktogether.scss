@@ -1,31 +1,66 @@
 .work_together {
   padding: 150px 0 125px;
+  @include below($tablet-sm) {
+    padding: 100px 0;
+  }
   .title_primary {
     margin-bottom: 44px;
+    @include below($tablet-sm) {
+      margin-bottom: 10px;
+    }
   }
   h5 {
     @include fontFace(30px, 1.4, 400, $color-abbey);
     margin-bottom: 106px;
     max-width: 720px;
+    @include below($mobile-lg) {
+      font-size: 20px;
+      margin-bottom: 60px;
+    }
   }
   .work_footer {
     h4 {
       @include fontFace(26px, 1.6, 600, $color-cod-gray);
       text-transform: uppercase;
       margin-top: 0;
+      @include below(1366px) {
+        font-size: 24px;
+      }
+      @include below($desktop-sm) {
+        font-size: 22px;
+      }
+      @include below($tablet-lg) {
+        margin-bottom: 30px;
+      }
+      @include below($tablet-sm) {
+        margin-bottom: 15px;
+      }
+      @include below($mobile-lg) {
+        margin-bottom: 5px;
+      }
     }
     .wrk_contact_info {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       width: 100%;
+      @include below($mobile-lg) {
+        flex-flow: column;
+        align-items: flex-start;
+      }
       .contact_info {
         @include fontFace(40px, 1.1, 700, $color-cod-gray);
         display: block;
         position: relative;
         overflow: hidden;
+        @include below($mobile-lg) {
+          font-size: 20px;
+        }
         & + .contact_info {
           margin-top: 25px;
+          @include below($tablet-sm) {
+            margin-top: 15px;
+          }
         }
         span {
           @include fontStyleInherit();
@@ -51,6 +86,9 @@
       }
       .cta_secondary {
         margin-top: -80px;
+        @include below($mobile-lg) {
+          margin-top: 20px;
+        }
       }
     }
   }

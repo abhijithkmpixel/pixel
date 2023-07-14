@@ -7,10 +7,23 @@ footer {
       display: flex;
       align-items: flex-start;
       margin-bottom: 108px;
+      @include below($mobile-lg) {
+        margin-bottom: 50px;
+        flex-flow: column;
+        align-items: center;
+        width: 100%
+      }
       h4 {
         @include fontFace(22px, 1.5, 500, $color-gallery);
         text-transform: uppercase;
         margin-right: 54px;
+        @include below($tablet-sm) {
+          margin-right: 30px;
+        }
+        @include below($mobile-lg) {
+          margin-bottom: 15px;
+          margin-right: 0;
+        }
       }
       ul {
         display: flex;
@@ -18,6 +31,9 @@ footer {
         li {
           & + li {
             margin-left: 30px;
+            @include below($tablet-sm) {
+              margin-left: 20px;
+            }
           }
           a {
             width: 47px;
@@ -47,6 +63,10 @@ footer {
     }
     .contact_pane_wrap {
       display: flex;
+      @include below($mobile-lg) {
+        width: 100%;
+        justify-content: center;
+      }
       .logo_wrap {
         width: 160px;
         height: 160px;
@@ -139,6 +159,9 @@ footer {
         @include fontFace(22px, 1.5, 500, $color-gallery);
         text-transform: uppercase;
         // margin-right: 54px;
+        @include below($tablet-lg) {
+          margin-bottom: 30px;
+        }
       }
       ul {
         li {
@@ -149,12 +172,17 @@ footer {
             display: block;
             overflow: hidden;
             position: relative;
+            @include below($desktop-sm) {
+              font-size: 18px;
+            }
+            @include below($mobile-lg) {
+              font-size: 14px;
+            }
             span {
               @include fontStyleInherit();
               transform: translateY(0px);
               display: block;
               transition: 0.4s all ease-in-out;
-
             }
             &::after {
               content: attr(data-animate-text);
@@ -171,9 +199,15 @@ footer {
                 // color: $color-cinnabar;
                 span {
                   transform: translateY(-30px);
+                  @include below($desktop-sm) {
+                    transform: translateY(-22px);
+                  }
                 }
                 &::after {
                   transform: translateY(-30px);
+                  @include below($desktop-sm) {
+                    transform: translateY(-22px);
+                  }
                 }
               }
             }
@@ -190,6 +224,9 @@ footer {
       margin-top: 60px;
       .footer_btn_wrapper {
         display: flex;
+        @include below($mobile-lg) {
+         margin-bottom: 30px;
+        }
         .cta_tertiary {
           & + .cta_tertiary {
             margin-left: 45px;
@@ -219,6 +256,24 @@ footer {
           font-size: 11.5vw;
           margin-bottom: -25px;
         }
+        @include below(1366px) {
+          font-size: 11.3vw;
+        }
+        @include below($tablet-lg) {
+          margin-bottom: 0px;
+        }
+      }
+    }
+    .footer_top_left {
+      @include below($tablet-lg) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-bottom: 80px;
+      }
+      @include below($mobile-lg) {
+        flex-flow: column;
       }
     }
   }

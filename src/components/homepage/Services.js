@@ -6,7 +6,7 @@ const Services = () => {
   return (
     <section className="services_listing" data-scroll-section>
       <div className="container-fluid">
-        <h2 className="title" data-scroll data-scroll-offset='200'>
+        <h2 className="title" data-scroll data-scroll-offset="200">
           <span>
             We are <br />
             here to{" "}
@@ -239,12 +239,46 @@ const Services = () => {
             </div>
           </div>
         </div>
-        <div className="row" data-scroll>
+        <div className="row " data-scroll>
           <div className="col-12 col-xl-6" data-scroll>
             <p>
               We provide tailored services for businesses to succeed in the
               digital landscape.
             </p>
+          </div>
+        </div>
+        <div className="row tech_logo" data-scroll>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/um.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/pro.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/kent.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/str.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
           </div>
         </div>
       </div>

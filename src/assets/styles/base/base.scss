@@ -66,6 +66,12 @@ address {
 }
 .container-fluid {
   padding: 0 90px;
+  @include below($tablet-lg) {
+    padding: 0 50px;
+  }
+  @include below($mobile-lg) {
+    padding: 0 15px;
+  }
 }
 // }
 @media (max-width: $desktop-lg) {
@@ -125,9 +131,17 @@ html.has-scroll-smooth {
 //   }
 // }
 [data-scroll-container] {
-  position: fixed;
-  max-width: 100vw;
+  @include above($tablet-lg) {
+    position: fixed;
+    max-width: 100vw;
+  }
   // height: 100vh;
+}
+.smothScroller{
+  @include above($tablet-lg) {
+    // position: fixed;
+    // max-width: 100vw;
+  }
 }
 [data-load-container] {
   position: fixed;
@@ -140,6 +154,18 @@ html.has-scroll-smooth {
   height: 100vh;
   overflow: hidden;
   transition: 0.35s all ease-in-out;
+}
+.mf-cursor::before {
+  color: $color-cinnabar;
+}
+.mf-cursor {
+  z-index: 99;
+}
+.mf-cursor-media{
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
+  mix-blend-mode: difference;
 }
 img {
   width: 100%;

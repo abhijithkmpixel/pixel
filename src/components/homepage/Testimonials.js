@@ -12,6 +12,8 @@ const Testimonials = () => {
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
   var settings2 = {
     dots: false,
@@ -21,13 +23,35 @@ const Testimonials = () => {
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
-    // variableWidth: true,
+    variableWidth: true,
     cssEase: "linear",
     // easing: "linear",
     slidesToScroll: -1,
-    rtl:false,
+    rtl: false,
     pauseOnFocus: false,
     pauseOnHover: false,
+    useTransform: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: -3,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: -1
+        }
+      }
+    ]
   };
   var settings3 = {
     dots: false,
@@ -37,12 +61,34 @@ const Testimonials = () => {
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
-    // variableWidth: true,
+    variableWidth: true,
     cssEase: "linear",
     // easing: "linear",
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
+    useTransform: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <section className="client_testimonials" data-scroll-section>
@@ -56,7 +102,11 @@ const Testimonials = () => {
             </span>{" "}
             About Us !
           </h2>
-          <div className="testimony_slider_wrap" data-scroll data-scroll-offset='200'>
+          <div
+            className="testimony_slider_wrap"
+            data-scroll
+            data-scroll-offset="200"
+          >
             <Slider {...settings} className="testimony_slider" data-scroll>
               <div className="testimony_wrap" data-scroll>
                 <div className="bodycopy" data-scroll>
@@ -205,5 +255,72 @@ const Testimonials = () => {
     </section>
   );
 };
+
+function SampleNextArrow(props) {
+  const { onClick } = props;
+  return (
+    <button className={"slick-arrow slick-next"} onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.684881"
+          y1="8.15252"
+          x2="26.0974"
+          y2="8.15252"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M19.833 1L26.7828 7.99995L19.833 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.684881"
+          y1="-0.684881"
+          x2="26.0974"
+          y2="-0.684881"
+          transform="matrix(-1 0 0 1 27.7827 8.8374)"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.94971 1L0.999961 7.99995L7.94971 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
 
 export default Testimonials;
