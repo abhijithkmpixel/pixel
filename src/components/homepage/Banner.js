@@ -34,8 +34,10 @@ const Banner = () => {
   };
 
   return (
-    <section className="hero_banner" data-scroll-section data-scroll-sticky data-scroll-target='#banner' id="banner">
-      <div className="herobanner_inner_wrap" data-scroll>
+    <section className="hero_banner"  data-scroll-section   id="banner">
+      <div className="hero_container" data-scroll-sticky data-scroll-target='#banner' data-scroll>
+
+      <div className="herobanner_inner_wrap" data-scroll >
         <div className="banner_head" data-scroll>
           <div className="content_wrap" data-scroll >
             <h1 data-scroll>
@@ -209,6 +211,7 @@ const Banner = () => {
             </Link>
           </Slider>
         </div>
+      </div>
       </div>
     </section>
   );

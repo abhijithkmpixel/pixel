@@ -39,7 +39,7 @@ const WorkTogether = () => {
                 </div>
                 <div data-scroll data-scroll-speed="1.3">
                   <Link href={"#"} className="cta_secondary" data-scroll>
-                    start a project{" "}
+                    <span>start a project </span>
                     <svg
                       width="16"
                       height="16"

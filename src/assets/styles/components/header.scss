@@ -8,6 +8,7 @@ header {
   transition: 0.5s all ease-in-out;
   z-index: 100;
   overflow: hidden;
+  height: max-content !important;
   &::before {
     content: "";
     background-color: $color-white;

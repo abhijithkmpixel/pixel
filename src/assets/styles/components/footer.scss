@@ -172,6 +172,7 @@ footer {
             display: block;
             overflow: hidden;
             position: relative;
+            width: max-content;
             @include below($desktop-sm) {
               font-size: 18px;
             }
@@ -202,12 +203,36 @@ footer {
                   @include below($desktop-sm) {
                     transform: translateY(-22px);
                   }
+                  // animation: moveQuicklink 0.4s forwards linear;
+                  // @keyframes moveQuicklink {
+                  //   0% {
+                  //     transform: translateY(0px);
+                  //   }
+                  //   100% {
+                  //     transform: translateY(-26px);
+                  //     @include below($desktop-sm) {
+                  //       transform: translateY(-22px);
+                  //     }
+                  //   }
+                  // }
                 }
                 &::after {
                   transform: translateY(-30px);
                   @include below($desktop-sm) {
                     transform: translateY(-22px);
                   }
+                  // animation: moveHolder 0.4s forwards linear;
+                  // @keyframes moveHolder {
+                  //   0% {
+                  //     transform: translateY(0px);
+                  //   }
+                  //   100% {
+                  //     transform: translateY(-26px);
+                  //     @include below($desktop-sm) {
+                  //       transform: translateY(-20px);
+                  //     }
+                  //   }
+                  // }
                 }
               }
             }

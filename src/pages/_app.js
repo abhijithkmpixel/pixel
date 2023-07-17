@@ -3,21 +3,35 @@ import "@/assets/styles/app.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
-// import LocomotiveScroll from "locomotive-scroll";
 import { useEffect } from "react";
-// typical import
-import gsap from "gsap";
+import gsap, { Bounce } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Draggable from "gsap/dist/Draggable";
-// get other plugins:
 import Header from "@/components/Header";
 import MouseFollower from "mouse-follower";
+import Script from "next/script";
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    let scroll;
+    let scroll, scrollHor;
     if (window.screen.width > 1200) {
       MouseFollower.registerGSAP(gsap);
+
+      document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
+        elm.addEventListener("mouseenter", function (e) {
+          var rect = e.target.getBoundingClientRect();
+          var x = e.clientX - rect.left; //x position within the element.
+          var y = e.clientY - rect.top; //y position within the element.
+          elm.style.setProperty("--x", x + "px");
+          elm.style.setProperty("--y", y + "px");
+        });
+        elm.addEventListener("mouseleave", function (e) {
+          var rect = e.target.getBoundingClientRect();
+          var x = e.clientX - rect.left; //x position within the element.
+          var y = e.clientY - rect.top; //y position within the element.
+          elm.style.setProperty("--x", x + "px");
+          elm.style.setProperty("--y", y + "px");
+        });
+      });
 
       const cursor = new MouseFollower({
         container: "#__next",
@@ -28,36 +42,54 @@ export default function App({ Component, pageProps }) {
       });
       import("locomotive-scroll").then((locomotiveModule) => {
         scroll = new locomotiveModule.default({
-          el: document.querySelector(".smothScroller"),
+          el: document.querySelector(".smoothScroller"),
+          name: "scroll",
+          offset: [0, 0],
+          repeat: false,
           smooth: true,
           lerp: 0.07,
-          // smoothMobile: false,
-          // resetNativeScroll: true,
+          multiplier: 1,
+          firefoxMultiplier: 50,
+          tablet: {
+            smooth: false,
+            direction: "vertical",
+            gestureDirection: "vertical",
+            breakpoint: 1024,
+          },
+          smartphone: {
+            smooth: false,
+            direction: "vertical",
+            gestureDirection: "vertical",
+          },
         });
+
         scroll.on("scroll", ScrollTrigger.update);
         scroll.on("scroll", (scroll) => {
           ScrollTrigger.update;
-          if (scroll.scroll.y > 50) {
+          if (scroll.scroll.y > 5) {
             document.querySelector("body").classList.add("desktop_sticky");
           } else {
             document.querySelector("body").classList.remove("desktop_sticky");
           }
         });
+
         let scrollval = document.querySelector(".quick_link").offsetWidth;
         let length = document.querySelectorAll(
           ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
         ).length;
-        let scrollLength = 300 * (length - 2);
+        let scrollLength = 600 * (length - 2);
+        document.querySelector(".hero_banner").style.paddingBottom =
+          scrollLength + "px";
         gsap.to(".hero_banner .herobanner_inner_wrap", {
           x: -(scrollval * (length - 2)),
           y: scroll.scroll.y,
           scrollTrigger: {
             trigger: ".herobanner_inner_wrap",
             start: "0% -1px",
+            ease: Bounce.easeOut,
             end: `+${scrollLength}`,
-            scroller: ".smothScroller",
+            scroller: ".smoothScroller",
             scrub: true,
-            // pin: true,
           },
         });
 
@@ -67,13 +99,12 @@ export default function App({ Component, pageProps }) {
             trigger: ".our_branches",
             start: "0% 100%",
             end: "100% 0%",
-            scroller: ".smothScroller",
+            scroller: ".smoothScroller",
             scrub: true,
-            // pin: true,
           },
         });
 
-        ScrollTrigger.scrollerProxy(".smothScroller", {
+        ScrollTrigger.scrollerProxy(".smoothScroller", {
           scrollTop(value) {
             return arguments.length
               ? scroll.scrollTo(value, 0, 0)
@@ -88,11 +119,11 @@ export default function App({ Component, pageProps }) {
             };
           },
           // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-          pinType: document.querySelector(".smothScroller").style
-            .transform
+          pinType: document.querySelector(".smoothScroller").style.transform
             ? "transform"
             : "fixed",
         });
+
         ScrollTrigger.addEventListener("refresh", () => scroll.update());
 
         // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
@@ -120,7 +151,7 @@ export default function App({ Component, pageProps }) {
         <link rel="favicon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main data-scroll-containerr className="smothScroller">
+      <main data-scroll-containerr className="smoothScroller">
         <Component {...pageProps} />
       </main>
     </>

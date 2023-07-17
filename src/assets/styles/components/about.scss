@@ -1,6 +1,7 @@
 .about_us_banner {
   width: 100%;
   padding: 150px 0 127px;
+  max-width: 100vw;
   @include below($tablet-sm) {
     padding: 100px 0 50px;
   }
@@ -33,7 +34,8 @@
   }
   .title_primary {
     margin-bottom: 120px;
-    max-width: 80%;
+    width: 80%;
+    max-width: 100%;
     @include below($desktop-lg) {
       max-width: unset;
     }

@@ -1,5 +1,6 @@
 .work_together {
   padding: 150px 0 125px;
+  width: 100vw;
   @include below($tablet-sm) {
     padding: 100px 0;
   }
@@ -53,6 +54,7 @@
         display: block;
         position: relative;
         overflow: hidden;
+        width: max-content;
         @include below($mobile-lg) {
           font-size: 20px;
         }
@@ -77,10 +79,28 @@
         }
         &:hover {
           span {
-            transform: translateY(-50px);
+            // transform: translateY(-50px);
+            animation: moveUp 0.4s forwards linear;
+            @keyframes moveUp {
+              0% {
+                transform: translateY(0px);
+              }
+              100% {
+                transform: translateY(-50px);
+              }
+            }
           }
           &::after {
-            transform: translateY(-45px);
+            // transform: translateY(-45px);
+            animation: movePlaceholder 0.4s forwards linear;
+            @keyframes movePlaceholder {
+              0% {
+                transform: translateY(0px);
+              }
+              100% {
+                transform: translateY(-44px);
+              }
+            }
           }
         }
       }

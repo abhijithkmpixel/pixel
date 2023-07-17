@@ -34,13 +34,15 @@ const About = () => {
             />
           </svg>
         </span>
-        <h2 className="title_primary" data-scroll data-scroll-offset='200'>
+        <h2 className="title_primary" data-scroll data-scroll-offset="200">
           We Are a Professional Agency In DubaI
         </h2>
         <div className="intro_block" data-scroll>
           <div className="row">
             <div className="col-12 col-xl-2">
-              <h3 data-scroll  data-scroll-speed='1.5'>About</h3>
+              <h3 data-scroll data-scroll-speed="1.5">
+                About
+              </h3>
             </div>
             <div className="col-12 col-xl-10">
               <div
@@ -55,7 +57,12 @@ const About = () => {
                   height={570}
                 />
               </div>
-              <div className="about_bodycopy" data-scroll data-scroll-speed='1.2' data-scroll-direction="horizontal">
+              <div
+                className="about_bodycopy"
+                data-scroll
+                data-scroll-speed="1.2"
+                data-scroll-direction="horizontal"
+              >
                 <p>
                   Pixelflames is web design agency based in Dubai, UAE. Their
                   main services include UX/UI design, web development, app
@@ -70,8 +77,8 @@ const About = () => {
                     main services
                   </h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
-                    <Link href={"#"} className="cta_secondary" data-scroll>
-                      learn more{" "}
+                    <Link href={"#"} className="cta_secondary" data-scroll style={{"--x":'10px',"--y":"10px"}}>
+                      <span>learn more </span>
                       <svg
                         width="16"
                         height="16"
@@ -105,7 +112,11 @@ const About = () => {
           </div>
           <div className="row achievements_row" data-scroll>
             <div className="col-12 col-md-6 col-lg-4" data-scroll>
-              <div className="achievement_cards" data-scroll data-scroll-offset='200' >
+              <div
+                className="achievement_cards"
+                data-scroll
+                data-scroll-offset="200"
+              >
                 <div className="cardheader">
                   <Image
                     src={"/uploads/ga.png"}
@@ -121,7 +132,11 @@ const About = () => {
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-4" data-scroll>
-              <div className="achievement_cards" data-scroll data-scroll-offset='200'>
+              <div
+                className="achievement_cards"
+                data-scroll
+                data-scroll-offset="200"
+              >
                 <div className="cardheader">
                   <Image
                     src={"/uploads/client.png"}
@@ -137,7 +152,11 @@ const About = () => {
               </div>
             </div>
             <div className="col-12 col-md-6 col-lg-4" data-scroll>
-              <div className="achievement_cards" data-scroll data-scroll-offset='200'>
+              <div
+                className="achievement_cards"
+                data-scroll
+                data-scroll-offset="200"
+              >
                 <div className="cardheader">
                   <Image
                     src={"/uploads/exp.png"}
