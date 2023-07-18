@@ -40,7 +40,7 @@ const Banner = () => {
       <div className="herobanner_inner_wrap" data-scroll >
         <div className="banner_head" data-scroll>
           <div className="content_wrap" data-scroll >
-            <h1 data-scroll>
+            <h1 data-scroll >
               we are <br />
               <span>design</span>
               <br /> agency<span>.</span>

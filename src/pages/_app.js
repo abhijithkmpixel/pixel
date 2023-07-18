@@ -92,6 +92,17 @@ export default function App({ Component, pageProps }) {
             scrub: true,
           },
         });
+        // gsap.to(".hero_banner .herobanner_inner_wrap", {
+        //   x:0,
+        //   y: scroll.scroll.y,
+        //   scrollTrigger: {
+        //     trigger: ".about_us_banner",
+        //     start: "0% 0px",
+        //     // end: `+${scrollLength}`,
+        //     scroller: ".smoothScroller",
+        //     // scrub: true,
+        //   },
+        // });
 
         gsap.to(".our_branches img", {
           scale: 1.5,

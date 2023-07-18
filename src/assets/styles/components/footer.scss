@@ -183,12 +183,12 @@ footer {
               @include fontStyleInherit();
               transform: translateY(0px);
               display: block;
-              transition: 0.4s all ease-in-out;
+              transition: 0.25s all ease-in-out;
             }
             &::after {
               content: attr(data-animate-text);
               @include fontStyleInherit();
-              transition: 0.4s all ease-in-out;
+              transition: 0.25s all ease-in-out;
               position: absolute;
               left: 0;
               transform: translateY(0px);
