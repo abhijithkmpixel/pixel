@@ -9,10 +9,10 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Header from "@/components/Header";
 import MouseFollower from "mouse-follower";
 import Script from "next/script";
+gsap.registerPlugin(ScrollTrigger);
 export default function App({ Component, pageProps }) {
   useEffect(() => {
     let ctx;
-    gsap.registerPlugin(ScrollTrigger);
     let scroll, scrollHor;
     if (window.screen.width > 1200) {
       MouseFollower.registerGSAP(gsap);
