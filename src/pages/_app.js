@@ -74,10 +74,15 @@ export default function App({ Component, pageProps }) {
         });
 
         let scrollval = document.querySelector(".quick_link").offsetWidth;
+        console.log(scrollval);
         let length = document.querySelectorAll(
           ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
         ).length;
+        console.log(length);
+
         let scrollLength = 600 * (length - 2);
+        console.log(scrollLength);
+
         document.querySelector(".hero_banner").style.paddingBottom =
           scrollLength + "px";
         gsap.to(".hero_banner .herobanner_inner_wrap", {
@@ -92,17 +97,6 @@ export default function App({ Component, pageProps }) {
             scrub: true,
           },
         });
-        // gsap.to(".hero_banner .herobanner_inner_wrap", {
-        //   x:0,
-        //   y: scroll.scroll.y,
-        //   scrollTrigger: {
-        //     trigger: ".about_us_banner",
-        //     start: "0% 0px",
-        //     // end: `+${scrollLength}`,
-        //     scroller: ".smoothScroller",
-        //     // scrub: true,
-        //   },
-        // });
 
         gsap.to(".our_branches img", {
           scale: 1.5,
