@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function App({ Component, pageProps }) {
   let ctx;
   let scroll, scrollHor;
-  if(typeof window != 'undefined' &&){
+  if(typeof window != 'undefined'){
     if(window.screen.width > 1200){
       import("locomotive-scroll").then((locomotiveModule) => {
         scroll = new locomotiveModule.default({
