@@ -11,6 +11,7 @@ import MouseFollower from "mouse-follower";
 import Script from "next/script";
 export default function App({ Component, pageProps }) {
   useEffect(() => {
+    let ctx;
     gsap.registerPlugin(ScrollTrigger);
     let scroll, scrollHor;
     if (window.screen.width > 1200) {
@@ -74,39 +75,39 @@ export default function App({ Component, pageProps }) {
         });
 
         let scrollval = document.querySelector(".quick_link").offsetWidth;
-        console.log(scrollval);
         let length = document.querySelectorAll(
           ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
         ).length;
-        console.log(length);
 
         let scrollLength = 600 * (length - 2);
-        console.log(scrollLength);
 
         document.querySelector(".hero_banner").style.paddingBottom =
           scrollLength + "px";
-        gsap.to(".hero_banner .herobanner_inner_wrap", {
-          x: -(scrollval * (length - 2)),
-          y: scroll.scroll.y,
-          scrollTrigger: {
-            trigger: ".herobanner_inner_wrap",
-            start: "0% -1px",
-            ease: Bounce.easeOut,
-            end: `+${scrollLength}`,
-            scroller: ".smoothScroller",
-            scrub: true,
-          },
-        });
 
-        gsap.to(".our_branches img", {
-          scale: 1.5,
-          scrollTrigger: {
-            trigger: ".our_branches",
-            start: "0% 100%",
-            end: "100% 0%",
-            scroller: ".smoothScroller",
-            scrub: true,
-          },
+        ctx = gsap.context(() => {
+          gsap.to(".hero_banner .herobanner_inner_wrap", {
+            x: -(scrollval * (length - 2)),
+            y: scroll.scroll.y,
+            scrollTrigger: {
+              trigger: ".herobanner_inner_wrap",
+              start: "0% -1px",
+              // ease: Bounce.easeOut,
+              end: `+${scrollLength}`,
+              scroller: ".smoothScroller",
+              scrub: true,
+            },
+          });
+
+          gsap.to(".our_branches img", {
+            scale: 1.5,
+            scrollTrigger: {
+              trigger: ".our_branches",
+              start: "0% 100%",
+              end: "100% 0%",
+              scroller: ".smoothScroller",
+              scrub: true,
+            },
+          });
         });
 
         ScrollTrigger.scrollerProxy(".smoothScroller", {
@@ -146,6 +147,10 @@ export default function App({ Component, pageProps }) {
 
     // `useEffect`'s cleanup phase
     return () => {
+      if(ctx){
+
+        ctx.revert();
+      }
       // if (scroll) scroll.destroy();
     };
   }, []);
