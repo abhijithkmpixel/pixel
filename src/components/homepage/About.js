@@ -77,7 +77,7 @@ const About = () => {
                     main services
                   </h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
-                    <Link href={"#"} className="cta_secondary" data-scroll style={{"--x":'10px',"--y":"10px"}}>
+                    <Link href={"/About"} className="cta_secondary" data-scroll style={{"--x":'10px',"--y":"10px"}}>
                       <span>learn more </span>
                       <svg
                         width="16"

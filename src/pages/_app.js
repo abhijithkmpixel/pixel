@@ -3,185 +3,193 @@ import "@/assets/styles/app.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
-import { useEffect, useLayoutEffect } from "react";
+import { createContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap, { Bounce } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Header from "@/components/Header";
 import MouseFollower from "mouse-follower";
-import Script from "next/script";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
+
+export const SmoothScrollContext = createContext({
+  scroll: null
+});
+
 export default function App({ Component, pageProps }) {
   let ctx;
   let scroll, scrollHor;
-  if (typeof window != "undefined") {
-    const textArray = document
-      .querySelector("#textOut")
-      .getAttribute("data-animator-text")
-      .split(",");
-    if (window.screen.width > 1200) {
-      // import("locomotive-scroll").then((locomotiveModule) => {
-        scroll = new locomotiveModule.default({
-          el: document.querySelector(".smoothScroller"),
-          name: "scroll",
-          offset: [0, 0],
-          repeat: false,
-          smooth: true,
-          lerp: 0.07,
-          multiplier: 1,
-          firefoxMultiplier: 50,
-          tablet: {
-            smooth: false,
-            direction: "vertical",
-            gestureDirection: "vertical",
-            breakpoint: 1024,
-          },
-          smartphone: {
-            smooth: false,
-            direction: "vertical",
-            gestureDirection: "vertical",
-          },
-        });
+  const [scroller, setScroller] = useState(null);
+  const scrollWrapper = useRef();
 
-        scroll.on("scroll", ScrollTrigger.update);
-        scroll.on("scroll", (scroll) => {
-          ScrollTrigger.update;
-          // if (
-          //   document
-          //     .querySelector(".services_listing")
-          //     .getAttribute("class")
-          //     .indexOf("is-inview") >= 0
-          // ) {
-          //   document.querySelector("body").style.background = "#40444c";
-          // } else {
-          //   document.querySelector("body").style.background = "#fff";
-          // }
 
-          if (scroll.scroll.y > 5) {
-            document.querySelector("body").classList.add("desktop_sticky");
-          } else {
-            document.querySelector("body").classList.remove("desktop_sticky");
-          }
-        });
+  // if (typeof window != "undefined") {
+  //   const textArray = document
+  //     .querySelector("#textOut")
+  //     .getAttribute("data-animator-text")
+  //     .split(",");
+  //   if (window.screen.width > 1200) {
+  //     // import("locomotive-scroll").then((locomotiveModule) => {
+  //     scroll = new locomotiveModule.default({
+  //       el: document.querySelector(".smoothScroller"),
+  //       name: "scroll",
+  //       offset: [0, 0],
+  //       repeat: false,
+  //       smooth: true,
+  //       lerp: 0.07,
+  //       multiplier: 1,
+  //       firefoxMultiplier: 50,
+  //       tablet: {
+  //         smooth: false,
+  //         direction: "vertical",
+  //         gestureDirection: "vertical",
+  //         breakpoint: 1024,
+  //       },
+  //       smartphone: {
+  //         smooth: false,
+  //         direction: "vertical",
+  //         gestureDirection: "vertical",
+  //       },
+  //     });
 
-        let scrollval = document.querySelector(".quick_link").offsetWidth;
-        let length = document.querySelectorAll(
-          ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
-        ).length;
+  //     scroll.on("scroll", ScrollTrigger.update);
+  //     scroll.on("scroll", (scroll) => {
+  //       ScrollTrigger.update;
+  //       // if (
+  //       //   document
+  //       //     .querySelector(".services_listing")
+  //       //     .getAttribute("class")
+  //       //     .indexOf("is-inview") >= 0
+  //       // ) {
+  //       //   document.querySelector("body").style.background = "#40444c";
+  //       // } else {
+  //       //   document.querySelector("body").style.background = "#fff";
+  //       // }
 
-        let scrollLength = 600 * (length - 2);
+  //       if (scroll.scroll.y > 5) {
+  //         document.querySelector("body").classList.add("desktop_sticky");
+  //       } else {
+  //         document.querySelector("body").classList.remove("desktop_sticky");
+  //       }
+  //     });
 
-        document.querySelector(".hero_banner").style.paddingBottom =
-          scrollLength + "px";
+  //     let scrollval = document.querySelector(".quick_link").offsetWidth;
+  //     let length = document.querySelectorAll(
+  //       ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
+  //     ).length;
 
-        ctx = gsap.context(() => {
-          gsap.to(".hero_banner .herobanner_inner_wrap", {
-            x: -(scrollval * (length - 2)),
-            y: scroll.scroll.y,
-            scrollTrigger: {
-              trigger: ".herobanner_inner_wrap",
-              start: "0% -1px",
-              // ease: Bounce.easeOut,
-              end: `+${scrollLength}`,
-              scroller: ".smoothScroller",
-              scrub: true,
-            },
-          });
+  //     let scrollLength = 600 * (length - 2);
 
-          gsap.to(".our_branches img", {
-            scale: 1.5,
-            scrollTrigger: {
-              trigger: ".our_branches",
-              start: "0% 100%",
-              end: "100% 0%",
-              scroller: ".smoothScroller",
-              scrub: true,
-            },
-          });
+  //     document.querySelector(".hero_banner").style.paddingBottom =
+  //       scrollLength + "px";
 
-          var bannerTextAnim = gsap.timeline({
-            repeat: -1,
-            // duration: 10,
-            // delay: 1,
-            repeatDelay: 2,
-            ease: "linear",
-          });
+  //     ctx = gsap.context(() => {
+  //       gsap.to(".hero_banner .herobanner_inner_wrap", {
+  //         x: -(scrollval * (length - 2)),
+  //         y: scroll.scroll.y,
+  //         scrollTrigger: {
+  //           trigger: ".herobanner_inner_wrap",
+  //           start: "0% -1px",
+  //           // ease: Bounce.easeOut,
+  //           end: `+${scrollLength}`,
+  //           scroller: ".smoothScroller",
+  //           scrub: true,
+  //         },
+  //       });
 
-          textArray.forEach((element, index) => {
-            bannerTextAnim.to("#textOut", {
-              text: `${element}`,
-              duration: 2,
-              delay: index * 4,
-              scrollTrigger: {
-                trigger: "#textOut",
-                scroller: ".smoothScroller",
-              },
-            });
-          });
-          // gsap.to('body',{
-          //   background :'#40444c',
-          //   duration:.5,
-          //   scrollTrigger: {
-          //     trigger: ".services_listing",
-          //     start: "0% 50%",
-          //     end: "0% 50%",
-          //     scroller: ".smoothScroller",
-          //     scrub: true,
-          //   },
-          // })
-          // gsap.to('body',{
-          //   background :'#fff',
-          //   duration:.5,
-          //   scrollTrigger: {
-          //     trigger: ".services_listing",
-          //     start: "100% 50%",
-          //     end: "100% 50%",
-          //     scroller: ".smoothScroller",
-          //     scrub: true,
-          //   },
-          // })
-          // var serviceTimeline = gsap.timeline()
-          // serviceTimeline.from(".line1", {
-          //   y: 100,
-          //   duration:.7,
-          //   scrollTrigger: {
-          //     trigger: ".line1",
-          //     start: "100% 100%",
-          //     end: "+100",
-          //     scroller: ".smoothScroller",
-          //     scrub: true,
-          //   },
-          // });
-        });
+  //       gsap.to(".our_branches img", {
+  //         scale: 1.5,
+  //         scrollTrigger: {
+  //           trigger: ".our_branches",
+  //           start: "0% 100%",
+  //           end: "100% 0%",
+  //           scroller: ".smoothScroller",
+  //           scrub: true,
+  //         },
+  //       });
 
-        ScrollTrigger.scrollerProxy(".smoothScroller", {
-          scrollTop(value) {
-            return arguments.length
-              ? scroll.scrollTo(value, 0, 0)
-              : scroll.scroll.instance.scroll.y;
-          }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-          getBoundingClientRect() {
-            return {
-              top: 0,
-              left: 0,
-              width: window.innerWidth,
-              height: window.innerHeight,
-            };
-          },
-          // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-          pinType: document.querySelector(".smoothScroller").style.transform
-            ? "transform"
-            : "fixed",
-        });
+  //       var bannerTextAnim = gsap.timeline({
+  //         repeat: -1,
+  //         // duration: 10,
+  //         // delay: 1,
+  //         repeatDelay: 2,
+  //         ease: "linear",
+  //       });
 
-        ScrollTrigger.addEventListener("refresh", () => scroll.update());
+  //       textArray.forEach((element, index) => {
+  //         bannerTextAnim.to("#textOut", {
+  //           text: `${element}`,
+  //           duration: 2,
+  //           delay: index * 4,
+  //           scrollTrigger: {
+  //             trigger: "#textOut",
+  //             scroller: ".smoothScroller",
+  //           },
+  //         });
+  //       });
+  //       // gsap.to('body',{
+  //       //   background :'#40444c',
+  //       //   duration:.5,
+  //       //   scrollTrigger: {
+  //       //     trigger: ".services_listing",
+  //       //     start: "0% 50%",
+  //       //     end: "0% 50%",
+  //       //     scroller: ".smoothScroller",
+  //       //     scrub: true,
+  //       //   },
+  //       // })
+  //       // gsap.to('body',{
+  //       //   background :'#fff',
+  //       //   duration:.5,
+  //       //   scrollTrigger: {
+  //       //     trigger: ".services_listing",
+  //       //     start: "100% 50%",
+  //       //     end: "100% 50%",
+  //       //     scroller: ".smoothScroller",
+  //       //     scrub: true,
+  //       //   },
+  //       // })
+  //       // var serviceTimeline = gsap.timeline()
+  //       // serviceTimeline.from(".line1", {
+  //       //   y: 100,
+  //       //   duration:.7,
+  //       //   scrollTrigger: {
+  //       //     trigger: ".line1",
+  //       //     start: "100% 100%",
+  //       //     end: "+100",
+  //       //     scroller: ".smoothScroller",
+  //       //     scrub: true,
+  //       //   },
+  //       // });
+  //     });
 
-        // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-        ScrollTrigger.refresh();
-      // });
-    }
-  }
+  //     ScrollTrigger.scrollerProxy(".smoothScroller", {
+  //       scrollTop(value) {
+  //         return arguments.length
+  //           ? scroll.scrollTo(value, 0, 0)
+  //           : scroll.scroll.instance.scroll.y;
+  //       }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  //       getBoundingClientRect() {
+  //         return {
+  //           top: 0,
+  //           left: 0,
+  //           width: window.innerWidth,
+  //           height: window.innerHeight,
+  //         };
+  //       },
+  //       // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  //       pinType: document.querySelector(".smoothScroller").style.transform
+  //         ? "transform"
+  //         : "fixed",
+  //     });
+
+  //     ScrollTrigger.addEventListener("refresh", () => scroll.update());
+
+  //     // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+  //     ScrollTrigger.refresh();
+  //     // });
+  //   }
+  // }
   useLayoutEffect(() => {
     if (window.screen.width > 1200) {
       MouseFollower.registerGSAP(gsap);
@@ -222,9 +230,9 @@ export default function App({ Component, pageProps }) {
 
     // `useEffect`'s cleanup phase
     return () => {
-      if (ctx) {
-        ctx.revert();
-      }
+      // if (ctx) {
+      //   ctx.revert();
+      // }
       // if (scroll) scroll.destroy();
     };
   }, []);
@@ -235,9 +243,13 @@ export default function App({ Component, pageProps }) {
         <link rel="favicon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main data-scroll-containerr className="smoothScroller">
-        <Component {...pageProps} />
-      </main>
+        {/* <main
+          data-scroll-containerr
+          className="smoothScroller"
+          ref={scrollWrapper}
+        > */}
+          <Component {...pageProps} />
+        {/* </main> */}
     </>
   );
 }
