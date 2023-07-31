@@ -4,14 +4,14 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className="services_listing" data-scroll-section>
+    <section className="services_listing" data-scroll-section data-scroll data-scroll-repeat>
       <div className="container-fluid">
         <h2 className="title" data-scroll data-scroll-offset="200">
-          <span>
+          <span className="line1">
             We are <br />
             here to{" "}
           </span>
-          <span> help you</span>
+          <span className="line2"> help you</span>
           <Image
             src="/icons/sphere.svg"
             alt="pixelated sphere  icon"
@@ -20,6 +20,7 @@ const Services = () => {
             data-scroll
             data-scroll-speed="1"
             data-scroll-direction="horizontal"
+            className="titleicon"
           />
         </h2>
         <div className="services_outer_wrap">
@@ -248,14 +249,7 @@ const Services = () => {
           </div>
         </div>
         <div className="row tech_logo" data-scroll>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/um.svg"}
-              alt="image"
-              width={100}
-              height={55}
-            />
-          </div>
+  
           <div className="col-12 col-md-6 col-xl-3">
             <Image
               src={"/uploads/pro.svg"}
@@ -275,6 +269,14 @@ const Services = () => {
           <div className="col-12 col-md-6 col-xl-3">
             <Image
               src={"/uploads/str.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/um.svg"}
               alt="image"
               width={100}
               height={55}

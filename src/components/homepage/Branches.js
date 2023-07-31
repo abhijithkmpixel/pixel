@@ -3,13 +3,20 @@ import React from "react";
 
 const Branches = () => {
   return (
-    <section className="our_branches" data-scroll data-scroll-section>
+    <section
+      className="our_branches"
+      data-scroll
+      data-scroll-section
+      id="branches"
+    >
       <Image
         src={"/uploads/branch.jpg"}
         alt={"image"}
         width={1440}
         height={753}
         data-scroll
+        data-scroll-sticky
+        data-scroll-target="branches"
       />
       <div className="branches_innerwrap" data-scroll>
         <div className="container-fluid">

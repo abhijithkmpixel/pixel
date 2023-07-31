@@ -11,7 +11,7 @@ footer {
         margin-bottom: 50px;
         flex-flow: column;
         align-items: center;
-        width: 100%
+        width: 100%;
       }
       h4 {
         @include fontFace(22px, 1.5, 500, $color-gallery);
@@ -176,6 +176,9 @@ footer {
             @include below($desktop-sm) {
               font-size: 18px;
             }
+            @include below($tablet-lg) {
+              width: 100%;
+            }
             @include below($mobile-lg) {
               font-size: 14px;
             }
@@ -239,6 +242,9 @@ footer {
           }
           & + li {
             margin-top: 30px;
+            @include below($mobile-lg) {
+              margin-top: 15px;
+            }
           }
         }
       }
@@ -250,11 +256,17 @@ footer {
       .footer_btn_wrapper {
         display: flex;
         @include below($mobile-lg) {
-         margin-bottom: 30px;
+          margin-bottom: 30px;
+          flex-flow: column;
+          justify-content: center;
         }
         .cta_tertiary {
           & + .cta_tertiary {
             margin-left: 45px;
+            @include below($mobile-lg) {
+              margin-left: 0;
+              margin-top: 30px;
+            }
           }
         }
       }
