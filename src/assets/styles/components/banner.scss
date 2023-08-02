@@ -6,7 +6,7 @@
   .herobanner_inner_wrap {
     display: flex;
     // width: 100%;
-    width:max-content;
+    width: max-content;
     @include below($tablet-lg) {
       flex-flow: column;
     }
@@ -24,19 +24,24 @@
         padding-top: 220px;
         padding-bottom: 100px;
         height: auto;
-        padding-left: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 100%;
+        display: block;
       }
       @include below($tablet-sm) {
         padding-top: 120px;
         padding-bottom: 60px;
         height: auto;
-        padding-left: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
       }
       @include below($mobile-lg) {
         padding-top: 120px;
         padding-bottom: 60px;
         height: auto;
-        padding-left: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
       }
       .content_wrap {
         display: block;
@@ -45,6 +50,10 @@
           @include fontFace(110px, 0.9, 800, $color-black);
           text-transform: uppercase;
           margin-bottom: 30px;
+          @include below($tablet-lg) {
+            text-align: center;
+            width: 100%;
+          }
           @include below($desktop-sm) {
             font-size: 90px;
           }
@@ -68,6 +77,11 @@
             position: relative;
             min-height: 99px;
             width: max-content;
+            @include below($tablet-lg) {
+              min-height: 80px;
+              text-align: center;
+              margin: auto;
+            }
             &::after {
               content: "";
               display: block;
@@ -91,6 +105,11 @@
             }
           }
         }
+        .cta_primary {
+          @include below($tablet-lg) {
+            margin: auto;
+          }
+        }
       }
     }
     .quick_links_wrap {
@@ -98,12 +117,12 @@
       max-width: max-content;
       height: 100vh;
       @include below($tablet-lg) {
-        height: 600px;
-        max-width: 100%;
-        overflow-x: auto;
-        &:not(.banner_slider_wrap) {
-          display: none;
-        }
+        height: unset;
+        max-width: 100vw;
+        overflow-x: hidden;
+        // &:not(.banner_slider_wrap) {
+        //   display: none;
+        // }
       }
       .slick-slide > div {
         height: 100%;
@@ -117,6 +136,8 @@
         width: max-content;
         @include below($tablet-lg) {
           // width: 100%;
+          flex-wrap: wrap;
+          width: 100vw;
         }
         .quick_link {
           display: block;
@@ -127,8 +148,10 @@
           border-left: 1px solid #ddd;
           cursor: none;
           @include below($tablet-lg) {
-            width: 40%;
-            flex: 0 0 40%;
+            width: 50vw;
+            flex: 0 0 50vw;
+            height: 50vh;
+            border-left: 0;
           }
           .wrapper {
             width: 100%;
@@ -143,14 +166,24 @@
               mix-blend-mode: multiply;
               transition: 0.4s all ease-out;
               opacity: 0;
+              @include below($tablet-lg) {
+                opacity: 1;
+              }
             }
             img {
               position: relative;
               z-index: 1;
-              object-fit: cover;
+              object-fit: contain;
               transform: scale(1.2);
               transition: 0.4s all ease-out;
               opacity: 0.1;
+              @include below($tablet-lg) {
+                opacity: 1;
+                width: 60%;
+                margin-left: auto;
+                display: block;
+                transform: scale(1);
+              }
             }
             .link_footer {
               position: absolute;
@@ -164,6 +197,10 @@
               @include below($desktop-sm) {
                 right: 50px;
               }
+              @include below($tablet-lg) {
+                text-align: left;
+                transform: translateY(0px);
+              }
               span {
                 @include fontFace(60px, 1, 700, $color-cod-gray);
                 display: block;
@@ -171,6 +208,9 @@
                 transition: 0.3s all ease-in-out;
                 @include below($desktop-sm) {
                   font-size: 50px;
+                }
+                @include below($tablet-lg) {
+                  color: $color-white;
                 }
               }
               h4 {
@@ -180,11 +220,20 @@
                 @include below($desktop-sm) {
                   font-size: 25px;
                 }
+                @include below($tablet-lg) {
+                  color: $color-white;
+                  font-size: 30px;
+                }
               }
               h5 {
                 @include fontFace(14px, 1.1, 600, $color-cod-gray);
                 transition: 0.3s all ease-in-out;
                 opacity: 0;
+                @include below($tablet-lg) {
+                  color: $color-white;
+                  opacity: 1;
+                  font-size: 16px;
+                }
               }
             }
           }
@@ -224,12 +273,16 @@
               }
             }
           }
+          // &:nth-of-type(odd):last-child {
+          //   width: 100vw;
+          //   flex: 0 0 100vw;
+          // }
         }
       }
       &.banner_slider_wrap {
         overflow: hidden;
         display: none;
-        .slick-track{
+        .slick-track {
           height: 100%;
         }
         @include below($tablet-lg) {

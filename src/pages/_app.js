@@ -17,8 +17,30 @@ export default function App({ Component, pageProps }) {
   let ctx;
   let scroll, scrollHor;
   if (typeof window != "undefined") {
+    const textArray = document
+      .querySelector("#textOut")
+      .getAttribute("data-animator-text")
+      .split(",");
+
+    var bannerTextAnim = gsap.timeline({
+      repeat: -1,
+      repeatDelay: 2,
+      ease: "linear",
+    });
     if (window.screen.width > 1200) {
       import("locomotive-scroll").then((locomotiveModule) => {
+        textArray.forEach((element, index) => {
+          bannerTextAnim.to("#textOut", {
+            text: `${element}`,
+            duration: 2,
+            delay: index * 4,
+            scrollTrigger: {
+              trigger: "#textOut",
+              scroller:
+                window.screen.width > 1200 ? ".smoothScroller" : document,
+            },
+          });
+        });
         scroll = new locomotiveModule.default({
           el: document.querySelector(".smoothScroller"),
           name: "scroll",
@@ -85,28 +107,6 @@ export default function App({ Component, pageProps }) {
             },
           });
 
-          var bannerTextAnim = gsap.timeline({
-            repeat: -1,
-            // duration: 10,
-            // delay: 1,
-            repeatDelay: 2,
-            ease: "linear",
-          });
-          const textArray = document
-            .querySelector("#textOut")
-            .getAttribute("data-animator-text")
-            .split(",");
-          textArray.forEach((element, index) => {
-            bannerTextAnim.to("#textOut", {
-              text: `${element}`,
-              duration: 2,
-              delay: index * 4,
-              scrollTrigger: {
-                trigger: "#textOut",
-                scroller: ".smoothScroller",
-              },
-            });
-          });
           // gsap.to('body',{
           //   background :'#40444c',
           //   duration:.5,
@@ -192,6 +192,15 @@ export default function App({ Component, pageProps }) {
 
         // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
         ScrollTrigger.refresh();
+      });
+    } else {
+      console.log(textArray);
+      textArray.forEach((element, index) => {
+        bannerTextAnim.to("#textOut", {
+          text: `${element}`,
+          duration: 2,
+          delay: index * 4,
+        });
       });
     }
   }

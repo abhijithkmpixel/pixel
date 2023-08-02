@@ -187,7 +187,7 @@ const Banner = () => {
               </Link>
             </div>
           </div>
-          <div className="quick_links_wrap banner_slider_wrap" data-scroll>
+          {/* <div className="quick_links_wrap banner_slider_wrap" data-scroll>
             <Slider {...settings} className="hero_quick_links" data-scroll>
               <Link href={"#"} className="quick_link">
                 <div className="wrapper" data-scroll>
@@ -238,7 +238,7 @@ const Banner = () => {
                 </div>
               </Link>
             </Slider>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
