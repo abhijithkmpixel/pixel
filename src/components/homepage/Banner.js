@@ -46,7 +46,7 @@ const Banner = () => {
             <div className="content_wrap" data-scroll>
               <h1 data-scroll>
                 we are <br />
-                <span>design</span>
+                <span id="textOut">design</span>
                 <br /> agency<span>.</span>
               </h1>
               <Link href={"#"} className="cta_primary" data-scroll>

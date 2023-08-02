@@ -89,7 +89,10 @@ export default function App({ Component, pageProps }) {
             repeatDelay: 2,
             ease: "linear",
           });
-
+          const textArray = document
+            .querySelector("#textOut")
+            .getAttribute("data-animator-text")
+            .split(",");
           textArray.forEach((element, index) => {
             bannerTextAnim.to("#textOut", {
               text: `${element}`,
