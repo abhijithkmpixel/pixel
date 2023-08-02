@@ -13,8 +13,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function App({ Component, pageProps }) {
   let ctx;
   let scroll, scrollHor;
-  if(typeof window != 'undefined'){
-    if(window.screen.width > 1200){
+  if (typeof window != "undefined") {
+    if (window.screen.width > 1200) {
       import("locomotive-scroll").then((locomotiveModule) => {
         scroll = new locomotiveModule.default({
           el: document.querySelector(".smoothScroller"),
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
             gestureDirection: "vertical",
           },
         });
-    
+
         scroll.on("scroll", ScrollTrigger.update);
         scroll.on("scroll", (scroll) => {
           ScrollTrigger.update;
@@ -47,17 +47,16 @@ export default function App({ Component, pageProps }) {
             document.querySelector("body").classList.remove("desktop_sticky");
           }
         });
-    
+
         let scrollval = document.querySelector(".quick_link").offsetWidth;
         let length = document.querySelectorAll(
           ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
         ).length;
-    
+
         let scrollLength = 600 * (length - 2);
-    
+
         document.querySelector(".hero_banner").style.paddingBottom =
           scrollLength + "px";
-    
         ctx = gsap.context(() => {
           gsap.to(".hero_banner .herobanner_inner_wrap", {
             x: -(scrollval * (length - 2)),
@@ -71,7 +70,7 @@ export default function App({ Component, pageProps }) {
               scrub: true,
             },
           });
-    
+
           gsap.to(".our_branches img", {
             scale: 1.5,
             scrollTrigger: {
@@ -82,8 +81,87 @@ export default function App({ Component, pageProps }) {
               scrub: true,
             },
           });
+
+          var bannerTextAnim = gsap.timeline({
+            repeat: -1,
+            // duration: 10,
+            // delay: 1,
+            repeatDelay: 2,
+            ease: "linear",
+          });
+
+          textArray.forEach((element, index) => {
+            bannerTextAnim.to("#textOut", {
+              text: `${element}`,
+              duration: 2,
+              delay: index * 4,
+              scrollTrigger: {
+                trigger: "#textOut",
+                scroller: ".smoothScroller",
+              },
+            });
+          });
+          // gsap.to('body',{
+          //   background :'#40444c',
+          //   duration:.5,
+          //   scrollTrigger: {
+          //     trigger: ".services_listing",
+          //     start: "0% 50%",
+          //     end: "0% 50%",
+          //     scroller: ".smoothScroller",
+          //     scrub: true,
+          //   },
+          // })
+          // gsap.to('body',{
+          //   background :'#fff',
+          //   duration:.5,
+          //   scrollTrigger: {
+          //     trigger: ".services_listing",
+          //     start: "100% 50%",
+          //     end: "100% 50%",
+          //     scroller: ".smoothScroller",
+          //     scrub: true,
+          //   },
+          // })
+          // var serviceTimeline = gsap.timeline()
+          // serviceTimeline.from(".line1", {
+          //   y: 100,
+          //   duration:.7,
+          //   scrollTrigger: {
+          //     trigger: ".line1",
+          //     start: "100% 100%",
+          //     end: "+100",
+          //     scroller: ".smoothScroller",
+          //     scrub: true,
+          //   },
+          // });
         });
-    
+        // ctx = gsap.context(() => {
+        //   gsap.to(".hero_banner .herobanner_inner_wrap", {
+        //     x: -(scrollval * (length - 2)),
+        //     y: scroll.scroll.y,
+        //     scrollTrigger: {
+        //       trigger: ".herobanner_inner_wrap",
+        //       start: "0% -1px",
+        //       // ease: Bounce.easeOut,
+        //       end: `+${scrollLength}`,
+        //       scroller: ".smoothScroller",
+        //       scrub: true,
+        //     },
+        //   });
+
+        //   gsap.to(".our_branches img", {
+        //     scale: 1.5,
+        //     scrollTrigger: {
+        //       trigger: ".our_branches",
+        //       start: "0% 100%",
+        //       end: "100% 0%",
+        //       scroller: ".smoothScroller",
+        //       scrub: true,
+        //     },
+        //   });
+        // });
+
         ScrollTrigger.scrollerProxy(".smoothScroller", {
           scrollTop(value) {
             return arguments.length
@@ -103,17 +181,15 @@ export default function App({ Component, pageProps }) {
             ? "transform"
             : "fixed",
         });
-    
+
         ScrollTrigger.addEventListener("refresh", () => scroll.update());
-    
+
         // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
         ScrollTrigger.refresh();
       });
     }
-
   }
   useLayoutEffect(() => {
- 
     if (window.screen.width > 1200) {
       MouseFollower.registerGSAP(gsap);
 
@@ -141,7 +217,6 @@ export default function App({ Component, pageProps }) {
         skewingIcon: 0,
         skewingMedia: 0,
       });
- 
     } else {
       window.addEventListener("scroll", function () {
         if (window.scrollY > 200) {
@@ -154,8 +229,7 @@ export default function App({ Component, pageProps }) {
 
     // `useEffect`'s cleanup phase
     return () => {
-      if(ctx){
-
+      if (ctx) {
         ctx.revert();
       }
       // if (scroll) scroll.destroy();
