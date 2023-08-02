@@ -9,7 +9,10 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Header from "@/components/Header";
 import MouseFollower from "mouse-follower";
 import Script from "next/script";
+import { TextPlugin } from "gsap/dist/TextPlugin";
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
+
 export default function App({ Component, pageProps }) {
   let ctx;
   let scroll, scrollHor;

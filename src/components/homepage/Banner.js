@@ -49,7 +49,7 @@ const Banner = () => {
                 <span
                   id="textOut"
                   data-animator-text="Design,development,digital">
-                  design
+                  
                 </span>
                  agency<span>.</span>
               </h1>
