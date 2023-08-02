@@ -14,11 +14,12 @@
     flex-flow: column;
     align-items: center;
     @include below($tablet-sm) {
-      right: -60px;
-    }
-    @include below($mobile-lg) {
+      // right: -60px;
       display: none;
     }
+    // @include below($mobile-lg) {
+    //   display: none;
+    // }
     span {
       @include fontFace(18px, 1.65, 400, $color-cod-gray);
       text-transform: uppercase;
@@ -40,8 +41,10 @@
       max-width: unset;
     }
     @include below($tablet-sm) {
-      max-width: calc(100% - 30px);
+      width: 100%;
       margin-bottom: 70px;
+      text-align: center;
+      margin-bottom: 40px;
     }
     @include below($mobile-lg) {
       max-width: 100%;
@@ -62,6 +65,12 @@
       @include below($tablet-lg) {
         font-size: 26px;
         margin-bottom: 20px;
+      }
+      @include below($tablet-sm) {
+        text-align: center;
+      }
+      @include below($mobile-lg) {
+        font-size: 22px;
       }
     }
     .banner_image {
@@ -102,6 +111,9 @@
       img {
         position: relative;
         z-index: 1;
+        @include below($tablet-sm) {
+          margin-bottom: 30px;
+        }
       }
       &.is-inview {
         &::before {
@@ -117,6 +129,10 @@
       margin-bottom: 55px;
       @include below($tablet-lg) {
         margin-left: 80px;
+      }
+      @include below($tablet-sm) {
+        margin-left: 0px;
+        margin-top: 0px;
       }
       @include below($mobile-lg) {
         margin-top: 20px;
@@ -139,19 +155,21 @@
           max-width: 60%;
           @include below($mobile-lg) {
             max-width: 100%;
-            margin-bottom: 40PX;
+            margin-bottom: 40px;
+            font-size: 22px;
           }
         }
-        .ms-auto{
-          @include below($mobile-lg){
+        .ms-auto {
+          @include below($mobile-lg) {
+            // margin-left: 0 !important;
             margin-right: auto;
           }
         }
         .cta_secondary {
           margin-left: auto;
           margin-right: 30px;
-          @include below($mobile-lg){
-            margin-right:00;
+          @include below($mobile-lg) {
+            margin-right: 00;
           }
         }
       }
@@ -176,14 +194,23 @@
       @include below($tablet-sm) {
         margin-bottom: 50px;
       }
+      @include below($mobile-lg) {
+        text-align: center;
+      }
       .cardheader {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
+        @include below($mobile-lg) {
+          justify-content: center;
+        }
         img {
           width: 50px;
           height: 50px;
           margin-right: 17px;
+          @include below($tablet-sm) {
+            display: none;
+          }
         }
         h3 {
           @include fontFace(60px, 0.9, 800, transparent);

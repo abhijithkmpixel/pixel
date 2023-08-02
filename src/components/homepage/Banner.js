@@ -48,10 +48,8 @@ const Banner = () => {
                 we are <br />
                 <span
                   id="textOut"
-                  data-animator-text="Design,development,digital">
-                  
-                </span>
-                 agency<span>.</span>
+                  data-animator-text="Design,digital"
+                ></span>agency<span>.</span>
               </h1>
               <Link href={"#"} className="cta_primary" data-scroll>
                 book a meeting

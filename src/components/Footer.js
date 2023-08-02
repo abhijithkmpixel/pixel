@@ -165,7 +165,7 @@ const Footer = () => {
             </div>
             <div className="col-12 bottom_booter">
               <div className="row">
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-lg-6">
                   <div className="footer_btn_wrapper" data-scroll>
                     <Link
                       href="#"
@@ -184,7 +184,7 @@ const Footer = () => {
                   </div>
                 </div>
                 <div
-                  className="col-12 col-md-6 d-flex align-items-end"
+                  className="col-12 col-lg-6 d-flex align-items-end"
                   data-scroll
                 >
                   <p data-scroll>

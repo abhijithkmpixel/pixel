@@ -31,11 +31,17 @@
         flex-flow: column;
         align-items: flex-start;
       }
+      @include below($mobile-lg) {
+        margin-bottom: 30px;
+      }
       .title_primary {
         color: $color-white;
         max-width: 980px;
         @include below($tablet-lg) {
           margin-bottom: 30px;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
         }
       }
       h4 {
@@ -45,6 +51,10 @@
         position: relative;
         @include below($tablet-lg) {
           position: static;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
+          max-width: 100%;
         }
         &::before {
           content: "";
@@ -73,7 +83,8 @@
         font-size: 25px;
       }
       @include below($mobile-lg) {
-        font-size: 18px;
+        font-size: 16px;
+        text-align: center;
       }
     }
   }

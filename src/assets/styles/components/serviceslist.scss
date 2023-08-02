@@ -8,6 +8,9 @@
   @include below($tablet-sm) {
     padding: 100px 0;
   }
+  @include below($mobile-lg) {
+    padding: 60px 0;
+  }
   .title {
     @include fontFace(100px, 1.1, 800, $color-alto);
     text-transform: uppercase;
@@ -23,6 +26,9 @@
     @include below($tablet-sm) {
       font-size: 60px;
       margin-bottom: 60px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
     }
     @include below($mobile-lg) {
       font-size: 40px;
@@ -33,12 +39,19 @@
       display: inline-block;
       position: relative;
       z-index: 5;
+      @include below($tablet-sm) {
+        text-align: center;
+        display: block;
+      }
       &:nth-of-type(2) {
         z-index: 1;
         color: $color-cinnabar;
         margin-left: 50px;
         @include below($tablet-lg) {
           margin-left: 30px;
+        }
+        @include below($tablet-sm) {
+          margin-left: 0px;
         }
         @include below($mobile-lg) {
           margin-left: 0;
@@ -60,11 +73,14 @@
         width: 140px;
         left: 240px;
       }
-      @include below($mobile-lg) {
-        width: 140px;
-        left: 116px;
-        bottom: 30px;
+      @include below($tablet-sm) {
+        display: none;
       }
+      // @include below($mobile-lg) {
+      //   width: 140px;
+      //   left: 116px;
+      //   bottom: 30px;
+      // }
     }
     transition: 0.7s all ease-in-out;
     @include above($tablet-lg) {
@@ -80,6 +96,36 @@
   }
   .services_outer_wrap {
     // overflow: hidden;
+    .slick-arrow {
+      width: 50px;
+      height: 50px;
+      background-color: $color-gallery;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      z-index: 5;
+      @include below($mobile-lg) {
+        width: 35px;
+        height: 35px;
+      }
+      svg {
+        width: 20px;
+        height: auto;
+        @include below($mobile-lg) {
+          width: 15px;
+        }
+      }
+      &::before {
+        content: none;
+      }
+      &.slick-prev {
+        left: 5px;
+      }
+      &.slick-next {
+        right: 5px;
+      }
+    }
   }
   .services_row {
     display: flex;
@@ -92,8 +138,13 @@
       // margin: 0 0 50px;
       flex-wrap: wrap;
     }
+    @include below($tablet-sm) {
+      display: block;
+      margin-bottom: 40px;
+    }
     @include below($mobile-lg) {
       display: block;
+      margin-bottom: 20px;
     }
     .services_item {
       padding: 0 15px;
@@ -105,6 +156,9 @@
         flex: 0 0 50%;
         margin-bottom: 40px;
       }
+      @include below($tablet-sm) {
+        margin-bottom: 0;
+      }
       @include below($mobile-lg) {
         width: 100%;
         flex: 0 0 100%;
@@ -113,6 +167,9 @@
         @include fontFace(20px, 1.5, 600, $color-gallery);
         margin-bottom: 20px;
         display: block;
+        @include below($tablet-sm) {
+          display: none;
+        }
       }
       .item_inner {
         position: relative;
@@ -127,12 +184,19 @@
         @include below($tablet-lg) {
           height: 350px;
         }
+        @include below($mobile-lg) {
+          height: auto;
+          aspect-ratio: 386 /305;
+        }
         img {
           object-fit: cover;
           transition: 0.7s all ease-out;
           @include above($tablet-lg) {
             height: 0%;
             transform: scale(1) translateZ(0);
+          }
+          @include below($tablet-sm) {
+            filter: brightness(0.7);
           }
         }
         .hover_icon {
@@ -156,6 +220,9 @@
             top: 25px;
             right: 25px;
           }
+          @include below($tablet-sm) {
+            display: none;
+          }
           svg {
             width: 15px;
             height: auto;
@@ -178,6 +245,12 @@
             font-size: 30px;
           }
           @include below($tablet-lg) {
+            font-size: 20px;
+          }
+          @include below($tablet-sm) {
+            font-size: 26px;
+          }
+          @include below($mobile-lg) {
             font-size: 20px;
           }
           svg {
@@ -230,7 +303,8 @@
       font-size: 28px;
     }
     @include below($mobile-lg) {
-      font-size: 25px;
+      font-size: 22px;
+      text-align: center;
     }
   }
   .tech_logo {
@@ -243,6 +317,12 @@
       object-position: left;
       @include below($tablet-lg) {
         margin-bottom: 50px;
+      }
+      @include below($mobile-lg) {
+        margin: 0 auto 30px;
+        object-position: center;
+        max-width: 60%;
+        display: block;
       }
     }
   }

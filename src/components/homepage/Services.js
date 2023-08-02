@@ -1,8 +1,40 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Slider from "react-slick";
 
 const Services = () => {
+  var settings = {
+    dots: false,
+    infinite: true,
+    arrows: true,
+    speed: 500,
+    autoplay: false,
+    autoplayScpped: 1000,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    variableWidth: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 5000,
+        settings: "unslick",
+      },
+      {
+        breakpoint: 990,
+        settings: {
+          settings: "slick",
+          useTransform: false,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          variableWidth: false,
+        },
+      },
+    ],
+  };
   return (
     <section className="services_listing" data-scroll-section>
       <div className="container-fluid">
@@ -23,7 +55,7 @@ const Services = () => {
           />
         </h2>
         <div className="services_outer_wrap">
-          <div className="services_row" data-scroll>
+          <Slider {...settings} className="services_row" data-scroll>
             <div className="services_item" data-scroll data-scroll-offset="300">
               <span data-scroll>01</span>
               <Link href={"#"} className="item_inner" data-scroll>
@@ -237,7 +269,7 @@ const Services = () => {
                 </h4>
               </Link>
             </div>
-          </div>
+          </Slider>
         </div>
         <div className="row " data-scroll>
           <div className="col-12 col-xl-6" data-scroll>
@@ -285,5 +317,70 @@ const Services = () => {
     </section>
   );
 };
+function SampleNextArrow(props) {
+  const { onClick } = props;
+  return (
+    <button className={"slick-arrow slick-next"} onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.684881"
+          y1="8.15252"
+          x2="26.0974"
+          y2="8.15252"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M19.833 1L26.7828 7.99995L19.833 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
 
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.684881"
+          y1="-0.684881"
+          x2="26.0974"
+          y2="-0.684881"
+          transform="matrix(-1 0 0 1 27.7827 8.8374)"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.94971 1L0.999961 7.99995L7.94971 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
 export default Services;

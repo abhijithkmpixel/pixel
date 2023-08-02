@@ -194,7 +194,6 @@ export default function App({ Component, pageProps }) {
         ScrollTrigger.refresh();
       });
     } else {
-      console.log(textArray);
       textArray.forEach((element, index) => {
         bannerTextAnim.to("#textOut", {
           text: `${element}`,

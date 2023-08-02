@@ -126,6 +126,11 @@
   transition: 0.3s all ease-in-out;
   position: relative;
   overflow: hidden;
+  @include below($mobile-lg) {
+    width: 100px;
+    height: 100px;
+    font-size: 12px;
+  }
   &::before {
     content: "";
     background-color: $color-cod-gray;

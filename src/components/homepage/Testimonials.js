@@ -30,7 +30,7 @@ const Testimonials = () => {
     rtl: false,
     pauseOnFocus: false,
     pauseOnHover: false,
-    useTransform: false,
+    // useTransform: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -41,14 +41,14 @@ const Testimonials = () => {
       {
         breakpoint: 900,
         settings: {
-          slidesToShow: -3,
+          slidesToShow: 3,
         }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: -1
+          // slidesToScroll: -1
         }
       }
     ]
@@ -67,7 +67,7 @@ const Testimonials = () => {
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
-    useTransform: false,
+    // useTransform: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -85,7 +85,7 @@ const Testimonials = () => {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          // slidesToScroll: 1
         }
       }
     ]
@@ -97,8 +97,7 @@ const Testimonials = () => {
           <h2 className="title_primary" data-scroll>
             What Our{" "}
             <span>
-              Clients
-              <br /> Say
+              Clients Say
             </span>{" "}
             About Us !
           </h2>

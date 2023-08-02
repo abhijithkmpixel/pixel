@@ -4,15 +4,27 @@
   @include below($tablet-sm) {
     padding: 100px 0 100px;
   }
+  @include below($mobile-lg) {
+    padding: 60px 0;
+  }
   .client_testimonials_wrapper {
     .title_primary {
       font-weight: 300;
       margin-bottom: 98px;
+      max-width: 830px;
       span {
         font-weight: 600;
+        @include below($mobile-lg) {
+          display: block;
+          text-align: center;
+        }
       }
       @include below($desktop-sm) {
         margin-bottom: 50px;
+      }
+      @include below($mobile-lg) {
+        text-align: center;
+        margin-bottom: 30px;
       }
     }
     .testimony_slider_wrap {
@@ -70,16 +82,23 @@
           transition: 0.2s all ease-in-out;
           transform: scale(0.7);
           opacity: 0;
+          @include below($mobile-lg) {
+            border-color: $color-mako;
+          }
         }
         &.slick-next {
           // transform: scaleX(-1) translate(0, 0%);
           right: 0;
+          @include below($mobile-lg) {
+            right: 15px;
+          }
         }
         &.slick-prev {
           right: 90px;
           left: auto;
           @include below($mobile-lg) {
-            right: 70px;
+            right: auto;
+            left: 15px;
           }
         }
         svg {
@@ -97,6 +116,9 @@
             path,
             line {
               stroke: $color-cinnabar;
+              @include below($mobile-lg) {
+                stroke: $color-mako;
+              }
             }
           }
         }
@@ -121,7 +143,7 @@
       .testimony_wrap {
         padding-top: 20px;
         @include below($mobile-lg) {
-          padding: 20px 10px 0;
+          padding: 0px 10px 0;
         }
         .bodycopy {
           margin-bottom: 89px;
@@ -139,9 +161,10 @@
             margin-right: 50px;
             margin-top: -20px;
             @include below($mobile-lg) {
-              float: none;
-              margin-top: 0;
-              margin-bottom: 15px;
+              // float: none;
+              // margin-top: 0;
+              // margin-bottom: 15px;
+              display: none;
             }
           }
           p {
@@ -150,21 +173,24 @@
               font-size: 26px;
             }
             @include below($mobile-lg) {
-              font-size: 18px;
+              font-size: 16px;
+              text-align: center;
             }
           }
         }
         h5 {
           @include fontFace(25px, 1.5, 500, $color-cod-gray);
           @include below($mobile-lg) {
-            font-size: 20px;
+            font-size: 18px;
+            text-align: center;
           }
         }
         span {
           @include fontFace(25px, 1.6, 400, $color-abbey);
           display: block;
           @include below($mobile-lg) {
-            font-size: 20px;
+            font-size: 18px;
+            text-align: center;
           }
         }
       }
@@ -172,6 +198,10 @@
   }
 }
 .clients_sliders_wrap {
+  .slick-list,
+  .slick-track {
+    height: 100%;
+  }
   .clients_slider {
     height: 182px;
     & + .clients_slider {
@@ -185,18 +215,26 @@
     }
   }
   .client {
-    width: 23vw !important;
     background-color: $color-gallery;
     display: flex !important;
     justify-content: center;
     align-items: center;
     padding: 55px 30px;
     margin: 0 10px;
-    @include below($tablet-lg) {
+    max-width: calc(100% - 30px);
+    @media (min-width: 1201px) {
+      width: 23vw !important;
+    }
+    @media (max-width: 1200px) and (min-width: 990px) {
       width: 33vw !important;
     }
+    @include below($tablet-sm) {
+      padding: 30px;
+      background-color: transparent;
+      width: auto;
+    }
     @include below($mobile-lg) {
-      width: 60vw !important;
+      // width: 60vw !important;
       padding: 20px;
     }
     img {

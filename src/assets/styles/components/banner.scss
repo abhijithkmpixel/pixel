@@ -30,7 +30,7 @@
         display: block;
       }
       @include below($tablet-sm) {
-        padding-top: 120px;
+        padding-top: 160px;
         padding-bottom: 60px;
         height: auto;
         padding-left: 10px;
@@ -82,6 +82,9 @@
               text-align: center;
               margin: auto;
             }
+            @include below($mobile-lg) {
+              min-height: 45px;
+            }
             &::after {
               content: "";
               display: block;
@@ -93,6 +96,10 @@
               background-color: #e74847;
               animation: blink 1s linear infinite;
               transition: 0.3s all ease-in-out;
+              @include below($mobile-lg){
+                width: 5px;
+                right: -10px;
+              }
               @keyframes blink {
                 0%,
                 100% {
@@ -153,10 +160,17 @@
             height: 50vh;
             border-left: 0;
           }
+          @include below($mobile-lg) {
+            width: 100vw;
+            flex: 0 0 100vw;
+            height: auto;
+            aspect-ratio: 1/0.85;
+          }
           .wrapper {
             width: 100%;
             height: 100%;
             position: relative;
+            display: flex;
             &::after {
               content: "";
               background-color: $color-cinnabar;
@@ -173,16 +187,23 @@
             img {
               position: relative;
               z-index: 1;
-              object-fit: contain;
+              object-position: bottom;
               transform: scale(1.2);
               transition: 0.4s all ease-out;
-              opacity: 0.1;
+              opacity: 0;
+              height: auto;
+              display: block;
+              margin-top: auto;
+              display: block;
               @include below($tablet-lg) {
                 opacity: 1;
-                width: 60%;
+                width: 70%;
                 margin-left: auto;
-                display: block;
                 transform: scale(1);
+              }
+              @include below($mobile-lg) {
+                height: 100%;
+                object-position: bottom right;
               }
             }
             .link_footer {
@@ -200,6 +221,10 @@
               @include below($tablet-lg) {
                 text-align: left;
                 transform: translateY(0px);
+              }
+              @include below($mobile-lg) {
+                right: 30px;
+                width: calc(100% - 60px);
               }
               span {
                 @include fontFace(60px, 1, 700, $color-cod-gray);

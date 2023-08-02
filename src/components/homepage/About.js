@@ -111,7 +111,7 @@ const About = () => {
             </div>
           </div>
           <div className="row achievements_row" data-scroll>
-            <div className="col-12 col-md-6 col-lg-4" data-scroll>
+            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
               <div
                 className="achievement_cards"
                 data-scroll
@@ -131,7 +131,7 @@ const About = () => {
                 <p data-scroll>Web development</p>
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4" data-scroll>
+            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
               <div
                 className="achievement_cards"
                 data-scroll
@@ -151,7 +151,7 @@ const About = () => {
                 <p data-scroll>Web development</p>
               </div>
             </div>
-            <div className="col-12 col-md-6 col-lg-4" data-scroll>
+            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
               <div
                 className="achievement_cards"
                 data-scroll
