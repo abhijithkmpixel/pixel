@@ -63,6 +63,33 @@
             -webkit-background-clip: text;
             color: transparent;
           }
+          #textOut {
+            display: block;
+            position: relative;
+            min-height: 99px;
+            width: max-content;
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 0;
+              right: -20px;
+              width: 10px;
+              height: 100%;
+              background-color: #e74847;
+              animation: blink 1s linear infinite;
+              transition: 0.3s all ease-in-out;
+              @keyframes blink {
+                0%,
+                100% {
+                  opacity: 1;
+                }
+                50% {
+                  opacity: 0;
+                }
+              }
+            }
+          }
         }
       }
     }
