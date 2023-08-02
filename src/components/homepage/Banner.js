@@ -4,9 +4,26 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 
 const Banner = () => {
-  // useEffect(() => {
-  //   return () => {};
-  // }, []);
+  useEffect(() => {
+    if (typeof window != "undefined") {
+      var quickLinks = document.querySelectorAll(
+        ".hero_banner .herobanner_inner_wrap .quick_links_wrap .hero_quick_links .quick_link"
+      );
+      quickLinks.forEach((elm, index) => {
+        elm.addEventListener("mouseover", function () {
+          quickLinks.forEach((elm, index) => {
+            elm.classList.remove("mouseOver");
+          });
+          elm.classList.add("mouseOver");
+        });
+        // elm.addEventListener('mouseleave',function(){
+        //   elm.classList.remove('mouseOver')
+        // })
+      });
+    }
+
+    return () => {};
+  }, []);
 
   var settings = {
     dots: false,
@@ -46,10 +63,8 @@ const Banner = () => {
             <div className="content_wrap" data-scroll>
               <h1 data-scroll>
                 we are <br />
-                <span
-                  id="textOut"
-                  data-animator-text="Design,digital"
-                ></span>agency<span>.</span>
+                <span id="textOut" data-animator-text="Design,digital"></span>
+                agency<span>.</span>
               </h1>
               <Link href={"#"} className="cta_primary" data-scroll>
                 book a meeting
