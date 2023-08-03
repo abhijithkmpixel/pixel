@@ -63,7 +63,7 @@ const Banner = () => {
             <div className="content_wrap" data-scroll>
               <h1 data-scroll>
                 we are <br />
-                <span id="textOut" data-animator-text="Design,digital"></span>
+                <span id="textOut" data-animator-text="Design,branding,digital,marketing"></span>
                 agency<span>.</span>
               </h1>
               <Link href={"#"} className="cta_primary" data-scroll>
@@ -172,7 +172,7 @@ const Banner = () => {
                     priority
                   />
                   <div className="link_footer">
-                    <span>02</span>
+                    <span>04</span>
                     <h4>Afc President</h4>
                     <h5>Web development</h5>
                   </div>
@@ -192,7 +192,7 @@ const Banner = () => {
                     priority
                   />
                   <div className="link_footer">
-                    <span>03</span>
+                    <span>05</span>
                     <h4>Afc President</h4>
                     <h5>Web development</h5>
                   </div>

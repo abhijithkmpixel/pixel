@@ -4,21 +4,25 @@
   position: relative;
   padding: 182px 0 172px;
   overflow: hidden;
+  margin: auto;
   @include below($tablet-sm) {
     padding: 100px 0 100px;
   }
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba($color: $color-cod-gray, $alpha: 0.5);
-    z-index: 2;
-  }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   inset: 0;
+  //   background-color: rgba($color: $color-cod-gray, $alpha: 0.5);
+  //   z-index: 2;
+  // }
   img {
     position: absolute;
     inset: 0;
     object-fit: cover;
     z-index: 1;
+    // transform: scale(1.2);
+    object-position: 50% 100%;
+    filter: brightness(0.6);
   }
   .branches_innerwrap {
     position: relative;

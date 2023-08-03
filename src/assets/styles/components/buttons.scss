@@ -42,7 +42,7 @@
   }
   &:hover {
     @include above($tablet-lg) {
-      background-color: $color-cod-gray;
+      background-color: transparent;
       color: $color-gallery;
       svg {
         path,
