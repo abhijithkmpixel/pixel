@@ -30,16 +30,17 @@ export default function App({ Component, pageProps }) {
       let scrollLength = 600 * (length - 2);
       // document.querySelector(".hero_banner").style.paddingBottom =
       //   scrollLength + "px";
+      if (window.screen.width > 1200) {
+        const lenis = new Lenis();
 
-      const lenis = new Lenis();
+        lenis.on("scroll", ScrollTrigger.update);
+        ScrollTrigger.refresh();
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
 
-      lenis.on("scroll", ScrollTrigger.update);
-      ScrollTrigger.refresh();
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-
-      gsap.ticker.lagSmoothing(0);
+        gsap.ticker.lagSmoothing(0);
+      }
 
       ctx = gsap.context(() => {
         var bannerTextAnim = gsap.timeline({
@@ -61,164 +62,169 @@ export default function App({ Component, pageProps }) {
             });
         });
 
-        document
-          .querySelectorAll(
-            ".client_testimonials .client_testimonials_wrapper .testimony_slider_wrap[data-scroll]"
-          )
-          .forEach(function (elm) {
-            gsap.to(elm, {
-              y: 0,
-              opacity: 1,
-              duration: 1,
+        if (window.screen.width > 1200) {
+          document
+            .querySelectorAll(
+              ".client_testimonials .client_testimonials_wrapper .testimony_slider_wrap[data-scroll]"
+            )
+            .forEach(function (elm) {
+              gsap.to(elm, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                scrollTrigger: {
+                  trigger: elm,
+                  start: "0% 100%",
+                  end: "100% 80%",
+                },
+              });
+            });
+
+          let bannerTimeline = gsap.timeline();
+          bannerTimeline
+            .to(".hero_banner .herobanner_inner_wrap", {
+              x: -(scrollval * (length - 2)),
+              // y: scroll.scroll.y,
               scrollTrigger: {
-                trigger: elm,
-                start: "0% 100%",
-                end: "100% 80%",
+                trigger: ".herobanner_inner_wrap",
+                start: "0% -1px",
+                end: `+${scrollLength + 500}`,
+                // scroller: window,
+                scrub: true,
+                pin: true,
+              },
+            })
+            .to(".hero_banner .quick_link", {
+              yPercent: -100,
+              stagger: 0.05,
+              scrollTrigger: {
+                trigger: ".herobanner_inner_wrap",
+                start: "0% -2px",
+                end: "1500",
+                scrub: true,
+                // pin: true,
               },
             });
-          });
 
-        let bannerTimeline = gsap.timeline();
-        bannerTimeline
-          .to(".hero_banner .herobanner_inner_wrap", {
-            x: -(scrollval * (length - 2)),
-            // y: scroll.scroll.y,
+          let serviceTitleTimeline = gsap.timeline();
+          gsap.from(".services_listing .title", {
             scrollTrigger: {
-              trigger: ".herobanner_inner_wrap",
-              start: "0% -1px",
-              end: `+${scrollLength + 500}`,
-              // scroller: window,
+              trigger: ".services_listing .title",
+              start: "50% 50%",
+              end: "+=2500",
               scrub: true,
               pin: true,
             },
-          })
-          .to(".hero_banner .quick_link", {
-            yPercent: -100,
-            stagger: 0.05,
-            scrollTrigger: {
-              trigger: ".herobanner_inner_wrap",
-              start: "0% -2px",
-              end: "1500",
-              scrub: true,
-              // pin: true,
-            },
           });
 
-        let serviceTitleTimeline = gsap.timeline();
-        gsap.from(".services_listing .title", {
-          scrollTrigger: {
-            trigger: ".services_listing .title",
-            start: "50% 50%",
-            end: "+=2500",
-            scrub: true,
-            pin: true,
-          },
-        });
-
-        serviceTitleTimeline
-          .from(".services_listing .title span:first-child", {
-            y: 500,
-            opacity: 0,
+          serviceTitleTimeline
+            .from(".services_listing .title span:first-child", {
+              y: 500,
+              opacity: 0,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "50% 50%",
+                end: "+=500",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title img", {
+              y: 1200,
+              opacity: 0,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "50% 50%",
+                end: "+=1200",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title span:nth-child(2)", {
+              y: 1900,
+              opacity: 0,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "50% 50%",
+                end: "+=1900",
+                scrub: true,
+                pin: false,
+              },
+            });
+          gsap.to(".our_branches img", {
+            // scale: 1.3,
+            objectPosition: "50% 0%",
             scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "50% 50%",
-              end: "+=500",
+              trigger: ".our_branches",
+              start: "0% 100%",
+              end: "100% 0%",
+              // scroller: window,
               scrub: true,
-              pin: false,
-            },
-          })
-          .from(".services_listing .title img", {
-            y: 1200,
-            opacity: 0,
-            scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "50% 50%",
-              end: "+=1200",
-              scrub: true,
-              pin: false,
-            },
-          })
-          .from(".services_listing .title span:nth-child(2)", {
-            y: 1900,
-            opacity: 0,
-            scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "50% 50%",
-              end: "+=1900",
-              scrub: true,
-              pin: false,
             },
           });
-
-        gsap.to(".our_branches img", {
-          // scale: 1.3,
-          objectPosition: "50% 0%",
-          scrollTrigger: {
-            trigger: ".our_branches",
-            start: "0% 100%",
-            end: "100% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        gsap.to(".about_us_banner .intro_block .row > div> h3", {
-          y: -100,
-          scrollTrigger: {
-            trigger: ".about_us_banner .intro_block .row > div> h3",
-            start: "0% 100%",
-            end: "100% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        gsap.fromTo(
-          ".about_us_banner .title_primary",
-          {
-            y: 50,
-          },
-          {
-            y: -50,
+          gsap.to(".about_us_banner .intro_block .row > div> h3", {
+            y: -100,
             scrollTrigger: {
-              trigger: ".about_us_banner .title_primary",
+              trigger: ".about_us_banner .intro_block .row > div> h3",
+              start: "0% 100%",
+              end: "100% 0%",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+          gsap.fromTo(
+            ".about_us_banner .title_primary",
+            {
+              y: 50,
+            },
+            {
+              y: -50,
+              scrollTrigger: {
+                trigger: ".about_us_banner .title_primary",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                scrub: true,
+              },
+            }
+          );
+          gsap.to(".about_us_banner .intro_block .banner_image img", {
+            objectPosition: "50% 20%",
+            // duration: 1,
+            scrollTrigger: {
+              trigger: ".about_us_banner .intro_block .banner_image",
+              start: "0% 100%",
+              end: "100% 0%",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+          gsap.to(".about_us_banner .intro_block .about_bodycopy", {
+            x: -100,
+            scrollTrigger: {
+              trigger: ".about_us_banner .intro_block .about_bodycopy",
               start: "0% 100%",
               end: "0% 0%",
               // scroller: window,
               scrub: true,
             },
-          }
-        );
-        gsap.to(".about_us_banner .intro_block .banner_image img", {
-          objectPosition: "50% 20%",
-          // duration: 1,
-          scrollTrigger: {
-            trigger: ".about_us_banner .intro_block .banner_image",
-            start: "0% 100%",
-            end: "100% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        gsap.to(".about_us_banner .intro_block .about_bodycopy", {
-          x: -100,
-          scrollTrigger: {
-            trigger: ".about_us_banner .intro_block .about_bodycopy",
-            start: "0% 100%",
-            end: "0% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        TweenLite.to(".about_us_banner .achievements_row .achievement_cards", {
-          className: "is-inview",
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".about_us_banner .achievements_row .achievement_cards",
-            start: "0% 100%",
-            end: "0% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
+          });
+          TweenLite.to(
+            ".about_us_banner .achievements_row .achievement_cards",
+            {
+              className: "is-inview",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger:
+                  ".about_us_banner .achievements_row .achievement_cards",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                scrub: true,
+              },
+            }
+          );
+        }
       });
       if (window.screen.width > 1200) {
         MouseFollower.registerGSAP(gsap);
