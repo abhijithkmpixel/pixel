@@ -172,14 +172,14 @@ const Footer = () => {
                       className="cta_tertiary cta_light"
                       data-scroll
                     >
-                      About Us
+                      <span>About Us</span>
                     </Link>
                     <Link
                       href="#"
                       className="cta_tertiary cta_light"
                       data-scroll
                     >
-                      Career
+                      <span>Career</span>
                     </Link>
                   </div>
                 </div>

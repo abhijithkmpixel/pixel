@@ -1,0 +1,157 @@
+.portfolio_listing {
+  padding: 130px 0;
+  .portfolio_nav_links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 130px;
+    li {
+      & + li {
+        margin-left: 32px;
+      }
+      a {
+        padding: 12px 22px;
+        border-radius: 50px;
+        display: block;
+        @include fontFace(20px, 1, 400, $color-black);
+        border: 1px solid $color-black;
+        transition: 0.3s all ease-in-out;
+        text-transform: capitalize;
+        &.active_cat {
+          background-color: $color-black;
+          color: $color-white;
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            background-color: $color-black;
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+  .portfolio_listing_grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -40px;
+    & > div {
+      padding: 0 40px;
+    }
+    .portfolio_card_outer {
+      margin-bottom: 90px;
+      &.hidden{
+        display: none;
+      }
+      .portfolio_card_inner {
+        display: block;
+        width: 100%;
+        cursor: none;
+        h3 {
+          @include fontFace(28px, 1.2, 600, $color-black);
+          text-transform: uppercase;
+          margin-bottom: 20px;
+        }
+        figure {
+          width: 100%;
+          height: 420px;
+          margin-bottom: 25px;
+          overflow: hidden;
+          // aspect-ratio: 666/418;
+          img {
+            object-fit: cover;
+            transition: 0.9s all ease-out;
+            transform: scale(1.05);
+          }
+        }
+        .card_footer {
+          padding-top: 25px;
+          display: flex;
+          justify-content: space-between;
+          border-top: 1px solid $color-black;
+          span {
+            @include fontFace(14px, 1, 500, $color-black);
+            text-transform: uppercase;
+          }
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            img {
+              transform: scale(1);
+              filter: brightness(0.8);
+            }
+          }
+        }
+      }
+      &:nth-child(1),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(8),
+      &:nth-child(9),
+      &:nth-child(12),
+      &:nth-child(13),
+      &:nth-child(16),
+      &:nth-child(17),
+      &:nth-child(20),
+      &:nth-child(21),
+      &:nth-child(24),
+      &:nth-child(25),
+      &:nth-child(28),
+      &:nth-child(29),
+      &:nth-child(32),
+      &:nth-child(33),
+      &:nth-child(36),
+      &:nth-child(37),
+      &:nth-child(40),
+      &:nth-child(41),
+      &:nth-child(44),
+      &:nth-child(45),
+      &:nth-child(48),
+      &:nth-child(49) {
+        width: 60%;
+        flex: 0 0 60%;
+      }
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(6),
+      &:nth-child(7),
+      &:nth-child(10),
+      &:nth-child(11),
+      &:nth-child(14),
+      &:nth-child(15),
+      &:nth-child(18),
+      &:nth-child(19),
+      &:nth-child(22),
+      &:nth-child(23),
+      &:nth-child(26),
+      &:nth-child(27),
+      &:nth-child(30),
+      &:nth-child(31),
+      &:nth-child(34),
+      &:nth-child(35),
+      &:nth-child(38),
+      &:nth-child(39),
+      &:nth-child(42),
+      &:nth-child(43),
+      &:nth-child(46),
+      &:nth-child(47),
+      &:nth-child(50) {
+        width: 40%;
+        flex: 0 0 40%;
+      }
+      &:last-child:not(:nth-child(even)):not(.hidden) {
+        width: 80%;
+        flex: 0 0 80%;
+        margin: 0 auto 90px;
+      }
+    }
+  }
+}
+.portfolio_hover {
+  .mf-cursor::before {
+    color: transparent;
+  }
+  .mf-cursor-media {
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
+  }
+}

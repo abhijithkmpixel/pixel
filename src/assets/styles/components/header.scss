@@ -105,3 +105,190 @@ header {
     }
   }
 }
+
+// desktop menu
+.desktop_menu {
+  position: fixed;
+  transition: 0.5s transform ease-in-out;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 101;
+  display: flex;
+  transform: scaleY(0);
+  transform-origin: top;
+  align-items: center;
+  transition-delay: 0.6s;
+  & > img {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%,-50%);
+    // inset: 0;
+    object-fit: cover;
+  }
+  .close_menu {
+    position: absolute;
+    z-index: 1;
+    top: 70px;
+    right: 70px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    padding: 0;
+    transition: 0.2s all ease-in-out;
+    &:hover {
+      @include above($tablet-lg) {
+        transform: scale(0.9);
+      }
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .menu_inner_wrap {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    .social_menia_links {
+      display: flex;
+      position: absolute;
+      right: 80px;
+      bottom: 0;
+      li {
+        transition: 0.5s all ease-in-out;
+        @include above($tablet-lg) {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        & + li {
+          margin-left: 110px;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          transition: 0.3s all ease-in-out;
+          @include fontFace(16px, 1, 500, $color-white);
+          text-transform: uppercase;
+          img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-right: 10px;
+          }
+          &:hover {
+            @include above($tablet-lg) {
+              opacity: 0.7;
+            }
+          }
+        }
+      }
+    }
+    .main_menu {
+      padding-left: 80px;
+      width: 100%;
+      max-width: calc(100% - 80px);
+      & > li {
+        position: relative;
+        & + li {
+          margin-top: 60px;
+        }
+        .nav_item_wrap {
+          overflow: hidden;
+        }
+        .link_wrap {
+          transform: translateY(100px);
+          transition: 0.9s transform ease-in-out;
+          transform-origin: bottom;
+
+          & > a {
+            @include fontFace(68px, 1, 900, $color-white);
+            text-decoration: none;
+            -webkit-background-clip: text;
+            transition: 0.3s all ease-in-out, 0.9s transform ease-in-out;
+            background-image: linear-gradient(to right, #fff, #fff);
+            display: flex;
+            align-items: flex-start;
+            text-transform: uppercase;
+            width: max-content;
+            span {
+              @include fontFace(17px, 1, 400, $color-white);
+              display: block;
+              margin-right: 40px;
+              margin-top: 7px;
+            }
+            &:hover {
+              @include above($tablet-lg) {
+                background-image: linear-gradient(to right, #ee8263, #e74847);
+                // font-weight: 900;
+                transition: 0.3s all ease-in-out;
+                color: transparent;
+              }
+            }
+          }
+          &.mouseOver {
+            @include above($tablet-lg) {
+              & + .sub_menu {
+                opacity: 1;
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+      .sub_menu {
+        column-count: 2;
+        gap: 50px;
+        position: absolute;
+        left: 45%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.3s all ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+        li {
+          // margin-bottom: 50px;
+          padding: 25px 0;
+          a {
+            @include fontFace(20px, 1, 500, #a5a5a5);
+            text-transform: uppercase;
+            transition: 0.3s all ease-in-out;
+            &:hover {
+              @include above($tablet-lg) {
+                color: $color-white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.desktop_menu_open {
+  transition-delay: 0s;
+  .desktop_menu {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    .menu_inner_wrap {
+      .main_menu > li .link_wrap {
+        transform: translateY(0);
+        transition-delay: 0.8s;
+        transform-origin: top;
+      }
+    }
+    .social_menia_links li {
+      transform: translateX(0);
+      transition-delay: 01s;
+      opacity: 1;
+    }
+  }
+}

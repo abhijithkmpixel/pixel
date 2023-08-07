@@ -280,14 +280,7 @@ const Services = () => {
           </div>
         </div>
         <div className="row tech_logo" data-scroll>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/um.svg"}
-              alt="image"
-              width={100}
-              height={55}
-            />
-          </div>
+   
           <div className="col-12 col-md-6 col-xl-3">
             <Image
               src={"/uploads/pro.svg"}
@@ -307,6 +300,14 @@ const Services = () => {
           <div className="col-12 col-md-6 col-xl-3">
             <Image
               src={"/uploads/str.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/um.svg"}
               alt="image"
               width={100}
               height={55}

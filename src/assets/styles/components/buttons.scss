@@ -2,6 +2,7 @@
   @include fontFace(14px, 1, 500, $color-cod-gray);
   text-transform: uppercase;
   border: 1px solid $color-black;
+  background-color: transparent;
   padding: 16px 25px;
   border-radius: 50px;
   display: flex;
@@ -69,6 +70,12 @@
   transition: 0.3s all ease-in-out;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  span {
+    @include fontStyleInherit();
+    position: relative;
+    z-index: 2;
+  }
   svg {
     width: 15px;
     flex: 0 0 15px;
@@ -96,7 +103,7 @@
     color: $color-gallery;
     &:hover {
       @include above($tablet-lg) {
-        background-color: $color-gallery;
+        // background-color: $color-gallery;
         color: $color-cod-gray;
         &::after {
           transform: scaleY(1);

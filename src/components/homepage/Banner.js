@@ -62,38 +62,71 @@ const Banner = () => {
           <div className="banner_head" data-scroll>
             <div className="content_wrap" data-scroll>
               <h1 data-scroll>
-                we are <br />
-                <span id="textOut" data-animator-text="Design,branding,digital,marketing"></span>
-                agency<span>.</span>
+                <div className="line line1">
+                  <div className="animate_in">we are</div>
+                </div>
+                <div className="line line2">
+                  <span
+                    id="textOut"
+                    className="animate_in"
+                    data-animator-text="Design,Creative,digital"
+                  ></span>
+                </div>
+                <div className="line line2">
+                  <div className="animate_in">
+                    agency<span>.</span>
+                  </div>
+                </div>
               </h1>
-              <Link href={"#"} className="cta_primary" data-scroll>
-                book a meeting
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <line
-                    x1="4.31389"
-                    y1="12.2781"
-                    x2="11.2333"
-                    y2="4.03194"
-                    stroke="#181818"
-                    strokeWidth="0.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M4.21547 4.09155L11.7401 3.43318L12.3985 10.9579"
-                    stroke="#181818"
-                    strokeWidth="0.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
+              {/* <div className="overflow-hidden">
+                <Link href={"#"} className="cta_primary" data-scroll>
+                  book a meeting
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="4.31389"
+                      y1="12.2781"
+                      x2="11.2333"
+                      y2="4.03194"
+                      stroke="#181818"
+                      strokeWidth="0.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M4.21547 4.09155L11.7401 3.43318L12.3985 10.9579"
+                      stroke="#181818"
+                      strokeWidth="0.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </Link>
+              </div> */}
+            </div>
+            <div className="banner_ai_footer">
+              <div className="ai_featured_img">
+                <Image
+                  src="/uploads/ai.png"
+                  width={185}
+                  height={169}
+                  alt="ai image"
+                />
+              </div>
+              <div className="ai_content_wrap">
+                <div>
+                  <h3>GPT AI Technogies</h3>
+                  <p>Pixelflames company</p>
+                </div>
+                <div>
+                  <p>Pixelflames is web design agency based in Dubai, UAE.</p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="quick_links_wrap" data-scroll>

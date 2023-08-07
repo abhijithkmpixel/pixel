@@ -9,7 +9,6 @@ import Services from "@/components/homepage/Services";
 import Testimonials from "@/components/homepage/Testimonials";
 import Branches from "@/components/homepage/Branches";
 import WorkTogether from "@/components/homepage/WorkTogether";
-import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -21,7 +20,6 @@ export default function Home() {
       <Testimonials />
       <Branches />
       <WorkTogether />
-      <Footer />
     </>
   );
 }
