@@ -8,25 +8,25 @@
       & + li {
         margin-left: 32px;
       }
-      a {
-        padding: 12px 22px;
-        border-radius: 50px;
-        display: block;
-        @include fontFace(20px, 1, 400, $color-black);
-        border: 1px solid $color-black;
-        transition: 0.3s all ease-in-out;
-        text-transform: capitalize;
-        &.active_cat {
+      // a {
+      padding: 12px 22px;
+      border-radius: 50px;
+      display: block;
+      @include fontFace(20px, 1, 400, $color-black);
+      border: 1px solid $color-black;
+      transition: 0.3s all ease-in-out;
+      text-transform: capitalize;
+      &.active_cat {
+        background-color: $color-black;
+        color: $color-white;
+      }
+      &:hover {
+        @include above($tablet-lg) {
           background-color: $color-black;
           color: $color-white;
         }
-        &:hover {
-          @include above($tablet-lg) {
-            background-color: $color-black;
-            color: $color-white;
-          }
-        }
       }
+      // }
     }
   }
   .portfolio_listing_grid {
@@ -38,7 +38,7 @@
     }
     .portfolio_card_outer {
       margin-bottom: 90px;
-      &.hidden{
+      &.hidden {
         display: none;
       }
       .portfolio_card_inner {

@@ -167,7 +167,7 @@ header {
       li {
         transition: 0.5s all ease-in-out;
         @include above($tablet-lg) {
-          transform: translateX(100px);
+          transform: translateY(100px);
           opacity: 0;
         }
         & + li {
@@ -274,8 +274,8 @@ header {
   }
 }
 .desktop_menu_open {
-  transition-delay: 0s;
   .desktop_menu {
+    transition-delay: 0s;
     transform: scaleY(1);
     transform-origin: bottom;
     .menu_inner_wrap {
@@ -286,7 +286,7 @@ header {
       }
     }
     .social_menia_links li {
-      transform: translateX(0);
+      transform: translateY(0);
       transition-delay: 01s;
       opacity: 1;
     }

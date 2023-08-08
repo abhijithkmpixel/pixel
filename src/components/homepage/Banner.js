@@ -1,9 +1,12 @@
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import Slider from "react-slick";
 
 const Banner = () => {
+  let ctx;
+
   useEffect(() => {
     if (typeof window != "undefined") {
       var quickLinks = document.querySelectorAll(
@@ -16,13 +19,79 @@ const Banner = () => {
           });
           elm.classList.add("mouseOver");
         });
-        // elm.addEventListener('mouseleave',function(){
-        //   elm.classList.remove('mouseOver')
-        // })
+      });
+
+      ctx = gsap.context(() => {
+        let scrollval = document.querySelector(".quick_link").offsetWidth;
+        let length = document.querySelectorAll(
+          ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
+        ).length;
+        let scrollLength = 600 * (length - 2);
+        let bannerTimeline = gsap.timeline();
+        const textArray = document
+          .querySelector("#textOut")
+          .getAttribute("data-animator-text")
+          .split(",");
+        var bannerTextAnim = gsap.timeline({
+          repeat: -1,
+          repeatDelay: 0,
+          // ease: Power0.easeNone,
+        });
+        gsap.fromTo(
+          ".animate_in",
+          {
+            y: 120,
+          },
+          {
+            delay: 1,
+            duration: 1,
+            stagger: 0.4,
+            y: 0,
+          }
+        );
+        textArray.forEach((element, index) => {
+          bannerTextAnim
+            .to("#textOut", {
+              text: `${element}`,
+              duration: 1.5,
+              delay: 0,
+            })
+            .to("#textOut", {
+              text: "",
+              duration: 0,
+              delay: 2,
+            });
+        });
+        bannerTimeline
+          .to(".hero_banner .herobanner_inner_wrap", {
+            x: -(scrollval * (length - 2)),
+            // y: scroll.scroll.y,
+            scrollTrigger: {
+              trigger: ".herobanner_inner_wrap",
+              start: "0% -1px",
+              end: `+${scrollLength + 500}`,
+              // scroller: window,
+              scrub: true,
+              pin: true,
+            },
+          })
+          .to(".hero_banner .quick_link", {
+            yPercent: -100,
+            stagger: 0.05,
+            scrollTrigger: {
+              trigger: ".herobanner_inner_wrap",
+              start: "0% -2px",
+              end: "1500",
+              scrub: true,
+              // pin: true,
+            },
+          });
       });
     }
 
-    return () => {};
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   var settings = {

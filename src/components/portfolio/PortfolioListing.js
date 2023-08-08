@@ -19,25 +19,17 @@ const PortfolioListing = () => {
     <section className="portfolio_listing" id="portfolio_list_section">
       <div className="container-fluid">
         <ul className="portfolio_nav_links">
-          <li>
-            <Link href="#" className="active_cat" data-category="all">
-              All
-            </Link>
+          <li className="active_cat" data-category="all">
+            All
           </li>
-          <li>
-            <Link href="#" className="" data-category="website design">
-              website designs
-            </Link>
+          <li href="#" className="" data-category="website design">
+            website designs
           </li>
-          <li>
-            <Link href="#" className="" data-category="mobile application">
-              mobile application
-            </Link>
+          <li href="#" className="" data-category="mobile application">
+            mobile application
           </li>
-          <li>
-            <Link href="#" className="" data-category="Digital Marketing">
-              Digital Marketing
-            </Link>
+          <li href="#" className="" data-category="Digital Marketing">
+            Digital Marketing
           </li>
         </ul>
         <div className="portfolio_listing_grid" id="portfolio_list">
@@ -110,7 +102,10 @@ const PortfolioListing = () => {
               </div>
             </Link>
           </div>
-          <div className="portfolio_card_outer" data-case-category="mobile application">
+          <div
+            className="portfolio_card_outer"
+            data-case-category="mobile application"
+          >
             <Link
               href="#"
               className="portfolio_card_inner"

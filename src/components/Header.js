@@ -83,8 +83,8 @@ const Header = () => {
               x2="52.935"
               y2="52.2859"
               stroke="white"
-              stroke-width="1.2"
-              stroke-linecap="round"
+              strokeWidth="1.2"
+              strokeLinecap="round"
             />
             <line
               x1="17.5798"
@@ -92,8 +92,8 @@ const Header = () => {
               x2="52.3147"
               y2="17.8032"
               stroke="white"
-              stroke-width="1.2"
-              stroke-linecap="round"
+              strokeWidth="1.2"
+              strokeLinecap="round"
             />
           </svg>
         </button>
