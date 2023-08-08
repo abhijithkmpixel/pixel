@@ -1,0 +1,33 @@
+.service_intro {
+  padding: 150px 0;
+  background-color: $color-white;
+  figure {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 663/389;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      object-position: 50% 100%;
+    }
+  }
+  .content_inner {
+    padding-right: 70px;
+    height: 100%;
+    h2 {
+      @include fontFace(53px, 1.001, 600, $color-black);
+      text-transform: uppercase;
+      span {
+        @include fontStyleInherit();
+      }
+    }
+    h4 {
+      @include fontFace(20px, 1.4, 400, $color-black);
+      max-width: 50%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
+  }
+}

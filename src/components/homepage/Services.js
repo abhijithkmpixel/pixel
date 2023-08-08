@@ -11,59 +11,60 @@ const Services = () => {
     if (typeof document != "undefined") {
       ctx = gsap.context(() => {
         let serviceTitleTimeline = gsap.timeline();
-
-        serviceTitleTimeline
-          .from(".services_listing .title span:first-child", {
-            y: 100,
+        if (window.screen.width > 1200) {
+          serviceTitleTimeline
+            .from(".services_listing .title span:first-child", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=100",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title img", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              // delay: 0.5,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=300",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title span:nth-child(2)", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              // delay: 0.5,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=600",
+                scrub: true,
+                pin: false,
+              },
+            });
+          gsap.from(".services_listing .tech_logo > div", {
+            // scale: 1.3,
+            x: 200,
             opacity: 0,
-            duration: 1,
+            stagger: 0.2,
             scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "100% 100%",
-              end: "+=100",
+              trigger: ".services_listing .tech_logo",
+              start: "50% 100%",
+              end: "+=400",
+              // scroller: window,
               scrub: true,
-              pin: false,
-            },
-          })
-          .from(".services_listing .title img", {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            // delay: 0.5,
-            scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "100% 100%",
-              end: "+=300",
-              scrub: true,
-              pin: false,
-            },
-          })
-          .from(".services_listing .title span:nth-child(2)", {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            // delay: 0.5,
-            scrollTrigger: {
-              trigger: ".services_listing .title",
-              start: "100% 100%",
-              end: "+=600",
-              scrub: true,
-              pin: false,
             },
           });
-        gsap.from(".services_listing .tech_logo > div", {
-          // scale: 1.3,
-          x: 200,
-          opacity: 0,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: ".services_listing .tech_logo",
-            start: "50% 100%",
-            end: "+=400",
-            // scroller: window,
-            scrub: true,
-          },
-        });
+        }
       });
     }
 

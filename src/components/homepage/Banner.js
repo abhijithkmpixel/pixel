@@ -62,35 +62,39 @@ const Banner = () => {
               delay: 2,
             });
         });
-        bannerTimeline
-          .to(".hero_banner .herobanner_inner_wrap", {
-            x: -(scrollval * (length - 2)),
-            // y: scroll.scroll.y,
-            scrollTrigger: {
-              trigger: ".herobanner_inner_wrap",
-              start: "0% -1px",
-              end: `+${scrollLength + 500}`,
-              // scroller: window,
-              scrub: true,
-              pin: true,
-            },
-          })
-          .to(".hero_banner .quick_link", {
-            yPercent: -100,
-            stagger: 0.05,
-            scrollTrigger: {
-              trigger: ".herobanner_inner_wrap",
-              start: "0% -2px",
-              end: "1500",
-              scrub: true,
-              // pin: true,
-            },
-          });
+        if (window.screen.width > 1200) {
+          bannerTimeline
+            .to(".hero_banner .herobanner_inner_wrap", {
+              x: -(scrollval * (length - 2)),
+              // y: scroll.scroll.y,
+              scrollTrigger: {
+                trigger: ".herobanner_inner_wrap",
+                start: "0% 0%",
+                end: `+${scrollLength + 500}`,
+                // scroller: window,
+                scrub: true,
+                pin: true,
+              },
+            })
+            .to(".hero_banner .quick_link", {
+              yPercent: -100,
+              stagger: 0.05,
+              scrollTrigger: {
+                trigger: ".herobanner_inner_wrap",
+                start: "0% -2px",
+                end: "1500",
+                scrub: true,
+                // pin: true,
+              },
+            });
+        }
       });
     }
 
     return () => {
-      ctx.revert();
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, []);
 

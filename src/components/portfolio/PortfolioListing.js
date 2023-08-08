@@ -1,20 +1,83 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const PortfolioListing = () => {
-  if (typeof document != "undefined") {
-    let portfolios = document
-      .querySelectorAll(".portfolio_card_inner")
-      .forEach((element) => {
-        element.addEventListener("mousemove", function () {
-          document.querySelector("body").classList.add("portfolio_hover");
+  const [portfolioList, setportfolioList] = useState([
+    {
+      name: "Al Gurg Building Services",
+      img: "/uploads/esag.jpg",
+      category: "website design | development",
+    },
+    {
+      name: "ESA SALEH AL GURG Group",
+      img: "/uploads/sal.jpg",
+      category: "website design",
+    },
+    {
+      name: "SAFQAT",
+      img: "/uploads/saf.jpg",
+      category: "development",
+    },
+    {
+      name: "Tribal Experience",
+      img: "/uploads/tri.jpg",
+      category: "mobile application",
+    },
+    {
+      name: "Hemslojdenidalarna",
+      img: "/uploads/hem.jpg",
+      category: "website design",
+    },
+  ]);
+  const [currentList, setcurrentList] = useState(portfolioList);
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      let portfolios = document
+        .querySelectorAll(".portfolio_card_inner")
+        .forEach((element) => {
+          element.addEventListener("mousemove", function () {
+            document.querySelector("body").classList.add("portfolio_hover");
+          });
+          element.addEventListener("mouseleave", function () {
+            document.querySelector("body").classList.remove("portfolio_hover");
+          });
         });
-        element.addEventListener("mouseleave", function () {
-          document.querySelector("body").classList.remove("portfolio_hover");
+
+      let linkItems = document.querySelectorAll(
+        ".portfolio_listing .portfolio_nav_links li"
+      );
+      let portfolioCards = document.querySelectorAll(
+        ".portfolio_listing .portfolio_listing_grid .portfolio_card_outer"
+      );
+      linkItems.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          linkItems.forEach((element) => {
+            element.classList.remove("active_cat");
+          });
+          this.classList.add("active_cat");
+          filterPortfolioCards(this.getAttribute("data-category"));
         });
       });
-  }
+      const filterPortfolioCards = (category) => {
+        if (category.toLowerCase() == "all") {
+          setcurrentList(portfolioList);
+        } else {
+          setcurrentList(
+            portfolioList?.filter((elm) => {
+              if (elm.category.includes(category)) {
+                return elm;
+              }
+            })
+          );
+        }
+        console.log(currentList);
+      };
+    }
+    return () => {};
+  }, []);
+
   return (
     <section className="portfolio_listing" id="portfolio_list_section">
       <div className="container-fluid">
@@ -33,126 +96,50 @@ const PortfolioListing = () => {
           </li>
         </ul>
         <div className="portfolio_listing_grid" id="portfolio_list">
-          <div
-            className="portfolio_card_outer"
-            data-case-category="web design | development"
-          >
-            <Link
-              href="#"
-              className="portfolio_card_inner"
-              data-cursor-img="/icons/arr.svg"
-            >
-              <h3>Al Gurg Building Services</h3>
-              <figure>
-                <Image
-                  src={"/uploads/esag.jpg"}
-                  alt="asd"
-                  width={500}
-                  height={350}
-                />
-              </figure>
-              <div className="card_footer">
-                <span>01</span>
-                <span>web design | development</span>
+          {currentList &&
+            currentList.length > 0 &&
+            currentList?.map((p, index) => {
+              return (
+                <div
+                  key={index}
+                  className="portfolio_card_outer"
+                  data-case-category={p?.category}
+                >
+                  <Link
+                    href="#"
+                    className="portfolio_card_inner"
+                    data-cursor-img="/icons/arr.svg"
+                  >
+                    <h3>{p?.name}</h3>
+                    <figure>
+                      <Image src={p?.img} alt="asd" width={500} height={350} />
+                    </figure>
+                    <div className="card_footer">
+                      <span>
+                        {index + 1 < 10 ? "0" : null}
+                        {index + 1}
+                      </span>
+                      <span>{p?.category}</span>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          {currentList?.length == 0 && (
+            <div className="portfolio_card_outer">
+              <div className="portfolio_card_inner">
+                <h3 className="text-center">NO results found!</h3>
               </div>
-            </Link>
-          </div>
-          <div className="portfolio_card_outer" data-case-category="web design">
-            <Link
-              href="#"
-              className="portfolio_card_inner"
-              data-cursor-img="/icons/arr.svg"
-            >
-              <h3>ESA SALEH AL GURG Group</h3>
-              <figure>
-                <Image
-                  src={"/uploads/sal.jpg"}
-                  alt="asd"
-                  width={500}
-                  height={350}
-                />
-              </figure>
-              <div className="card_footer">
-                <span>02</span>
-                <span>web design</span>
-              </div>
-            </Link>
-          </div>
-          <div
-            className="portfolio_card_outer"
-            data-case-category="development"
-          >
-            <Link
-              href="#"
-              className="portfolio_card_inner"
-              data-cursor-img="/icons/arr.svg"
-            >
-              <h3>SAFQAT</h3>
-              <figure>
-                <Image
-                  src={"/uploads/saf.jpg"}
-                  alt="asd"
-                  width={500}
-                  height={350}
-                />
-              </figure>
-              <div className="card_footer">
-                <span>03</span>
-                <span>development</span>
-              </div>
-            </Link>
-          </div>
-          <div
-            className="portfolio_card_outer"
-            data-case-category="mobile application"
-          >
-            <Link
-              href="#"
-              className="portfolio_card_inner"
-              data-cursor-img="/icons/arr.svg"
-            >
-              <h3>Tribal Experience</h3>
-              <figure>
-                <Image
-                  src={"/uploads/tri.jpg"}
-                  alt="asd"
-                  width={500}
-                  height={350}
-                />
-              </figure>
-              <div className="card_footer">
-                <span>04</span>
-                <span>mobile application</span>
-              </div>
-            </Link>
-          </div>
-          <div className="portfolio_card_outer" data-case-category="web design">
-            <Link
-              href="#"
-              className="portfolio_card_inner"
-              data-cursor-img="/icons/arr.svg"
-            >
-              <h3>Hemslojdenidalarna</h3>
-              <figure>
-                <Image
-                  src={"/uploads/hem.jpg"}
-                  alt="asd"
-                  width={500}
-                  height={350}
-                />
-              </figure>
-              <div className="card_footer">
-                <span>05</span>
-                <span>web design</span>
-              </div>
-            </Link>
-          </div>
+            </div>
+          )}
         </div>
-        <div className="d-flex justify-content-center">
-          <button className="cta_primary" data-scroll>
-            View more
-          </button>
-        </div>
+        {currentList && currentList?.length > 0 && (
+          <div className="d-flex justify-content-center">
+            <button className="cta_primary" data-scroll>
+              <span>View more</span>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

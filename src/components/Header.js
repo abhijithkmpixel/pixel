@@ -4,6 +4,11 @@ import React from "react";
 
 const Header = () => {
   if (typeof document != "undefined") {
+    document.querySelectorAll(".desktop_menu a").forEach((element) => {
+      element.addEventListener("click", function (e) {
+        document.querySelector("body").classList.remove("desktop_menu_open");
+      });
+    });
     let hamburgerMenuLinks = document.querySelectorAll(
       ".main_menu .link_wrap > a"
     );
@@ -102,31 +107,31 @@ const Header = () => {
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <a href="#">
+                  <Link href="/">
                     <span>01</span>Home
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <a href="#">
+                  <Link href="#">
                     <span>02</span>about us
-                  </a>
+                  </Link>
                 </div>
                 <ul className="sub_menu">
                   <li>
-                    <a href="#">link1</a>
+                    <Link href="#">link1</Link>
                   </li>
                   <li>
-                    <a href="#">link2</a>
+                    <Link href="#">link2</Link>
                   </li>
                   <li>
-                    <a href="#">e-commerce</a>
+                    <Link href="#">e-commerce</Link>
                   </li>
                   <li>
-                    <a href="#"> management</a>
+                    <Link href="#"> management</Link>
                   </li>
                 </ul>
               </div>
@@ -134,22 +139,22 @@ const Header = () => {
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <a href="#">
+                  <Link href="/services">
                     <span>03</span>services
-                  </a>
+                  </Link>
                 </div>
                 <ul className="sub_menu">
                   <li>
-                    <a href="#">web development</a>
+                    <Link href="#">web development</Link>
                   </li>
                   <li>
-                    <a href="#">mobile app development</a>
+                    <Link href="#">mobile app development</Link>
                   </li>
                   <li>
-                    <a href="#">e-commerce development</a>
+                    <Link href="#">e-commerce development</Link>
                   </li>
                   <li>
-                    <a href="#">website management</a>
+                    <Link href="#">website management</Link>
                   </li>
                 </ul>
               </div>
@@ -157,34 +162,34 @@ const Header = () => {
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <a href="#">
+                  <Link href="/web-development-dubai">
                     <span>04</span>our works
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <a href="#">
+                  <Link href="#">
                     <span>05</span>contact
-                  </a>
+                  </Link>
                 </div>
               </div>
             </li>
           </ul>
           <ul className="social_menia_links">
             <li>
-              <a href="#">
+              <Link href="#">
                 <Image src="/uploads/fb.png" width={50} height={50} alt="" />
                 pixelflamesdigital
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link href="#">
                 <Image src="/uploads/ins.png" width={50} height={50} alt="" />
                 pixelflamesdigital
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

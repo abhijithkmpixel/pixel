@@ -1,8 +1,43 @@
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Footer = () => {
+  let ctx;
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      ctx = gsap.context(() => {
+        let contactbtn = gsap.timeline();
+        let contactbtnFooter = gsap.timeline();
+        if (window.screen.width > 1200) {
+          contactbtn.from(".contact-btn_wrap", {
+            x: 150,
+            scrollTrigger: {
+              trigger: ".contact-btn_wrap",
+              start: "0% 100%",
+              end: "+=500",
+              scrub: true,
+            },
+          });
+          // contactbtnFooter.from("footer .footer_inner_wrap .footer_text span", {
+          //   scale: 1.5,
+          //   scrollTrigger: {
+          //     trigger: "footer .footer_inner_wrap .footer_text span",
+          //     start: "0% 100%",
+          //     end: "100% 100%",
+          //     scrub: true,
+          //   },
+          // });
+        }
+      });
+    }
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <footer data-scroll-section>
       <div className="container-fluid" data-scroll>

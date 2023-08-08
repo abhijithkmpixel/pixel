@@ -12,75 +12,83 @@ const About = () => {
       let aboutFimage = gsap.timeline();
       let aboutbody = gsap.timeline();
       ctx = gsap.context(() => {
-        aboutTitle.fromTo(
-          ".about_us_banner .title_primary",
-          {
-            y: 50,
-          },
-          {
-            y: -50,
+        if (window.screen.width > 1200) {
+          aboutTitle.fromTo(
+            ".about_us_banner .title_primary",
+            {
+              y: 50,
+            },
+            {
+              y: -50,
+              scrollTrigger: {
+                trigger: ".about_us_banner .title_primary",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                scrub: true,
+              },
+            }
+          );
+          aboutSubTitle.fromTo(
+            ".about_us_banner .intro_block .row > div> h3",
+            {
+              y: 50,
+            },
+            {
+              y: -50,
+              scrollTrigger: {
+                trigger: ".about_us_banner .intro_block .row > div> h3",
+                start: "0% 100%",
+                end: "100% 0%",
+                scrub: true,
+              },
+            }
+          );
+
+          aboutFimage.to(".about_us_banner .intro_block .banner_image img", {
+            objectPosition: "50% 20%",
+            // duration: 1,
             scrollTrigger: {
-              trigger: ".about_us_banner .title_primary",
+              trigger: ".about_us_banner .intro_block .banner_image",
+              start: "0% 100%",
+              end: "100% 0%",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+          aboutbody.to(".about_us_banner .intro_block .about_bodycopy", {
+            x: -100,
+            scrollTrigger: {
+              trigger: ".about_us_banner .intro_block .about_bodycopy",
               start: "0% 100%",
               end: "0% 0%",
               // scroller: window,
               scrub: true,
             },
-          }
-        );
-        aboutSubTitle.fromTo(
-          ".about_us_banner .intro_block .row > div> h3",
-          {
-            y: 50,
-          },
-          {
-            y: -50,
-            scrollTrigger: {
-              trigger: ".about_us_banner .intro_block .row > div> h3",
-              start: "0% 100%",
-              end: "100% 0%",
-              scrub: true,
-            },
-          }
-        );
-
-        aboutFimage.to(".about_us_banner .intro_block .banner_image img", {
-          objectPosition: "50% 20%",
-          // duration: 1,
-          scrollTrigger: {
-            trigger: ".about_us_banner .intro_block .banner_image",
-            start: "0% 100%",
-            end: "100% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        aboutbody.to(".about_us_banner .intro_block .about_bodycopy", {
-          x: -100,
-          scrollTrigger: {
-            trigger: ".about_us_banner .intro_block .about_bodycopy",
-            start: "0% 100%",
-            end: "0% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
-        TweenLite.to(".about_us_banner .achievements_row .achievement_cards", {
-          className: "is-inview",
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: ".about_us_banner .achievements_row .achievement_cards",
-            start: "0% 100%",
-            end: "0% 0%",
-            // scroller: window,
-            scrub: true,
-          },
-        });
+          });
+          TweenLite.to(
+            ".about_us_banner .achievements_row .achievement_cards",
+            {
+              className: "is-inview",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger:
+                  ".about_us_banner .achievements_row .achievement_cards",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                // scrub: true,
+              },
+            }
+          );
+        }
       });
     }
 
     return () => {
-      ctx.revert();
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, []);
 

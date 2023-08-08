@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
     if (typeof window != "undefined") {
       // document.querySelector(".hero_banner").style.paddingBottom =
       //   scrollLength + "px";
+
       if (window.screen.width > 1200) {
         const lenis = new Lenis({
           lerp: 0.07,
@@ -40,70 +41,25 @@ export default function App({ Component, pageProps }) {
 
         // requestAnimationFrame(raf);
         gsap.ticker.lagSmoothing(0);
+        document.querySelectorAll(".scroll_to").forEach((element) => {
+          element.addEventListener("click", function (e) {
+            e.preventDefault();
+            let target = document.getElementById(
+              `${e.target.getAttribute("href").split("#")[1]}`
+            );
+            lenis.scrollTo(target, {
+              duration: 2,
+              // easing:(t) => Math.min(1, 1.001 - Math.pow(2, -0 * t))
+            });
+            console.log(e.target.getAttribute("href").split("#")[1]);
+          });
+        });
       }
 
-      ctx = gsap.context(() => {
-
-        if (window.screen.width > 1200) {
-
-   
-          // gsap.fromTo(
-          //   ".hero_banner .cta_primary",
-          //   {
-          //     y: 100,
-          //   },
-          //   {
-          //     delay: 1.2,
-          //     duration: 1.5,
-          //     // stagger: 0.4,
-          //     y: 0,
-          //   }
-          // );
-
-    
-          gsap.from(".contact-btn_wrap", {
-            // scale: 1.3,
-            x: 150,
-            scrollTrigger: {
-              trigger: ".contact-btn_wrap",
-              start: "0% 100%",
-              end: "+=500",
-              // scroller: window,
-              scrub: true,
-            },
-          });
-          gsap.to(".our_branches img", {
-            // scale: 1.3,
-            objectPosition: "50% 0%",
-            scrollTrigger: {
-              trigger: ".our_branches",
-              start: "0% 100%",
-              end: "100% 0%",
-              // scroller: window,
-              scrub: true,
-            },
-          });
-   
-          // gsap.fromTo(
-          //   ".about_us_banner .title_primary",
-          //   {
-          //     y: 50,
-          //   },
-          //   {
-          //     y: -50,
-          //     scrollTrigger: {
-          //       trigger: ".about_us_banner .title_primary",
-          //       start: "0% 100%",
-          //       end: "0% 0%",
-          //       // scroller: window,
-          //       scrub: true,
-          //     },
-          //   }
-          // );
-       
-   
-        }
-      });
+      // ctx = gsap.context(() => {
+      //   if (window.screen.width > 1200) {
+      //   }
+      // });
       if (window.screen.width > 1200) {
         MouseFollower.registerGSAP(gsap);
 
@@ -150,7 +106,7 @@ export default function App({ Component, pageProps }) {
     }
     return () => {
       // if (ctx) {
-      ctx.revert();
+      // ctx.revert();
       // }
     };
   }, []);

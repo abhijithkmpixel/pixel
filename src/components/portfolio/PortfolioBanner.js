@@ -4,22 +4,39 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 const PortfolioBanner = () => {
+  let ctx;
   useEffect(() => {
-    
-  gsap.to('.portfolio_hero_banner img',{
-    objectPosition: "50% 0%",
-    scrollTrigger:{
-      trigger:'.portfolio_hero_banner',
-      start:"0% 0%",
-      end:"100% 0%",
-      scrub:true,
+    if (typeof document != "undefined") {
+      ctx = gsap.context(() => {
+        let bannerImageTiml = gsap.timeline();
+        let bannerTitle = gsap.timeline();
+        // bannerImageTiml.to(".portfolio_hero_banner img", {
+        //   objectPosition: "50% 0%",
+        //   scrollTrigger: {
+        //     trigger: ".portfolio_hero_banner",
+        //     start: "0% 0%",
+        //     end: "100% 0",
+        //     scrub: true,
+        //   },
+        // });
+        bannerTitle.to(".portfolio_hero_banner h1", {
+          scale: 1.5,
+          scrollTrigger: {
+            trigger: ".portfolio_hero_banner",
+            start: "0% 0%",
+            end: "100% 0%",
+            scrub: true,
+          },
+        });
+      });
     }
-  })
     return () => {
-      
-    }
-  }, [])
-  
+      if (ctx) {
+        ctx.revert();
+      }
+    };
+  }, []);
+
   return (
     <section className="portfolio_hero_banner">
       <Image src={"/uploads/ort.jpg"} alt="asdasd" width={1920} height={1080} />
@@ -28,7 +45,11 @@ const PortfolioBanner = () => {
           DISCOVER <br />
           <span>our</span> PROJECTS
         </h1>
-        <Link href="#portfolio_list_section" className="scroll_to" data-scrollto>
+        <Link
+          href="#portfolio_list_section"
+          className="scroll_to"
+          // data-scrollto
+        >
           <svg
             width="17"
             height="29"

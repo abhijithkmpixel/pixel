@@ -8,6 +8,9 @@
   @include below(1366px) {
     font-size: 65px;
   }
+  @include below($desktop-lg) {
+    font-size: 65px;
+  }
   @include below($desktop-sm) {
     font-size: 58px;
   }

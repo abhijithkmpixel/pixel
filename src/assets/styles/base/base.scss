@@ -227,3 +227,9 @@ html.lenis {
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
+.mf-cursor-text {
+  text-transform: uppercase;
+}
+.mf-cursor.-text::before {
+  transform: scale(2.8);
+}

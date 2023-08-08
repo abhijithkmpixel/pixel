@@ -2,9 +2,16 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  @include below($tablet-lg) {
+    height: 100dvh;
+  }
   img {
     object-fit: cover;
     object-position: 50% 100%;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
   }
   .hero_content_wrap {
     position: absolute;
@@ -19,10 +26,25 @@
       -webkit-background-clip: text;
       text-transform: uppercase;
       text-align: center;
+      @include below($desktop-lg) {
+        font-size: 110px;
+      }
+      @include below($tablet-sm) {
+        font-size: 80px;
+      }
+      @include below($mobile-lg) {
+        font-size: 50px;
+      }
       span {
         @include fontStyleInherit();
         font-weight: 600;
         font-size: 90px;
+        @include below($tablet-sm) {
+          font-size: 60px;
+        }
+        @include below($mobile-lg) {
+          font-size: 40px;
+        }
       }
     }
     .scroll_to {
@@ -37,6 +59,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @include below($desktop-lg) {
+        top: calc(100% + 20px);
+      }
+      @include below($tablet-sm) {
+        width: 90px;
+        height: 90px;
+      }
+      @include below($mobile-lg) {
+        left: 50%;
+        transform: translateX(-50%);
+      }
       &::after {
         content: "";
         width: 100%;

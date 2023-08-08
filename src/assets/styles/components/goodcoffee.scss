@@ -1,0 +1,62 @@
+.good_coffee {
+  width: 100%;
+  background-color: $color-pomegranate;
+  padding: 200px 0;
+  position: relative;
+  z-index: 0;
+  @include below($mobile-lg) {
+    padding: 100px 0;
+  }
+  .good_coffee_wrapper {
+    max-width: 70%;
+    @include below($tablet-sm) {
+      max-width: 90%;
+    }
+    @include below($mobile-lg) {
+      max-width: 100%;
+    }
+    h2 {
+      @include fontFace(73px, 1.2, 700, $color-black);
+      text-transform: uppercase;
+      @include below($desktop-lg) {
+        font-size: 60px;
+      }
+      @include below($desktop-sm) {
+        font-size: 55px;
+      }
+      @include below($mobile-lg) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+    h4 {
+      @include fontFace(73px, 1.2, 500, $color-black);
+      text-transform: uppercase;
+      @include below($desktop-lg) {
+        font-size: 60px;
+      }
+      @include below($desktop-sm) {
+        font-size: 55px;
+      }
+      @include below($mobile-lg) {
+        font-size: 30px;
+        text-align: center;
+      }
+      a {
+        @include fontStyleInherit();
+        color: $color-white;
+        cursor: none;
+      }
+    }
+  }
+}
+.good_coffee_enter {
+  .mf-cursor::before {
+    color: transparent;
+  }
+  .mf-cursor-media {
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
+  }
+}
