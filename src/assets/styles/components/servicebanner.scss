@@ -1,0 +1,89 @@
+.service_hero_banner {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  & > img {
+    object-fit: cover;
+    object-position: 50% 100%;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scale(1.1);
+    max-width: 100vw;
+  }
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    .hero_cnt_wrap {
+      position: relative;
+      width: 100%;
+      h1 {
+        @include fontFace(130px, 1, 700, transparent);
+        max-width: 60%;
+        background-image: linear-gradient(to bottom, #f5333f, #ff5c00);
+        -webkit-background-clip: text;
+        text-transform: uppercase;
+        @include below($desktop-lg) {
+          font-size: 95px;
+        }
+        @include below($desktop-sm) {
+          font-size: 85px;
+        }
+        @include below($tablet-sm) {
+          font-size: 80px;
+        }
+        @include below($mobile-lg) {
+          font-size: 50px;
+          text-align: center;
+        }
+      }
+      .scroll_to {
+        width: 130px;
+        height: 130px;
+        margin-top: 70px;
+        position: absolute;
+        bottom: 0;
+        left: auto;
+        right: 10%;
+        border-radius: 50%;
+        // border: 1px solid $color-white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include below($desktop-lg) {
+          // top: calc(100% + 20px);
+        }
+        @include below($tablet-sm) {
+          width: 90px;
+          height: 90px;
+        }
+        @include below($mobile-lg) {
+          // left: 50%;
+          // transform: translateX(-50%);
+        }
+        &::after {
+          content: "";
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 1px solid $color-white;
+          transition: 0.9s all ease-out;
+        }
+        svg {
+          width: 20px;
+          height: auto;
+        }
+        &:hover {
+          &::after {
+            transform: translate(-50%, -50%) scale(0.9);
+          }
+        }
+      }
+    }
+  }
+}

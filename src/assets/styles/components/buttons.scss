@@ -2,6 +2,7 @@
   @include fontFace(14px, 1, 500, $color-cod-gray);
   text-transform: uppercase;
   border: 1px solid $color-black;
+  background-color: transparent;
   padding: 16px 25px;
   border-radius: 50px;
   display: flex;
@@ -13,6 +14,11 @@
   @include below($mobile-lg) {
     padding: 10px 20px;
     font-size: 12px;
+  }
+  span {
+    @include fontStyleInherit();
+    position: relative;
+    z-index: 5;
   }
   svg {
     width: 15px;
@@ -34,7 +40,7 @@
     left: 0;
     top: 0;
     background-color: $color-cod-gray;
-    z-index: -1;
+    z-index: 0;
     width: 100%;
     height: 100%;
     transform-origin: bottom;
@@ -42,7 +48,7 @@
   }
   &:hover {
     @include above($tablet-lg) {
-      background-color: $color-cod-gray;
+      background-color: transparent;
       color: $color-gallery;
       svg {
         path,
@@ -69,6 +75,12 @@
   transition: 0.3s all ease-in-out;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  span {
+    @include fontStyleInherit();
+    position: relative;
+    z-index: 2;
+  }
   svg {
     width: 15px;
     flex: 0 0 15px;
@@ -96,7 +108,7 @@
     color: $color-gallery;
     &:hover {
       @include above($tablet-lg) {
-        background-color: $color-gallery;
+        // background-color: $color-gallery;
         color: $color-cod-gray;
         &::after {
           transform: scaleY(1);
@@ -113,7 +125,7 @@
   border: 0;
   background-color: $color-cinnabar;
   padding: 25px;
-  padding-top: 40px;
+  padding-top: 30px;
   @include fontFace(14px, 1.1, 500, $color-gallery);
   letter-spacing: 1.4px;
   text-transform: uppercase;

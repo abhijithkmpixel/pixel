@@ -1,9 +1,33 @@
 .title_primary {
-  @include fontFace(75px, 1.2, 700, $color-cod-gray);
+  @include fontFace(75px, .9, 700, $color-cod-gray);
   text-transform: uppercase;
-  transition: 0.8s all ease-in-out;
   span {
     @include fontStyleInherit();
+  }
+  @include below(1366px) {
+    font-size: 65px;
+  }
+  @include below($desktop-lg) {
+    font-size: 65px;
+  }
+  @include below($desktop-sm) {
+    font-size: 58px;
+  }
+  @include below($tablet-sm) {
+    font-size: 50px;
+  }
+  @include below($mobile-lg) {
+    font-size: 30px;
+  }
+}
+.title__secondary {
+  @include fontFace(75px, 1.1, 600, $color-cod-gray);
+  text-transform: uppercase;
+  span {
+    @include fontStyleInherit();
+  }
+  @include below($desktop-lg) {
+    font-size: 55px;
   }
   @include below(1366px) {
     font-size: 65px;
@@ -16,15 +40,5 @@
   }
   @include below($mobile-lg) {
     font-size: 30px;
-  }
-  &[data-scroll] {
-    @include above($tablet-lg) {
-      opacity: 0;
-      transform: translateY(200px);
-      &.is-inview {
-        opacity: 1;
-        transform: translateY(0px);
-      }
-    }
   }
 }

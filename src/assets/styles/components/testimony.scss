@@ -30,16 +30,16 @@
     .testimony_slider_wrap {
       position: relative;
       margin-bottom: 162px;
-      transition: 0.7s all ease-in-out;
+      // transition: 0.7s all ease-in-out;
       @include above($tablet-lg) {
-        &[data-scroll] {
-          opacity: 0;
-          transform: translateY(200px);
-          &.is-inview {
-            opacity: 1;
-            transform: translateY(0px);
-          }
-        }
+        // &[data-scroll] {
+        //   opacity: 0;
+        //   transform: translateY(200px);
+        //   &.is-inview {
+        //     opacity: 1;
+        //     transform: translateY(0px);
+        //   }
+        // }
       }
     }
     .testimony_slider {

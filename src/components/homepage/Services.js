@@ -1,9 +1,78 @@
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 
 const Services = () => {
+  let ctx;
+
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      ctx = gsap.context(() => {
+        let serviceTitleTimeline = gsap.timeline();
+        if (window.screen.width > 1200) {
+          serviceTitleTimeline
+            .from(".services_listing .title span:first-child", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=100",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title img", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              // delay: 0.5,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=300",
+                scrub: true,
+                pin: false,
+              },
+            })
+            .from(".services_listing .title span:nth-child(2)", {
+              y: 100,
+              opacity: 0,
+              duration: 1,
+              // delay: 0.5,
+              scrollTrigger: {
+                trigger: ".services_listing .title",
+                start: "100% 100%",
+                end: "+=600",
+                scrub: true,
+                pin: false,
+              },
+            });
+          gsap.from(".services_listing .tech_logo > div", {
+            // scale: 1.3,
+            x: 200,
+            opacity: 0,
+            stagger: 0.2,
+            scrollTrigger: {
+              trigger: ".services_listing .tech_logo",
+              start: "50% 100%",
+              end: "+=400",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+        }
+      });
+    }
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   var settings = {
     dots: false,
     infinite: true,
@@ -282,14 +351,6 @@ const Services = () => {
         <div className="row tech_logo" data-scroll>
           <div className="col-12 col-md-6 col-xl-3">
             <Image
-              src={"/uploads/um.svg"}
-              alt="image"
-              width={100}
-              height={55}
-            />
-          </div>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
               src={"/uploads/pro.svg"}
               alt="image"
               width={100}
@@ -307,6 +368,14 @@ const Services = () => {
           <div className="col-12 col-md-6 col-xl-3">
             <Image
               src={"/uploads/str.svg"}
+              alt="image"
+              width={100}
+              height={55}
+            />
+          </div>
+          <div className="col-12 col-md-6 col-xl-3">
+            <Image
+              src={"/uploads/um.svg"}
               alt="image"
               width={100}
               height={55}

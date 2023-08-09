@@ -76,6 +76,8 @@
     .banner_image {
       position: relative;
       width: 70%;
+      height: 327px;
+      // aspect-ratio: 821/327;
       z-index: 1;
       @include below($tablet-lg) {
         width: 100%;
@@ -97,29 +99,33 @@
         }
       }
       @include above($tablet-lg) {
-        &::before {
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          transform-origin: bottom;
-          background-color: $color-white;
-          z-index: 3;
-          transition: 0.7s all ease-out;
-        }
+        // &::before {
+        //   content: "";
+        //   position: absolute;
+        //   width: 100%;
+        //   height: 100%;
+        //   transform-origin: bottom;
+        //   background-color: $color-white;
+        //   z-index: 3;
+        //   transition: 0.7s all ease-out;
+        // }
       }
       img {
         position: relative;
         z-index: 1;
+        object-fit: cover;
+        object-position: 50% 80%;
         @include below($tablet-sm) {
           margin-bottom: 30px;
+        object-position: center;
+
         }
       }
-      &.is-inview {
-        &::before {
-          transform: scaleY(0);
-        }
-      }
+      // &.is-inview {
+      //   &::before {
+      //     transform: scaleY(0);
+      //   }
+      // }
     }
     .about_bodycopy {
       margin-left: 140px;
@@ -244,5 +250,62 @@
         }
       }
     }
+  }
+  .is-inview{
+    position: relative;
+    @include above($tablet-lg) {
+      &::after {
+        content: "";
+        background-color: $color-white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: right;
+        width: 100%;
+        height: 100%;
+        transition: 1s all ease-out;
+      }
+    }
+    @include below($tablet-sm) {
+      margin-bottom: 50px;
+    }
+    @include below($mobile-lg) {
+      text-align: center;
+    }
+    .cardheader {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      @include below($mobile-lg) {
+        justify-content: center;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        margin-right: 17px;
+        @include below($tablet-sm) {
+          display: none;
+        }
+      }
+      h3 {
+        @include fontFace(60px, 0.9, 800, transparent);
+        background-image: linear-gradient(to right, #e74847, #f84c26);
+        -webkit-background-clip: text;
+        margin-bottom: 0;
+      }
+    }
+    h4 {
+      @include fontFace(24px, 1.1, 500, $color-cod-gray);
+      text-transform: capitalize;
+      margin-bottom: 5px;
+    }
+    p {
+      @include fontFace(14px, 1.1, 300, $color-abbey);
+    }
+    // &.is-inview {
+      &::after {
+        transform: scaleX(0);
+      }
+    // }
   }
 }

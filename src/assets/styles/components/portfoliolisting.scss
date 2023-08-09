@@ -1,0 +1,225 @@
+.portfolio_listing {
+  padding: 130px 0;
+  background-color: $color-white;
+  @include below($tablet-sm) {
+    padding: 60px 0;
+  }
+  .portfolio_nav_links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
+    @include below($tablet-lg) {
+      margin-bottom: 40px;
+    }
+    li {
+      margin-right: 32px;
+      &:last-child {
+        margin-right: 0;
+      }
+      // a {
+      margin-bottom: 30px;
+      cursor: pointer;
+      padding: 12px 22px;
+      border-radius: 50px;
+      display: block;
+      @include fontFace(20px, 1, 400, $color-black);
+      border: 1px solid $color-black;
+      transition: 0.3s all ease-in-out;
+      text-transform: capitalize;
+      @include below($tablet-sm) {
+        font-size: 16px;
+      }
+      &.active_cat {
+        background-color: $color-black;
+        color: $color-white;
+      }
+      &:hover {
+        @include above($tablet-lg) {
+          background-color: $color-black;
+          color: $color-white;
+        }
+      }
+      // }
+    }
+  }
+  .portfolio_listing_grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -40px;
+    @include below($tablet-lg) {
+      margin: 0 -20px;
+    }
+    @include below($tablet-sm) {
+      margin: 0 -15px;
+    }
+    & > div {
+      padding: 0 40px;
+      @include below($tablet-lg) {
+        padding: 0 20px;
+      }
+      @include below($tablet-sm) {
+        padding: 0 15px;
+      }
+    }
+    .portfolio_card_outer {
+      margin-bottom: 90px;
+      @include below($tablet-sm) {
+        margin-bottom: 60px;
+      }
+      &.hidden {
+        display: none !important;
+      }
+      .portfolio_card_inner {
+        display: block;
+        width: 100%;
+        cursor: none;
+        h3 {
+          @include fontFace(28px, 1.2, 600, $color-black);
+          text-transform: uppercase;
+          margin-bottom: 20px;
+          @include below($desktop-sm) {
+            font-size: 22px;
+          }
+          @include below($tablet-lg) {
+            font-size: 20px;
+          }
+          @include below($tablet-sm) {
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
+        }
+        figure {
+          width: 100%;
+          height: 25vw;
+          margin-bottom: 25px;
+          overflow: hidden;
+          @include below($tablet-sm) {
+            margin-bottom: 10px;
+          }
+          @include below($mobile-lg) {
+            height: auto;
+            aspect-ratio: 666/415;
+          }
+          img {
+            object-fit: cover;
+            transition: 0.9s all ease-out;
+            transform: scale(1.05);
+          }
+        }
+        .card_footer {
+          padding-top: 25px;
+          display: flex;
+          justify-content: space-between;
+          border-top: 1px solid $color-black;
+          @include below($tablet-sm) {
+            padding-top: 10px;
+          }
+          span {
+            @include fontFace(14px, 1, 500, $color-black);
+            text-transform: uppercase;
+          }
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            img {
+              transform: scale(1);
+              filter: brightness(0.8);
+            }
+          }
+        }
+      }
+      &:nth-of-type(1),
+      &:nth-of-type(4),
+      &:nth-of-type(5),
+      &:nth-of-type(8),
+      &:nth-of-type(9),
+      &:nth-of-type(12),
+      &:nth-of-type(13),
+      &:nth-of-type(16),
+      &:nth-of-type(17),
+      &:nth-of-type(20),
+      &:nth-of-type(21),
+      &:nth-of-type(24),
+      &:nth-of-type(25),
+      &:nth-of-type(28),
+      &:nth-of-type(29),
+      &:nth-of-type(32),
+      &:nth-of-type(33),
+      &:nth-of-type(36),
+      &:nth-of-type(37),
+      &:nth-of-type(40),
+      &:nth-of-type(41),
+      &:nth-of-type(44),
+      &:nth-of-type(45),
+      &:nth-of-type(48),
+      &:nth-of-type(49) {
+        width: 60%;
+        flex: 0 0 60%;
+        @include below($mobile-lg) {
+          flex: 0 0 100%;
+          width: 100%;
+        }
+        figure {
+          // aspect-ratio: 666.11/340;
+        }
+      }
+      &:nth-of-type(2),
+      &:nth-of-type(3),
+      &:nth-of-type(6),
+      &:nth-of-type(7),
+      &:nth-of-type(10),
+      &:nth-of-type(11),
+      &:nth-of-type(14),
+      &:nth-of-type(15),
+      &:nth-of-type(18),
+      &:nth-of-type(19),
+      &:nth-of-type(22),
+      &:nth-of-type(23),
+      &:nth-of-type(26),
+      &:nth-of-type(27),
+      &:nth-of-type(30),
+      &:nth-of-type(31),
+      &:nth-of-type(34),
+      &:nth-of-type(35),
+      &:nth-of-type(38),
+      &:nth-of-type(39),
+      &:nth-of-type(42),
+      &:nth-of-type(43),
+      &:nth-of-type(46),
+      &:nth-of-type(47),
+      &:nth-of-type(50) {
+        width: 40%;
+        flex: 0 0 40%;
+        @include below($mobile-lg) {
+          flex: 0 0 100%;
+          width: 100%;
+        }
+        figure {
+          // aspect-ratio: 510.55/418;
+        }
+      }
+      &:last-of-type:not(:nth-child(even)) {
+        width: 80%;
+        flex: 0 0 80%;
+        margin: 0 auto 90px;
+        @include below($tablet-sm) {
+          margin-bottom: 60px;
+        }
+        @include below($mobile-lg) {
+          flex: 0 0 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.portfolio_hover {
+  .mf-cursor::before {
+    color: transparent;
+  }
+  .mf-cursor-media {
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
+  }
+}

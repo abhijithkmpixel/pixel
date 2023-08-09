@@ -1,8 +1,97 @@
+import { TweenLite, gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
+  useEffect(() => {
+    let ctx;
+    if (typeof document != "undefined") {
+      let aboutTitle = gsap.timeline();
+      let aboutSubTitle = gsap.timeline();
+      let aboutFimage = gsap.timeline();
+      let aboutbody = gsap.timeline();
+      ctx = gsap.context(() => {
+        if (window.screen.width > 1200) {
+          aboutTitle.fromTo(
+            ".about_us_banner .title_primary",
+            {
+              y: 50,
+            },
+            {
+              y: -50,
+              scrollTrigger: {
+                trigger: ".about_us_banner .title_primary",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                scrub: true,
+              },
+            }
+          );
+          aboutSubTitle.fromTo(
+            ".about_us_banner .intro_block .row > div> h3",
+            {
+              y: 50,
+            },
+            {
+              y: -50,
+              scrollTrigger: {
+                trigger: ".about_us_banner .intro_block .row > div> h3",
+                start: "0% 100%",
+                end: "100% 0%",
+                scrub: true,
+              },
+            }
+          );
+
+          aboutFimage.to(".about_us_banner .intro_block .banner_image img", {
+            objectPosition: "50% 20%",
+            // duration: 1,
+            scrollTrigger: {
+              trigger: ".about_us_banner .intro_block .banner_image",
+              start: "0% 100%",
+              end: "100% 0%",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+          aboutbody.to(".about_us_banner .intro_block .about_bodycopy", {
+            x: -100,
+            scrollTrigger: {
+              trigger: ".about_us_banner .intro_block .about_bodycopy",
+              start: "0% 100%",
+              end: "0% 0%",
+              // scroller: window,
+              scrub: true,
+            },
+          });
+          TweenLite.to(
+            ".about_us_banner .achievements_row .achievement_cards",
+            {
+              className: "is-inview",
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger:
+                  ".about_us_banner .achievements_row .achievement_cards",
+                start: "0% 100%",
+                end: "0% 0%",
+                // scroller: window,
+                // scrub: true,
+              },
+            }
+          );
+        }
+      });
+    }
+
+    return () => {
+      if (ctx) {
+        ctx.revert();
+      }
+    };
+  }, []);
+
   return (
     <section className="about_us_banner" data-scroll-section>
       <div className="container-fluid position-relative">
@@ -77,7 +166,12 @@ const About = () => {
                     main services
                   </h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
-                    <Link href={"#"} className="cta_secondary" data-scroll style={{"--x":'10px',"--y":"10px"}}>
+                    <Link
+                      href={"#"}
+                      className="cta_secondary"
+                      data-scroll
+                      style={{ "--x": "10px", "--y": "10px" }}
+                    >
                       <span>learn more </span>
                       <svg
                         width="16"

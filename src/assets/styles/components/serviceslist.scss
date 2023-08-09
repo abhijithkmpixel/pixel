@@ -17,6 +17,8 @@
     position: relative;
     z-index: 1;
     margin-bottom: 100px;
+    // position: sticky;
+    // top: 50%;
     @include below($desktop-lg) {
       font-size: 90px;
     }
@@ -82,16 +84,16 @@
       //   bottom: 30px;
       // }
     }
-    transition: 0.7s all ease-in-out;
+    // transition: 0.7s all ease-in-out;
     @include above($tablet-lg) {
-      &[data-scroll] {
-        opacity: 0;
-        transform: translateY(200px);
-        &.is-inview {
-          opacity: 1;
-          transform: translateY(0px);
-        }
-      }
+      // &[data-scroll] {
+      //   opacity: 0;
+      //   transform: translateY(200px);
+      //   &.is-inview {
+      //     opacity: 1;
+      //     transform: translateY(0px);
+      //   }
+      // }
     }
   }
   .services_outer_wrap {
@@ -151,6 +153,7 @@
       width: 33.33%;
       flex: 0 0 33.33%;
       transition: 0.4s all ease-out;
+      display: block;
       @include below($tablet-lg) {
         width: 50%;
         flex: 0 0 50%;
@@ -192,7 +195,7 @@
           object-fit: cover;
           transition: 0.7s all ease-out;
           @include above($tablet-lg) {
-            height: 0%;
+            // height: 0%;
             transform: scale(1) translateZ(0);
           }
           @include below($tablet-sm) {

@@ -20,9 +20,10 @@
       align-items: center;
       height: 100vh;
       padding-left: 90px;
+      position: relative;
       @include below($tablet-lg) {
         padding-top: 220px;
-        padding-bottom: 100px;
+        padding-bottom: 200px;
         height: auto;
         padding-left: 10px;
         padding-right: 10px;
@@ -31,25 +32,28 @@
       }
       @include below($tablet-sm) {
         padding-top: 160px;
-        padding-bottom: 60px;
+        padding-bottom: 260px;
         height: auto;
         padding-left: 10px;
         padding-right: 10px;
       }
       @include below($mobile-lg) {
         padding-top: 120px;
-        padding-bottom: 60px;
+        padding-bottom: 360px;
         height: auto;
         padding-left: 10px;
         padding-right: 10px;
       }
       .content_wrap {
         display: block;
-        // height: 100%;
+        width: 100%;
         h1 {
-          @include fontFace(110px, 0.9, 800, $color-black);
+          @include fontFace(120px, 0.9, 800, $color-black);
           text-transform: uppercase;
           margin-bottom: 30px;
+          @include below($desktop-lg) {
+            font-size: 100px;
+          }
           @include below($tablet-lg) {
             text-align: center;
             width: 100%;
@@ -66,6 +70,10 @@
           @include below($mobile-lg) {
             font-size: 45px;
           }
+          .line {
+            display: block;
+            overflow: hidden;
+          }
           span {
             @include fontStyleInherit();
             background-image: linear-gradient(to right, #ee8263, #e74847);
@@ -75,8 +83,11 @@
           #textOut {
             display: block;
             position: relative;
-            min-height: 99px;
+            min-height: 110px;
             width: max-content;
+            @include below($desktop-sm) {
+              min-height: 83px;
+            }
             @include below($tablet-lg) {
               min-height: 80px;
               text-align: center;
@@ -96,7 +107,7 @@
               background-color: #e74847;
               animation: blink 1s linear infinite;
               transition: 0.3s all ease-in-out;
-              @include below($mobile-lg){
+              @include below($mobile-lg) {
                 width: 5px;
                 right: -10px;
               }
@@ -115,6 +126,80 @@
         .cta_primary {
           @include below($tablet-lg) {
             margin: auto;
+          }
+        }
+      }
+      .banner_ai_footer {
+        position: absolute;
+        left: 90px;
+        bottom: 0;
+        width: 70%;
+        @include below($desktop-lg) {
+          width: 85%;
+        }
+        @include below($mobile-lg) {
+          width: 100%;
+          left: 0px;
+        }
+        .ai_featured_img {
+          width: 220px;
+          @include below($desktop-lg) {
+            width: 180px;
+          }
+          @include below($mobile-lg) {
+            margin: auto;
+          }
+          img {
+          }
+        }
+        .ai_content_wrap {
+          position: absolute;
+          z-index: 5;
+          top: 50%;
+          left: 15%;
+          display: flex;
+          align-items: flex-start;
+          @include below($mobile-lg) {
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 100vw;
+            flex-flow: column;
+            width: max-content;
+            top: auto;
+            bottom: 90%;
+          }
+          h3 {
+            @include fontFace(24px, 1.2, 400, $color-cod-gray);
+            margin-bottom: 5px;
+            @include below($desktop-sm) {
+              font-size: 20px;
+            }
+            @include below($mobile-lg) {
+              text-align: center;
+            }
+          }
+          p {
+            @include fontFace(14px, 1.7, 400, $color-black);
+            margin-bottom: 0px;
+            @include below($mobile-lg) {
+              text-align: center;
+            }
+          }
+          & > div {
+            width: 50%;
+            flex: 0 0 50%;
+            padding: 0 22px;
+            max-width: max-content;
+            border-right: 1px solid #a0a0a0;
+            @include below($mobile-lg) {
+              width: 100%;
+              flex: 0 0 100%;
+              border: 0;
+              max-width: 100%;
+            }
+            & + div {
+              border-right: 0;
+            }
           }
         }
       }
