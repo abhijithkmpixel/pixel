@@ -1,8 +1,43 @@
+import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ServiceBanner = () => {
+  let ctx;
+
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      let titletext = document
+        .querySelector(".service_intro .content_inner h2")
+        .innerText.split(" ");
+      document.querySelector(".service_intro .content_inner h2").innerText = "";
+      titletext.map((element) => {
+        document.querySelector(".service_intro .content_inner h2").innerHTML +=
+          "<span>" + element + "</span> ";
+      });
+      ctx = gsap.context(() => {
+        let bannerimg = gsap.timeline();
+
+        bannerimg.to(".service_hero_banner > img", {
+          scale: 1,
+          scrollTrigger: {
+            trigger: ".service_hero_banner",
+            start: "0% 0%",
+            end: "100% 0%",
+            scrub: true,
+          },
+        });
+      });
+    }
+
+    return () => {
+      if (ctx) {
+        ctx.revert();
+      }
+    };
+  }, []);
+
   return (
     <section className="service_hero_banner">
       <Image

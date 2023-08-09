@@ -1,0 +1,172 @@
+.portfolio_details {
+  .row {
+    .img_wrap {
+      position: sticky;
+      width: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      height: 100vh;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        inset: 0;
+        transition: 0.6s all ease-in-out;
+        &:not(:first-child) {
+          opacity: 0;
+        }
+      }
+    }
+    .content_holder {
+      padding: 52px 90px 52px 58px;
+      // text-align: justify;
+      .btn-bck {
+        svg {
+          margin-right: 1rem;
+        }
+        span {
+          font-size: 1rem;
+        }
+        &:hover {
+          color: $color-cinnabar;
+        }
+      }
+      h1 {
+        margin-bottom: 55px;
+        margin-top: 95px;
+      }
+      .button_year_wrap {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+        align-items: center;
+        p {
+          @include fontFace(20px, 1, 400, $color-black);
+          margin: 0;
+        }
+      }
+      p {
+        @include fontFace(18px, 1.6, 400, $color-tundora);
+        margin-bottom: 1.5rem;
+      }
+      h3 {
+        @include fontFace(22px, 1.5, 700, $color-woodsmoke);
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        margin-top: 54px;
+      }
+      .project_technology {
+        position: relative;
+        h3 {
+          @include fontFace(18px, 1.6, 600, $color-tundora);
+          margin-bottom: 1.6rem;
+          position: relative;
+          margin-top: 0;
+          padding-bottom: 1.5rem;
+          &::after {
+            content: "";
+            height: 1px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #808080;
+          }
+        }
+        p {
+          @include fontFace(18px, 1.6, 400, $color-tundora);
+          position: relative;
+          padding-bottom: 1.5rem;
+          &::after {
+            content: "";
+            height: 1px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #808080;
+          }
+        }
+        ul {
+          //   padding-left: 18px;
+          //   list-style: disc;
+          padding-bottom: 44px;
+          color: #484848;
+          position: relative;
+          li {
+            position: relative;
+            display: flex;
+            align-items: center;
+            &::before {
+              content: "";
+              display: inline-block;
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+              background-color: $color-tundora;
+              margin-right: 10px;
+            }
+            @include fontFace(18px, 1.6, 400, $color-tundora);
+            text-transform: uppercase;
+          }
+          &::after {
+            content: "";
+            height: 1px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #808080;
+          }
+        }
+      }
+      .cta_secondary {
+        // margin-top: -12%;
+        float: right;
+        transform: translateY(-50%);
+        @include below($desktop-lg) {
+          //   margin-top: -14%;
+        }
+      }
+    }
+  }
+}
+
+.project_navigation_link {
+  padding: 110px 0 60px;
+  h5 {
+    @include fontFace(24px, 1.5, 400, $color-black);
+    text-transform: uppercase;
+    margin-bottom: 50px;
+  }
+  h3,
+  a {
+    display: flex;
+    @include fontFace(50px, 0.9, 500, $color-black);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s all ease-in-out;
+    svg {
+      margin-left: 30px;
+      width: 24px;
+      height: auto;
+      path,
+      line {
+        transition: 0.3s all ease-in-out;
+      }
+    }
+    &:hover {
+      @include above($tablet-lg) {
+        color: $color-cinnabar;
+        svg {
+          path,
+          line {
+            fill: $color-cinnabar;
+          }
+        }
+      }
+    }
+  }
+}

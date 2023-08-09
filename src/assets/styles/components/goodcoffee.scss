@@ -1,14 +1,25 @@
 .good_coffee {
   width: 100%;
-  background-color: $color-pomegranate;
   padding: 200px 0;
   position: relative;
   z-index: 0;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: $color-blaze-orange;
+    z-index: -5;
+    display: block;
+  }
   @include below($mobile-lg) {
     padding: 100px 0;
   }
   .good_coffee_wrapper {
-    max-width: 70%;
+    max-width: 60%;
+    @include below($desktop-lg) {
+      max-width: 74%;
+    }
     @include below($tablet-sm) {
       max-width: 90%;
     }

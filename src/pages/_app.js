@@ -16,31 +16,32 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 export default function App({ Component, pageProps }) {
-  let ctx;
   useLayoutEffect(() => {
     if (typeof window != "undefined") {
-      // document.querySelector(".hero_banner").style.paddingBottom =
-      //   scrollLength + "px";
-
       if (window.screen.width > 1200) {
-        const lenis = new Lenis({
-          lerp: 0.07,
-          duration: 2,
-        });
-
-        lenis.on("scroll", ScrollTrigger.update);
-        lenis.on("scroll", ScrollTrigger.refresh);
-        gsap.ticker.add((time) => {
+        const update = (time, deltaTime, frame) => {
           lenis.raf(time * 1000);
+        };
+
+        const resize = (e) => {
+          ScrollTrigger.refresh();
+        };
+
+        const lenis = new Lenis({
+          duration: 2,
+          lerp: 0.07,
         });
 
-        // function raf(time) {
-        //   lenis.raf(time);
-        //   requestAnimationFrame(raf);
-        // }
+        lenis.on(
+          "scroll",
+          ({ scroll, limit, velocity, direction, progress }) => {
+            // console.log({ scroll, limit, velocity, direction, progress })
+            ScrollTrigger.update();
+          }
+        );
 
-        // requestAnimationFrame(raf);
-        gsap.ticker.lagSmoothing(0);
+        gsap.ticker.add(update);
+
         document.querySelectorAll(".scroll_to").forEach((element) => {
           element.addEventListener("click", function (e) {
             e.preventDefault();
@@ -56,10 +57,6 @@ export default function App({ Component, pageProps }) {
         });
       }
 
-      // ctx = gsap.context(() => {
-      //   if (window.screen.width > 1200) {
-      //   }
-      // });
       if (window.screen.width > 1200) {
         MouseFollower.registerGSAP(gsap);
 
@@ -104,11 +101,7 @@ export default function App({ Component, pageProps }) {
         });
       }
     }
-    return () => {
-      // if (ctx) {
-      // ctx.revert();
-      // }
-    };
+    return () => {};
   }, []);
 
   return (

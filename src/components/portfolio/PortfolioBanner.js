@@ -10,24 +10,24 @@ const PortfolioBanner = () => {
       ctx = gsap.context(() => {
         let bannerImageTiml = gsap.timeline();
         let bannerTitle = gsap.timeline();
-        // bannerImageTiml.to(".portfolio_hero_banner img", {
-        //   objectPosition: "50% 0%",
-        //   scrollTrigger: {
-        //     trigger: ".portfolio_hero_banner",
-        //     start: "0% 0%",
-        //     end: "100% 0",
-        //     scrub: true,
-        //   },
-        // });
-        bannerTitle.to(".portfolio_hero_banner h1", {
-          scale: 1.5,
+        bannerImageTiml.to(".portfolio_hero_banner img", {
+          scale: `1`,
           scrollTrigger: {
             trigger: ".portfolio_hero_banner",
             start: "0% 0%",
-            end: "100% 0%",
+            end: "100% 0",
             scrub: true,
           },
         });
+        // bannerTitle.to(".portfolio_hero_banner h1", {
+        //   scale: 1.5,
+        //   scrollTrigger: {
+        //     trigger: ".portfolio_hero_banner",
+        //     start: "0% 0%",
+        //     end: "100% 0%",
+        //     scrub: true,
+        //   },
+        // });
       });
     }
     return () => {

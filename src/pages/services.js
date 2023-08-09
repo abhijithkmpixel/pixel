@@ -8,7 +8,14 @@ const ServicesPage = () => {
   return (
     <>
       <ServiceBanner />
-      <ServiceIntro />
+      <ServiceIntro
+        title="  Our services are aimed to realize our mission to make your
+                business better with visual solutions."
+        subtitle=" We work with individually adapted frameworks,but we prefer to
+                work according to"
+        img="/uploads/ser.jpg"
+        class=""
+      />
       <ServiceItemsList />
       <Empowered />
     </>

@@ -14,17 +14,18 @@ const Empowered = () => {
       let scrollablewidth = titlewidth - containerwidth;
       ctx = gsap.context(() => {
         let empoweredtitle = gsap.timeline();
-
-        empoweredtitle.to(".empowered_brand_block .empower_inner_wrap h2", {
-          x: -scrollablewidth,
-          scrollTrigger: {
-            trigger: ".empowered_brand_block",
-            start: "0% 0%",
-            end: `+=${scrollablewidth * 1.5}`,
-            scrub: true,
-            pin: ".empowered_brand_block",
-          },
-        });
+        if (window.screen.width > 1200) {
+          empoweredtitle.to(".empowered_brand_block .empower_inner_wrap h2", {
+            x: -scrollablewidth,
+            scrollTrigger: {
+              trigger: ".empowered_brand_block",
+              start: "0% 0%",
+              end: `+=${scrollablewidth * 1.5}`,
+              scrub: true,
+              pin: ".empowered_brand_block",
+            },
+          });
+        }
       });
     }
 

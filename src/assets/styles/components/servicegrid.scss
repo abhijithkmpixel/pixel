@@ -1,6 +1,6 @@
 .services_grid {
   width: 100%;
-  padding: 100px;
+  padding: 100px 0;
   background-color: $color-white;
   position: relative;
   .float_text {
@@ -12,33 +12,52 @@
     right: 0;
     transform: translateY(-50%) rotate(180deg);
     position: absolute;
+    z-index: -0;
+    @include below($desktop-lg) {
+      font-size: 130px;
+    }
   }
   .service_list_card {
     padding: 60px 0;
     cursor: none !important;
+    position: relative;
+    z-index: 5;
     & + .service_list_card {
       border-top: 1px solid #c1c1c0;
     }
     h3 {
-      @include fontFace(38px, 1.2, 700, $color-black);
+      @include fontFace(34px, 1.2, 700, $color-black);
       display: flex;
       text-transform: uppercase;
       align-items: flex-start;
       transition: 0.3s all ease-in-out;
+      max-width: calc(100% - 70px);
+      @include below($desktop-lg) {
+        font-size: 30px;
+      }
       span {
-        @include fontFace(95px, 0.9, 800, $color-black);
+        @include fontFace(94px, 0.9, 800, $color-black);
         display: block;
         margin-right: 20px;
         transition: 0.3s all ease-in-out;
+        @include below($desktop-lg) {
+          font-size: 80px;
+        }
       }
     }
     p {
       @include fontFace(22px, 1.8, 400, $color-black);
       transition: 0.3s all ease-in-out;
+      @include below($desktop-lg) {
+        font-size: 20px;
+      }
     }
     h4 {
       @include fontFace(22px, 1.6, 600, $color-black);
       transition: 0.3s all ease-in-out;
+      @include below($desktop-lg) {
+        font-size: 20px;
+      }
     }
     &:hover {
       @include above($tablet-lg) {

@@ -1,25 +1,34 @@
+import { gsap } from "gsap";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const GoodCoffee = () => {
-  useEffect(() => {
+  let ctx;
+
+  useLayoutEffect(() => {
     if (typeof document != "undefined") {
-      if (window.screen.width > 1200) {
-        document
-          .querySelector(".good_coffee")
-          .addEventListener("mouseover", function () {
-            document.querySelector("body").classList.add("good_coffee_enter");
-          });
-        document
-          .querySelector(".good_coffee")
-          .addEventListener("mouseleave", function () {
-            document
-              .querySelector("body")
-              .classList.remove("good_coffee_enter");
-          });
-      }
+      ctx = gsap.context(() => {
+        if (window.screen.width > 1200) {
+          document
+            .querySelector(".good_coffee")
+            .addEventListener("mouseover", function () {
+              document.querySelector("body").classList.add("good_coffee_enter");
+            });
+          document
+            .querySelector(".good_coffee")
+            .addEventListener("mouseleave", function () {
+              document
+                .querySelector("body")
+                .classList.remove("good_coffee_enter");
+            });
+        }
+      });
     }
-    return () => {};
+    return () => {
+      if (ctx) {
+        ctx.revert();
+      }
+    };
   }, []);
 
   return (
