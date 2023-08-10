@@ -3,6 +3,7 @@
   padding: 100px 0;
   background-color: $color-white;
   position: relative;
+  overflow: hidden;
   .float_text {
     @include fontFace(180px, 0.9, 800, #ececec);
     text-transform: uppercase;
