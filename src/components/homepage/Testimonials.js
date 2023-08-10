@@ -26,7 +26,7 @@ const Testimonials = () => {
     variableWidth: true,
     cssEase: "linear",
     slidesToScroll: -1,
-    rtl: false,
+    // rtl: false,
     pauseOnFocus: false,
     pauseOnHover: false,
     // useTransform: false,

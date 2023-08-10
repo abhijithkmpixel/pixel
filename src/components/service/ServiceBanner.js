@@ -3,32 +3,26 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const ServiceBanner = () => {
+const ServiceBanner = ({ title, img }) => {
   let ctx;
 
   useEffect(() => {
     if (typeof document != "undefined") {
-      let titletext = document
-        .querySelector(".service_intro .content_inner h2")
-        .innerText.split(" ");
-      document.querySelector(".service_intro .content_inner h2").innerText = "";
-      titletext.map((element) => {
-        document.querySelector(".service_intro .content_inner h2").innerHTML +=
-          "<span>" + element + "</span> ";
-      });
-      ctx = gsap.context(() => {
-        let bannerimg = gsap.timeline();
+      if (window.screen.width > 1200) {
+        ctx = gsap.context(() => {
+          let bannerimg = gsap.timeline();
 
-        bannerimg.to(".service_hero_banner > img", {
-          scale: 1,
-          scrollTrigger: {
-            trigger: ".service_hero_banner",
-            start: "0% 0%",
-            end: "100% 0%",
-            scrub: true,
-          },
+          bannerimg.to(".service_hero_banner > img", {
+            scale: 1,
+            scrollTrigger: {
+              trigger: ".service_hero_banner",
+              start: "0% 0%",
+              end: "100% 0%",
+              scrub: true,
+            },
+          });
         });
-      });
+      }
     }
 
     return () => {
@@ -40,15 +34,10 @@ const ServiceBanner = () => {
 
   return (
     <section className="service_hero_banner">
-      <Image
-        src="/uploads/service.jpg"
-        alt="asdsad"
-        width={1920}
-        height={1080}
-      />
+      <Image src={img} alt="asdsad" width={1920} height={1080} />
       <div className="container-fluid">
         <div className="hero_cnt_wrap">
-          <h1>Our services & digital solutions</h1>
+          <h1>{title}</h1>
           <Link href="#serviceintro" className="scroll_to">
             <svg
               width="17"

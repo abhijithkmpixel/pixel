@@ -4,7 +4,7 @@ import React from "react";
 
 const Header = () => {
   if (typeof document != "undefined") {
-    document.querySelectorAll(".desktop_menu a").forEach((element) => {
+    document.querySelectorAll(".desktop_menu .main_menu a").forEach((element) => {
       element.addEventListener("click", function (e) {
         document.querySelector("body").classList.remove("desktop_menu_open");
       });
@@ -44,7 +44,7 @@ const Header = () => {
     <>
       <header data-scroll-section>
         <div className="header_inner_wrap" data-scroll>
-          <Link href={"/"} className="brand_logo" data-scroll>
+          <Link href={"/"} className="brand_logo" >
             <Image
               src={"/logo/pixellogo.png"}
               width={160}

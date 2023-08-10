@@ -97,7 +97,7 @@ const Portfolio = ({data}) => {
           </div>
           <div className="col-md-6">
             <div className="content_holder">
-              <a className="btn-bck " href="#">
+              <Link className="btn-bck " href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -112,7 +112,7 @@ const Portfolio = ({data}) => {
                   />
                 </svg>
                 <span>Back to the List</span>
-              </a>
+              </Link>
               <h1 className="title_primary">
                 Tribal <br /> Experience
               </h1>
@@ -191,12 +191,12 @@ const Portfolio = ({data}) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  console.log(context.req.headers.referer);
-  return {
-    props: {
-      data: context.req.headers.referer,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   console.log(context.req.headers.referer);
+//   return {
+//     props: {
+//       data: context.req.headers.referer,
+//     },
+//   };
+// }
 export default Portfolio;

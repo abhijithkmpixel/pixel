@@ -7,7 +7,10 @@ import React from "react";
 const ServicesPage = () => {
   return (
     <>
-      <ServiceBanner />
+      <ServiceBanner
+        title="Our services & digital solutions"
+        img="/uploads/service.jpg"
+      />
       <ServiceIntro
         title="  Our services are aimed to realize our mission to make your
                 business better with visual solutions."
@@ -17,7 +20,7 @@ const ServicesPage = () => {
         class=""
       />
       <ServiceItemsList />
-      <Empowered />
+      {/* <Empowered /> */}
     </>
   );
 };
