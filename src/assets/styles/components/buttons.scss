@@ -33,6 +33,17 @@
     border-color: $color-gallery;
     color: $color-gallery;
   }
+  &.cta_drk {
+    background-color: $color-black;
+    color: $color-white;
+    &::after {
+      background-color: $color-pomegranate2;
+      border-color: $color-pomegranate2;
+    }
+    &:hover {
+      border-color: $color-pomegranate2;
+    }
+  }
   &::after {
     transition: 0.3s transform ease-in-out;
     content: "";
@@ -135,7 +146,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: 0.3s all ease-in-out;
+  // transition: 0.3s all ease-in-out;
   position: relative;
   overflow: hidden;
   @include below($mobile-lg) {
@@ -177,7 +188,7 @@
     color: $color-gallery;
     @include above($tablet-lg) {
       color: $color-gallery;
-      background-color: $color-pomegranate;
+      // background-color: $color-pomegranate;
       &::before {
         transform: translate(-50%, -50%) scale(3);
       }

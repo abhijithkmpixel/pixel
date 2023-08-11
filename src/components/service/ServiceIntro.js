@@ -32,8 +32,8 @@ const ServiceIntro = ({ title, subtitle, img, classes }) => {
             stagger: 0.1,
             scrollTrigger: {
               trigger: ".service_intro h2",
-              start: "0% 60%",
-              end: "100% 50%",
+              start: "0% 90%",
+              end: "100% 75%",
               scrub: true,
             },
           });

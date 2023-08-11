@@ -14,10 +14,14 @@ const Banner = () => {
       );
       quickLinks.forEach((elm, index) => {
         elm.addEventListener("mouseover", function () {
+          document.body.classList.add("quick__links--enter");
           quickLinks.forEach((elm, index) => {
             elm.classList.remove("mouseOver");
           });
           elm.classList.add("mouseOver");
+        });
+        elm.addEventListener("mouseleave", function () {
+          document.body.classList.remove("quick__links--enter");
         });
       });
 

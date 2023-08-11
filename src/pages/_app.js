@@ -12,6 +12,7 @@ import Script from "next/script";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import Lenis from "@studio-freight/lenis";
 import Footer from "@/components/Footer";
+import Router from "next/router";
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
@@ -36,25 +37,30 @@ export default function App({ Component, pageProps }) {
           "scroll",
           ({ scroll, limit, velocity, direction, progress }) => {
             // console.log({ scroll, limit, velocity, direction, progress })
+            // ScrollTrigger.refresh();
             ScrollTrigger.update();
           }
         );
+        // const thumb = document.getElementById("thumb");
+        // const thumbHeight = thumb.getBoundingClientRect().height;
+
+        // lenis.on(
+        //   "scroll",
+        //   ({ scroll, limit, velocity, direction, progress }) => {
+        //     thumb.style.transform = `translate3d(0,${
+        //       progress * (window.innerHeight - thumbHeight)
+        //     }px,0)`;
+        //   }
+        // );
+      
 
         gsap.ticker.add(update);
-
-        document.querySelectorAll(".scroll_to").forEach((element) => {
-          element.addEventListener("click", function (e) {
-            e.preventDefault();
-            let target = document.getElementById(
-              `${e.target.getAttribute("href").split("#")[1]}`
-            );
-            lenis.scrollTo(target, {
-              duration: 2,
-              // easing:(t) => Math.min(1, 1.001 - Math.pow(2, -0 * t))
-            });
-            console.log(e.target.getAttribute("href").split("#")[1]);
-          });
+        Router.events.on("routeChangeStart", () => {});
+        Router.events.on("routeChangeComplete", () => {
+          ScrollTrigger.refresh();
+          ScrollTrigger.update();
         });
+        Router.events.on("routeChangeError", () => {});
       }
 
       if (window.screen.width > 1200) {
@@ -111,6 +117,11 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Header />
       {/* <main data-scroll-containerr className="smoothScroller"> */}
+      {/* <div className="scrollbar">
+        <div className="inner">
+          <div className="thumb" id="thumb"></div>
+        </div>
+      </div> */}
       <Component {...pageProps} />
       {/* </main> */}
       <Footer />

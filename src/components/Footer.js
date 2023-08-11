@@ -56,7 +56,7 @@ const Footer = () => {
                       <li data-scroll>
                         <Link href={"#"}>
                           <Image
-                            src={"/uploads/f.svg"}
+                            src={"/uploads/facebook.png"}
                             alt="img"
                             width={30}
                             height={30}
@@ -67,7 +67,7 @@ const Footer = () => {
                       <li data-scroll>
                         <Link href={"#"}>
                           <Image
-                            src={"/uploads/insta.svg"}
+                            src={"/uploads/instagram.png"}
                             alt="img"
                             width={30}
                             height={30}
@@ -78,7 +78,7 @@ const Footer = () => {
                       <li data-scroll>
                         <Link href={""}>
                           <Image
-                            src={"/uploads/linked.svg"}
+                            src={"/uploads/linkedin.png"}
                             alt="img"
                             width={30}
                             height={30}

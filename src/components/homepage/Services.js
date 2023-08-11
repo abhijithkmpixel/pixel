@@ -351,34 +351,34 @@ const Services = () => {
         <div className="row tech_logo" data-scroll>
           <div className="col-12 col-md-6 col-xl-3">
             <Image
-              src={"/uploads/pro.svg"}
+              src={"/uploads/progress-white.png"}
               alt="image"
-              width={100}
-              height={55}
+              width={500}
+              height={400}
             />
           </div>
           <div className="col-12 col-md-6 col-xl-3">
             <Image
-              src={"/uploads/kent.svg"}
+              src={"/uploads/kentico-white.png"}
               alt="image"
-              width={100}
-              height={55}
+              width={500}
+              height={400}
             />
           </div>
           <div className="col-12 col-md-6 col-xl-3">
             <Image
-              src={"/uploads/str.svg"}
+              src={"/uploads/strapi-white.png"}
               alt="image"
-              width={100}
-              height={55}
+              width={500}
+              height={400}
             />
           </div>
           <div className="col-12 col-md-6 col-xl-3">
             <Image
-              src={"/uploads/um.svg"}
+              src={"/uploads/umbraco-white.png"}
               alt="image"
-              width={100}
-              height={55}
+              width={500}
+              height={400}
             />
           </div>
         </div>

@@ -7,7 +7,7 @@ header {
   // padding: 50px 90px;
   transition: 0.5s all ease-in-out;
   z-index: 100;
-  overflow: hidden;
+  // overflow: hidden;
   height: max-content !important;
   &::before {
     content: "";
@@ -349,7 +349,7 @@ header {
     .menu_inner_wrap {
       .main_menu > li .link_wrap {
         transform: translateY(0);
-        transition-delay: 0.8s;
+        transition-delay: 0.1s;
         transform-origin: top;
       }
     }

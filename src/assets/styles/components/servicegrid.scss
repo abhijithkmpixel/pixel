@@ -3,13 +3,14 @@
   padding: 100px 0;
   background-color: $color-white;
   position: relative;
+  overflow: hidden;
   .float_text {
-    @include fontFace(180px, 0.9, 800, #ececec);
+    @include fontFace(180px, 0.7, 800, #ececec);
     text-transform: uppercase;
     writing-mode: vertical-lr;
     display: block;
     top: 50%;
-    right: 0;
+    right: 0px;
     transform: translateY(-50%) rotate(180deg);
     position: absolute;
     z-index: -0;
@@ -48,6 +49,8 @@
     p {
       @include fontFace(22px, 1.8, 400, $color-black);
       transition: 0.3s all ease-in-out;
+      max-width: calc(100% - 40px);
+
       @include below($desktop-lg) {
         font-size: 20px;
       }
@@ -55,6 +58,7 @@
     h4 {
       @include fontFace(22px, 1.6, 600, $color-black);
       transition: 0.3s all ease-in-out;
+      max-width: calc(100% - 40px);
       @include below($desktop-lg) {
         font-size: 20px;
       }

@@ -13,6 +13,46 @@ const About = () => {
       let aboutbody = gsap.timeline();
       ctx = gsap.context(() => {
         if (window.screen.width > 1200) {
+          // var mArea = document.querySelector(".cta_secondary");
+
+          // // 1. Set the function and variables
+          // function parallaxIt(e, target, movement = 1) {
+          //   var boundingRect = mArea.getBoundingClientRect();
+          //   var relX = e.pageX - boundingRect.left;
+          //   var relY = e.pageY - boundingRect.top;
+          //   var scrollTop =
+          //     window.pageYOffset || document.documentElement.scrollTop;
+          //   mArea.style.transform = `translate(${
+          //     (relX - boundingRect.width / 2) * movement
+          //   },${relY - boundingRect.height / 2 - scrollTop})`;
+          //   // gsap.to(target, {
+          //   //   x: (relX - boundingRect.width / 2) * movement,
+          //   //   y: (relY - boundingRect.height / 2 - scrollTop) * movement,
+          //   //   ease: "power1",
+          //   //   duration: 0.6,
+          //   // });
+          // }
+
+          // // 2. Call the function
+          // function callParallax(e) {
+          //   parallaxIt(e, "#magnetic-content");
+          // }
+
+          // mArea.addEventListener("mousemove", function (e) {
+          //   callParallax(e);
+          // });
+
+          // mArea.addEventListener("mouseleave", function (e) {
+          //   mArea.style.transfrom = `translate(0,0)`;
+
+          //   // gsap.to("#magnetic-content", {
+          //   //   scale: 1,
+          //   //   x: 0,
+          //   //   y: 0,
+          //   //   ease: "power3",
+          //   //   duration: 0.6,
+          //   // });
+          // });
           aboutTitle.fromTo(
             ".about_us_banner .title_primary",
             {
@@ -70,14 +110,15 @@ const About = () => {
             ".about_us_banner .achievements_row .achievement_cards",
             {
               className: "is-inview",
-              stagger: 0.1,
+              stagger: 0.4,
+              duration: 3,
               scrollTrigger: {
                 trigger:
                   ".about_us_banner .achievements_row .achievement_cards",
-                start: "0% 100%",
-                end: "0% 0%",
+                start: "50% 100%",
+                // end: "0% 0%",
                 // scroller: window,
-                // scrub: true,
+                scrub: true,
               },
             }
           );
@@ -171,6 +212,7 @@ const About = () => {
                       className="cta_secondary"
                       data-scroll
                       style={{ "--x": "10px", "--y": "10px" }}
+                      id="magnetic-area"
                     >
                       <span>learn more </span>
                       <svg

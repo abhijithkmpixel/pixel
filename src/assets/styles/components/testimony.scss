@@ -203,7 +203,7 @@
     height: 100%;
   }
   .clients_slider {
-    height: 182px;
+    height: 142px;
     & + .clients_slider {
       margin-top: 30px;
       // .slick-slide {
@@ -219,14 +219,14 @@
     display: flex !important;
     justify-content: center;
     align-items: center;
-    padding: 55px 30px;
+    padding: 35px 30px;
     margin: 0 10px;
     max-width: calc(100% - 30px);
     @media (min-width: 1201px) {
-      width: 23vw !important;
+      // width: 23vw !important;
     }
     @media (max-width: 1200px) and (min-width: 990px) {
-      width: 33vw !important;
+      // width: 33vw !important;
     }
     @include below($tablet-sm) {
       padding: 30px;
@@ -239,7 +239,7 @@
     }
     img {
       width: 230px;
-      height: 72px;
+      height: 60px;
       object-fit: contain;
       max-width: 100%;
       @include below($mobile-lg) {

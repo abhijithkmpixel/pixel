@@ -164,9 +164,9 @@ address {
   z-index: 99;
 }
 .mf-cursor-media {
-  width: 80px;
-  height: 80px;
-  margin: -40px 0 0 -40px;
+  width: 300px;
+  height: 300px;
+  margin: -150px 0 0 -150px;
   mix-blend-mode: difference;
 }
 img {
@@ -181,7 +181,7 @@ body {
   overflow-x: hidden;
   width: 100vw;
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 0;
   }
   &::-webkit-scrollbar-track {
     width: 8px;
@@ -234,4 +234,35 @@ html.lenis {
 }
 .mf-cursor.-text::before {
   transform: scale(2.8);
+}
+
+.scrollbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10;
+  padding: 24px 0;
+}
+
+.scrollbar .inner {
+  height: 100%;
+  position: relative;
+}
+
+.scrollbar .thumb {
+  min-height: 48px;
+  width: 8px;
+  background-color: $color-cinnabar;
+  position: absolute;
+  transition: 0.4s opacity ease-in-out;
+  right: 5px;
+  border-radius: 4px;
+  // border: 1px solid black;
+  cursor: grab;
+}
+.quick__links--enter {
+  .mf-cursor::before {
+    opacity: 0;
+  }
 }
