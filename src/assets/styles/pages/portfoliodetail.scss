@@ -144,6 +144,7 @@
   h3,
   a {
     display: flex;
+    width: max-content;
     @include fontFace(50px, 0.9, 500, $color-black);
     text-transform: uppercase;
     text-decoration: none;

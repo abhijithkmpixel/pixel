@@ -10,7 +10,9 @@ const ServiceItemsList = () => {
         let servicetitle = gsap.timeline();
         if (window.screen.width > 1200) {
           document
-            .querySelectorAll(".services_grid .service_list_card .service_list_card__title")
+            .querySelectorAll(
+              ".services_grid .service_list_card .service_list_card__title"
+            )
             .forEach((elm) => {
               servicetitle.fromTo(
                 elm,
@@ -42,7 +44,7 @@ const ServiceItemsList = () => {
       <span className="float_text">services</span>
       <div className="container-fluid">
         <Link
-          href={"#"}
+          href={"/service/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -67,7 +69,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"#"}
+          href={"/service/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -92,7 +94,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"#"}
+          href={"/service/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -117,7 +119,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"#"}
+          href={"/service/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >

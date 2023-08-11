@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import GoodCoffee from "@/components/portfolio/GoodCoffee";
 import HeloToConect from "@/components/service/HeloToConect";
 import ServiceDetailBanner from "@/components/service/ServiceDetailBanner";
@@ -8,6 +10,7 @@ import React from "react";
 const ServiceDetail = () => {
   return (
     <>
+      <Header />
       <ServiceDetailBanner />
       <ServiceIntro
         title="  Our services are aimed to realize our mission to make your
@@ -19,6 +22,7 @@ const ServiceDetail = () => {
       <Trends />
       <HeloToConect />
       <GoodCoffee />
+      <Footer />
     </>
   );
 };

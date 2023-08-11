@@ -1,22 +1,22 @@
 import { gsap } from "gsap";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const Empowered = () => {
   let ctx;
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof document != "undefined") {
-      if (window.screen.width > 1200) {
-        let containerwidth = document.querySelector(
-          ".empowered_brand_block .empower_inner_wrap"
-        ).offsetWidth;
-        let titlewidth = document.querySelector(
-          ".empowered_brand_block .empower_inner_wrap h2"
-        ).offsetWidth;
-        let scrollablewidth = titlewidth - containerwidth;
+      if (window?.screen?.width > 1200) {
         ctx = gsap.context(() => {
           let empoweredtitle = gsap.timeline();
-          if (window.screen.width > 1200) {
-            empoweredtitle.to(".empowered_brand_block .empower_inner_wrap h2", {
+          if (document.querySelector(".empowered_brand_block")) {
+            let containerwidth = document.querySelector(
+              ".empowered_brand_block .empower_inner_wrap"
+            ).offsetWidth;
+            let titlewidth = document.querySelector(
+              ".empowered_brand_block  h2"
+            ).offsetWidth;
+            let scrollablewidth = titlewidth - containerwidth;
+            empoweredtitle.to(".empowered_brand_block h2", {
               x: -scrollablewidth,
               scrollTrigger: {
                 trigger: ".empowered_brand_block",
@@ -32,9 +32,9 @@ const Empowered = () => {
     }
 
     return () => {
-      if (ctx) {
-        ctx.revert();
-      }
+      // if (ctx) {
+      ctx.revert();
+      // }
     };
   }, []);
 
