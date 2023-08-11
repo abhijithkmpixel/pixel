@@ -1,10 +1,38 @@
+import { gsap } from "gsap";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ContactForm = () => {
+  let ctx;
+
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      if (window.screen.width > 1200) {
+        ctx = gsap.context(() => {
+          let sideImage = gsap.timeline();
+
+          sideImage.to(".image_wrap > img", {
+            objectPosition: "50% 0%",
+            scrollTrigger: {
+              trigger: ".image_wrap",
+              start: "0% 0%",
+              end: "100% 0%",
+              scrub: true,
+            },
+          });
+        });
+      }
+    }
+
+    return () => {
+      if (ctx) {
+        ctx.revert();
+      }
+    };
+  }, []);
   return (
     <>
-      <section className="contactform">
+      <section className="contactform" id="contactform">
         <div className="category_wrap">
           <h3>What would you like us to craft for you?</h3>
           <p>
@@ -74,56 +102,6 @@ const ContactForm = () => {
               <p>We work with individually adapted frameworks,but we prefer</p>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="office_location container-fluid">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-6">
-              <div className="location_card">
-                <h5>PIXELFLAMES FZE</h5>
-                <p>
-                  Level 21, Al Habtoor Business <br />
-                  Towers, Marina Dubai, UAE <br />
-                  <span>+971 4 453 2628</span>
-                </p>
-                <picture>
-                  <Image
-                    src="/uploads/l1.jpg"
-                    alt=""
-                    width={1080}
-                    height={1080}
-                  />
-                </picture>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="location_card">
-                <h5>PIXELFLAMES TECHNOLOGIES</h5>
-                <p>
-                  2/2525-B13 3rd floor, Olive Arcade, <br /> Malaparamba,
-                  Thondayadu bypass road, <br />
-                  <span>+91 8075 360 472</span>
-                </p>
-                <picture>
-                  <Image
-                    src="/uploads/l2.jpg"
-                    alt=""
-                    width={1080}
-                    height={1080}
-                  />
-                </picture>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="getin_touch">
-        <div className="container-fluid">
-          <h2>
-            NEW BUSINESS & ENQUIRIES <br />
-            Get in touch with <a href="">hello@pixelflames.com</a>
-          </h2>
         </div>
       </section>
     </>

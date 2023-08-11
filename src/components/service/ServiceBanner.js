@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const ServiceBanner = ({ title, img }) => {
+const ServiceBanner = ({ title, img, id }) => {
   let ctx;
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const ServiceBanner = ({ title, img }) => {
             scrollTrigger: {
               trigger: ".service_hero_banner",
               start: "0% 0%",
-              end: "100% 0%",
+              end: "100% -100px",
               scrub: true,
             },
           });
@@ -38,7 +38,7 @@ const ServiceBanner = ({ title, img }) => {
       <div className="container-fluid">
         <div className="hero_cnt_wrap">
           <h1>{title}</h1>
-          <Link href="#serviceintro" className="scroll_to">
+          <Link href={"#" + id} className="scroll_to">
             <svg
               width="17"
               height="29"

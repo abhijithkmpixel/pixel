@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const Footer = () => {
   const router = useRouter();
@@ -38,7 +38,9 @@ const Footer = () => {
     }
 
     return () => {
-      ctx.revert();
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, []);
 

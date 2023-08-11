@@ -209,7 +209,7 @@ const Banner = () => {
           <div className="quick_links_wrap" data-scroll>
             <div className="hero_quick_links" data-scroll>
               <Link
-                href={"#"}
+                href={"/cases/web"}
                 className="quick_link"
                 data-cursor-img="/icons/quicklink.svg"
               >
@@ -229,7 +229,7 @@ const Banner = () => {
                 </div>
               </Link>
               <Link
-                href={"#"}
+                href={"/cases/web"}
                 className="quick_link"
                 data-cursor-img="/icons/quicklink.svg"
               >
@@ -249,7 +249,7 @@ const Banner = () => {
                 </div>
               </Link>
               <Link
-                href={"#"}
+                href={"/cases/web"}
                 className="quick_link"
                 data-cursor-img="/icons/quicklink.svg"
               >
@@ -269,7 +269,7 @@ const Banner = () => {
                 </div>
               </Link>
               <Link
-                href={"#"}
+                href={"/cases/web"}
                 className="quick_link"
                 data-cursor-img="/icons/quicklink.svg"
               >
@@ -289,7 +289,7 @@ const Banner = () => {
                 </div>
               </Link>
               <Link
-                href={"#"}
+                href={"/cases/web"}
                 className="quick_link"
                 data-cursor-img="/icons/quicklink.svg"
               >

@@ -7,6 +7,7 @@ const HeadComponent = ({ data }) => {
       <Head>
         <title>{data?.seo_title}</title>
         <meta name="description" content={data?.seo_description}></meta>
+        <meta name="keywords" content={data?.seo_description}></meta>
         <meta
           name="image"
           content={data?.seo_image?.data?.attributes?.url}

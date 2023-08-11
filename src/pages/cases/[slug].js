@@ -1,11 +1,12 @@
+import Header from "@/components/Header";
 import NextProject from "@/components/portfolio/NextProject";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
-const Portfolio = ({data}) => {
-  const { asPath, push, pathname } = useRouter()
+const Portfolio = ({ data }) => {
+  const { asPath, push, pathname } = useRouter();
   useEffect(() => {
     if (typeof document != "undefined") {
       console.log(asPath, pathname);
@@ -65,6 +66,7 @@ const Portfolio = ({data}) => {
 
   return (
     <>
+      <Header />
       <section className="portfolio_details">
         <div className="row">
           <div className="col-md-6">

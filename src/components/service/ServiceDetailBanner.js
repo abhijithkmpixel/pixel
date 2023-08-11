@@ -16,7 +16,7 @@ const ServiceDetailBanner = () => {
           scrollTrigger: {
             trigger: ".service__detail__banner",
             start: "0% 0%",
-            end: "100% 0%",
+            end: "100% -100px",
             scrub: true,
           },
         });
@@ -34,7 +34,7 @@ const ServiceDetailBanner = () => {
       <Image src={"/uploads/servd.jpg"} alt="asd" width={1920} height={500} />
       <div className="container-fluid">
         <div className="service__detail__banner__innerwrap">
-          <Link href={"#"} className="go__back">
+          <Link href={"/services"} className="go__back">
             Back to services{" "}
             <svg
               width="90"

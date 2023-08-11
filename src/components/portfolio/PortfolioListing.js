@@ -106,7 +106,7 @@ const PortfolioListing = () => {
                   data-case-category={p?.category}
                 >
                   <Link
-                    href="#"
+                    href="/cases/portfolio"
                     className="portfolio_card_inner"
                     data-cursor-img="/icons/arr.svg"
                   >

@@ -13,13 +13,22 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import Lenis from "@studio-freight/lenis";
 import Footer from "@/components/Footer";
 import Router from "next/router";
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin);
 
 export default function App({ Component, pageProps }) {
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(TextPlugin);
     if (typeof window != "undefined") {
       if (window.screen.width > 1200) {
+        MouseFollower.registerGSAP(gsap);
+
+        const cursor = new MouseFollower({
+          container: "#__next",
+          skewing: 0,
+          skewingText: 0,
+          skewingIcon: 0,
+          skewingMedia: 0,
+        });
         const update = (time, deltaTime, frame) => {
           lenis.raf(time * 1000);
         };
@@ -52,44 +61,54 @@ export default function App({ Component, pageProps }) {
         //     }px,0)`;
         //   }
         // );
-      
 
         gsap.ticker.add(update);
+        scrollToTarget();
         Router.events.on("routeChangeStart", () => {});
         Router.events.on("routeChangeComplete", () => {
           ScrollTrigger.refresh();
           ScrollTrigger.update();
+          lenis.scrollTo("top");
+          cursor.removeText();
+          cursor.removeImg();
+          cursor.removeIcon();
+          scrollToTarget();
         });
         Router.events.on("routeChangeError", () => {});
+        function scrollToTarget() {
+          document.querySelectorAll(".scroll_to").forEach((element) => {
+            element.addEventListener("click", function (e) {
+              e.preventDefault();
+              let target = document.getElementById(
+                `${e.target.getAttribute("href").split("#")[1]}`
+              );
+              lenis.scrollTo(target, {
+                duration: 1.5,
+                // easing: (t) => 1 - Math.cos((t * Math.PI) / 2),
+                easing: (t) => 1 - Math.pow(1 - t, 4),
+              });
+            });
+          });
+          document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
+            elm.addEventListener("mouseenter", function (e) {
+              var rect = e.target.getBoundingClientRect();
+              var x = e.clientX - rect.left; //x position within the element.
+              var y = e.clientY - rect.top; //y position within the element.
+              elm.style.setProperty("--x", x + "px");
+              elm.style.setProperty("--y", y + "px");
+            });
+            elm.addEventListener("mouseleave", function (e) {
+              var rect = e.target.getBoundingClientRect();
+              var x = e.clientX - rect.left; //x position within the element.
+              var y = e.clientY - rect.top; //y position within the element.
+              elm.style.setProperty("--x", x + "px");
+              elm.style.setProperty("--y", y + "px");
+            });
+          });
+        }
       }
 
       if (window.screen.width > 1200) {
-        MouseFollower.registerGSAP(gsap);
-
-        document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
-          elm.addEventListener("mouseenter", function (e) {
-            var rect = e.target.getBoundingClientRect();
-            var x = e.clientX - rect.left; //x position within the element.
-            var y = e.clientY - rect.top; //y position within the element.
-            elm.style.setProperty("--x", x + "px");
-            elm.style.setProperty("--y", y + "px");
-          });
-          elm.addEventListener("mouseleave", function (e) {
-            var rect = e.target.getBoundingClientRect();
-            var x = e.clientX - rect.left; //x position within the element.
-            var y = e.clientY - rect.top; //y position within the element.
-            elm.style.setProperty("--x", x + "px");
-            elm.style.setProperty("--y", y + "px");
-          });
-        });
-
-        const cursor = new MouseFollower({
-          container: "#__next",
-          skewing: 0,
-          skewingText: 0,
-          skewingIcon: 0,
-          skewingMedia: 0,
-        });
         window.addEventListener("scroll", function () {
           if (window.scrollY > 20) {
             document.querySelector("body").classList.add("desktop_sticky");
@@ -115,7 +134,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <link rel="favicon" href="/favicon.ico" />
       </Head>
-      <Header />
+      {/* <Header /> */}
       {/* <main data-scroll-containerr className="smoothScroller"> */}
       {/* <div className="scrollbar">
         <div className="inner">
@@ -124,7 +143,7 @@ export default function App({ Component, pageProps }) {
       </div> */}
       <Component {...pageProps} />
       {/* </main> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

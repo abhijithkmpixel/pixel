@@ -164,10 +164,15 @@ address {
   z-index: 99;
 }
 .mf-cursor-media {
-  width: 300px;
-  height: 300px;
-  margin: -150px 0 0 -150px;
   mix-blend-mode: difference;
+  width: 250px;
+  height: 250px;
+  margin: -125px 0 0 -125px;
+  @include below($desktop-lg) {
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+  }
 }
 img {
   width: 100%;
@@ -178,6 +183,7 @@ body {
   // @media (min-width: $tablet-lg) {
   //   height: 100vh;
   // }
+  // cursor: url("../../icons/hand-index-fill.svg") 10 15, auto !important;
   overflow-x: hidden;
   width: 100vw;
   &::-webkit-scrollbar {

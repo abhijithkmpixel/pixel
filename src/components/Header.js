@@ -1,50 +1,67 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Header = () => {
-  if (typeof document != "undefined") {
-    document.querySelectorAll(".desktop_menu .main_menu a").forEach((element) => {
-      element.addEventListener("click", function (e) {
-        document.querySelector("body").classList.remove("desktop_menu_open");
-      });
-    });
-    let hamburgerMenuLinks = document.querySelectorAll(
-      ".main_menu .link_wrap > a"
-    );
-    hamburgerMenuLinks.forEach((elm, index) => {
-      elm.addEventListener("mouseover", function () {
-        hamburgerMenuLinks.forEach((elm, index) => {
-          elm.closest(".link_wrap").classList.remove("mouseOver");
+  useEffect(() => {
+    if (typeof document != "undefined") {
+      document
+        .querySelectorAll(".desktop_menu .main_menu li a")
+        .forEach((element) => {
+          element.addEventListener("click", function (e) {
+            document
+              .querySelector("body")
+              .classList.remove("desktop_menu_open");
+            document.querySelector(".link_wrap").classList.remove("mouseOver");
+          });
         });
-        // elm.classList.add("mouseOver");
-        elm.closest(".link_wrap").classList.add("mouseOver");
-      });
-    });
-    document
-      .querySelector(".main_menu")
-      .addEventListener("mouseleave", function () {
-        hamburgerMenuLinks.forEach((elm, index) => {
-          elm.closest(".link_wrap").classList.remove("mouseOver");
+      let hamburgerMenuLinks = document.querySelectorAll(
+        ".main_menu .link_wrap > a"
+      );
+      hamburgerMenuLinks.forEach((elm, index) => {
+        elm.addEventListener("mouseover", function () {
+          hamburgerMenuLinks.forEach((elm, index) => {
+            elm.closest(".link_wrap").classList.remove("mouseOver");
+          });
+          // elm.classList.add("mouseOver");
+          elm.closest(".link_wrap").classList.add("mouseOver");
         });
       });
-    document
-      .querySelector(".menu_icon_wrap")
-      .addEventListener("click", function () {
-        document.querySelector("body").classList.add("desktop_menu_open");
-      });
-    document
-      .querySelector(".desktop_menu .close_menu")
-      .addEventListener("click", function () {
-        document.querySelector("body").classList.remove("desktop_menu_open");
-      });
-  }
+      if (document.querySelector(".main_menu .mouseOver")) {
+        document
+          .querySelector(".main_menu")
+          .addEventListener("mouseleave", function () {
+            hamburgerMenuLinks.forEach((elm, index) => {
+              elm.closest(".link_wrap").classList.remove("mouseOver");
+            });
+          });
+      }
+      if (document.querySelector(".menu_icon_wrap")) {
+        document
+          .querySelector(".menu_icon_wrap")
+          .addEventListener("click", function () {
+            document.querySelector("body").classList.add("desktop_menu_open");
+          });
+      }
+      if (document.querySelector(".desktop_menu")) {
+        document
+          .querySelector(".desktop_menu .close_menu")
+          .addEventListener("click", function () {
+            document
+              .querySelector("body")
+              .classList.remove("desktop_menu_open");
+          });
+      }
+    }
+
+    return () => {};
+  }, []);
 
   return (
     <>
       <header data-scroll-section>
         <div className="header_inner_wrap" data-scroll>
-          <Link href={"/"} className="brand_logo" >
+          <Link href={"/"} className="brand_logo">
             <Image
               src={"/logo/pixellogo.png"}
               width={160}
@@ -145,16 +162,16 @@ const Header = () => {
                 </div>
                 <ul className="sub_menu">
                   <li>
-                    <Link href="#">web development</Link>
+                    <Link href="/service/web">web development</Link>
                   </li>
                   <li>
-                    <Link href="#">mobile app development</Link>
+                    <Link href="/service/web">mobile app development</Link>
                   </li>
                   <li>
-                    <Link href="#">e-commerce development</Link>
+                    <Link href="/service/web">e-commerce development</Link>
                   </li>
                   <li>
-                    <Link href="#">website management</Link>
+                    <Link href="/service/web">website management</Link>
                   </li>
                 </ul>
               </div>
@@ -171,7 +188,7 @@ const Header = () => {
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <Link href="#">
+                  <Link href="/web-development-company-dubai">
                     <span>05</span>contact
                   </Link>
                 </div>
