@@ -1,11 +1,14 @@
 import { gsap } from "gsap";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useLayoutEffect } from "react";
 
 const GoodCoffee = () => {
   let ctx;
-
-  useLayoutEffect(() => {
+  const router = useRouter();
+  console.log(router.pathname);
+  useEffect(() => {
     if (typeof document != "undefined") {
       ctx = gsap.context(() => {
         if (window.screen.width > 1200) {
@@ -32,7 +35,13 @@ const GoodCoffee = () => {
   }, []);
 
   return (
-    <section className="good_coffee">
+    <section
+      className={
+        router.pathname.includes("our-portfolio")
+          ? "good_coffee red__bg"
+          : "good_coffee "
+      }
+    >
       <div className="container-fluid">
         <div className="good_coffee_wrapper">
           <h2>Have An Idea?</h2>
@@ -41,6 +50,7 @@ const GoodCoffee = () => {
             <Link href={"#"} data-cursor-img="/uploads/coffee.png">
               GOOD COFFEE.
             </Link>
+            <Image src="/uploads/coffee.png" alt="" width={300} height={300} />
           </h4>
         </div>
       </div>

@@ -64,7 +64,9 @@ export default function App({ Component, pageProps }) {
 
         gsap.ticker.add(update);
         scrollToTarget();
-        Router.events.on("routeChangeStart", () => {});
+        Router.events.on("routeChangeStart", () => {
+          // document.querySelector("body").classList.remove("desktop_menu_open");
+        });
         Router.events.on("routeChangeComplete", () => {
           ScrollTrigger.refresh();
           ScrollTrigger.update();

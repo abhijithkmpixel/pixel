@@ -25,34 +25,36 @@ const Portfolio = ({ data }) => {
 
       let totalscrollabledist = height - document.documentElement.clientHeight;
       let index = 1;
-      window.addEventListener("scroll", function () {
-        // console.log(
-        //   `scroll percentage = ${(window.scrollY / totalscrollabledist) * 100}`
-        // );
-        if (
-          (window.scrollY / totalscrollabledist) * 100 >
-            (100 / totalNum) * index &&
-          (window.scrollY / totalscrollabledist) * 100 <= 100
-        ) {
-          index++;
-          imageUpdate(index - 1);
-          // console.log(index);
-        } else if (index <= 1) {
-          index = 1;
-          imageUpdate(index - 1);
-          // console.log(index);
-        }
-        //else if (index > totalNum - 1) {
-        //   index = totalNum - 1;
-        //   console.log(index);
-        //   imageUpdate(index);
-        // }
-        else {
-          index--;
-          // console.log(index);
-          // imageUpdate(index - 1);
-        }
-      });
+      if (window.screen.width > 1200) {
+        window.addEventListener("scroll", function () {
+          // console.log(
+          //   `scroll percentage = ${(window.scrollY / totalscrollabledist) * 100}`
+          // );
+          if (
+            (window.scrollY / totalscrollabledist) * 100 >
+              (100 / totalNum) * index &&
+            (window.scrollY / totalscrollabledist) * 100 <= 100
+          ) {
+            index++;
+            imageUpdate(index - 1);
+            // console.log(index);
+          } else if (index <= 1) {
+            index = 1;
+            imageUpdate(index - 1);
+            // console.log(index);
+          }
+          //else if (index > totalNum - 1) {
+          //   index = totalNum - 1;
+          //   console.log(index);
+          //   imageUpdate(index);
+          // }
+          else {
+            index--;
+            // console.log(index);
+            // imageUpdate(index - 1);
+          }
+        });
+      }
       function imageUpdate(index) {
         allImages.forEach((element) => {
           element.style.opacity = 0;
@@ -68,8 +70,8 @@ const Portfolio = ({ data }) => {
     <>
       <Header />
       <section className="portfolio_details">
-        <div className="row">
-          <div className="col-md-6">
+        <div className="row portfolio_details__row">
+          <div className="col-xl-6 col-12">
             <div className="img_wrap">
               <Image
                 src="/uploads/1.jpg"
@@ -97,27 +99,37 @@ const Portfolio = ({ data }) => {
               />
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-xl-6 col-12">
             <div className="content_holder">
-              <Link className="btn-bck " href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-arrow-left"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-                  />
-                </svg>
-                <span>Back to the List</span>
-              </Link>
-              <h1 className="title_primary">
-                Tribal <br /> Experience
-              </h1>
+              <div className="case__banner">
+                <div className="case__banner__inner">
+                  <Link className="btn-bck " href="#">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      className="bi bi-arrow-left"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                      />
+                    </svg>
+                    <span>Back to the List</span>
+                  </Link>
+                  <h1 className="title_primary">
+                    Tribal <br /> Experience
+                  </h1>
+                </div>
+                <Image
+                  src={"/uploads/1.jpg"}
+                  alt="asd"
+                  width={1200}
+                  height={500}
+                />
+              </div>
               <div className="button_year_wrap">
                 <Link className="cta_primary" href="#">
                   <span>visit website</span>

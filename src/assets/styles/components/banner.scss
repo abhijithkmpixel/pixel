@@ -39,7 +39,7 @@
       }
       @include below($mobile-lg) {
         padding-top: 120px;
-        padding-bottom: 360px;
+        padding-bottom: 300px;
         height: auto;
         padding-left: 10px;
         padding-right: 10px;
@@ -76,7 +76,7 @@
           }
           span {
             @include fontStyleInherit();
-            background-image: linear-gradient(to right, #F5333F, #FF5C00);
+            background-image: linear-gradient(to right, #f5333f, #ff5c00);
             -webkit-background-clip: text;
             color: transparent;
           }
@@ -170,6 +170,7 @@
             width: max-content;
             top: auto;
             bottom: 90%;
+            padding: 0 15px
           }
           h3 {
             @include fontFace(24px, 1.2, 400, $color-cod-gray);
@@ -199,6 +200,11 @@
               flex: 0 0 100%;
               border: 0;
               max-width: 100%;
+              &:first-child {
+                padding-bottom: 10px;
+                border-bottom: 1px solid $color-woodsmoke;
+                margin-bottom: 10px;
+              }
             }
             & + div {
               border-right: 0;

@@ -31,6 +31,7 @@ const PortfolioListing = () => {
     },
   ]);
   const [currentList, setcurrentList] = useState(portfolioList);
+  const [filterOpen, setfilterOpen] = useState(false);
   useEffect(() => {
     if (typeof document != "undefined") {
       let portfolios = document
@@ -55,6 +56,9 @@ const PortfolioListing = () => {
           e.preventDefault();
           linkItems.forEach((element) => {
             element.classList.remove("active_cat");
+            setTimeout(() => {
+              setfilterOpen(false);
+            }, 500);
           });
           this.classList.add("active_cat");
           filterPortfolioCards(this.getAttribute("data-category"));
@@ -76,25 +80,39 @@ const PortfolioListing = () => {
       };
     }
     return () => {};
-  }, []);
+  }, [filterOpen]);
+
+  const openFilter = () => {
+    console.log("asd");
+    setfilterOpen(filterOpen == true ? false : true);
+  };
 
   return (
     <section className="portfolio_listing" id="portfolio_list_section">
       <div className="container-fluid">
-        <ul className="portfolio_nav_links">
-          <li className="active_cat" data-category="all">
-            All
-          </li>
-          <li href="#" className="" data-category="website design">
-            website designs
-          </li>
-          <li href="#" className="" data-category="mobile application">
-            mobile application
-          </li>
-          <li href="#" className="" data-category="Digital Marketing">
-            Digital Marketing
-          </li>
-        </ul>
+        <div
+          className={
+            filterOpen == true
+              ? "portfolio_nav_links open"
+              : "portfolio_nav_links "
+          }
+        >
+          <button onClick={() => openFilter()}>View Filter</button>
+          <ul className="">
+            <li className="active_cat" data-category="all">
+              All
+            </li>
+            <li href="#" className="" data-category="website design">
+              website designs
+            </li>
+            <li href="#" className="" data-category="mobile application">
+              mobile application
+            </li>
+            <li href="#" className="" data-category="Digital Marketing">
+              Digital Marketing
+            </li>
+          </ul>
+        </div>
         <div className="portfolio_listing_grid" id="portfolio_list">
           {currentList &&
             currentList.length > 0 &&
@@ -106,7 +124,7 @@ const PortfolioListing = () => {
                   data-case-category={p?.category}
                 >
                   <Link
-                    href="/cases/portfolio"
+                    href="/our-portfolio/portfolio"
                     className="portfolio_card_inner"
                     data-cursor-img="/icons/arr.svg"
                   >

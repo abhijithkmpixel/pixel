@@ -32,9 +32,9 @@ const Empowered = () => {
     }
 
     return () => {
-      // if (ctx) {
-      ctx.revert();
-      // }
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, []);
 

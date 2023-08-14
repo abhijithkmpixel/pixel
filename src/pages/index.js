@@ -11,6 +11,7 @@ import Branches from "@/components/homepage/Branches";
 import WorkTogether from "@/components/homepage/WorkTogether";
 import api from "../../lib/api";
 import Footer from "@/components/Footer";
+import AiTech from "@/components/homepage/AiTech";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }) {
@@ -22,6 +23,7 @@ export default function Home({ data }) {
       <Header />
       <Banner />
       <About />
+      <AiTech />
       <Services />
       <Testimonials />
       <Branches />
@@ -57,7 +59,9 @@ export async function getServerSideProps(context) {
       console.log(error);
     });
   const footer = await api
-    .get(`${process.env.API_URL}/api/footer?populate[0]=Social_media&populate[1]=Quick_links&populate[2]=Footer_contact_bg&populate[3]=Footer_contact_icon&populate[4]=Footer_cta&populate[5]=Social_media.Links`)
+    .get(
+      `${process.env.API_URL}/api/footer?populate[0]=Social_media&populate[1]=Quick_links&populate[2]=Footer_contact_bg&populate[3]=Footer_contact_icon&populate[4]=Footer_cta&populate[5]=Social_media.Links`
+    )
     .then(function (response) {
       // handle success
       return response?.data;
