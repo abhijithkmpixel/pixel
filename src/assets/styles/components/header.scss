@@ -203,6 +203,9 @@ header {
       height: auto;
       margin-bottom: 30px;
       transition: 0.3s all ease-in-out;
+      @include below($mobile-lg) {
+        width: 40px;
+      }
     }
     .preloader__progress_wrap {
       width: 250px;
@@ -212,6 +215,9 @@ header {
       transition: 0.4s all ease-in-out;
       background-color: rgba($color: #000000, $alpha: 0.2);
       position: relative;
+      @include below($mobile-lg) {
+        width: 200px;
+      }
       span {
         position: absolute;
         background: $color-white;
@@ -602,10 +608,10 @@ header {
         transition-delay: 0s;
 
         &:nth-child(1) {
-          transform: rotate(90deg) translate(4px) scale(0.7);
+          transform: rotate(90deg) translateX(4px) scale(0.7);
         }
         &:nth-child(2) {
-          transform: translateY(-7px) scale(0.7);
+          transform: translateY(-8px) scale(0.7);
         }
       }
     }

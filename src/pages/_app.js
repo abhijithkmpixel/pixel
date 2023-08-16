@@ -133,6 +133,16 @@ export default function App({ Component, pageProps }) {
             document.querySelector("body").classList.remove("sticky_header");
           }
         });
+        Router.events.on("routeChangeStart", () => {
+          setloaderOpen(true);
+        });
+        Router.events.on("routeChangeComplete", () => {
+          setTimeout(() => {
+            setloaderOpen(false);
+          }, 2000);
+          // scrollToTarget();
+        });
+        Router.events.on("routeChangeError", () => {});
       }
     }
     return () => {};

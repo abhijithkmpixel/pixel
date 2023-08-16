@@ -1,3 +1,5 @@
+/** @format */
+
 .ai__technology__block {
   .title_primary {
     max-width: 60%;
@@ -26,6 +28,7 @@
         height: 80px;
         border-radius: 50%;
         display: block;
+        transition: 0.2s all ease-in-out;
         svg {
           width: 100%;
           height: auto;
@@ -34,6 +37,11 @@
           width: 60px;
           height: 60px;
           margin: auto;
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            transform: scale(1.1);
+          }
         }
       }
       .ai__technology__block__side_image {

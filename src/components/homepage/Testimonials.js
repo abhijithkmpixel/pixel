@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import Image from "next/image";
 import Slider from "react-slick";
@@ -19,7 +21,7 @@ const Testimonials = () => {
     dots: false,
     infinite: true,
     arrows: false,
-    speed: 3000,
+    speed: 4000,
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
@@ -35,28 +37,28 @@ const Testimonials = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-        }
+        },
       },
       {
         breakpoint: 900,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           // slidesToScroll: -1
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
   var settings3 = {
     dots: false,
     infinite: true,
     arrows: false,
-    speed: 3000,
+    speed: 4000,
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
@@ -71,39 +73,34 @@ const Testimonials = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-        }
+        },
       },
       {
         breakpoint: 900,
         settings: {
           slidesToShow: 3,
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
           // slidesToScroll: 1
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
   return (
     <section className="client_testimonials" data-scroll-section>
       <div className="container-fluid">
         <div className="client_testimonials_wrapper" data-scroll>
           <h2 className="title_primary" data-scroll>
-            What Our{" "}
-            <span>
-              Clients Say
-            </span>{" "}
-            About Us !
+            What Our <span>Clients Say</span> About Us !
           </h2>
           <div
             className="testimony_slider_wrap"
             data-scroll
-            data-scroll-offset="200"
-          >
+            data-scroll-offset="200">
             <Slider {...settings} className="testimony_slider" data-scroll>
               <div className="testimony_wrap" data-scroll>
                 <div className="bodycopy" data-scroll>
@@ -262,8 +259,7 @@ function SampleNextArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="8.15252"
@@ -295,8 +291,7 @@ function SamplePrevArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="-0.684881"

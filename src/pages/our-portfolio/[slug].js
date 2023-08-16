@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+import GsapMagnetic from "../../components/gsap";
 const Portfolio = ({ data }) => {
   const router = useRouter();
   useEffect(() => {
@@ -186,9 +187,11 @@ const Portfolio = ({ data }) => {
                   <li>Website UI</li>
                 </ul>
               </div>
-              <Link className="cta_secondary" href="/">
-                <span>Home</span>
-              </Link>
+              <GsapMagnetic>
+                <Link className="cta_secondary" href="/">
+                  <span>Home</span>
+                </Link>
+              </GsapMagnetic>
               <div className="min_990">
                 <NextProject />
               </div>

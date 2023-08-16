@@ -1,5 +1,8 @@
+/** @format */
+
 import Link from "next/link";
 import React from "react";
+import GsapMagnetic from "../../components/gsap";
 
 const WorkTogether = () => {
   return (
@@ -24,48 +27,47 @@ const WorkTogether = () => {
                     href="#"
                     className="contact_info"
                     data-scroll
-                    data-animate-text="hello@pixelflames.com"
-                  >
+                    data-animate-text="hello@pixelflames.com">
                     <span>hello@pixelflames.com</span>
                   </Link>
                   <Link
                     href="#"
                     className="contact_info"
                     data-scroll
-                    data-animate-text="+971 50 250 4787"
-                  >
+                    data-animate-text="+971 50 250 4787">
                     <span>+971 50 250 4787</span>
                   </Link>
                 </div>
                 <div data-scroll data-scroll-speed="1.3">
-                  <Link href={"#"} className="cta_secondary" data-scroll>
-                    <span>start a project </span>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 16 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <line
-                        x1="4.34872"
-                        y1="11.7146"
-                        x2="10.7539"
-                        y2="4.08125"
-                        stroke="#F0F0F0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                        stroke="#F0F0F0"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
+                  <GsapMagnetic>
+                    <Link href={"#"} className="cta_secondary" data-scroll>
+                      <span>start a project </span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <line
+                          x1="4.34872"
+                          y1="11.7146"
+                          x2="10.7539"
+                          y2="4.08125"
+                          stroke="#F0F0F0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
+                          stroke="#F0F0F0"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  </GsapMagnetic>
                 </div>
               </div>
             </div>

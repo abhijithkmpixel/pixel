@@ -1,7 +1,10 @@
+/** @format */
+
 import { TweenLite, gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import GsapMagnetic from "../../components/gsap";
 
 const About = () => {
   useEffect(() => {
@@ -13,46 +16,6 @@ const About = () => {
       let aboutbody = gsap.timeline();
       ctx = gsap.context(() => {
         if (window.screen.width > 1200) {
-          // var mArea = document.querySelector(".cta_secondary");
-
-          // // 1. Set the function and variables
-          // function parallaxIt(e, target, movement = 1) {
-          //   var boundingRect = mArea.getBoundingClientRect();
-          //   var relX = e.pageX - boundingRect.left;
-          //   var relY = e.pageY - boundingRect.top;
-          //   var scrollTop =
-          //     window.pageYOffset || document.documentElement.scrollTop;
-          //   mArea.style.transform = `translate(${
-          //     (relX - boundingRect.width / 2) * movement
-          //   },${relY - boundingRect.height / 2 - scrollTop})`;
-          //   // gsap.to(target, {
-          //   //   x: (relX - boundingRect.width / 2) * movement,
-          //   //   y: (relY - boundingRect.height / 2 - scrollTop) * movement,
-          //   //   ease: "power1",
-          //   //   duration: 0.6,
-          //   // });
-          // }
-
-          // // 2. Call the function
-          // function callParallax(e) {
-          //   parallaxIt(e, "#magnetic-content");
-          // }
-
-          // mArea.addEventListener("mousemove", function (e) {
-          //   callParallax(e);
-          // });
-
-          // mArea.addEventListener("mouseleave", function (e) {
-          //   mArea.style.transfrom = `translate(0,0)`;
-
-          //   // gsap.to("#magnetic-content", {
-          //   //   scale: 1,
-          //   //   x: 0,
-          //   //   y: 0,
-          //   //   ease: "power3",
-          //   //   duration: 0.6,
-          //   // });
-          // });
           aboutTitle.fromTo(
             ".about_us_banner .title_primary",
             {
@@ -143,8 +106,7 @@ const About = () => {
             height="74"
             viewBox="0 0 16 74"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+            xmlns="http://www.w3.org/2000/svg">
             <line
               x1="7.99354"
               y1="0.684881"
@@ -178,8 +140,7 @@ const About = () => {
               <div
                 className="banner_image"
                 data-scroll
-                data-scroll-offset="300"
-              >
+                data-scroll-offset="300">
                 <Image
                   src={"/uploads/about.jpg"}
                   alt={"about us image"}
@@ -191,8 +152,7 @@ const About = () => {
                 className="about_bodycopy"
                 data-scroll
                 data-scroll-speed="1.2"
-                data-scroll-direction="horizontal"
-              >
+                data-scroll-direction="horizontal">
                 <p>
                   Pixelflames is web design agency based in Dubai, UAE. Their
                   main services include UX/UI design, web development, app
@@ -207,40 +167,40 @@ const About = () => {
                     main services
                   </h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
-                    <Link
-                      href={"#"}
-                      className="cta_secondary"
-                      data-scroll
-                      style={{ "--x": "10px", "--y": "10px" }}
-                      id="magnetic-area"
-                    >
-                      <span>learn more </span>
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <line
-                          x1="4.34872"
-                          y1="11.7146"
-                          x2="10.7539"
-                          y2="4.08125"
-                          stroke="#F0F0F0"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                          stroke="#F0F0F0"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </Link>
+                    <GsapMagnetic>
+                      <Link
+                        href={"#"}
+                        className="cta_secondary"
+                        data-scroll
+                        style={{ "--x": "10px", "--y": "10px" }}
+                        id="magnetic-area">
+                        <span>learn more </span>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <line
+                            x1="4.34872"
+                            y1="11.7146"
+                            x2="10.7539"
+                            y2="4.08125"
+                            stroke="#F0F0F0"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
+                            stroke="#F0F0F0"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </Link>
+                    </GsapMagnetic>
                   </div>
                 </div>
               </div>
@@ -251,8 +211,7 @@ const About = () => {
               <div
                 className="achievement_cards"
                 data-scroll
-                data-scroll-offset="200"
-              >
+                data-scroll-offset="200">
                 <div className="cardheader">
                   <Image
                     src={"/uploads/ga.png"}
@@ -271,8 +230,7 @@ const About = () => {
               <div
                 className="achievement_cards"
                 data-scroll
-                data-scroll-offset="200"
-              >
+                data-scroll-offset="200">
                 <div className="cardheader">
                   <Image
                     src={"/uploads/client.png"}
@@ -291,8 +249,7 @@ const About = () => {
               <div
                 className="achievement_cards"
                 data-scroll
-                data-scroll-offset="200"
-              >
+                data-scroll-offset="200">
                 <div className="cardheader">
                   <Image
                     src={"/uploads/exp.png"}
