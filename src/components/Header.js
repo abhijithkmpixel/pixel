@@ -6,10 +6,24 @@ import React, { useEffect, useState } from "react";
 const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
+  console.log(router.pathname);
   useEffect(() => {
     if (typeof document != "undefined") {
       document
         .querySelector(".hamburger__menu__icon")
+        .addEventListener("click", function (e) {
+          if (navOpen == true) {
+            setnavOpen(false);
+            document.querySelectorAll(".submenu_wrap").forEach((el) => {
+              el.classList.remove("subnavopen");
+            });
+          } else {
+            setnavOpen(true);
+          }
+        });
+
+      document
+        .querySelector(".desktop__menu__toggle")
         .addEventListener("click", function (e) {
           if (navOpen == true) {
             setnavOpen(false);
@@ -98,8 +112,12 @@ const Header = () => {
       <header
         data-scroll-section
         className={
-          (router.pathname.includes("our-portfolio") ||router.pathname.includes("servicess") ? " header--light " : null) +
-          (router.pathname.includes("[slug]")
+          (router.pathname.includes("our-portfolio") ||
+          router.pathname.includes("servicess")
+            ? " header--light "
+            : null) +
+          (router.pathname.includes("[slug]") &&
+          router.pathname.includes("our-portfolio")
             ? " portfolio__details__page "
             : null)
         }
@@ -280,6 +298,13 @@ const Header = () => {
         <li></li>
         <li></li>
       </ul>
+      <div className="desktop__menu__toggle">
+        <span>MENU+</span>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </>
   );
 };

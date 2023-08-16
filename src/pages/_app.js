@@ -12,9 +12,10 @@ import Script from "next/script";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import Lenis from "@studio-freight/lenis";
 import Footer from "@/components/Footer";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
@@ -40,6 +41,8 @@ export default function App({ Component, pageProps }) {
         const lenis = new Lenis({
           duration: 2,
           lerp: 0.07,
+          smoothWheel:true,
+          // infinite:true
         });
 
         lenis.on(
@@ -112,10 +115,18 @@ export default function App({ Component, pageProps }) {
 
       if (window.screen.width > 1200) {
         window.addEventListener("scroll", function () {
-          if (window.scrollY > 20) {
-            document.querySelector("body").classList.add("desktop_sticky");
+          if (router.pathname == "/") {
+            if (window.scrollY > this.window.screen.height) {
+              document.querySelector("body").classList.add("desktop_sticky");
+            } else {
+              document.querySelector("body").classList.remove("desktop_sticky");
+            }
           } else {
-            document.querySelector("body").classList.remove("desktop_sticky");
+            if (window.scrollY > 20) {
+              document.querySelector("body").classList.add("desktop_sticky");
+            } else {
+              document.querySelector("body").classList.remove("desktop_sticky");
+            }
           }
         });
       } else {

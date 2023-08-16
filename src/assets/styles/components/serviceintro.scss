@@ -1,6 +1,9 @@
 .service_intro {
   padding: 130px 0 50px;
   background-color: $color-white;
+  @include below($tablet-lg) {
+    padding: 60px 0;
+  }
   @include below($mobile-lg) {
     padding: 50px 0 50px;
   }
@@ -90,19 +93,37 @@
     }
     figure {
       aspect-ratio: 928/303;
-      max-width: 75%;
+      max-width: 70%;
       margin-left: auto;
+      @include below($tablet-sm) {
+        max-width: 100%;
+      }
+      @include below($mobile-lg) {
+        aspect-ratio: 386/226;
+      }
     }
     .content_inner {
       margin-bottom: 97px;
+      @include below($tablet-sm) {
+        margin-bottom: 0;
+      }
       h2 {
         max-width: 80%;
+        @include below($tablet-sm){
+          max-width: 100%;
+        }
       }
       h4 {
         right: auto;
         left: 0;
         top: calc(100% + 90px);
-        max-width: 18%;
+        max-width: 19%;
+        @include below($tablet-sm) {
+          max-width: 100%;
+        }
+        @include below($mobile-lg){
+          max-width: 100%;
+        }
       }
     }
   }

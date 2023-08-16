@@ -44,7 +44,7 @@ const ServiceItemsList = () => {
       <span className="float_text">services</span>
       <div className="container-fluid">
         <Link
-          href={"/service/web"}
+          href={"/services/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -84,7 +84,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"/service/web"}
+          href={"/services/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -124,7 +124,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"/service/web"}
+          href={"/services/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >
@@ -164,7 +164,7 @@ const ServiceItemsList = () => {
           </div>
         </Link>
         <Link
-          href={"/service/web"}
+          href={"/services/web"}
           className="row service_list_card"
           data-cursor-text="read more"
         >

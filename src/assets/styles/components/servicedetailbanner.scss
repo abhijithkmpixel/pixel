@@ -4,6 +4,9 @@
   aspect-ratio: 1440/500;
   overflow: hidden;
   position: relative;
+  @include below($mobile-lg) {
+    aspect-ratio: 430/302;
+  }
   .container-fluid {
     display: flex;
     align-items: center;
@@ -25,6 +28,21 @@
         height: 90px;
         object-fit: contain;
         margin-left: 20px;
+        @include below($tablet-lg) {
+          width: 60px;
+          height: 60px;
+        }
+        @include below($mobile-lg) {
+          width: 30px;
+          margin-right: 10px;
+          height:30px;
+        }
+      }
+      @include below($mobile-lg) {
+        position: absolute;
+        flex-flow: row-reverse;
+        top: 15px;
+        left: 0px;
       }
     }
     h1 {
@@ -34,6 +52,18 @@
       width: 60%;
       @include below($desktop-lg) {
         font-size: 90px;
+      }
+      @include below($tablet-lg) {
+        font-size: 50px;
+        width: 50%;
+      }
+      @include below($tablet-sm) {
+        font-size: 40px;
+        width: 50%;
+      }
+      @include below($mobile-lg) {
+        text-align: left;
+        font-size: 35px;
       }
     }
   }

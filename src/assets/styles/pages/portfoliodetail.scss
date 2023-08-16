@@ -158,6 +158,8 @@
       p {
         @include fontFace(18px, 1.6, 400, $color-tundora);
         margin-bottom: 1.5rem;
+        text-align: justify;
+
         @include below($mobile-lg) {
           font-size: 16px;
         }

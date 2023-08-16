@@ -2,27 +2,65 @@
   width: 100%;
   background-color: $color-wild-sand;
   padding: 160px 0 160px;
+  @include below($tablet-lg) {
+    padding: 90px 0 90px;
+    // overflow: hidden;
+  }
+  @include below($mobile-lg) {
+    padding: 50px 0;
+    // overflow: hidden;
+  }
   .title__secondary {
     width: 40%;
     margin-bottom: 90px;
+    @include below($tablet-lg) {
+      margin-bottom: 30px;
+      width: 50%;
+    }
+    @include below($mobile-lg) {
+      // margin-bottom: 30px;
+      width: 100%;
+      text-align: center;
+    }
   }
   .help__to__connect__row {
-    margin: 0 -90px;
+    margin: 0 -75px;
+    @include below($tablet-lg) {
+      margin: 0 -15px;
+    }
     & > div {
-      padding: 0 90px;
+      padding: 0 75px;
+      @include below($tablet-lg) {
+        padding: 0 15px;
+      }
     }
     h4 {
       @include fontFace(34px, 1.2, 500, $color-black);
       margin-bottom: 30px;
       text-transform: uppercase;
+      max-width: 95%;
       @include below($desktop-lg) {
         font-size: 26px;
+      }
+      @include below($tablet-lg) {
+        max-width: 100%;
+      }
+      @include below($mobile-lg) {
+        text-align: center;
       }
     }
     p {
       @include fontFace(20px, 1.6, 400, $color-black);
       @include below($desktop-lg) {
         font-size: 16px;
+      }
+      @include below($tablet-lg) {
+        margin-bottom: 30px;
+        max-width: 80%;
+      }
+      @include below($mobile-lg) {
+        text-align: center;
+        max-width: 100%;
       }
     }
     .help__to__connect__row__grid {
@@ -31,6 +69,9 @@
       justify-content: space-between;
       padding-top: 80px;
       border-top: 1px solid $color-black;
+      @include below($tablet-lg) {
+        padding-top: 30px;
+      }
       img {
         width: auto;
         display: block;
@@ -40,6 +81,9 @@
         margin-bottom: 50px;
         @include below($desktop-lg) {
           height: 48px;
+        }
+        @include below($mobile-lg) {
+          height: 35px;
         }
       }
     }

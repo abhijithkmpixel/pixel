@@ -231,8 +231,7 @@ const Footer = () => {
                       data-scroll
                     >
                       <p data-scroll>
-                        © 2023 Pixelflames Technologies Pvt Ltd All Rights
-                        Reserved.
+                        © 2023 Pixelflames Technologies Pvt Ltd | All Rights Reserved.
                       </p>
                     </div>
                   </div>
