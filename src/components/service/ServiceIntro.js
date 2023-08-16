@@ -53,13 +53,13 @@ const ServiceIntro = ({ title, subtitle, img, classes }) => {
     >
       <div className="container-fluid">
         <div className="row m-0">
-          <div className="col-12 col-md-6 p-0 ">
+          <div className="col-12 col-lg-6 p-0 ">
             <div className="content_inner position-relative">
               <h2>{title}</h2>
               <h4>{subtitle}</h4>
             </div>
           </div>
-          <div className="col-12 col-md-6 p-0">
+          <div className="col-12 col-lg-6 p-0">
             <figure>
               <Image src={img} alt="asd" width={663} height={385} />
             </figure>

@@ -1,7 +1,9 @@
 .portfolio_details {
+  @include below($tablet-lg) {
+    overflow: hidden;
+  }
   .portfolio_details__row {
     @include below($tablet-lg) {
-      overflow: hidden;
       flex-flow: column-reverse;
     }
   }
@@ -13,6 +15,14 @@
       left: 0;
       overflow: hidden;
       height: 100vh;
+      @include below($tablet-lg) {
+        position: static;
+        height: auto;
+        padding: 0 50px;
+      }
+      @include below($mobile-lg) {
+        padding: 0 15px;
+      }
       img {
         width: 100%;
         height: 100%;
@@ -22,6 +32,15 @@
         transition: 0.6s all ease-in-out;
         &:not(:first-child) {
           opacity: 0;
+          @include below($tablet-lg) {
+            opacity: 1;
+          }
+        }
+        @include below($tablet-lg) {
+          position: static;
+          height: auto;
+          opacity: 1;
+          margin-bottom: 30px;
         }
       }
     }
@@ -29,7 +48,10 @@
       padding: 52px 90px 52px 58px;
       // text-align: justify;
       @include below($tablet-lg) {
-        padding: 0px 30px 58px;
+        padding: 0px 50px 58px;
+      }
+      @include below($mobile-lg) {
+        padding: 0px 15px 58px;
       }
       .case__banner {
         @include below($tablet-lg) {
@@ -40,12 +62,20 @@
           position: relative;
           // display: block;
         }
+        @include below($mobile-lg) {
+          width: calc(100% + 30px);
+          margin-left: -15px;
+          margin-bottom: 40px;
+          height: auto;
+          aspect-ratio: 1/0.8;
+          // display: block;
+        }
         img {
           display: none;
           object-fit: cover;
           @include below($tablet-lg) {
             display: block;
-            filter: brightness(.5);
+            filter: brightness(0.5);
           }
         }
         .case__banner__inner {
@@ -53,33 +83,48 @@
             position: absolute;
             left: 0;
             top: 0;
-            padding: 30px;
+            padding: 50px;
             z-index: 1;
             width: 100%;
             display: flex;
             align-items: center;
             height: 100%;
-            .btn-bck {
-              color: $color-white;
-              @include below($tablet-lg) {
-                position: absolute;
-                top: 20px;
-                left: 30px;
-                z-index: 5;
-              }
-              span {
-                font-size: 18px;
-              }
-              svg {
-                width: 40px;
-                height: auto;
-
-                path {
-                  fill: $color-white;
-                }
+          }
+          @include below($tablet-lg) {
+            padding: 15px;
+          }
+          .btn-bck {
+            color: $color-white;
+            @include below($tablet-lg) {
+              position: absolute;
+              top: 20px;
+              left: 50px;
+              z-index: 5;
+            }
+            @include below($mobile-lg) {
+              top: 20px;
+              left: 15px;
+              z-index: 5;
+            }
+            span {
+              font-size: 18px;
+              @include below($mobile-lg) {
+                font-size: 16px;
               }
             }
-            h1{
+            svg {
+              width: 40px;
+              height: auto;
+              @include below($mobile-lg) {
+                width: 20px;
+              }
+              path {
+                fill: $color-white;
+              }
+            }
+          }
+          h1 {
+            @include below($tablet-lg) {
               color: $color-white;
             }
           }
@@ -113,12 +158,19 @@
       p {
         @include fontFace(18px, 1.6, 400, $color-tundora);
         margin-bottom: 1.5rem;
+        @include below($mobile-lg) {
+          font-size: 16px;
+        }
       }
       h3 {
         @include fontFace(22px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
         margin-bottom: 32px;
         margin-top: 54px;
+        @include below($mobile-lg) {
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
       }
       .project_technology {
         position: relative;
@@ -142,6 +194,9 @@
           @include fontFace(18px, 1.6, 400, $color-tundora);
           position: relative;
           padding-bottom: 1.5rem;
+          @include below($mobile-lg) {
+            font-size: 16px;
+          }
           &::after {
             content: "";
             height: 1px;
@@ -173,6 +228,9 @@
             }
             @include fontFace(18px, 1.6, 400, $color-tundora);
             text-transform: uppercase;
+            @include below($mobile-lg) {
+              font-size: 16px;
+            }
           }
           &::after {
             content: "";
@@ -199,10 +257,16 @@
 
 .project_navigation_link {
   padding: 110px 0 60px;
+  @include below($mobile-lg) {
+    padding: 60px 0 100px;
+  }
   h5 {
     @include fontFace(24px, 1.5, 400, $color-black);
     text-transform: uppercase;
     margin-bottom: 50px;
+    @include below($mobile-lg) {
+      font-size: 20px;
+    }
   }
   h3,
   a {
@@ -212,6 +276,10 @@
     text-transform: uppercase;
     text-decoration: none;
     transition: 0.3s all ease-in-out;
+    max-width: 100%;
+    @include below($mobile-lg) {
+      font-size: 28px;
+    }
     svg {
       margin-left: 30px;
       width: 24px;
@@ -231,6 +299,14 @@
           }
         }
       }
+    }
+  }
+}
+.portfolio__details__page {
+  & ~ footer {
+    display: none;
+    @include below($tablet-lg) {
+      display: block;
     }
   }
 }

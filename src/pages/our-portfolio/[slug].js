@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NextProject from "@/components/portfolio/NextProject";
 import Image from "next/image";
@@ -196,11 +197,19 @@ const Portfolio = ({ data }) => {
               <a className="cta_secondary" href="">
                 <span>Home</span>
               </a>
-              <NextProject />
+              <div className="min_720">
+                <NextProject />
+              </div>
             </div>
           </div>
         </div>
       </section>
+      <div className="max_720">
+        <div className="container-fluid">
+          <NextProject />
+        </div>
+      </div>
+      <Footer />
     </>
   );
 };

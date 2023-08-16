@@ -40,11 +40,13 @@ const Empowered = () => {
 
   return (
     <section className="empowered_brand_block">
-      <div className="empower_inner_wrap">
-        <h5>
-          Together, empowered by our very own Brand Dials process, we deliver
-        </h5>
-        <h2>consistent unique service</h2>
+      <div className="container-fluid">
+        <div className="empower_inner_wrap">
+          <h5>
+            Together, empowered by our very own Brand Dials process, we deliver
+          </h5>
+          <h2>consistent unique service</h2>
+        </div>
       </div>
     </section>
   );

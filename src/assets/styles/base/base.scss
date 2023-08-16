@@ -272,3 +272,21 @@ html.lenis {
     opacity: 0;
   }
 }
+.min_720 {
+  display: block;
+  @include below($mobile-lg) {
+    display: none;
+  }
+}
+.min_820 {
+  display: block;
+  @include below($tablet-sm) {
+    display: none;
+  }
+}
+.max_720 {
+  display: none;
+  @include below($mobile-lg) {
+    display: block;
+  }
+}

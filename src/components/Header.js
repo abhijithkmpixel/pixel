@@ -98,7 +98,10 @@ const Header = () => {
       <header
         data-scroll-section
         className={
-          router.pathname.includes("our-portfolio") ? "header--light" : null
+          (router.pathname.includes("our-portfolio") ||router.pathname.includes("servicess") ? " header--light " : null) +
+          (router.pathname.includes("[slug]")
+            ? " portfolio__details__page "
+            : null)
         }
       >
         <div className="header_inner_wrap" data-scroll>
@@ -243,7 +246,7 @@ const Header = () => {
             <li>
               <div className="nav_item_wrap">
                 <div className="link_wrap">
-                  <Link href="/web-development-company-dubai">
+                  <Link href="/contact">
                     <span>05</span>contact
                   </Link>
                 </div>

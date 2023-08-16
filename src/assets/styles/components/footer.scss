@@ -161,6 +161,7 @@ footer {
           @include above($tablet-lg) {
             .inner_wrap::after {
               transform: scale(1.1);
+              // background-color: $color-pomegranate2;
             }
           }
         }

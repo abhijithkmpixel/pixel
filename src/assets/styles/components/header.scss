@@ -63,6 +63,7 @@ header {
 
       @include below($tablet-lg) {
         position: static;
+        margin-left: auto;
       }
       @include below($mobile-lg) {
         display: none;
@@ -158,6 +159,8 @@ header {
     left: 5px;
     transform: scaleY(0);
     width: calc(100vw - 10px);
+    transform-origin: bottom;
+
     height: calc(100vh - 55px);
   }
   & > img {
@@ -213,8 +216,10 @@ header {
     position: relative;
     z-index: 5;
     width: 100%;
-    overflow-y: scroll;
     max-height: 100%;
+    @include below($mobile-lg) {
+      overflow-y: scroll;
+    }
     .social_menia_links {
       display: flex;
       position: absolute;
@@ -292,6 +297,9 @@ header {
         position: relative;
         & + li {
           margin-top: 60px;
+          @include below($desktop-md) {
+            margin-top: 50px;
+          }
           @include below($desktop-sm) {
             margin-top: 50px;
           }
@@ -338,8 +346,11 @@ header {
             align-items: flex-start;
             text-transform: uppercase;
             width: max-content;
+            @include below($desktop-md) {
+              font-size: 50px;
+            }
             @include below($desktop-sm) {
-              font-size: 55px;
+              font-size: 50px;
             }
             @include below($tablet-lg) {
               font-weight: 700;
@@ -354,6 +365,9 @@ header {
               display: block;
               margin-right: 40px;
               margin-top: 7px;
+              @include below($desktop-md) {
+                margin-right: 28px;
+              }
               @include below($tablet-lg) {
                 margin-right: 20px;
               }
@@ -413,6 +427,9 @@ header {
               @include above($tablet-lg) {
                 color: $color-white;
               }
+            }
+            @include below($desktop-md) {
+              font-size: 16px;
             }
             @include below($mobile-lg) {
               color: $color-pomegranate2;
@@ -512,3 +529,37 @@ header {
   }
 }
 // }
+header.portfolio__details__page.header--light {
+  @include below($tablet-lg) {
+    .menu_icon_wrap {
+      span {
+        color: $color-white;
+      }
+      li {
+        background-color: $color-white;
+      }
+    }
+  }
+  .header_inner_wrap .brand_logo.brand_logo--white {
+    @include below($tablet-lg) {
+      display: none;
+    }
+  }
+}
+.sticky_header {
+  header.portfolio__details__page.header--light {
+    @include below($tablet-lg) {
+      .menu_icon_wrap {
+        span {
+          color: $color-cod-gray;
+        }
+        li {
+          background-color: $color-cod-gray;
+        }
+      }
+    }
+    .header_inner_wrap .brand_logo.brand_logo--white {
+      display: none;
+    }
+  }
+}
