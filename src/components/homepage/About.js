@@ -142,7 +142,7 @@ const About = () => {
                 data-scroll
                 data-scroll-offset="300">
                 <Image
-                  src={"/uploads/about.jpg"}
+                  src={"/uploads/agency.jpg"}
                   alt={"about us image"}
                   width={850}
                   height={570}

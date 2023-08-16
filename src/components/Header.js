@@ -9,6 +9,7 @@ const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
+    console.log("hello from nav");
     if (typeof document != "undefined") {
       if (window.screen.width > 1200) {
         window.addEventListener("scroll", () => {
@@ -147,7 +148,7 @@ const Header = () => {
         <div className="header_inner_wrap" data-scroll>
           <Link href={"/"} className="brand_logo">
             <Image
-              src={"/logo/pixellogo.png"}
+              src={"/logo/pixellogo.svg"}
               width={160}
               height={38}
               alt="Pixelflames logo"
@@ -156,7 +157,7 @@ const Header = () => {
           </Link>
           <Link href={"/"} className="brand_logo  brand_logo--white">
             <Image
-              src={"/logo/pixellogo-white.png"}
+              src={"/logo/pixellogo-white.svg"}
               width={160}
               height={38}
               alt="Pixelflames logo"

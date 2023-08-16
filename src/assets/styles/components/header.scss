@@ -183,7 +183,7 @@ header {
 .preloader {
   position: fixed;
   z-index: 999;
-  background: linear-gradient(45deg, #f5333f, #ff5c00);
+  background: linear-gradient(150deg, #f5333f, #ff5c00 60%);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -413,7 +413,7 @@ header {
         position: relative;
         & + li {
           margin-top: 60px;
-          @include below($desktop-md) {
+          @include below($desktop-lg) {
             margin-top: 50px;
           }
           @include below($desktop-sm) {
@@ -462,6 +462,9 @@ header {
             align-items: flex-start;
             text-transform: uppercase;
             width: max-content;
+            @include below($desktop-lg) {
+              font-size: 60px;
+            }
             @include below($desktop-md) {
               font-size: 50px;
             }
@@ -594,7 +597,7 @@ header {
       border-radius: 10px;
       background-color: $color-white;
       transition: 0.3s all ease-in-out;
-      transition-delay: 0.5s;
+      transition-delay: 0s;
       & + li {
         margin-top: 10px;
       }
