@@ -1,3 +1,5 @@
+/** @format */
+
 header {
   position: absolute;
   top: 0;
@@ -99,6 +101,28 @@ header {
       .brand_logo.brand_logo--white {
         display: block;
       }
+      .menu_icon_wrap {
+        span {
+          color: $color-white;
+        }
+        ul {
+          li {
+            background-color: $color-white;
+          }
+        }
+      }
+    }
+    &.portfolio__details__page {
+      .menu_icon_wrap {
+        span {
+          color: $color-cod-gray;
+        }
+        ul {
+          li {
+            background-color: $color-cod-gray;
+          }
+        }
+      }
     }
   }
 }
@@ -116,6 +140,28 @@ header {
           .brand_logo.brand_logo--white {
             display: none;
           }
+          .menu_icon_wrap {
+            span {
+              color: $color-cod-gray;
+            }
+            ul {
+              li {
+                background-color: $color-cod-gray;
+              }
+            }
+          }
+        }
+        &.portfolio__details__page {
+          .menu_icon_wrap {
+            span {
+              color: $color-cod-gray;
+            }
+            ul {
+              li {
+                background-color: $color-cod-gray;
+              }
+            }
+          }
         }
       }
     }
@@ -131,6 +177,70 @@ header {
     .menu_icon_wrap {
       // right: 30px;
       // top: -200px;
+    }
+  }
+}
+.preloader {
+  position: fixed;
+  z-index: 999;
+  background: linear-gradient(45deg, #f5333f, #ff5c00);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: bottom;
+  transition: 0.3s transform ease-in-out;
+  inset: 0;
+  .preloader__inner {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    transition: 0.3s all ease-in-out;
+    transition-delay: 0.3s;
+    .preloader__icon {
+      width: 60px;
+      height: auto;
+      margin-bottom: 30px;
+      transition: 0.3s all ease-in-out;
+    }
+    .preloader__progress_wrap {
+      width: 250px;
+      height: 5px;
+      border-radius: 40px;
+      overflow: hidden;
+      transition: 0.4s all ease-in-out;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      position: relative;
+      span {
+        position: absolute;
+        background: $color-white;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        border-radius: 30px;
+        animation: moving 1.2s ease-in-out infinite;
+
+        @keyframes moving {
+          50% {
+            width: 100%;
+          }
+          100% {
+            width: 0;
+            right: 0;
+            left: unset;
+          }
+        }
+      }
+    }
+  }
+  &.preloader--loaded {
+    transition-delay: 0.5s;
+    transform: scaleY(0);
+    transform-origin: top;
+    .preloader__inner {
+      opacity: 0;
     }
   }
 }
@@ -358,6 +468,7 @@ header {
             @include below($mobile-lg) {
               font-size: 30px;
               font-weight: 500;
+              transition: 0.2s all ease-in-out;
               color: #808080;
             }
             span {
@@ -377,7 +488,7 @@ header {
             }
             &:hover {
               @include above($tablet-lg) {
-                background-image: linear-gradient(to right, #F5333F, #FF5C00);
+                background-image: linear-gradient(to right, #f5333f, #ff5c00);
                 // font-weight: 900;
                 transition: 0.3s all ease-in-out;
                 color: transparent;
@@ -450,7 +561,7 @@ header {
   border-radius: 15px;
   display: flex;
   align-items: center;
-  z-index: 100;
+  z-index: 101;
   transition: 0.5s all ease-in-out;
   cursor: pointer;
   @include below($desktop-lg) {
@@ -463,19 +574,39 @@ header {
     @include fontFace(16px, 1, 400, $color-white);
     display: block;
     margin-right: 22px;
+    min-width: 6ch;
     @include below($desktop-lg) {
       font-size: 14px;
     }
   }
   ul {
+    transition: 0.3s all ease-in-out;
     li {
       display: block;
       width: 40px;
       height: 1.5px;
       border-radius: 10px;
       background-color: $color-white;
+      transition: 0.3s all ease-in-out;
+      transition-delay: 0.5s;
       & + li {
         margin-top: 10px;
+      }
+    }
+  }
+  &.open {
+    transform: translateX(-50%) translateY(0px);
+    ul {
+      transform: rotate(45deg);
+      li {
+        transition-delay: 0s;
+
+        &:nth-child(1) {
+          transform: rotate(90deg) translate(4px) scale(0.7);
+        }
+        &:nth-child(2) {
+          transform: translateY(-7px) scale(0.7);
+        }
       }
     }
   }

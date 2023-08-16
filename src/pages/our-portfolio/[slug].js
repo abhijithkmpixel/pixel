@@ -1,3 +1,5 @@
+/** @format */
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import NextProject from "@/components/portfolio/NextProject";
@@ -5,12 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-
 const Portfolio = ({ data }) => {
-  const { asPath, push, pathname } = useRouter();
+  const router = useRouter();
   useEffect(() => {
     if (typeof document != "undefined") {
-      console.log(asPath, pathname);
       let allImages = document.querySelectorAll(".img_wrap img");
       let totalNum = allImages.length;
       var htmlElement = document.documentElement;
@@ -28,9 +28,6 @@ const Portfolio = ({ data }) => {
       let index = 1;
       if (window.screen.width > 1200) {
         window.addEventListener("scroll", function () {
-          // console.log(
-          //   `scroll percentage = ${(window.scrollY / totalscrollabledist) * 100}`
-          // );
           if (
             (window.scrollY / totalscrollabledist) * 100 >
               (100 / totalNum) * index &&
@@ -38,20 +35,16 @@ const Portfolio = ({ data }) => {
           ) {
             index++;
             imageUpdate(index - 1);
-            // console.log(index);
           } else if (index <= 1) {
             index = 1;
             imageUpdate(index - 1);
-            // console.log(index);
           }
           //else if (index > totalNum - 1) {
           //   index = totalNum - 1;
-          //   console.log(index);
           //   imageUpdate(index);
           // }
           else {
             index--;
-            // console.log(index);
             // imageUpdate(index - 1);
           }
         });
@@ -111,8 +104,7 @@ const Portfolio = ({ data }) => {
                       height="16"
                       fill="currentColor"
                       className="bi bi-arrow-left"
-                      viewBox="0 0 16 16"
-                    >
+                      viewBox="0 0 16 16">
                       <path
                         fillRule="evenodd"
                         d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
@@ -194,17 +186,17 @@ const Portfolio = ({ data }) => {
                   <li>Website UI</li>
                 </ul>
               </div>
-              <a className="cta_secondary" href="">
+              <Link className="cta_secondary" href="/">
                 <span>Home</span>
-              </a>
-              <div className="min_720">
+              </Link>
+              <div className="min_990">
                 <NextProject />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <div className="max_720">
+      <div className="max_990">
         <div className="container-fluid">
           <NextProject />
         </div>
@@ -213,13 +205,4 @@ const Portfolio = ({ data }) => {
     </>
   );
 };
-
-// export async function getServerSideProps(context) {
-//   console.log(context.req.headers.referer);
-//   return {
-//     props: {
-//       data: context.req.headers.referer,
-//     },
-//   };
-// }
 export default Portfolio;

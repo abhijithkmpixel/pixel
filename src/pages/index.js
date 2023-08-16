@@ -1,3 +1,5 @@
+/** @format */
+
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -70,7 +72,6 @@ export async function getServerSideProps(context) {
       // handle error
       console.log(error);
     });
-  console.log(data);
   return {
     props: {
       data:

@@ -1,9 +1,11 @@
+/** @format */
+
 footer {
   background-color: $color-cod-gray;
   padding: 96px 0 0;
   overflow: hidden;
   position: relative;
-  z-index: 100;
+  z-index: 101;
   .footer_inner_wrap {
     .social_media_links {
       display: flex;
@@ -343,5 +345,9 @@ footer {
         flex-flow: column;
       }
     }
+  }
+  &.decorated__footer .footer_inner_wrap .footer_text span {
+    background: linear-gradient(132deg, #f5333f 0%, #ff5c00 100%);
+    -webkit-background-clip: text;
   }
 }

@@ -1,3 +1,5 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +9,6 @@ import React, { useEffect, useLayoutEffect } from "react";
 const GoodCoffee = () => {
   let ctx;
   const router = useRouter();
-  console.log(router.pathname);
   useEffect(() => {
     if (typeof document != "undefined") {
       ctx = gsap.context(() => {
@@ -40,8 +41,7 @@ const GoodCoffee = () => {
         router.pathname.includes("our-portfolio")
           ? "good_coffee red__bg"
           : "good_coffee "
-      }
-    >
+      }>
       <div className="container-fluid">
         <div className="good_coffee_wrapper">
           <h2>Have An Idea?</h2>

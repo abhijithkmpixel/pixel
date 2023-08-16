@@ -1,3 +1,5 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,7 +49,17 @@ const Footer = () => {
   return (
     <>
       {!router?.pathname.includes("cases") && (
-        <footer data-scroll-section>
+        <footer
+          data-scroll-section
+          className={
+            router.pathname.includes("contact") ||
+            (router.pathname.includes("our-portfolio") &&
+              !router.pathname.includes("[slug]")) ||
+            (router.pathname.includes("services") &&
+              !router.pathname.includes("[slug]"))
+              ? "decorated__footer"
+              : null
+          }>
           <div className="container-fluid" data-scroll>
             <div className="footer_inner_wrap" data-scroll>
               <div className="row">
@@ -108,12 +120,11 @@ const Footer = () => {
                       />
                     </div>
                     <Link
-                      href={"#"}
+                      href={"/contact"}
                       className="contact-btn_wrap"
                       data-scroll
                       data-scroll-speed="1.4"
-                      data-scroll-direction="horizontal"
-                    >
+                      data-scroll-direction="horizontal">
                       <Image
                         src="/icons/circle.svg"
                         alt="image"
@@ -126,8 +137,7 @@ const Footer = () => {
                           height="31"
                           viewBox="0 0 30 31"
                           fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                          xmlns="http://www.w3.org/2000/svg">
                           <line
                             x1="8.33632"
                             y1="23.64"
@@ -161,8 +171,7 @@ const Footer = () => {
                           <Link
                             href="#"
                             data-scroll
-                            data-animate-text="Web Development Services Company Dubai"
-                          >
+                            data-animate-text="Web Development Services Company Dubai">
                             <span>Web Development Services Company Dubai</span>
                           </Link>
                         </li>
@@ -170,8 +179,7 @@ const Footer = () => {
                           <Link
                             href="#"
                             data-scroll
-                            data-animate-text="Drupal for Web Development Dubai"
-                          >
+                            data-animate-text="Drupal for Web Development Dubai">
                             <span>Drupal for Web Development Dubai</span>
                           </Link>
                         </li>
@@ -179,8 +187,7 @@ const Footer = () => {
                           <Link
                             href="#"
                             data-scroll
-                            data-animate-text="Ecommerce Site Developer Dubai"
-                          >
+                            data-animate-text="Ecommerce Site Developer Dubai">
                             <span>Ecommerce Site Developer Dubai</span>
                           </Link>
                         </li>
@@ -188,8 +195,7 @@ const Footer = () => {
                           <Link
                             href="#"
                             data-scroll
-                            data-animate-text="Sitefinity Website Development Dubai"
-                          >
+                            data-animate-text="Sitefinity Website Development Dubai">
                             <span>Sitefinity Website Development Dubai</span>
                           </Link>
                         </li>
@@ -197,8 +203,7 @@ const Footer = () => {
                           <Link
                             href="#"
                             data-scroll
-                            data-animate-text="Newsletter Management Software Dubai"
-                          >
+                            data-animate-text="Newsletter Management Software Dubai">
                             <span>Newsletter Management Software Dubai</span>
                           </Link>
                         </li>
@@ -213,25 +218,23 @@ const Footer = () => {
                         <Link
                           href="#"
                           className="cta_tertiary cta_light"
-                          data-scroll
-                        >
+                          data-scroll>
                           <span>About Us</span>
                         </Link>
                         <Link
                           href="#"
                           className="cta_tertiary cta_light"
-                          data-scroll
-                        >
+                          data-scroll>
                           <span>Career</span>
                         </Link>
                       </div>
                     </div>
                     <div
                       className="col-12 col-lg-6 d-flex align-items-end"
-                      data-scroll
-                    >
+                      data-scroll>
                       <p data-scroll>
-                        © 2023 Pixelflames Technologies Pvt Ltd | All Rights Reserved.
+                        © 2023 Pixelflames Technologies Pvt Ltd | All Rights
+                        Reserved.
                       </p>
                     </div>
                   </div>

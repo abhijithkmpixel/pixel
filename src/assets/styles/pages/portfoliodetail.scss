@@ -246,11 +246,15 @@
         }
       }
       .cta_secondary {
-        // margin-top: -12%;
-        float: right;
-        transform: translateY(-50%);
-        @include below($desktop-lg) {
-          //   margin-top: -14%;
+        position: fixed;
+        z-index: 99;
+        right: 90px;
+        bottom: 20px;
+        @include below($tablet-lg) {
+          right: 50px;
+        }
+        @include below($mobile-lg) {
+          display: none;
         }
       }
     }

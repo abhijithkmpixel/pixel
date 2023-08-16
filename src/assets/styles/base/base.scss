@@ -272,21 +272,33 @@ html.lenis {
     opacity: 0;
   }
 }
-.min_720 {
-  display: block;
-  @include below($mobile-lg) {
-    display: none;
-  }
-}
 .min_820 {
   display: block;
   @include below($tablet-sm) {
     display: none;
   }
 }
+.min_720 {
+  display: block;
+  @include below($mobile-lg) {
+    display: none;
+  }
+}
 .max_720 {
   display: none;
   @include below($mobile-lg) {
+    display: block;
+  }
+}
+.min_990 {
+  display: block;
+  @include below($tablet-sm) {
+    display: none;
+  }
+}
+.max_990 {
+  display: none;
+  @include below($tablet-sm) {
     display: block;
   }
 }

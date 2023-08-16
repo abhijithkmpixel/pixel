@@ -210,7 +210,7 @@ const Banner = () => {
             <div className="hero_quick_links" data-scroll>
               <Link
                 href={"/our-portfolio/web"}
-                className="quick_link"
+                className="quick_link mouseOver"
                 data-cursor-img="/icons/quicklink.svg"
               >
                 <div className="wrapper">

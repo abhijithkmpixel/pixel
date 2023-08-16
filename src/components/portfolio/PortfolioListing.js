@@ -1,3 +1,5 @@
+/** @format */
+
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -76,14 +78,13 @@ const PortfolioListing = () => {
             })
           );
         }
-        console.log(currentList);
+        // console.log(currentList);
       };
     }
     return () => {};
   }, [filterOpen]);
 
   const openFilter = () => {
-    console.log("asd");
     setfilterOpen(filterOpen == true ? false : true);
   };
 
@@ -95,8 +96,7 @@ const PortfolioListing = () => {
             filterOpen == true
               ? "portfolio_nav_links open"
               : "portfolio_nav_links "
-          }
-        >
+          }>
           <button onClick={() => openFilter()}>View Filter</button>
           <ul className="">
             <li className="active_cat" data-category="all">
@@ -121,13 +121,11 @@ const PortfolioListing = () => {
                 <div
                   key={index}
                   className="portfolio_card_outer"
-                  data-case-category={p?.category}
-                >
+                  data-case-category={p?.category}>
                   <Link
                     href="/our-portfolio/portfolio"
                     className="portfolio_card_inner"
-                    data-cursor-img="/icons/arr.svg"
-                  >
+                    data-cursor-img="/icons/arr.svg">
                     <h3>{p?.name}</h3>
                     <figure>
                       <Image src={p?.img} alt="asd" width={500} height={350} />

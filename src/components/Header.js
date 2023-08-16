@@ -1,14 +1,37 @@
+/** @format */
+
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const Header = () => {
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
-  console.log(router.pathname);
   useEffect(() => {
     if (typeof document != "undefined") {
+      if (window.screen.width > 1200) {
+        window.addEventListener("scroll", () => {
+          if (router.pathname == "/") {
+            let length = document.querySelectorAll(
+              ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
+            ).length;
+            let scrollLength = 600 * (length - 2);
+            if (window.scrollY > scrollLength + 500) {
+              document.querySelector("body").classList.add("desktop_sticky");
+            } else {
+              document.querySelector("body").classList.remove("desktop_sticky");
+            }
+          } else {
+            if (window.scrollY > 300) {
+              document.querySelector("body").classList.add("desktop_sticky");
+            } else {
+              document.querySelector("body").classList.remove("desktop_sticky");
+            }
+          }
+        });
+      }
+
       document
         .querySelector(".hamburger__menu__icon")
         .addEventListener("click", function (e) {
@@ -75,20 +98,19 @@ const Header = () => {
             setnavOpen(true);
           });
       }
-      if (document.querySelector(".desktop_menu")) {
-        document
-          .querySelector(".desktop_menu .close_menu")
-          .addEventListener("click", function () {
-            setnavOpen(false);
-            document.querySelectorAll(".submenu_wrap").forEach((el) => {
-              el.classList.remove("subnavopen");
-            });
-          });
-      }
+      // if (document.querySelector(".desktop_menu")) {
+      //   document
+      //     .querySelector(".desktop_menu .close_menu")
+      //     .addEventListener("click", function () {
+      //       setnavOpen(false);
+      //       document.querySelectorAll(".submenu_wrap").forEach((el) => {
+      //         el.classList.remove("subnavopen");
+      //       });
+      //     });
+      // }
       if (window.screen.width < 720) {
         document.querySelectorAll(".submenu_wrap").forEach((menu) => {
           menu.addEventListener("click", function (e) {
-            console.log("asdsd");
             if (document.querySelector("subnavopen")) {
               document.querySelectorAll(".submenu_wrap").forEach((el) => {
                 el.classList.remove("subnavopen");
@@ -113,15 +135,15 @@ const Header = () => {
         data-scroll-section
         className={
           (router.pathname.includes("our-portfolio") ||
-          router.pathname.includes("servicess")
+          router.pathname.includes("services") ||
+          router.pathname.includes("contact")
             ? " header--light "
             : null) +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("our-portfolio")
             ? " portfolio__details__page "
             : null)
-        }
-      >
+        }>
         <div className="header_inner_wrap" data-scroll>
           <Link href={"/"} className="brand_logo">
             <Image
@@ -145,8 +167,7 @@ const Header = () => {
             className="menu_icon_wrap"
             data-scroll
             data-cursor-stick="#stick-me"
-            data-cursor-text=" "
-          >
+            data-cursor-text=" ">
             <span>Menu+</span>
             <ul id="stick-me">
               <li></li>
@@ -158,8 +179,7 @@ const Header = () => {
       <div
         className={
           navOpen == true ? "desktop_menu desktop_menu_open" : "desktop_menu"
-        }
-      >
+        }>
         <Image
           src="/uploads/menubg.png"
           width={1920}
@@ -167,7 +187,7 @@ const Header = () => {
           alt="menu image"
         />
 
-        <button className="close_menu">
+        {/* <button className="close_menu">
           <svg
             width="71"
             height="71"
@@ -194,7 +214,7 @@ const Header = () => {
               strokeLinecap="round"
             />
           </svg>
-        </button>
+        </button> */}
         <div className="menu_inner_wrap">
           <ul className="main_menu">
             <li>
@@ -292,14 +312,18 @@ const Header = () => {
           navOpen == true
             ? "hamburger__menu__icon open"
             : "hamburger__menu__icon"
-        }
-      >
+        }>
         <li></li>
         <li></li>
         <li></li>
       </ul>
-      <div className="desktop__menu__toggle">
-        <span>MENU+</span>
+      <div
+        className={
+          navOpen == true
+            ? "desktop__menu__toggle open"
+            : "desktop__menu__toggle"
+        }>
+        <span>{navOpen == true ? "CLOSE" : "MENU+"}</span>
         <ul>
           <li></li>
           <li></li>

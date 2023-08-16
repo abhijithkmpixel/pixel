@@ -1,9 +1,11 @@
+/** @format */
+
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 import "@/assets/styles/app.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import gsap, { Bounce, Power0, TweenLite, TweenMax } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Header from "@/components/Header";
@@ -13,9 +15,28 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import Lenis from "@studio-freight/lenis";
 import Footer from "@/components/Footer";
 import Router, { useRouter } from "next/router";
+import Image from "next/image";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+  const [loaderOpen, setloaderOpen] = useState(true);
+  const [prevPath, setprevPath] = useState();
+  useEffect(() => {
+    setTimeout(() => {
+      setloaderOpen(false);
+    }, 3000);
+    if (typeof document != "undefined") {
+      // let prevPath = localStorage.getItem("PREVPATH");
+      // console.log(prevPath);
+      // if (prevPath == null) {
+      //   localStorage.setItem("PREVPATH", router.pathname);
+      //   setprevPath(router.pathname);
+      // }
+    }
+
+    return () => {};
+  }, []);
+
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
@@ -41,37 +62,29 @@ export default function App({ Component, pageProps }) {
         const lenis = new Lenis({
           duration: 2,
           lerp: 0.07,
-          smoothWheel:true,
+          smoothWheel: true,
           // infinite:true
         });
 
         lenis.on(
           "scroll",
           ({ scroll, limit, velocity, direction, progress }) => {
-            // console.log({ scroll, limit, velocity, direction, progress })
             // ScrollTrigger.refresh();
             ScrollTrigger.update();
           }
         );
-        // const thumb = document.getElementById("thumb");
-        // const thumbHeight = thumb.getBoundingClientRect().height;
-
-        // lenis.on(
-        //   "scroll",
-        //   ({ scroll, limit, velocity, direction, progress }) => {
-        //     thumb.style.transform = `translate3d(0,${
-        //       progress * (window.innerHeight - thumbHeight)
-        //     }px,0)`;
-        //   }
-        // );
 
         gsap.ticker.add(update);
         scrollToTarget();
         Router.events.on("routeChangeStart", () => {
-          // document.querySelector("body").classList.remove("desktop_menu_open");
+          setloaderOpen(true);
         });
         Router.events.on("routeChangeComplete", () => {
           ScrollTrigger.refresh();
+
+          setTimeout(() => {
+            setloaderOpen(false);
+          }, 2000);
           ScrollTrigger.update();
           lenis.scrollTo("top");
           cursor.removeText();
@@ -112,24 +125,7 @@ export default function App({ Component, pageProps }) {
           });
         }
       }
-
-      if (window.screen.width > 1200) {
-        window.addEventListener("scroll", function () {
-          if (router.pathname == "/") {
-            if (window.scrollY > this.window.screen.height) {
-              document.querySelector("body").classList.add("desktop_sticky");
-            } else {
-              document.querySelector("body").classList.remove("desktop_sticky");
-            }
-          } else {
-            if (window.scrollY > 20) {
-              document.querySelector("body").classList.add("desktop_sticky");
-            } else {
-              document.querySelector("body").classList.remove("desktop_sticky");
-            }
-          }
-        });
-      } else {
+      if (window.screen.width < 1200) {
         window.addEventListener("scroll", function () {
           if (window.scrollY > 20) {
             document.querySelector("body").classList.add("sticky_header");
@@ -154,6 +150,24 @@ export default function App({ Component, pageProps }) {
           <div className="thumb" id="thumb"></div>
         </div>
       </div> */}
+      <div
+        className={
+          loaderOpen == true ? "preloader" : "preloader preloader--loaded"
+        }>
+        <div className="preloader__inner">
+          <div className="preloader__icon">
+            <Image
+              src="/logo/logo.svg"
+              alt="pixelflames logo"
+              width={120}
+              height={130}
+            />
+          </div>
+          <div className="preloader__progress_wrap">
+            <span></span>
+          </div>
+        </div>
+      </div>
       <Component {...pageProps} />
       {/* </main> */}
       {/* <Footer /> */}
