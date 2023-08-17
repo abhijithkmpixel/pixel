@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }) {
         );
 
         if (!isSafari) {
-          console.log("Browser is not Safari");
+          // console.log("Browser is not Safari");
           const update = (time, deltaTime, frame) => {
             lenis.raf(time * 1000);
           };
