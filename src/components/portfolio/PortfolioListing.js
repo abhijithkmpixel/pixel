@@ -53,6 +53,7 @@ const PortfolioListing = () => {
       let portfolioCards = document.querySelectorAll(
         ".portfolio_listing .portfolio_listing_grid .portfolio_card_outer"
       );
+      document.addEventListener("click", checkForCLick);
       linkItems.forEach((link) => {
         link.addEventListener("click", function (e) {
           e.preventDefault();
@@ -83,6 +84,16 @@ const PortfolioListing = () => {
     }
     return () => {};
   }, [filterOpen]);
+  function checkForCLick(event) {
+    var $trigger = document.querySelector(".portfolio_nav_links button");
+    if (
+      $trigger !== event.target
+      // && $trigger.contains(event.target)
+    ) {
+      //  $("body").removeClass("language_select-open");
+      setfilterOpen(false);
+    }
+  }
 
   const openFilter = () => {
     setfilterOpen(filterOpen == true ? false : true);

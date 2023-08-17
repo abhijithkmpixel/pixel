@@ -51,30 +51,37 @@ export default function App({ Component, pageProps }) {
           skewingIcon: 0,
           skewingMedia: 0,
         });
-        const update = (time, deltaTime, frame) => {
-          lenis.raf(time * 1000);
-        };
 
         const resize = (e) => {
           ScrollTrigger.refresh();
         };
-
-        const lenis = new Lenis({
-          duration: 2,
-          lerp: 0.07,
-          smoothWheel: true,
-          // infinite:true
-        });
-
-        lenis.on(
-          "scroll",
-          ({ scroll, limit, velocity, direction, progress }) => {
-            // ScrollTrigger.refresh();
-            ScrollTrigger.update();
-          }
+        var isSafari = /^((?!chrome|android).)*safari/i.test(
+          navigator.userAgent
         );
 
-        gsap.ticker.add(update);
+        if (!isSafari) {
+          console.log("Browser is not Safari");
+          const update = (time, deltaTime, frame) => {
+            lenis.raf(time * 1000);
+          };
+          const lenis = new Lenis({
+            duration: 2,
+            lerp: 0.07,
+            smoothWheel: true,
+            wheelMultiplier: 1.5,
+            // infinite:true
+          });
+
+          lenis.on(
+            "scroll",
+            ({ scroll, limit, velocity, direction, progress }) => {
+              // ScrollTrigger.refresh();
+              ScrollTrigger.update();
+            }
+          );
+          gsap.ticker.add(update);
+        }
+
         scrollToTarget();
         Router.events.on("routeChangeStart", () => {
           setloaderOpen(true);
@@ -86,10 +93,17 @@ export default function App({ Component, pageProps }) {
             setloaderOpen(false);
           }, 2000);
           ScrollTrigger.update();
-          lenis.scrollTo("top");
+
+          // if (!isSafari) {
+          //   lenis.scrollTo("top");
+          // }
+          window.scrollTo(0, 0);
           cursor.removeText();
           cursor.removeImg();
           cursor.removeIcon();
+          document
+            .querySelector("body")
+            .classList.remove("quick__links--enter");
           scrollToTarget();
         });
         Router.events.on("routeChangeError", () => {});
@@ -100,11 +114,19 @@ export default function App({ Component, pageProps }) {
               let target = document.getElementById(
                 `${e.target.getAttribute("href").split("#")[1]}`
               );
-              lenis.scrollTo(target, {
-                duration: 1.5,
-                // easing: (t) => 1 - Math.cos((t * Math.PI) / 2),
-                easing: (t) => 1 - Math.pow(1 - t, 4),
-              });
+              if (!isSafari) {
+                // lenis.scrollTo(target, {
+                //   duration: 1.5,
+                //   // easing: (t) => 1 - Math.cos((t * Math.PI) / 2),
+                //   easing: (t) => 1 - Math.pow(1 - t, 4),
+                // });
+                // var scrollElm = document.getElementById(`${id}`);
+                let top = target.offsetTop;
+                window.scrollTo({
+                  top: top - 0,
+                  behavior: "smooth",
+                });
+              }
             });
           });
           document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
@@ -167,7 +189,7 @@ export default function App({ Component, pageProps }) {
         <div className="preloader__inner">
           <div className="preloader__icon">
             <Image
-              src="/logo/logo.svg"
+              src="/logo/p-dark.png"
               alt="pixelflames logo"
               width={120}
               height={130}

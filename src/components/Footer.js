@@ -161,56 +161,82 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="col-12 col-xl-7">
-                  <div className="row footer_quick_links">
-                    <div className="col-12 col-xl-2" data-scroll>
-                      <h5 data-scroll>links</h5>
+                  <div className="row">
+                    <div className="col-12 col-md-6">
+                      <address>
+                        <h4>pixelflames fze</h4>
+                        <p>
+                          Level 21, Al Habtoor Business <br />
+                          Towers, Marina Dubai, UAE
+                          <span>+971 4 453 2628</span>
+                        </p>
+                      </address>
                     </div>
-                    <div className="col-12 col-xl-10">
-                      <ul className="footer_quick_links" data-scroll>
-                        <li>
-                          <Link
-                            href="#"
-                            data-scroll
-                            data-animate-text="Web Development Services Company Dubai">
-                            <span>Web Development Services Company Dubai</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            data-scroll
-                            data-animate-text="Drupal for Web Development Dubai">
-                            <span>Drupal for Web Development Dubai</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            data-scroll
-                            data-animate-text="Ecommerce Site Developer Dubai">
-                            <span>Ecommerce Site Developer Dubai</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            data-scroll
-                            data-animate-text="Sitefinity Website Development Dubai">
-                            <span>Sitefinity Website Development Dubai</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            href="#"
-                            data-scroll
-                            data-animate-text="Newsletter Management Software Dubai">
-                            <span>Newsletter Management Software Dubai</span>
-                          </Link>
-                        </li>
-                      </ul>
+                    <div className="col-12 col-md-6">
+                      <address>
+                        <h4>PIXELFLAMES TECHNOLOGIES</h4>
+                        <p>
+                          2/2525-B13 3rd floor, Olive Arcade, Malaparamba,{" "}
+                          <br />
+                          Thondayadu bypass road,
+                          <span>+91 8075 360 472</span>
+                        </p>
+                      </address>
+                    </div>
+                    <div className="col-12 footer_quick_links">
+                      <div className="col-12 col-xl-2" data-scroll>
+                        <h5 data-scroll>links</h5>
+                      </div>
+                      <div className="col-12 col-xl-10">
+                        <ul className="footer_quick_links" data-scroll>
+                          <li>
+                            <Link
+                              href="#"
+                              data-scroll
+                              data-animate-text="Web Development Services Company Dubai">
+                              <span>
+                                Web Development Services Company Dubai
+                              </span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              data-scroll
+                              data-animate-text="Drupal for Web Development Dubai">
+                              <span>Drupal for Web Development Dubai</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              data-scroll
+                              data-animate-text="Ecommerce Site Developer Dubai">
+                              <span>Ecommerce Site Developer Dubai</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              data-scroll
+                              data-animate-text="Sitefinity Website Development Dubai">
+                              <span>Sitefinity Website Development Dubai</span>
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              data-scroll
+                              data-animate-text="Newsletter Management Software Dubai">
+                              <span>Newsletter Management Software Dubai</span>
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="col-12 bottom_booter">
                   <div className="row">
                     <div className="col-12 col-lg-6">

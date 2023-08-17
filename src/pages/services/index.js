@@ -1,3 +1,5 @@
+/** @format */
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Empowered from "@/components/service/Empowered";
@@ -21,7 +23,7 @@ const ServicesPage = () => {
         subtitle=" We work with individually adapted frameworks,but we prefer to
                 work according to"
         img="/uploads/ser.jpg"
-        class=""
+        className=""
       />
       <ServiceItemsList />
       <Empowered />

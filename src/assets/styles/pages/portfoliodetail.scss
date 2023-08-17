@@ -1,3 +1,5 @@
+/** @format */
+
 .portfolio_details {
   @include below($tablet-lg) {
     overflow: hidden;
@@ -29,11 +31,13 @@
         object-fit: cover;
         position: absolute;
         inset: 0;
-        transition: 0.6s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         &:not(:first-child) {
-          opacity: 0;
+          // opacity: 0;
+          transform: translateY(100%);
           @include below($tablet-lg) {
-            opacity: 1;
+            transform: translateY(0%);
+            // opacity: 1;
           }
         }
         @include below($tablet-lg) {
@@ -94,8 +98,8 @@
             padding: 15px;
           }
           .btn-bck {
-            color: $color-white;
             @include below($tablet-lg) {
+              color: $color-white;
               position: absolute;
               top: 20px;
               left: 50px;
@@ -115,11 +119,15 @@
             svg {
               width: 40px;
               height: auto;
-              @include below($mobile-lg) {
-                width: 20px;
+              @include below($tablet-lg) {
+                width: 40px;
+                path {
+                  fill: $color-white;
+                }
               }
-              path {
-                fill: $color-white;
+              @include below($mobile-lg) {
+                width: 40px;
+                margin-right: 10px;
               }
             }
           }
@@ -130,14 +138,31 @@
           }
         }
         .btn-bck {
+          transition: 0.3s all ease-in-out;
+          display: flex;
+          align-items: center;
           svg {
-            margin-right: 1rem;
+            margin-right: 30px;
+            width: 40px;
+            height: auto;
+            path,
+            line {
+              transition: 0.3s all ease-in-out;
+            }
           }
           span {
             font-size: 1rem;
           }
           &:hover {
-            color: $color-cinnabar;
+            @include above($tablet-lg) {
+              color: $color-cinnabar;
+              svg {
+                path,
+                line {
+                  fill: $color-cinnabar;
+                }
+              }
+            }
           }
         }
       }
@@ -162,6 +187,7 @@
 
         @include below($mobile-lg) {
           font-size: 16px;
+          text-align: left;
         }
       }
       h3 {
@@ -262,23 +288,44 @@
 }
 
 .project_navigation_link {
-  padding: 110px 0 60px;
+  padding: 150px 30px;
+  width: calc(100% + 24px);
+  margin-left: -24px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 100;
+  // margin-bottom: 50px;
+  & > img {
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.6);
+  }
+  @include below($tablet-lg) {
+    margin-bottom: 50px;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+  }
   @include below($mobile-lg) {
-    padding: 60px 0 100px;
+    padding: 90px 15px;
   }
   h5 {
-    @include fontFace(24px, 1.5, 400, $color-black);
+    @include fontFace(24px, 1.5, 400, $color-white);
     text-transform: uppercase;
     margin-bottom: 50px;
+    position: relative;
+    z-index: 5;
     @include below($mobile-lg) {
-      font-size: 20px;
+      font-size: 16px;
+      margin-bottom: 30px;
     }
   }
   h3,
   a {
-    display: flex;
+    position: relative;
+    z-index: 5;
+    // display: flex;
     width: max-content;
-    @include fontFace(50px, 0.9, 500, $color-black);
+    @include fontFace(50px, 0.9, 500, $color-white);
     text-transform: uppercase;
     text-decoration: none;
     transition: 0.3s all ease-in-out;
@@ -290,8 +337,11 @@
       margin-left: 30px;
       width: 24px;
       height: auto;
+      display: inline-block;
+      margin-bottom: 4px;
       path,
       line {
+        fill: $color-white;
         transition: 0.3s all ease-in-out;
       }
     }

@@ -1,3 +1,5 @@
+/** @format */
+
 html {
   // scroll-behavior: smooth;
   box-sizing: border-box;
@@ -158,7 +160,10 @@ address {
 // }
 .mf-cursor::before {
   color: $color-cinnabar;
-  pointer-events: none;
+  // color: transparent;
+  pointer-events: none !important;
+  // transform: scale(1);
+  // border: 1px solid $color-cod-gray;
 }
 .mf-cursor {
   z-index: 99;
@@ -241,6 +246,9 @@ html.lenis {
 .mf-cursor.-text::before {
   transform: scale(2.8);
 }
+.mf-cursor-media {
+  // z-index: 10;
+}
 
 .scrollbar {
   position: fixed;
@@ -299,6 +307,18 @@ html.lenis {
 .max_990 {
   display: none;
   @include below($tablet-sm) {
+    display: block;
+  }
+}
+.min_1200 {
+  display: block;
+  @include below($tablet-lg) {
+    display: none;
+  }
+}
+.max_1200 {
+  display: none;
+  @include below($tablet-lg) {
     display: block;
   }
 }

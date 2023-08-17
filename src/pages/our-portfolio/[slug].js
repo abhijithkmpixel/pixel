@@ -50,11 +50,25 @@ const Portfolio = ({ data }) => {
           }
         });
       }
+      let prevState = 0;
       function imageUpdate(index) {
-        allImages.forEach((element) => {
-          element.style.opacity = 0;
-        });
-        allImages[index].style.opacity = 1;
+        if (index >= prevState) {
+          allImages.forEach((element) => {
+            // element.style.opacity = 0;
+            // element.style.transform = "translateY(100%)";
+          });
+          allImages[index].style.transform = "translateY(0%)";
+        } else {
+          allImages.forEach((element) => {
+            // element.style.opacity = 0;
+            // element.style.transform = "translateY(100%)";
+          });
+          allImages[index + 1].style.transform = "translateY(100%)";
+        }
+        // allImages[index].style.opacity = 1;
+        // console.log(index);
+        // console.log(prevState);
+        prevState = index;
       }
     }
 
@@ -98,19 +112,19 @@ const Portfolio = ({ data }) => {
             <div className="content_holder">
               <div className="case__banner">
                 <div className="case__banner__inner">
-                  <Link className="btn-bck " href="#">
+                  <Link className="btn-bck " href="/our-portfolio">
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      className="bi bi-arrow-left"
-                      viewBox="0 0 16 16">
+                      width="40"
+                      height="13"
+                      viewBox="0 0 40 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
                       <path
-                        fillRule="evenodd"
-                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                        d="M6.68535 0.155718C6.89524 0.365599 6.88847 0.697347 6.68535 0.920768L2.18952 5.9579L38.9593 5.66001C39.2572 5.66001 39.501 5.90374 39.501 6.20164C39.501 6.49953 39.2572 6.74326 38.9593 6.74326L2.18952 7.04116L6.67858 12.0783C6.87494 12.3085 6.89524 12.6267 6.68535 12.8366C6.47545 13.0465 6.10983 13.06 5.91348 12.8433C5.91348 12.8433 0.550976 6.95314 0.496811 6.88544C0.442646 6.81774 0.334312 6.69587 0.334312 6.49953C0.334312 6.30319 0.442646 6.16778 0.496811 6.11362C0.550976 6.05946 5.91348 0.155718 5.91348 0.155718C6.01504 0.054163 6.15723 0 6.29942 0C6.4416 0 6.57701 0.054163 6.68535 0.155718Z"
+                        fill="black"
                       />
                     </svg>
+
                     <span>Back to the List</span>
                   </Link>
                   <h1 className="title_primary">
@@ -192,14 +206,14 @@ const Portfolio = ({ data }) => {
                   <span>Home</span>
                 </Link>
               </GsapMagnetic>
-              <div className="min_990">
-                <NextProject />
-              </div>
+            </div>
+            <div className="min_1200">
+              <NextProject />
             </div>
           </div>
         </div>
       </section>
-      <div className="max_990">
+      <div className="max_1200">
         <div className="container-fluid">
           <NextProject />
         </div>

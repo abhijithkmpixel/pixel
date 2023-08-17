@@ -183,7 +183,8 @@ header {
 .preloader {
   position: fixed;
   z-index: 999;
-  background: linear-gradient(150deg, #f5333f, #ff5c00 60%);
+  // background: linear-gradient(150deg, #f5333f, #ff5c00 60%);
+  background: $color-white;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -192,6 +193,9 @@ header {
   transform-origin: bottom;
   transition: 0.3s transform ease-in-out;
   inset: 0;
+  @include below($tablet-lg) {
+    height: 100dvh;
+  }
   .preloader__inner {
     display: flex;
     flex-flow: column;
@@ -199,7 +203,7 @@ header {
     transition: 0.3s all ease-in-out;
     transition-delay: 0.3s;
     .preloader__icon {
-      width: 60px;
+      width: 50px;
       height: auto;
       margin-bottom: 30px;
       transition: 0.3s all ease-in-out;
@@ -208,8 +212,8 @@ header {
       }
     }
     .preloader__progress_wrap {
-      width: 250px;
-      height: 5px;
+      width: 200px;
+      height: 6px;
       border-radius: 40px;
       overflow: hidden;
       transition: 0.4s all ease-in-out;
@@ -220,7 +224,8 @@ header {
       }
       span {
         position: absolute;
-        background: $color-white;
+        // background: $color-white;
+        background: linear-gradient(150deg, #f5333f, #ff5c00 60%);
         top: 0;
         left: 0;
         width: 0;
@@ -266,6 +271,7 @@ header {
   align-items: center;
   transition-delay: 0.6s;
   background-color: #151515;
+  overscroll-behavior: contain;
   @include below($tablet-lg) {
     align-items: flex-start;
     padding-top: 60px;
@@ -277,7 +283,7 @@ header {
     width: calc(100vw - 10px);
     transform-origin: bottom;
 
-    height: calc(100vh - 55px);
+    height: calc(100dvh - 55px);
   }
   & > img {
     position: absolute;
@@ -560,21 +566,44 @@ header {
     }
   }
 }
-.desktop__menu__toggle {
+.sticky__sidebar {
   position: fixed;
-  left: 50%;
-  transform: translateX(-50%) translateY(200px);
+  top: 50%;
+  transform: translateY(-50%) translateX(100%) translateX(calc(100% - 75px));
+  right: 0;
+  z-index: 101;
+  transition: 0.3s all ease-in-out;
+
+  @include below($tablet-lg) {
+    display: none;
+  }
+}
+.desktop__menu__toggle {
+  // position: fixed;
+  // left: 50%;
+  // transform: translateX(-50%) translateY(200px);
   bottom: 20px;
   background-color: $color-mine-shaft;
-  padding: 26px 35px;
-  border-radius: 15px;
+  padding: 15px 25px;
+  border-radius: 15px 0px 0px 15px;
   display: flex;
   align-items: center;
   z-index: 101;
-  transition: 0.5s all ease-in-out;
+  transition: 0.3s all ease-in-out;
   cursor: pointer;
+  height: 60px;
+  // transform: translateX(calc(100% - 75px));
+  & + .desktop__menu__toggle {
+    margin-top: 2px;
+  }
+  &:hover {
+    @include above($tablet-lg) {
+      transform: translateX(calc(-100% + 76px));
+      background-color: $color-pomegranate2;
+    }
+  }
   @include below($desktop-lg) {
-    padding: 24px 30px;
+    // padding: 24px 30px;
   }
   @include below($mobile-lg) {
     display: none;
@@ -582,18 +611,27 @@ header {
   span {
     @include fontFace(16px, 1, 400, $color-white);
     display: block;
-    margin-right: 22px;
+    margin-left: 22px;
     min-width: 6ch;
     @include below($desktop-lg) {
       font-size: 14px;
+    }
+  }
+  svg {
+    width: 30px;
+    height: auto;
+    object-fit: contain;
+    path,
+    line {
+      fill: $color-white;
     }
   }
   ul {
     transition: 0.3s all ease-in-out;
     li {
       display: block;
-      width: 40px;
-      height: 1.5px;
+      width: 30px;
+      height: 2px;
       border-radius: 10px;
       background-color: $color-white;
       transition: 0.3s all ease-in-out;
@@ -604,7 +642,7 @@ header {
     }
   }
   &.open {
-    transform: translateX(-50%) translateY(0px);
+    // transform: translateX(-50%) translateY(0px);
     ul {
       transform: rotate(45deg);
       li {
@@ -621,8 +659,11 @@ header {
   }
 }
 .desktop_sticky {
+  .sticky__sidebar {
+    transform: translateY(-50%) translateX(0%) translateX(calc(100% - 75px));
+  }
   .desktop__menu__toggle {
-    transform: translateX(-50%) translateY(0);
+    // transform: translateX(-50%) translateY(0);
   }
 }
 .hamburger__menu__icon {
@@ -680,6 +721,9 @@ header {
     }
   }
 }
+.desktop_menu.desktop_menu_open ~ .sticky__sidebar {
+  transform: translateY(-50%) translateX(0%) translateX(calc(100% - 75px));
+}
 // .desktop_menu_open {
 .desktop_menu_open.desktop_menu {
   transition-delay: 0s;
@@ -714,13 +758,17 @@ header {
   }
 }
 // }
-header.portfolio__details__page.header--light {
+header.portfolio__details__page.header--light,
+header.services__detail__page.header--light {
   @include below($tablet-lg) {
     .menu_icon_wrap {
       span {
         color: $color-white;
       }
       li {
+        background-color: $color-white;
+      }
+      ul li {
         background-color: $color-white;
       }
     }
@@ -732,7 +780,8 @@ header.portfolio__details__page.header--light {
   }
 }
 .sticky_header {
-  header.portfolio__details__page.header--light {
+  header.portfolio__details__page.header--light,
+  header.services__detail__page.header--light {
     @include below($tablet-lg) {
       .menu_icon_wrap {
         span {

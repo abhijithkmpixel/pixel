@@ -1,6 +1,9 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect } from "react";
+import GsapMagnetic from "../../components/gsap";
 
 const ContactForm = () => {
   let ctx;
@@ -89,10 +92,12 @@ const ContactForm = () => {
                     placeholder="Please mention your budget?"
                   />
                 </fieldset>
-                <button className="cta_primary cta_drk">
-                  {" "}
-                  <span>Send</span>{" "}
-                </button>
+                <GsapMagnetic>
+                  <button className="cta_primary cta_drk" type="submit">
+                    {" "}
+                    <span>Send</span>{" "}
+                  </button>
+                </GsapMagnetic>
               </div>
             </div>
             <div className="col-md-4 min_820">
