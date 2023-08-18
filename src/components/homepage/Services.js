@@ -132,7 +132,7 @@ const Services = ({ data }) => {
                     data-scroll
                     key={index}
                     data-scroll-offset="300">
-                    <span data-scroll>{"0" + index + 1}</span>
+                    <span data-scroll>{"0" + (index + 1)}</span>
                     <Link
                       href={
                         "/services/" +
