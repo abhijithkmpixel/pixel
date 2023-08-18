@@ -1,29 +1,23 @@
+/** @format */
+
 import Head from "next/head";
 import React from "react";
 
-const HeadComponent = ({ data }) => {
+const HeadComponent = ({ data, title }) => {
   return (
     <>
       <Head>
-        <title>{data?.seo_title}</title>
-        <meta name="description" content={data?.seo_description}></meta>
-        <meta name="keywords" content={data?.seo_description}></meta>
-        <meta
-          name="image"
-          content={data?.seo_image?.data?.attributes?.url}
-        ></meta>
-        <meta name="og:title" content={data?.seo_title}></meta>
-        <meta name="og:description" content={data?.seo_description}></meta>
-        <meta
-          name="og:image"
-          content={data?.seo_image?.data?.attributes?.url}
-        ></meta>
-        <meta name="twitter:title" content={data?.seo_title}></meta>
-        <meta name="twitter:description" content={data?.seo_description}></meta>
-        <meta
-          name="twitter:image"
-          content={data?.seo_image?.data?.attributes?.url}
-        ></meta>
+        <title>{title != null ? title : data?.Seo_title}</title>
+        <meta property="og:site_name" content={data?.Seo_title} />
+        <meta name="description" content={data?.Seo_description}></meta>
+        <meta name="keywords" content={data?.Seo_description}></meta>
+        <meta name="image" content="/logo/p-dark.png"></meta>
+        <meta name="og:title" content={data?.Seo_title}></meta>
+        <meta name="og:description" content={data?.Seo_description}></meta>
+        <meta name="og:image" content={"/logo/p-dark.png"}></meta>
+        <meta name="twitter:title" content={data?.Seo_title}></meta>
+        <meta name="twitter:description" content={data?.Seo_description}></meta>
+        <meta name="twitter:image" content={"/logo/p-dark.png"}></meta>
         <meta
           property="og:url"
           content={

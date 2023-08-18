@@ -1,7 +1,9 @@
+/** @format */
+
 import { gsap } from "gsap";
 import React, { useEffect, useLayoutEffect } from "react";
 
-const Empowered = () => {
+const Empowered = ({ data }) => {
   let ctx;
   useLayoutEffect(() => {
     if (typeof document != "undefined") {
@@ -42,10 +44,8 @@ const Empowered = () => {
     <section className="empowered_brand_block">
       <div className="container-fluid">
         <div className="empower_inner_wrap">
-          <h5>
-            Together, empowered by our very own Brand Dials process, we deliver
-          </h5>
-          <h2>consistent unique service</h2>
+          <h5>{data?.Title}</h5>
+          <h2>{data?.Subtitle}</h2>
         </div>
       </div>
     </section>

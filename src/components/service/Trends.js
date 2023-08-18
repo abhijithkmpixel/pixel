@@ -1,7 +1,9 @@
+/** @format */
+
 import React from "react";
 import Slider from "react-slick";
 
-const Trends = () => {
+const Trends = ({ title, body }) => {
   var settings = {
     dots: false,
     infinite: true,
@@ -36,55 +38,30 @@ const Trends = () => {
   return (
     <section className="development__trends">
       <div className="container-fluid">
-        <h2 className="title__secondary">Web Development Trends</h2>
+        <h2 className="title__secondary">{title}</h2>
         <div className="development__trends__grid">
           <div className=" row">
             <div className="col-12 col-lg-3"></div>
             <div className="col-12 col-lg-9">
-              <Slider
-                {...settings}
-                className="row development__trends__grid__cards__wrap"
-              >
-                <div className="col-12 col-md-6 ">
-                  <div className="development__trends__grid__card">
-                    <h3>Progressive Web Applications (PWAs)</h3>
-                    <p>
-                      PWAs are web applications that provide a native app-like
-                      experience to users by utilizing modern web technologies.
-                      They offer features such as push notifications
-                    </p>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6">
-                  <div className="development__trends__grid__card">
-                    <h3>No Code Development</h3>
-                    <p>
-                      No-code website development is a way of building websites
-                      without the need for coding or programming knowledge.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6">
-                  <div className="development__trends__grid__card">
-                    <h3>Voice User Interface (VUI)</h3>
-                    <p>
-                      VUI involves integrating voice-activated features into
-                      websites, allowing users to interact with the site using
-                      their voice.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6">
-                  <div className="development__trends__grid__card">
-                    <h3>Single Page Applications (SPAs)</h3>
-                    <p>
-                      SPAs are web applications that load a single HTML page and
-                      dynamically update the content as users interact with the
-                      site.
-                    </p>
-                  </div>
-                </div>
-              </Slider>
+              {body && body?.length > 0 && (
+                <Slider
+                  {...settings}
+                  className="row development__trends__grid__cards__wrap">
+                  {body?.map((cnt, index) => {
+                    return (
+                      <div className="col-12 col-md-6 " key={index}>
+                        <div className="development__trends__grid__card">
+                          <h3>{cnt?.Title}</h3>
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html: cnt?.Description,
+                            }}></div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </Slider>
+              )}
             </div>
           </div>
         </div>
@@ -101,8 +78,7 @@ function SampleNextArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="8.15252"
@@ -134,8 +110,7 @@ function SamplePrevArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="-0.684881"

@@ -5,16 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const AiTech = () => {
+const AiTech = ({ data }) => {
   let ctx;
 
   useEffect(() => {
     if (typeof document != "undefined") {
       if (window.screen.width > 1200) {
+        let sideimage = gsap.timeline();
+        let sideimage2 = gsap.timeline();
         ctx = gsap.context(() => {
-          let sideimage = gsap.timeline();
-          let sideimage2 = gsap.timeline();
-
           sideimage.to(".ai__technology__block__side_image > img", {
             objectPosition: "50% 0%",
             scrollTrigger: {
@@ -53,7 +52,7 @@ const AiTech = () => {
     <section className="ai__technology__block">
       <div className="container-fluid">
         <div className="ai__technology__block__inner">
-          <h2 className="title_primary">We provide Ai technologies</h2>
+          <h2 className="title_primary">{data?.Main_title}</h2>
           <div className="ai__technology__block__inner__row row">
             <div className="col 12 col-sm-12 col-md-12 col-xl-6  ">
               <div className="row">
@@ -71,16 +70,18 @@ const AiTech = () => {
                   </svg>
                 </div>
                 <div className="col-12 col-md-6">
-                  <p>
-                    We work with individually adapted frameworks,but we prefer
-                    to work according to us.
-                  </p>
+                  <p>{data?.Short_description}</p>
                 </div>
                 <div className="col-12 max_720">
                   <div className="ai__technology__block__side_image">
                     <Image
-                      src="/uploads/ai.jpg"
-                      alt="asd"
+                      src={data?.SIde_image?.data?.attributes?.url}
+                      alt={
+                        data?.SIde_image?.data?.attributes?.alternativeText !=
+                        null
+                          ? data?.SIde_image?.data?.attributes?.alternativeText
+                          : "Ai technology image"
+                      }
                       width={600}
                       height={500}
                     />
@@ -104,55 +105,64 @@ const AiTech = () => {
                   </svg>
                 </div>
                 <div className="col-12 col-md-7">
-                  <h3>AI provide</h3>
-                  <h4>AI Solutions</h4>
-                  <p>
-                    Our extensive clientele reflects the trust they place in us
-                    to elevate their brands
-                  </p>
+                  <h3>{data?.Sub_title}</h3>
+                  <h4>{data?.Short_title}</h4>
+                  <p>{data?.Sub_title_description}</p>
                 </div>
                 <div className="col-12 col-md-5 d-flex align-items-center">
-                  <Link className="goto_inerpage" href={"/"}>
-                    <svg
-                      width="80"
-                      height="80"
-                      viewBox="0 0 80 80"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <circle
-                        cx="40"
-                        cy="40"
-                        r="39.5"
-                        transform="rotate(90 40 40)"
-                        stroke="black"
-                      />
-                      <line
-                        x1="32.8778"
-                        y1="40.1774"
-                        x2="47.7198"
-                        y2="40.1774"
-                        stroke="black"
-                        strokeWidth="0.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M44.061 36L48.12 40.0883L44.061 44.1766"
-                        stroke="black"
-                        strokeWidth="0.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </Link>
+                  {data?.Redirect_link && (
+                    <Link
+                      className="goto_inerpage"
+                      href={
+                        data?.Redirect_link?.Url != null
+                          ? data?.Redirect_link?.Url
+                          : "#"
+                      }>
+                      <svg
+                        width="80"
+                        height="80"
+                        viewBox="0 0 80 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle
+                          cx="40"
+                          cy="40"
+                          r="39.5"
+                          transform="rotate(90 40 40)"
+                          stroke="black"
+                        />
+                        <line
+                          x1="32.8778"
+                          y1="40.1774"
+                          x2="47.7198"
+                          y2="40.1774"
+                          stroke="black"
+                          strokeWidth="0.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M44.061 36L48.12 40.0883L44.061 44.1766"
+                          stroke="black"
+                          strokeWidth="0.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
             <div className="col-12 col-sm-12 col-md-12  col-xl-6 min_720">
               <div className="ai__technology__block__side_image">
                 <Image
-                  src="/uploads/ai.jpg"
-                  alt="asd"
+                  src={data?.SIde_image?.data?.attributes?.url}
+                  alt={
+                    data?.SIde_image?.data?.attributes?.alternativeText != null
+                      ? data?.SIde_image?.data?.attributes?.alternativeText
+                      : "Ai technology image"
+                  }
                   width={600}
                   height={500}
                 />

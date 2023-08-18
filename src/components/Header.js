@@ -5,7 +5,7 @@ import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ data }) => {
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -172,19 +172,35 @@ const Header = () => {
         <div className="header_inner_wrap" data-scroll>
           <Link href={"/"} className="brand_logo">
             <Image
-              src={"/logo/pixellogo.svg"}
+              src={data?.attributes?.Logo_dark?.Image?.data[0]?.attributes?.url}
               width={160}
               height={38}
-              alt="Pixelflames logo"
+              priority
+              alt={
+                data?.attributes?.Logo_dark?.Image?.data[0]?.attributes
+                  ?.alternativeText
+                  ? data?.attributes?.Logo_dark?.Image?.data[0]?.attributes
+                      ?.alternativeText
+                  : "Pixelflames logo"
+              }
               data-scroll
             />
           </Link>
           <Link href={"/"} className="brand_logo  brand_logo--white">
             <Image
-              src={"/logo/pixellogo-white.svg"}
+              src={
+                data?.attributes?.Logo_white?.Image?.data[0]?.attributes?.url
+              }
               width={160}
               height={38}
-              alt="Pixelflames logo"
+              priority
+              alt={
+                data?.attributes?.Logo_white?.Image?.data[0]?.attributes
+                  ?.alternativeText
+                  ? data?.attributes?.Logo_white?.Image?.data[0]?.attributes
+                      ?.alternativeText
+                  : "Pixelflames logo"
+              }
               data-scroll
             />
           </Link>
@@ -206,7 +222,7 @@ const Header = () => {
           navOpen == true ? "desktop_menu desktop_menu_open" : "desktop_menu"
         }>
         <Image
-          src="/uploads/menubg.png"
+          src={data?.attributes?.Header_menu_bg?.data?.attributes?.url}
           width={1920}
           height={1080}
           alt="menu image"
@@ -242,93 +258,60 @@ const Header = () => {
         </button> */}
         <div className="menu_inner_wrap">
           <ul className="main_menu">
-            <li>
-              <div className="nav_item_wrap">
-                <div className="link_wrap">
-                  <Link href="/">
-                    <span>01</span>Home
-                  </Link>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="nav_item_wrap submenu_wrap">
-                <div className="link_wrap">
-                  <Link href="#">
-                    <span>02</span>about us
-                  </Link>
-                </div>
-                <ul className="sub_menu">
-                  <li>
-                    <Link href="#">link1</Link>
+            {data?.attributes?.Header_menu &&
+              data?.attributes?.Header_menu?.length > 0 &&
+              data?.attributes?.Header_menu.map((elm, index) => {
+                return (
+                  <li key={index}>
+                    <div className="nav_item_wrap submenu_wrap">
+                      <div className="link_wrap">
+                        <Link
+                          href={elm?.Link?.Url != null ? elm?.Link?.Url : "#"}>
+                          <span>{(index <= 9 ? "0" : null) + (index + 1)}</span>
+                          {elm?.Link?.Text}
+                        </Link>
+                      </div>
+                      {elm?.Sub_menu && elm?.Sub_menu?.length > 0 && (
+                        <ul className="sub_menu">
+                          {elm.Sub_menu?.map((selm, index) => {
+                            return (
+                              <li key={index}>
+                                <Link
+                                  href={selm?.Url != null ? selm?.Url : "#"}>
+                                  {selm?.Text}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
                   </li>
-                  <li>
-                    <Link href="#">link2</Link>
-                  </li>
-                  <li>
-                    <Link href="#">e-commerce</Link>
-                  </li>
-                  <li>
-                    <Link href="#"> management</Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <div className="nav_item_wrap submenu_wrap">
-                <div className="link_wrap">
-                  <Link href="/services">
-                    <span>03</span>services
-                  </Link>
-                </div>
-                <ul className="sub_menu">
-                  <li>
-                    <Link href="/services/web">web development</Link>
-                  </li>
-                  <li>
-                    <Link href="/services/web">mobile app development</Link>
-                  </li>
-                  <li>
-                    <Link href="/services/web">e-commerce development</Link>
-                  </li>
-                  <li>
-                    <Link href="/services/web">website management</Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <div className="nav_item_wrap">
-                <div className="link_wrap">
-                  <Link href="/our-portfolio">
-                    <span>04</span>our works
-                  </Link>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className="nav_item_wrap">
-                <div className="link_wrap">
-                  <Link href="/contact">
-                    <span>05</span>contact
-                  </Link>
-                </div>
-              </div>
-            </li>
+                );
+              })}
           </ul>
           <ul className="social_menia_links">
-            <li>
-              <Link href="#">
-                <Image src="/uploads/fb.png" width={50} height={50} alt="" />
-                pixelflamesdigital
-              </Link>
-            </li>
-            <li>
-              <Link href="#">
-                <Image src="/uploads/ins.png" width={50} height={50} alt="" />
-                pixelflamesdigital
-              </Link>
-            </li>
+            {data?.attributes?.Social_media_links &&
+              data?.attributes?.Social_media_links.length > 0 &&
+              data?.attributes?.Social_media_links?.map((elm, index) => {
+                return (
+                  <li key={index}>
+                    <Link href={elm?.Url != null ? elm?.Url : "#"}>
+                      <Image
+                        src={elm?.Icon?.data?.attributes?.url}
+                        width={50}
+                        height={50}
+                        alt={
+                          elm?.Icon?.data?.attributes?.alternativeText != null
+                            ? elm?.Icon?.data?.attributes?.alternativeText
+                            : "sicial media icon"
+                        }
+                      />
+                      {elm?.Text}
+                    </Link>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>

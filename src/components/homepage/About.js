@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
 
-const About = () => {
+const About = ({ data }) => {
   useEffect(() => {
     let ctx;
     if (typeof document != "undefined") {
@@ -127,13 +127,13 @@ const About = () => {
           </svg>
         </span>
         <h2 className="title_primary" data-scroll data-scroll-offset="200">
-          We Are a Professional Agency In DubaI
+          {data?.Main_title}
         </h2>
         <div className="intro_block" data-scroll>
           <div className="row">
             <div className="col-12 col-xl-2">
               <h3 data-scroll data-scroll-speed="1.5">
-                About
+                {data?.Sub_title}
               </h3>
             </div>
             <div className="col-12 col-xl-10">
@@ -142,8 +142,12 @@ const About = () => {
                 data-scroll
                 data-scroll-offset="300">
                 <Image
-                  src={"/uploads/agency.jpg"}
-                  alt={"about us image"}
+                  src={data?.Featured_image?.data?.attributes?.url}
+                  alt={
+                    data?.Featured_image?.data?.attributes?.alternativeText
+                      ? data?.Featured_image?.data?.attributes?.alternativeText
+                      : data?.Main_title
+                  }
                   width={850}
                   height={570}
                 />
@@ -153,118 +157,91 @@ const About = () => {
                 data-scroll
                 data-scroll-speed="1.2"
                 data-scroll-direction="horizontal">
-                <p>
-                  Pixelflames is web design agency based in Dubai, UAE. Their
-                  main services include UX/UI design, web development, app
-                  development, and digital marketing. Our team of skilled
-                  professionals merges creativity with technical expertise to
-                  deliver top-notch services to clients. With offices located in
-                  Dubai, UAE, and India.
-                </p>
+                <p>{data?.Description}</p>
                 <div className="about_footer" data-scroll>
-                  <h4 data-scroll>
-                    Pixelflames is web design agency based in Dubai, UAE. Their
-                    main services
-                  </h4>
+                  <h4 data-scroll>{data?.Short_title}</h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
-                    <GsapMagnetic>
-                      <Link
-                        href={"#"}
-                        className="cta_secondary"
-                        data-scroll
-                        style={{ "--x": "10px", "--y": "10px" }}
-                        id="magnetic-area">
-                        <span>learn more </span>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <line
-                            x1="4.34872"
-                            y1="11.7146"
-                            x2="10.7539"
-                            y2="4.08125"
-                            stroke="#F0F0F0"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                            stroke="#F0F0F0"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </Link>
-                    </GsapMagnetic>
+                    {data?.Redirect_link && (
+                      <GsapMagnetic>
+                        <Link
+                          href={
+                            data?.Redirect_link?.Url != null
+                              ? data?.Redirect_link?.Url
+                              : "#"
+                          }
+                          className="cta_secondary"
+                          data-scroll
+                          style={{ "--x": "10px", "--y": "10px" }}
+                          id="magnetic-area">
+                          <span>{data?.Redirect_link?.Text} </span>
+                          <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line
+                              x1="4.34872"
+                              y1="11.7146"
+                              x2="10.7539"
+                              y2="4.08125"
+                              stroke="#F0F0F0"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
+                              stroke="#F0F0F0"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </Link>
+                      </GsapMagnetic>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="row achievements_row" data-scroll>
-            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
-              <div
-                className="achievement_cards"
-                data-scroll
-                data-scroll-offset="200">
-                <div className="cardheader">
-                  <Image
-                    src={"/uploads/ga.png"}
-                    width={50}
-                    height={50}
-                    data-scroll
-                    alt={"icon"}
-                  />
-                  <h3 data-scroll>10+</h3>
-                </div>
-                <h4 data-scroll>Global Awards</h4>
-                <p data-scroll>Web development</p>
+          {data?.Achievements_widget &&
+            data?.Achievements_widget?.length > 0 && (
+              <div className="row achievements_row" data-scroll>
+                {data?.Achievements_widget?.map((card, index) => {
+                  return (
+                    <div
+                      className="col-12  col-sm-6- col-md-4 col-lg-4"
+                      data-scroll
+                      key={index}>
+                      <div
+                        className="achievement_cards"
+                        data-scroll
+                        data-scroll-offset="200">
+                        <div className="cardheader">
+                          <Image
+                            src={card?.Icon?.data?.attributes?.url}
+                            width={100}
+                            height={100}
+                            data-scroll
+                            alt={
+                              card?.Icon?.data?.attributes?.alternativeText !=
+                              null
+                                ? card?.Icon?.data?.attributes?.alternativeText
+                                : "Icon"
+                            }
+                          />
+                          <h3 data-scroll>{card?.Main_title}</h3>
+                        </div>
+                        <h4 data-scroll>{card?.Subtitle}</h4>
+                        <p data-scroll>{card?.Bodycopy}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </div>
-            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
-              <div
-                className="achievement_cards"
-                data-scroll
-                data-scroll-offset="200">
-                <div className="cardheader">
-                  <Image
-                    src={"/uploads/client.png"}
-                    width={50}
-                    height={50}
-                    data-scroll
-                    alt={"icon"}
-                  />
-                  <h3 data-scroll>210+</h3>
-                </div>
-                <h4 data-scroll>Clients Worldwide</h4>
-                <p data-scroll>Web development</p>
-              </div>
-            </div>
-            <div className="col-12  col-sm-6- col-md-4 col-lg-4" data-scroll>
-              <div
-                className="achievement_cards"
-                data-scroll
-                data-scroll-offset="200">
-                <div className="cardheader">
-                  <Image
-                    src={"/uploads/exp.png"}
-                    width={50}
-                    height={50}
-                    data-scroll
-                    alt={"icon"}
-                  />
-                  <h3 data-scroll>14+</h3>
-                </div>
-                <h4 data-scroll>Years Experiences</h4>
-                <p data-scroll>Web development</p>
-              </div>
-            </div>
-          </div>
+            )}
         </div>
       </div>
     </section>

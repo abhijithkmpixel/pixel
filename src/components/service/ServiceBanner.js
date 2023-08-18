@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
 
-const ServiceBanner = ({ title, img, id }) => {
+const ServiceBanner = ({ data, id }) => {
   let ctx;
 
   useEffect(() => {
@@ -37,10 +37,19 @@ const ServiceBanner = ({ title, img, id }) => {
 
   return (
     <section className="service_hero_banner">
-      <Image src={img} alt="asdsad" width={1920} height={1080} />
+      <Image
+        src={data?.Background_image?.data?.attributes?.url}
+        alt={
+          data?.Background_image?.data?.attributes?.alternativeText != null
+            ? data?.Background_image?.data?.attributes?.alternativeText
+            : data?.Title
+        }
+        width={1920}
+        height={1080}
+      />
       <div className="container-fluid">
         <div className="hero_cnt_wrap">
-          <h1>{title}</h1>
+          <h1>{data?.Title}</h1>
           <GsapMagnetic>
             <Link href={"#" + id} className="scroll_to">
               <svg

@@ -1,3 +1,5 @@
+/** @format */
+
 .service_intro {
   padding: 130px 0 50px;
   background-color: $color-white;
@@ -59,7 +61,8 @@
         }
       }
     }
-    h4 {
+    h4,
+    h3 {
       @include fontFace(20px, 1.4, 400, $color-black);
       max-width: 50%;
       position: absolute;
@@ -109,7 +112,7 @@
       }
       h2 {
         max-width: 80%;
-        @include below($tablet-sm){
+        @include below($tablet-sm) {
           max-width: 100%;
         }
       }
@@ -121,7 +124,7 @@
         @include below($tablet-sm) {
           max-width: 100%;
         }
-        @include below($mobile-lg){
+        @include below($mobile-lg) {
           max-width: 100%;
         }
       }

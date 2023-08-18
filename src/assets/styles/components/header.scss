@@ -272,6 +272,7 @@ header {
   transition-delay: 0.6s;
   background-color: #151515;
   overscroll-behavior: contain;
+  z-index: 102;
   @include below($tablet-lg) {
     align-items: flex-start;
     padding-top: 60px;
@@ -459,11 +460,13 @@ header {
           transform-origin: bottom;
 
           & > a {
-            @include fontFace(68px, 1, 700, transparent);
+            @include fontFace(68px, 1, 700, $color-white);
             text-decoration: none;
             -webkit-background-clip: text;
-            transition: 0.3s all ease-in-out;
-            background-image: linear-gradient(to right, #fff, #fff);
+            transition: 0.2s all ease-in-out;
+            // background-image: linear-gradient(to right, #fff, #fff);
+            background-image: linear-gradient(to right, #f5333f, #ff5c00);
+
             display: flex;
             align-items: flex-start;
             text-transform: uppercase;
@@ -571,7 +574,7 @@ header {
   top: 50%;
   transform: translateY(-50%) translateX(100%) translateX(calc(100% - 75px));
   right: 0;
-  z-index: 101;
+  z-index: 105;
   transition: 0.3s all ease-in-out;
 
   @include below($tablet-lg) {

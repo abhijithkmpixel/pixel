@@ -367,6 +367,10 @@ footer {
       }
       p {
         @include fontFace(14px, 1.5, 300, $color-gallery);
+        max-width: 70%;
+        @include below($tablet-sm) {
+          max-width: 100%;
+        }
         span {
           @include fontStyleInherit();
           display: block;

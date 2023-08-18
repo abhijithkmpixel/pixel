@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useLayoutEffect } from "react";
 
-const GoodCoffee = () => {
+const GoodCoffee = ({ data }) => {
   let ctx;
   const router = useRouter();
   useEffect(() => {
@@ -44,13 +44,17 @@ const GoodCoffee = () => {
       }>
       <div className="container-fluid">
         <div className="good_coffee_wrapper">
-          <h2>Have An Idea?</h2>
+          <h2>{data?.TItle}</h2>
+          <div
+            dangerouslySetInnerHTML={{ __html: data?.Body }}
+            data-cursor-img={data?.Icon?.data?.attributes?.url}></div>
           <h4>
-            LET'S TALK ABOUT IT AROUND A{" "}
-            <Link href={"#"} data-cursor-img="/uploads/coffee.png">
-              GOOD COFFEE.
-            </Link>
-            <Image src="/uploads/coffee.png" alt="" width={300} height={300} />
+            <Image
+              src={data?.Icon?.data?.attributes?.url}
+              alt=""
+              width={300}
+              height={300}
+            />
           </h4>
         </div>
       </div>
