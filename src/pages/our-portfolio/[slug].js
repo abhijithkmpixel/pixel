@@ -8,7 +8,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
-const Portfolio = ({ data }) => {
+import axios from "axios";
+const Portfolio = ({ data, footer, header }) => {
   const router = useRouter();
   useEffect(() => {
     if (typeof document != "undefined") {
@@ -77,7 +78,7 @@ const Portfolio = ({ data }) => {
 
   return (
     <>
-      <Header />
+      <Header data={header} />
       <section className="portfolio_details">
         <div className="row portfolio_details__row">
           <div className="col-xl-6 col-12">
@@ -218,8 +219,43 @@ const Portfolio = ({ data }) => {
           <NextProject />
         </div>
       </div>
-      <Footer />
+      <Footer data={footer} />
     </>
   );
 };
 export default Portfolio;
+export async function getServerSideProps(context) {
+  const data = await axios
+    .get(`${process.env.DOMAIN_URL}/api/servicespage`)
+    .then(function (response) {
+      // handle success
+      return response?.data;
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+
+  return {
+    props: {
+      data:
+        Object.keys(data).length > 0
+          ? data?.data && data?.data !== null
+            ? data?.data
+            : null
+          : null,
+      header:
+        Object.keys(data).length > 0
+          ? data?.header && data?.header !== null
+            ? data?.header
+            : null
+          : null,
+      footer:
+        Object.keys(data).length > 0
+          ? data?.footer && data?.footer !== null
+            ? data?.footer
+            : null
+          : null,
+    }, // will be passed to the page component as props
+  };
+}
