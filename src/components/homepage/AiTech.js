@@ -10,34 +10,36 @@ const AiTech = ({ data }) => {
 
   useLayoutEffect(() => {
     if (typeof document != "undefined") {
+      let sideimage = gsap.timeline();
+      let sideimage2 = gsap.timeline();
       if (window.screen.width > 1200) {
         ctx = gsap.context(() => {
-          let sideimage = gsap.timeline();
-          let sideimage2 = gsap.timeline();
-          sideimage.to(".ai__technology__block__side_image > img", {
-            objectPosition: "50% 0%",
-            scrollTrigger: {
-              trigger: ".ai__technology__block__side_image",
-              start: "0% 100%",
-              end: "100% -100px",
-              scrub: true,
-            },
-          });
-          // sideimage2.fromTo(
-          //   ".ai__technology__block__side_image",
-          //   {
-          //     y: 60,
-          //   },
-          //   {
-          //     y: -60,
-          //     scrollTrigger: {
-          //       trigger: ".ai__technology__block__side_image",
-          //       start: "0% 100%",
-          //       end: "100% 0%",
-          //       scrub: true,
-          //     },
-          //   }
-          // );
+          setTimeout(() => {
+            sideimage.to(".min_720 .ai__technology__block__side_image > img", {
+              objectPosition: "50% 0%",
+              scrollTrigger: {
+                trigger: ".min_720 .ai__technology__block__side_image",
+                start: "0% 100%",
+                end: "100% -100px",
+                scrub: true,
+              },
+            });
+            sideimage2.fromTo(
+              ".min_720 .ai__technology__block__side_image",
+              {
+                y: 120,
+              },
+              {
+                y: 0,
+                scrollTrigger: {
+                  trigger: ".ai__technology__block__inner__row",
+                  start: "0% 100%",
+                  end: "100% -100px",
+                  scrub: true,
+                },
+              }
+            );
+          }, 1000);
         });
       }
     }
@@ -48,6 +50,10 @@ const AiTech = ({ data }) => {
       }
     };
   }, []);
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   return (
     <section className="ai__technology__block">
       <div className="container-fluid">
@@ -104,12 +110,12 @@ const AiTech = ({ data }) => {
                     />
                   </svg>
                 </div>
-                <div className="col-12 col-md-7">
+                <div className="col-12 col-md-8">
                   <h3>{data?.Sub_title}</h3>
                   <h4>{data?.Short_title}</h4>
                   <p>{data?.Sub_title_description}</p>
                 </div>
-                <div className="col-12 col-md-5 d-flex align-items-center">
+                <div className="col-12 col-md-4 d-flex align-items-center">
                   {data?.Redirect_link && (
                     <Link
                       className="goto_inerpage"

@@ -39,6 +39,9 @@ const Empowered = ({ data }) => {
       }
     };
   }, []);
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <section className="empowered_brand_block">

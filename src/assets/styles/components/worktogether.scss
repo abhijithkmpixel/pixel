@@ -1,3 +1,5 @@
+/** @format */
+
 .work_together {
   padding: 150px 0 125px;
   width: 100vw;
@@ -20,7 +22,9 @@
   h5 {
     @include fontFace(30px, 1.4, 400, $color-abbey);
     margin-bottom: 106px;
-    max-width: 720px;
+    max-width: 750px;
+    text-transform: uppercase;
+
     @include below($mobile-lg) {
       font-size: 20px;
       margin-bottom: 60px;
@@ -54,6 +58,10 @@
       align-items: flex-end;
       justify-content: space-between;
       width: 100%;
+      margin-left: 50px;
+      @include below($tablet-lg) {
+        margin-left: 0px;
+      }
       @include below($mobile-lg) {
         flex-flow: column;
         align-items: center;

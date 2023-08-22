@@ -25,11 +25,13 @@
       align-items: center;
       @include fontFace(14px, 1, 400, $color-white);
       text-transform: uppercase;
+      transition: 0.3s all ease-in-out;
       svg {
         width: 90px;
         height: 90px;
         object-fit: contain;
         margin-left: 20px;
+        transition: 0.6s all ease-out;
         @include below($tablet-lg) {
           width: 60px;
           height: 60px;
@@ -46,6 +48,14 @@
         top: 15px;
         left: 0px;
       }
+      &:hover {
+        @include above($tablet-lg) {
+          // letter-spacing: 1px;
+          svg {
+            transform: scale(1.08);
+          }
+        }
+      }
     }
     h1 {
       @include fontFace(90px, 1, 600, $color-white);
@@ -53,7 +63,8 @@
       text-align: right;
       width: 70%;
       @include below($desktop-lg) {
-        font-size: 90px;
+        width: 68%;
+        font-size: 80px;
       }
       @include below($tablet-lg) {
         font-size: 50px;

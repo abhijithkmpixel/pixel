@@ -11,7 +11,6 @@ import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
 const Portfolio = ({ data, footer, header, portfolios }) => {
-  console.log(data);
   const [nextProject, setnextProject] = useState();
 
   let prevState = 0;
@@ -52,8 +51,9 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
 
     return () => {
       window.removeEventListener("scroll", () => onScroller());
+      setnextProject(null);
     };
-  }, []);
+  }, [nextProject]);
 
   function onScroller(totalscrollabledist) {
     if (
@@ -163,6 +163,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                   data?.attributes?.Live_url != null && (
                     <Link
                       className="cta_primary"
+                      target="_blank"
                       href={data?.attributes?.Live_url?.Url}>
                       <span>{data?.attributes?.Live_url?.Text}</span>
                     </Link>

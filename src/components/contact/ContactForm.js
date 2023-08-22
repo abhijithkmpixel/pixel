@@ -53,6 +53,10 @@ const ContactForm = ({ data }) => {
     e.preventDefault();
     setformLoading(true);
     setformError(false);
+    firstName.current.classList = "";
+    emailId.current.classList = "";
+    messages.current.classList = "";
+
     let values = {
       name: firstName?.current?.value,
       email: emailId?.current?.value,
@@ -64,21 +68,27 @@ const ContactForm = ({ data }) => {
       message: messages?.current?.value,
     };
 
-    if (values.firstName == "") {
+    if (values.name == "") {
       setformError("Please fill first name field!");
+      firstName.current.classList = "error";
+      firstName.current.focus = false;
+      console.log(firstName);
     } else if (values.name.length < 2) {
+      firstName.current.classList = "error";
       setformError("Minimum character length for name is 2");
-    } else if (document.querySelector('input[type="radio"]:checked') == null) {
-      setformError("Please select a category from the above list.");
     } else if (values.email == "") {
       setformError("Please fill email field!");
+      emailId.current.classList = "error";
     } else if (
       !/^([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63})$/i.test(
         values.email
       )
     ) {
       setformError("Invalid email");
+      emailId.current.classList = "error";
     } else if (values.message == "") {
+      messages.current.classList = "error";
+
       setformError("Please fill message field!");
     } else {
       setformError(null);
@@ -163,25 +173,25 @@ const ContactForm = ({ data }) => {
                     <span className="error">{formError}</span>
                   </fieldset>
                 )}
-                <GsapMagnetic>
-                  <button
-                    className="cta_primary cta_drk"
-                    type="button"
-                    disabled={formLoading}
-                    onClick={(e) => handleSubmit(e)}>
-                    {" "}
-                    <span className="d-flex align-items-center">
-                      Send{" "}
-                      {formLoading && (
-                        <div
-                          className="spinner-border spinner-border-sm text-light ms-2"
-                          role="status">
-                          {/* <span className="sr-only">Loading...</span> */}
-                        </div>
-                      )}
-                    </span>{" "}
-                  </button>
-                </GsapMagnetic>
+                {/* <GsapMagnetic> */}
+                <button
+                  className="cta_primary cta_drk"
+                  type="button"
+                  disabled={formLoading}
+                  onClick={(e) => handleSubmit(e)}>
+                  {" "}
+                  <span className="d-flex align-items-center">
+                    Send{" "}
+                    {formLoading && (
+                      <div
+                        className="spinner-border spinner-border-sm text-light ms-2"
+                        role="status">
+                        {/* <span className="sr-only">Loading...</span> */}
+                      </div>
+                    )}
+                  </span>{" "}
+                </button>
+                {/* </GsapMagnetic> */}
               </div>
             </div>
             <div className="col-md-4 min_820">

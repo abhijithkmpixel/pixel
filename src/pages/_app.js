@@ -201,7 +201,7 @@ export default function App({ Component, pageProps }) {
           </div>
         </div>
       </div>
-      <Component {...pageProps} />
+      <Component {...pageProps} key={router.asPath} />
       {/* </main> */}
       {/* <Footer /> */}
     </>
