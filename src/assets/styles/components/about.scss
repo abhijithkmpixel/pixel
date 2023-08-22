@@ -1,3 +1,5 @@
+/** @format */
+
 .about_us_banner {
   width: 100%;
   padding: 150px 0 127px;
@@ -53,7 +55,7 @@
   }
   .intro_block {
     h3 {
-      @include fontFace(26px, 1.2, 600, $color-cod-gray);
+      @include fontFace(26px, 1.2, 500, $color-cod-gray);
       text-transform: uppercase;
 
       @include below(1366px) {
@@ -117,8 +119,7 @@
         object-position: 50% 80%;
         @include below($tablet-sm) {
           margin-bottom: 30px;
-        object-position: center;
-
+          object-position: center;
         }
       }
       // &.is-inview {
@@ -226,7 +227,7 @@
         }
       }
       h4 {
-        @include fontFace(24px, 1.1, 500, $color-cod-gray);
+        @include fontFace(24px, 1.1, 400, $color-cod-gray);
         text-transform: capitalize;
         margin-bottom: 5px;
       }
@@ -251,7 +252,7 @@
       }
     }
   }
-  .is-inview{
+  .is-inview {
     position: relative;
     @include above($tablet-lg) {
       &::after {
@@ -275,7 +276,7 @@
     .cardheader {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       @include below($mobile-lg) {
         justify-content: center;
       }
@@ -295,7 +296,7 @@
       }
     }
     h4 {
-      @include fontFace(24px, 1.1, 500, $color-cod-gray);
+      @include fontFace(24px, 1.1, 400, $color-cod-gray);
       text-transform: capitalize;
       margin-bottom: 5px;
     }
@@ -303,9 +304,9 @@
       @include fontFace(14px, 1.1, 300, $color-abbey);
     }
     // &.is-inview {
-      &::after {
-        transform: scaleX(0);
-      }
+    &::after {
+      transform: scaleX(0);
+    }
     // }
   }
 }

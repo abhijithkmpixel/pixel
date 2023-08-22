@@ -1,3 +1,5 @@
+/** @format */
+
 html {
   // scroll-behavior: smooth;
   box-sizing: border-box;
@@ -158,7 +160,10 @@ address {
 // }
 .mf-cursor::before {
   color: $color-cinnabar;
-  pointer-events: none;
+  // color: transparent;
+  pointer-events: none !important;
+  // transform: scale(1);
+  // border: 1px solid $color-cod-gray;
 }
 .mf-cursor {
   z-index: 99;
@@ -241,6 +246,9 @@ html.lenis {
 .mf-cursor.-text::before {
   transform: scale(2.8);
 }
+.mf-cursor-media {
+  // z-index: 10;
+}
 
 .scrollbar {
   position: fixed;
@@ -270,5 +278,68 @@ html.lenis {
 .quick__links--enter {
   .mf-cursor::before {
     opacity: 0;
+  }
+}
+.min_820 {
+  display: block;
+  @include below($tablet-sm) {
+    display: none;
+  }
+}
+.min_720 {
+  display: block;
+  @include below($mobile-lg) {
+    display: none;
+  }
+}
+.max_720 {
+  display: none;
+  @include below($mobile-lg) {
+    display: block;
+  }
+}
+.min_990 {
+  display: block;
+  @include below($tablet-sm) {
+    display: none;
+  }
+}
+.max_990 {
+  display: none;
+  @include below($tablet-sm) {
+    display: block;
+  }
+}
+.min_1200 {
+  display: block;
+  @include below($tablet-lg) {
+    display: none;
+  }
+}
+.max_1200 {
+  display: none;
+  @include below($tablet-lg) {
+    display: block;
+  }
+}
+.error {
+  color: red;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+}
+.ant-message-notice-content {
+  padding: 12px 20px !important;
+  span {
+    font-size: 20px !important;
+    color: #000;
+    font-weight: 500;
+  }
+  .ant-message-custom-content {
+    display: flex;
+    align-items: center;
+    .anticon {
+      font-size: 20px !important;
+    }
   }
 }

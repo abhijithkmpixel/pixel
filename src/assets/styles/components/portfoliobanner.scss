@@ -14,7 +14,6 @@
     z-index: -1;
     transform: scale(1.1);
     max-width: 100vw;
-
   }
   .hero_content_wrap {
     position: absolute;
@@ -30,7 +29,7 @@
       text-transform: uppercase;
       text-align: center;
       @include below($desktop-lg) {
-        font-size: 110px;
+        font-size: 100px;
       }
       @include below($tablet-sm) {
         font-size: 80px;
@@ -55,7 +54,7 @@
       height: 130px;
       margin-top: 70px;
       position: absolute;
-      top: calc(100% + 70px);
+      top: 100%;
       left: 0;
       border-radius: 50%;
       // border: 1px solid $color-white;
@@ -63,7 +62,9 @@
       justify-content: center;
       align-items: center;
       @include below($desktop-lg) {
-        top: calc(100% + 20px);
+        top: 100%;
+        width: 110px;
+        height: 110px;
       }
       @include below($tablet-sm) {
         width: 90px;

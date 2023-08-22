@@ -1,3 +1,5 @@
+/** @format */
+
 .client_testimonials {
   width: 100%;
   padding: 143px 0 162px;
@@ -10,7 +12,7 @@
   .client_testimonials_wrapper {
     .title_primary {
       font-weight: 300;
-      margin-bottom: 98px;
+      margin-bottom: 50px;
       max-width: 830px;
       span {
         font-weight: 600;
@@ -25,11 +27,18 @@
       @include below($mobile-lg) {
         text-align: center;
         margin-bottom: 30px;
+        line-height: 1.2;
       }
     }
     .testimony_slider_wrap {
       position: relative;
       margin-bottom: 162px;
+      .slick-list {
+        margin: 0 -15px;
+        .slick-track > div {
+          padding: 0 15px;
+        }
+      }
       // transition: 0.7s all ease-in-out;
       @include above($tablet-lg) {
         // &[data-scroll] {
@@ -146,9 +155,9 @@
           padding: 0px 10px 0;
         }
         .bodycopy {
-          margin-bottom: 89px;
+          margin-bottom: 40px;
           @include below($desktop-sm) {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
           }
           @include below($mobile-lg) {
             margin-bottom: 30px;
@@ -168,7 +177,10 @@
             }
           }
           p {
-            @include fontFace(32px, 1.65, 400, $color-abbey);
+            @include fontFace(32px, 1.5, 400, $color-abbey);
+            @include below($desktop-lg) {
+              font-size: 30px;
+            }
             @include below($desktop-sm) {
               font-size: 26px;
             }
@@ -214,6 +226,12 @@
       height: 80px;
     }
   }
+  .slick-track > div {
+    padding: 0 15px;
+    @include below($mobile-lg) {
+      padding: 0;
+    }
+  }
   .client {
     background-color: $color-gallery;
     display: flex !important;
@@ -221,7 +239,7 @@
     align-items: center;
     padding: 35px 30px;
     margin: 0 10px;
-    max-width: calc(100% - 30px);
+    // max-width: calc(100% - 30px);
     @media (min-width: 1201px) {
       // width: 23vw !important;
     }

@@ -1,10 +1,12 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Slider from "react-slick";
 
-const Services = () => {
+const Services = ({ data }) => {
   let ctx;
 
   useEffect(() => {
@@ -108,11 +110,8 @@ const Services = () => {
     <section className="services_listing" data-scroll-section>
       <div className="container-fluid">
         <h2 className="title" data-scroll data-scroll-offset="200">
-          <span>
-            We are <br />
-            here to{" "}
-          </span>
-          <span> help you</span>
+          <span dangerouslySetInnerHTML={{ __html: data?.Title_1 }}></span>
+          <span> {data?.Title_2}</span>
           <Image
             src="/icons/sphere.svg"
             alt="pixelated sphere  icon"
@@ -123,265 +122,133 @@ const Services = () => {
             data-scroll-direction="horizontal"
           />
         </h2>
-        <div className="services_outer_wrap">
-          <Slider {...settings} className="services_row" data-scroll>
-            <div className="services_item" data-scroll data-scroll-offset="300">
-              <span data-scroll>01</span>
-              <Link href={"#"} className="item_inner" data-scroll>
-                <Image
-                  src="/uploads/wd.jpg"
-                  alt="image"
-                  width={440}
-                  height={450}
-                  data-scroll
-                />
-                <h4>
-                  Web Development{" "}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_117_188)">
-                      <path
-                        d="M0 8H16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+        {data?.services && data?.services?.data?.length > 0 && (
+          <div className="services_outer_wrap">
+            <Slider {...settings} className="services_row" data-scroll>
+              {data?.services?.data?.map((serv, index) => {
+                return (
+                  <div
+                    className="services_item"
+                    data-scroll
+                    key={index}
+                    data-scroll-offset="300">
+                    <span data-scroll>{"0" + (index + 1)}</span>
+                    <Link
+                      href={
+                        "/services/" +
+                        (serv?.attributes?.Slug != null
+                          ? serv?.attributes?.Slug
+                          : "#")
+                      }
+                      className="item_inner"
+                      data-scroll>
+                      <Image
+                        src={
+                          serv?.attributes?.Homepage_listing_image?.data
+                            ?.attributes?.url
+                        }
+                        alt={
+                          serv?.attributes?.Homepage_listing_image?.data
+                            ?.attributes?.alternativeText != null
+                            ? serv?.attributes?.Homepage_listing_image?.data
+                                ?.attributes?.alternativeText
+                            : serv?.attributes?.Name
+                        }
+                        width={440}
+                        height={450}
+                        data-scroll
                       />
-                      <path
-                        d="M8 0V16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_117_188">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </h4>
-                <div className="hover_icon" data-scroll>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <line
-                      x1="4.26461"
-                      y1="11.7147"
-                      x2="10.6698"
-                      y2="4.08137"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4.21545 4.09155L11.7401 3.43318L12.3984 10.9579"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </Link>
-            </div>
-            <div className="services_item" data-scroll data-scroll-offset="300">
-              <span data-scroll>02</span>
-              <Link href={"#"} className="item_inner" data-scroll>
-                <Image
-                  src="/uploads/ux.jpg"
-                  alt="image"
-                  width={440}
-                  height={450}
-                  data-scroll
-                />
-                <div className="hover_icon" data-scroll>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <line
-                      x1="4.26461"
-                      y1="11.7147"
-                      x2="10.6698"
-                      y2="4.08137"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4.21545 4.09155L11.7401 3.43318L12.3984 10.9579"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <h4>
-                  UX UI Strategy{" "}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_117_188)">
-                      <path
-                        d="M0 8H16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8 0V16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_117_188">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </h4>
-              </Link>
-            </div>
-            <div className="services_item" data-scroll data-scroll-offset="300">
-              <span data-scroll>03</span>
-              <Link href={"#"} className="item_inner" data-scroll>
-                <Image
-                  src="/uploads/seo.jpg"
-                  alt="image"
-                  width={440}
-                  height={450}
-                  data-scroll
-                />
-                <div className="hover_icon" data-scroll>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <line
-                      x1="4.26461"
-                      y1="11.7147"
-                      x2="10.6698"
-                      y2="4.08137"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4.21545 4.09155L11.7401 3.43318L12.3984 10.9579"
-                      stroke="black"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <h4>
-                  SEO Marketing{" "}
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_117_188)">
-                      <path
-                        d="M0 8H16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M8 0V16"
-                        stroke="white"
-                        strokeWidth="1.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_117_188">
-                        <rect width="16" height="16" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </h4>
-              </Link>
-            </div>
-          </Slider>
-        </div>
+                      <h4>
+                        {serv?.attributes?.Name}
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <g clipPath="url(#clip0_117_188)">
+                            <path
+                              d="M0 8H16"
+                              stroke="white"
+                              strokeWidth="1.2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M8 0V16"
+                              stroke="white"
+                              strokeWidth="1.2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_117_188">
+                              <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </h4>
+                      <div className="hover_icon" data-scroll>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <line
+                            x1="4.26461"
+                            y1="11.7147"
+                            x2="10.6698"
+                            y2="4.08137"
+                            stroke="black"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M4.21545 4.09155L11.7401 3.43318L12.3984 10.9579"
+                            stroke="black"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
+        )}
+
         <div className="row " data-scroll>
           <div className="col-12 col-xl-6" data-scroll>
-            <p>
-              We provide tailored services for businesses to succeed in the
-              digital landscape.
-            </p>
+            <p>{data?.Technology_title}</p>
           </div>
         </div>
-        <div className="row tech_logo" data-scroll>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/progress-white.png"}
-              alt="image"
-              width={500}
-              height={400}
-            />
-          </div>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/kentico-white.png"}
-              alt="image"
-              width={500}
-              height={400}
-            />
-          </div>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/strapi-white.png"}
-              alt="image"
-              width={500}
-              height={400}
-            />
-          </div>
-          <div className="col-12 col-md-6 col-xl-3">
-            <Image
-              src={"/uploads/umbraco-white.png"}
-              alt="image"
-              width={500}
-              height={400}
-            />
-          </div>
-        </div>
+        {data?.Technology_images &&
+          data?.Technology_images?.Image?.data?.length > 0 && (
+            <div className="row tech_logo" data-scroll>
+              {data?.Technology_images?.Image?.data?.map((img, index) => {
+                return (
+                  <div className="col-12 col-md-6 col-xl-3" key={index}>
+                    <Image
+                      src={img?.attributes?.url}
+                      alt={
+                        img?.attributes?.alternativeText != null
+                          ? img?.attributes?.alternativeText
+                          : "Technology logo"
+                      }
+                      width={500}
+                      height={400}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          )}
       </div>
     </section>
   );
@@ -395,8 +262,7 @@ function SampleNextArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="8.15252"
@@ -428,8 +294,7 @@ function SamplePrevArrow(props) {
         height="16"
         viewBox="0 0 28 16"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+        xmlns="http://www.w3.org/2000/svg">
         <line
           x1="0.684881"
           y1="-0.684881"

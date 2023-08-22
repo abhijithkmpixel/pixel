@@ -1,7 +1,11 @@
+/** @format */
+
 footer {
   background-color: $color-cod-gray;
   padding: 96px 0 0;
   overflow: hidden;
+  position: relative;
+  z-index: 101;
   .footer_inner_wrap {
     .social_media_links {
       display: flex;
@@ -161,6 +165,7 @@ footer {
           @include above($tablet-lg) {
             .inner_wrap::after {
               transform: scale(1.1);
+              // background-color: $color-pomegranate2;
             }
           }
         }
@@ -171,8 +176,9 @@ footer {
         @include fontFace(22px, 1.5, 500, $color-gallery);
         text-transform: uppercase;
         // margin-right: 54px;
+        margin-bottom: 15px;
         @include below($tablet-lg) {
-          margin-bottom: 30px;
+          // margin-bottom: 30px;
         }
         @include below($mobile-lg) {
           text-align: center;
@@ -181,7 +187,7 @@ footer {
       ul {
         li {
           a {
-            @include fontFace(22px, 1.2, 500, $color-alto);
+            @include fontFace(14px, 1.2, 500, $color-alto);
             text-transform: uppercase;
             transition: 0.4s all ease-in-out;
             display: block;
@@ -189,7 +195,7 @@ footer {
             position: relative;
             width: max-content;
             @include below($desktop-sm) {
-              font-size: 18px;
+              font-size: 14px;
             }
             @include below($mobile-lg) {
               font-size: 14px;
@@ -216,9 +222,9 @@ footer {
               @include above($tablet-lg) {
                 // color: $color-cinnabar;
                 span {
-                  transform: translateY(-30px);
+                  transform: translateY(-20px);
                   @include below($desktop-sm) {
-                    transform: translateY(-22px);
+                    transform: translateY(-20px);
                   }
                   // animation: moveQuicklink 0.4s forwards linear;
                   // @keyframes moveQuicklink {
@@ -234,9 +240,9 @@ footer {
                   // }
                 }
                 &::after {
-                  transform: translateY(-30px);
+                  transform: translateY(-20px);
                   @include below($desktop-sm) {
-                    transform: translateY(-22px);
+                    transform: translateY(-20px);
                   }
                   // animation: moveHolder 0.4s forwards linear;
                   // @keyframes moveHolder {
@@ -255,7 +261,7 @@ footer {
             }
           }
           & + li {
-            margin-top: 30px;
+            margin-top: 10px;
           }
         }
       }
@@ -272,10 +278,14 @@ footer {
         }
         @include below($mobile-lg) {
           margin-bottom: 30px;
+          justify-content: space-between;
         }
         .cta_tertiary {
           & + .cta_tertiary {
             margin-left: 45px;
+            @include below($mobile-lg) {
+              margin-left: 0px;
+            }
           }
         }
       }
@@ -302,7 +312,7 @@ footer {
         margin-top: 50px;
       }
       span {
-        @include fontFace(11.8vw, 1, 700, transparent);
+        @include fontFace(11.6vw, 1, 700, transparent);
         margin-bottom: -30px;
         display: block;
         background: linear-gradient(132deg, #fff 0%, #bfbfbf 100%);
@@ -310,7 +320,7 @@ footer {
         text-transform: uppercase;
         text-align: center;
         @include below($desktop-lg) {
-          font-size: 11.5vw;
+          font-size: 11.4vw;
           margin-bottom: -25px;
         }
         @include below(1366px) {
@@ -336,5 +346,42 @@ footer {
         flex-flow: column;
       }
     }
+    address {
+      width: 100%;
+      margin-bottom: 50px;
+      @include below($mobile-lg) {
+        text-align: center;
+      }
+      h4 {
+        @include fontFace(16px, 1, 500, $color-gallery);
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        // margin-right: 54px;
+        // @include below($tablet-sm) {
+        //   margin-right: 30px;
+        // }
+        // @include below($mobile-lg) {
+        //   margin-bottom: 15px;
+        //   margin-right: 0;
+        // }
+      }
+      p {
+        @include fontFace(14px, 1.5, 300, $color-gallery);
+        max-width: 70%;
+        @include below($tablet-sm) {
+          max-width: 100%;
+        }
+        span {
+          @include fontStyleInherit();
+          display: block;
+          font-weight: 500;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+  &.decorated__footer .footer_inner_wrap .footer_text span {
+    background: linear-gradient(132deg, #f5333f 0%, #ff5c00 100%);
+    -webkit-background-clip: text;
   }
 }

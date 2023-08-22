@@ -1,10 +1,12 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useLayoutEffect } from "react";
 import Slider from "react-slick";
 
-const Banner = () => {
+const Banner = ({ data }) => {
   let ctx;
 
   useEffect(() => {
@@ -24,23 +26,67 @@ const Banner = () => {
           document.body.classList.remove("quick__links--enter");
         });
       });
-
       ctx = gsap.context(() => {
-        let scrollval = document.querySelector(".quick_link").offsetWidth;
-        let length = document.querySelectorAll(
-          ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
-        ).length;
-        let scrollLength = 600 * (length - 2);
         let bannerTimeline = gsap.timeline();
-        const textArray = document
-          .querySelector("#textOut")
-          .getAttribute("data-animator-text")
-          .split(",");
-        var bannerTextAnim = gsap.timeline({
-          repeat: -1,
-          repeatDelay: 0,
-          // ease: Power0.easeNone,
-        });
+        if (data?.Writing_words) {
+          const textArray = document
+            .querySelector("#textOut")
+            .getAttribute("data-animator-text")
+            .split(",");
+          textArray.forEach((element, index) => {
+            var bannerTextAnim = gsap.timeline({
+              repeat: -1,
+              repeatDelay: 0,
+              // ease: Power0.easeNone,
+            });
+            bannerTextAnim
+              .to("#textOut", {
+                text: `${element}`,
+                duration: 1.5,
+                delay: 0,
+              })
+              .to("#textOut", {
+                text: "",
+                duration: 0,
+                delay: 2,
+              });
+          });
+        }
+        // const textArray = data?.Writing_words?.split(",");
+        if (document.querySelector(".quick_link")) {
+          let scrollval = document.querySelector(".quick_link").offsetWidth;
+          let length = document.querySelectorAll(
+            ".quick_links_wrap:not(.banner_slider_wrap) .quick_link"
+          ).length;
+          let scrollLength = 600 * (length - 2);
+
+          if (window.screen.width > 1200) {
+            bannerTimeline
+              .to(".hero_banner .herobanner_inner_wrap", {
+                x: -(scrollval * (length - 2)),
+                // y: scroll.scroll.y,
+                scrollTrigger: {
+                  trigger: ".herobanner_inner_wrap",
+                  start: "0% 0%",
+                  end: `+${scrollLength + 500}`,
+                  // scroller: window,
+                  scrub: true,
+                  pin: true,
+                },
+              })
+              .to(".hero_banner .quick_link", {
+                yPercent: -100,
+                stagger: 0.05,
+                scrollTrigger: {
+                  trigger: ".herobanner_inner_wrap",
+                  start: "0% -2px",
+                  end: "1500",
+                  scrub: true,
+                  // pin: true,
+                },
+              });
+          }
+        }
         gsap.fromTo(
           ".animate_in",
           {
@@ -53,45 +99,6 @@ const Banner = () => {
             y: 0,
           }
         );
-        textArray.forEach((element, index) => {
-          bannerTextAnim
-            .to("#textOut", {
-              text: `${element}`,
-              duration: 1.5,
-              delay: 0,
-            })
-            .to("#textOut", {
-              text: "",
-              duration: 0,
-              delay: 2,
-            });
-        });
-        if (window.screen.width > 1200) {
-          bannerTimeline
-            .to(".hero_banner .herobanner_inner_wrap", {
-              x: -(scrollval * (length - 2)),
-              // y: scroll.scroll.y,
-              scrollTrigger: {
-                trigger: ".herobanner_inner_wrap",
-                start: "0% 0%",
-                end: `+${scrollLength + 500}`,
-                // scroller: window,
-                scrub: true,
-                pin: true,
-              },
-            })
-            .to(".hero_banner .quick_link", {
-              yPercent: -100,
-              stagger: 0.05,
-              scrollTrigger: {
-                trigger: ".herobanner_inner_wrap",
-                start: "0% -2px",
-                end: "1500",
-                scrub: true,
-                // pin: true,
-              },
-            });
-        }
       });
     }
 
@@ -102,56 +109,30 @@ const Banner = () => {
     };
   }, []);
 
-  var settings = {
-    dots: false,
-    infinite: true,
-    arrows: true,
-    speed: 500,
-    autoplay: true,
-    autoplayScpped: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    pauseOnFocus: false,
-    pauseOnHover: false,
-    variableWidth: true,
-    useTransform: false,
-    responsive: [
-      {
-        breakpoint: 580,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          variableWidth: false,
-        },
-      },
-    ],
-  };
-
   return (
     <section className="hero_banner" data-scroll-section id="banner">
       <div
         className="hero_container"
         data-scroll-sticky
         data-scroll-target="#banner"
-        data-scroll
-      >
+        data-scroll>
         <div className="herobanner_inner_wrap" data-scroll>
           <div className="banner_head" data-scroll>
             <div className="content_wrap" data-scroll>
               <h1 data-scroll>
                 <div className="line line1">
-                  <div className="animate_in">we are</div>
+                  <div className="animate_in">{data?.Line_1}</div>
                 </div>
                 <div className="line line2">
                   <span
                     id="textOut"
                     className="animate_in"
-                    data-animator-text="Design,Creative,digital"
-                  ></span>
+                    data-animator-text={data?.Writing_words}></span>
                 </div>
                 <div className="line line2">
                   <div className="animate_in">
-                    agency<span>.</span>
+                    {data?.Line_2}
+                    <span>.</span>
                   </div>
                 </div>
               </h1>
@@ -189,179 +170,75 @@ const Banner = () => {
             <div className="banner_ai_footer">
               <div className="ai_featured_img">
                 <Image
-                  src="/uploads/ai.png"
+                  src={data?.Ai_technology_image?.data?.attributes?.url}
                   width={185}
                   height={169}
-                  alt="ai image"
+                  priority
+                  alt={
+                    data?.Ai_technology_image?.data?.attributes?.alternativeText
+                      ? data?.Ai_technology_image?.data?.attributes
+                          ?.alternativeText
+                      : "ai featured image"
+                  }
                 />
               </div>
               <div className="ai_content_wrap">
                 <div>
-                  <h3>GPT AI Technogies</h3>
-                  <p>Pixelflames company</p>
+                  <h3>{data?.Ai_technology_title}</h3>
+                  <p>{data?.Ai_technology_subtitle}</p>
                 </div>
                 <div>
-                  <p>Pixelflames is web design agency based in Dubai, UAE.</p>
+                  <p>{data?.Ai_technology_short_description}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="quick_links_wrap" data-scroll>
             <div className="hero_quick_links" data-scroll>
-              <Link
-                href={"/cases/web"}
-                className="quick_link"
-                data-cursor-img="/icons/quicklink.svg"
-              >
-                <div className="wrapper">
-                  <Image
-                    src={"/uploads/burj.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>01</span>
-                    <h4>Burj Khalifa</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link
-                href={"/cases/web"}
-                className="quick_link"
-                data-cursor-img="/icons/quicklink.svg"
-              >
-                <div className="wrapper">
-                  <Image
-                    src={"/uploads/afc.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>02</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link
-                href={"/cases/web"}
-                className="quick_link"
-                data-cursor-img="/icons/quicklink.svg"
-              >
-                <div className="wrapper">
-                  <Image
-                    src={"/uploads/lady.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>03</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link
-                href={"/cases/web"}
-                className="quick_link"
-                data-cursor-img="/icons/quicklink.svg"
-              >
-                <div className="wrapper">
-                  <Image
-                    src={"/uploads/afc.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>04</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link
-                href={"/cases/web"}
-                className="quick_link"
-                data-cursor-img="/icons/quicklink.svg"
-              >
-                <div className="wrapper">
-                  <Image
-                    src={"/uploads/lady.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>05</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
+              {data?.projects &&
+                data?.projects?.data?.length > 0 &&
+                data?.projects?.data?.map((elm, index) => {
+                  return (
+                    <Link
+                      href={"/our-portfolio/" + elm?.attributes?.Slug}
+                      className={
+                        index == 0 ? "quick_link mouseOver " : "quick_link"
+                      }
+                      data-cursor-img="/icons/quicklink.svg"
+                      key={index}>
+                      <div className="wrapper">
+                        <Image
+                          src={
+                            elm?.attributes?.Homepage_banner_image?.data
+                              ?.attributes?.url
+                          }
+                          width={400}
+                          priority
+                          height={500}
+                          alt={
+                            elm?.attributes?.Homepage_banner_image?.data
+                              ?.attributes?.alternativeText
+                              ? elm?.attributes?.Homepage_banner_image?.data
+                                  ?.attributes?.alternativeText
+                              : elm?.attributes?.Name
+                          }
+                        />
+                        <div className="link_footer">
+                          <span>{"0" + (index + 1)}</span>
+                          <h4>{elm?.attributes?.Name}</h4>
+                          <h5>
+                            {
+                              elm?.attributes?.portfolio_categories?.data[0]
+                                ?.attributes?.Name
+                            }
+                          </h5>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
             </div>
           </div>
-          {/* <div className="quick_links_wrap banner_slider_wrap" data-scroll>
-            <Slider {...settings} className="hero_quick_links" data-scroll>
-              <Link href={"#"} className="quick_link">
-                <div className="wrapper" data-scroll>
-                  <Image
-                    src={"/uploads/burj.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>01</span>
-                    <h4>Burj Khalifa</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link href={"#"} className="quick_link">
-                <div className="wrapper" data-scroll>
-                  <Image
-                    src={"/uploads/afc.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>02</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-              <Link href={"#"} className="quick_link">
-                <div className="wrapper" data-scroll>
-                  <Image
-                    src={"/uploads/lady.png"}
-                    width={400}
-                    height={500}
-                    alt=""
-                    priority
-                  />
-                  <div className="link_footer">
-                    <span>03</span>
-                    <h4>Afc President</h4>
-                    <h5>Web development</h5>
-                  </div>
-                </div>
-              </Link>
-            </Slider>
-          </div> */}
         </div>
       </div>
     </section>

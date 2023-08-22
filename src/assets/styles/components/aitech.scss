@@ -1,0 +1,123 @@
+/** @format */
+
+.ai__technology__block {
+  .title_primary {
+    max-width: 60%;
+    margin-bottom: 100px;
+    @include below($tablet-lg) {
+      margin-bottom: 50px;
+      max-width: 100%;
+    }
+    @include below($mobile-lg) {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+  .ai__technology__block__inner {
+    border-top: 1.3px solid #7d7d7d;
+    padding: 150px 0;
+    @include below($tablet-lg) {
+      padding: 90px 0;
+    }
+    @include below($mobile-lg) {
+      padding: 60px 0;
+    }
+    .ai__technology__block__inner__row {
+      .goto_inerpage {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: block;
+        transition: 0.2s all ease-in-out;
+        svg {
+          width: 100%;
+          height: auto;
+        }
+        @include below($mobile-lg) {
+          width: 60px;
+          height: 60px;
+          margin: auto;
+        }
+        &:hover {
+          @include above($tablet-lg) {
+            transform: scale(1.1);
+          }
+        }
+      }
+      .ai__technology__block__side_image {
+        width: 80%;
+        height: auto;
+        aspect-ratio: 511/360;
+        margin-left: auto;
+        overflow: hidden;
+        @include below($tablet-lg) {
+          width: 100%;
+          margin-top: 40px;
+        }
+        @include below($mobile-lg) {
+          margin-top: 0px;
+          margin-bottom: 40px;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 100%;
+        }
+      }
+      .pointer__arrow {
+        svg {
+          width: 80%;
+          height: auto;
+        }
+        @include below($mobile-lg) {
+          display: none;
+        }
+      }
+      .spring_arrow {
+        svg {
+          width: 160px;
+          height: auto;
+          margin-bottom: 30px;
+          @include below($tablet-sm) {
+            width: 90px;
+          }
+          @include below($mobile-lg) {
+            display: none;
+          }
+        }
+      }
+      p {
+        @include fontFace(16px, 1.4, 400, $color-black);
+        max-width: 80%;
+        @include below($tablet-lg) {
+          max-width: 100%;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+      }
+      h3 {
+        @include fontFace(45px, 1, 900, $color-black);
+        margin-bottom: 7px;
+        text-transform: uppercase;
+        @include below($mobile-lg) {
+          text-align: center;
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+      }
+      h4 {
+        @include fontFace(30px, 1, 700, $color-black);
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        @include below($mobile-lg) {
+          text-align: center;
+          margin-bottom: 10px;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

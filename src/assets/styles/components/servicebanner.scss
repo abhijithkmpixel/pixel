@@ -3,6 +3,10 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
+  @include below($mobile-lg) {
+    height: auto;
+    padding: 150px 0;
+  }
   & > img {
     object-fit: cover;
     object-position: 50% 100%;
@@ -28,15 +32,22 @@
         @include below($desktop-lg) {
           font-size: 95px;
         }
+        @include below(1370px) {
+          font-size: 80px;
+        }
         @include below($desktop-sm) {
           font-size: 85px;
         }
+        @include below($tablet-lg) {
+          font-size: 70px;
+        }
         @include below($tablet-sm) {
-          font-size: 80px;
+          // font-size: 80px;
+          max-width: 100%;
+          text-align: center;
         }
         @include below($mobile-lg) {
           font-size: 50px;
-          text-align: center;
         }
       }
       .scroll_to {
@@ -58,8 +69,15 @@
         @include below($tablet-sm) {
           width: 90px;
           height: 90px;
+          right: auto;
+          left: 50%;
+          transform: translateX(-50%);
+          top: 100%;
         }
         @include below($mobile-lg) {
+          margin-top: 30px;
+          width: 50px;
+          height: 50px;
           // left: 50%;
           // transform: translateX(-50%);
         }
@@ -78,6 +96,9 @@
         svg {
           width: 20px;
           height: auto;
+          @include below($mobile-lg) {
+            width: 12px;
+          }
         }
         &:hover {
           &::after {

@@ -1,8 +1,10 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect } from "react";
 
-const Branches = () => {
+const Branches = ({ data }) => {
   let ctx;
 
   useEffect(() => {
@@ -32,8 +34,12 @@ const Branches = () => {
   return (
     <section className="our_branches" data-scroll data-scroll-section>
       <Image
-        src={"/uploads/branch.jpg"}
-        alt={"image"}
+        src={data?.Background_image?.data?.attributes?.url}
+        alt={
+          data?.Background_image?.data?.attributes?.alternativeText != null
+            ? data?.Background_image?.data?.attributes?.alternativeText
+            : "our branches backgropund image"
+        }
         width={1440}
         height={753}
         data-scroll
@@ -42,17 +48,11 @@ const Branches = () => {
         <div className="container-fluid">
           <div className="branch_header" data-scroll>
             <h2 className="title_primary" data-scroll>
-              Dubai with extended branches in India
+              {data?.Title}
             </h2>
-            <h4 data-scroll>
-              We are an award winning web design company web design agency that
-              specialize in custom
-            </h4>
+            <h4 data-scroll>{data?.Subtitle}</h4>
           </div>
-          <p>
-            We are an award winning web design company web design agency that
-            specialize in custom website design & development services.
-          </p>
+          <div dangerouslySetInnerHTML={{ __html: data?.Body }}></div>
         </div>
       </div>
     </section>

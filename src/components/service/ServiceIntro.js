@@ -1,8 +1,10 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import React, { useEffect } from "react";
 
-const ServiceIntro = ({ title, subtitle, img, classes }) => {
+const ServiceIntro = ({ data, classes }) => {
   let ctx;
   useEffect(() => {
     if (typeof document != "undefined") {
@@ -23,7 +25,7 @@ const ServiceIntro = ({ title, subtitle, img, classes }) => {
             scrollTrigger: {
               trigger: ".service_intro figure",
               start: "0% 100%",
-              end: "100% 0",
+              end: "100% -100px",
               scrub: true,
             },
           });
@@ -49,19 +51,29 @@ const ServiceIntro = ({ title, subtitle, img, classes }) => {
   return (
     <section
       className={classes ? `service_intro ${classes}` : "service_intro"}
-      id="serviceintro"
-    >
+      id="serviceintro">
       <div className="container-fluid">
         <div className="row m-0">
-          <div className="col-12 col-md-6 p-0 ">
+          <div className="col-12 col-lg-6 p-0 ">
             <div className="content_inner position-relative">
-              <h2>{title}</h2>
-              <h4>{subtitle}</h4>
+              <h2>{data?.Title}</h2>
+              <div
+                dangerouslySetInnerHTML={{ __html: data?.Description }}></div>
+              {/* <h3>{data?.Description}</h3> */}
             </div>
           </div>
-          <div className="col-12 col-md-6 p-0">
+          <div className="col-12 col-lg-6 p-0">
             <figure>
-              <Image src={img} alt="asd" width={663} height={385} />
+              <Image
+                src={data?.Image?.data?.attributes?.url}
+                alt={
+                  data?.Image?.data?.attributes?.alternativeText != null
+                    ? data?.Image?.data?.attributes?.alternativeText
+                    : data?.Title
+                }
+                width={663}
+                height={385}
+              />
             </figure>
           </div>
         </div>

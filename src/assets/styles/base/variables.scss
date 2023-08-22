@@ -1,6 +1,10 @@
-/*------------------*
-# Variables
-*------------------*/
+/**
+ * ------------------*
+ * # Variables
+ * ------------------
+ *
+ * @format
+ */
 
 /*
  * This file includes default variables to get going quickly on a project.
@@ -61,6 +65,7 @@ $color-woodsmoke: #0b0c0e;
 $color-wild-sand: #f5f5f5;
 $color-silver-chalice: #a3a3a3;
 $color-scorpion: #5e5e5e;
+$color-cod-gray2: #151515;
 h1,
 h2,
 h3,
@@ -71,7 +76,8 @@ h6 {
 }
 
 // Breakpoints
-$desktop-lg: 1440px;
+$desktop-lg: 1540px;
+$desktop-md: 1390px;
 $desktop-sm: 1365px;
 $tablet-lg: 1200px;
 $tablet-sm: 990px;

@@ -2,21 +2,85 @@
   width: 100%;
   background-color: $color-white;
   padding: 70px 0 20px;
+  @include below($mobile-lg) {
+    padding: 50px 0;
+  }
   .title__secondary {
     max-width: 50%;
     margin-bottom: 76px;
+    @include below($tablet-sm) {
+      margin-bottom: 30px;
+    }
+    @include below($mobile-lg) {
+      max-width: 100%;
+      text-align: center;
+    }
   }
   .development__trends__grid {
     border-top: 1px solid $color-black;
-    padding-top: 28px;
-    .row {
+    // padding-top: 28px;
+    position: relative;
+    .development__trends__grid__cards__wrap {
       margin: 0 -85px;
+      position: static;
+      @include below($tablet-lg) {
+        margin: 0 -15px;
+      }
+      @include below($mobile-lg) {
+        padding: 0 30px;
+        margin: 0;
+      }
+      .slick-list {
+        padding: 0;
+      }
+      .slick-arrow {
+        width: 50px;
+        height: 50px;
+        background-color: $color-gallery;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        z-index: 5;
+        @include below($mobile-lg) {
+          width: 35px;
+          height: 35px;
+        }
+        svg {
+          width: 20px;
+          height: auto;
+          @include below($mobile-lg) {
+            width: 15px;
+          }
+        }
+        &::before {
+          content: none;
+        }
+        &.slick-prev {
+          left: -10px;
+        }
+        &.slick-next {
+          right: -10px;
+        }
+      }
       & > div {
         padding: 0 85px;
+        @include below($tablet-lg) {
+          padding: 0 15px;
+        }
         &:nth-last-child(2),
         &:last-child {
           .development__trends__grid__card {
-            border-bottom: 0;
+            @include above($tablet-sm) {
+              border-bottom: 0;
+            }
+          }
+        }
+        &:last-child {
+          .development__trends__grid__card {
+            @include below($mobile-lg) {
+              border-bottom: 0;
+            }
           }
         }
       }
@@ -26,6 +90,14 @@
       padding-top: 60px;
       height: 100%;
       border-bottom: 1px solid $color-black;
+      @include below($tablet-sm) {
+        padding-bottom: 30px;
+        padding-top: 30px;
+      }
+      @include below($mobile-lg) {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
       h3 {
         @include fontFace(30px, 1.2, 600, $color-black);
         margin-bottom: 30px;
@@ -33,13 +105,27 @@
         max-width: 80%;
         @include below($desktop-lg) {
           max-width: 90%;
-          font-size: 28px;
+          font-size: 26px;
+        }
+        @include below($tablet-lg) {
+          max-width: 90%;
+          font-size: 20px;
+        }
+        @include below($mobile-lg) {
+          font-size: 24px;
+          font-weight: 500;
+          max-width: 100%;
+          margin-bottom: 20px;
+          text-align: center;
         }
       }
       p {
         @include fontFace(20px, 1.6, 400, $color-black);
         @include below($desktop-lg) {
           font-size: 16px;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
         }
       }
     }

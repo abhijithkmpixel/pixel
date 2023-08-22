@@ -1,18 +1,34 @@
+/** @format */
+
 .contactform {
   background-color: $color-white;
-  padding: 137px 90px;
+  padding: 137px 0px;
+  @include below($desktop-lg) {
+    padding: 90px 0px;
+  }
+  @include below($mobile-lg) {
+    padding: 60px 0px;
+  }
   .category_wrap {
     h3 {
       @include fontFace(42px, 1.2, 600, $color-black);
       margin-bottom: 40px;
       text-transform: uppercase;
       max-width: 665px;
+      @include below($mobile-lg) {
+        font-size: 23px;
+        margin-bottom: 20px;
+      }
     }
     p {
       @include fontFace(20px, 1.6, 400, $color-black);
       max-width: 560px;
-      text-align: justify;
+      // text-align: justify;
       margin-bottom: 80px;
+      @include below($mobile-lg) {
+        font-size: 14px;
+        margin-bottom: 35px;
+      }
     }
     .button_wrap {
       display: flex;
@@ -21,11 +37,27 @@
       fieldset {
         margin-bottom: 50px;
         margin-right: 40px;
+        @include below($tablet-sm) {
+          margin-bottom: 30px;
+        }
+        @include below($mobile-lg) {
+          margin-right: 20px;
+          margin-bottom: 10px;
+        }
         label {
           @include fontFace(20px, 1, 400, $color-black);
           border: 1px solid $color-black;
-          padding: 20px 35px;
           border-radius: 15px;
+          padding: 20px 35px;
+          @include below($desktop-lg) {
+            padding: 16px 30px;
+            font-size: 18px;
+          }
+          @include below($mobile-lg) {
+            padding: 10px 16px;
+            font-size: 10px;
+            border-radius: 8px;
+          }
         }
         input {
           display: none;
@@ -43,15 +75,29 @@
     .form_sec {
       fieldset {
         margin-bottom: 56px;
+        @include below($mobile-lg) {
+          margin-bottom: 25px;
+        }
         input {
           @include fontFace(40px, 1.2, 400, $color-black);
           width: 90%;
           border: none;
           border-bottom: 1px solid $color-black;
           padding: 20px 0;
+          @include below($desktop-lg) {
+            font-size: 30px;
+          }
+          @include below($tablet-sm) {
+            max-width: 100%;
+            width: 100%;
+          }
+          @include below($mobile-lg) {
+            font-size: 18px;
+          }
         }
         &::placeholder {
-          @include fontFace(40px, 1.2, 500, $color-silver-chalice);
+          // @include fontFace(40px, 1.2, 500, $color-silver-chalice);
+          @include fontStyleInherit();
         }
         label {
           display: none;
@@ -63,10 +109,27 @@
         align-items: center;
         justify-content: center;
         padding: 30px 45px;
+        margin-top: 100px;
+        @include below($desktop-lg) {
+          padding: 25px 30px;
+        }
+        @include below($tablet-lg) {
+          margin-top: 20px;
+        }
+        @include below($mobile-lg) {
+          padding: 17px 48px;
+          font-size: 14px;
+          margin-top: 0;
+          min-width: unset;
+        }
         // &::after{
         //     background-color: $color-white;
         //     color: $color-black;
         // }
+        &[disabled] {
+          pointer-events: none;
+          opacity: 0.5;
+        }
       }
     }
     .image_wrap {
@@ -77,6 +140,9 @@
       flex-flow: column;
       align-items: flex-end;
       overflow: hidden;
+      @include below($desktop-lg) {
+        padding-top: 70px;
+      }
       img {
         aspect-ratio: 1/1;
         width: 100%;
@@ -101,24 +167,87 @@
 .office_location {
   background-color: $color-wild-sand;
   padding: 185px 0 100px;
+  overflow: hidden;
+
+  @include below($desktop-lg) {
+    padding: 110px 0 90px;
+  }
+  @include below($mobile-lg) {
+    padding: 50px 0 30px;
+  }
   .row {
-    margin: 0 0-64px;
+    margin: 0 -64px;
+    @include below($tablet-sm) {
+      margin: 0 -15px;
+    }
+    & > div {
+      padding: 0 64px;
+      @include below($tablet-sm) {
+        padding: 0 15px;
+      }
+      @include below($mobile-lg) {
+        margin-bottom: 30px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
+    }
     .location_card {
-      margin: 0 52px;
+      // margin: 0 52px;
+      @include below($tablet-sm) {
+        display: flex;
+        flex-flow: column;
+        & > * {
+          order: 5;
+        }
+      }
+
       a {
         display: block;
         position: relative;
         cursor: none !important;
+        @include below($tablet-sm) {
+          order: 1;
+          margin-bottom: 20px;
+        }
       }
       h5 {
         @include fontFace(35px, 1.3, 600, $color-black);
-        margin-bottom: 40px;
+        margin-bottom: 25px;
+        @include below($desktop-lg) {
+          font-size: 30px;
+          margin-bottom: 20px;
+        }
+        @include below($tablet-lg) {
+          font-size: 23px;
+          margin-bottom: 20px;
+        }
+        @include below($mobile-lg) {
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
       }
       p {
         @include fontFace(26px, 1.8, 400, $color-black);
-        span {
+        max-width: 70%;
+        margin-bottom: 40px;
+        span,
+        strong {
           @include fontFace(30px, 1.6, 600, $color-black);
           display: block;
+          @include below($desktop-lg) {
+            font-size: 25px;
+          }
+          @include below($tablet-lg) {
+            font-size: 20px;
+          }
+        }
+        @include below($desktop-lg) {
+          font-size: 20px;
+        }
+        @include below($tablet-lg) {
+          font-size: 16px;
+          max-width: 100%;
         }
       }
       picture {
@@ -146,8 +275,18 @@
   justify-content: center;
   text-align: center;
   padding: 100px 0 200px;
-  h2 {
+  @include below($mobile-lg) {
+    padding: 20px 0 60px;
+  }
+  h2,
+  h3 {
     @include fontFace(48px, 1.5, 600, $color-black);
+    @include below($tablet-sm) {
+      font-size: 40px;
+    }
+    @include below($mobile-lg) {
+      font-size: 24px;
+    }
     a {
       // @include fontFace(48px, 1.5, 600, $color-pomegranate2);
       @include fontStyleInherit();

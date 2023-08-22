@@ -1,4 +1,14 @@
+/** @format */
+
 .portfolio_details {
+  @include below($tablet-lg) {
+    overflow: hidden;
+  }
+  .portfolio_details__row {
+    @include below($tablet-lg) {
+      flex-flow: column-reverse;
+    }
+  }
   .row {
     .img_wrap {
       position: sticky;
@@ -7,30 +17,153 @@
       left: 0;
       overflow: hidden;
       height: 100vh;
+      @include below($tablet-lg) {
+        position: static;
+        height: auto;
+        padding: 0 50px;
+      }
+      @include below($mobile-lg) {
+        padding: 0 15px;
+      }
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         position: absolute;
         inset: 0;
-        transition: 0.6s all ease-in-out;
+        transition: 0.4s all ease-in-out;
         &:not(:first-child) {
-          opacity: 0;
+          // opacity: 0;
+          transform: translateY(100%);
+          @include below($tablet-lg) {
+            transform: translateY(0%);
+            // opacity: 1;
+          }
+        }
+        @include below($tablet-lg) {
+          position: static;
+          height: auto;
+          opacity: 1;
+          margin-bottom: 30px;
         }
       }
     }
     .content_holder {
       padding: 52px 90px 52px 58px;
       // text-align: justify;
-      .btn-bck {
-        svg {
-          margin-right: 1rem;
+      @include below($tablet-lg) {
+        padding: 0px 50px 58px;
+      }
+      @include below($mobile-lg) {
+        padding: 0px 15px 58px;
+      }
+      .case__banner {
+        @include below($tablet-lg) {
+          width: calc(100% + 60px);
+          margin-left: -30px;
+          margin-bottom: 40px;
+          height: 600px;
+          position: relative;
+          // display: block;
         }
-        span {
-          font-size: 1rem;
+        @include below($mobile-lg) {
+          width: calc(100% + 30px);
+          margin-left: -15px;
+          margin-bottom: 40px;
+          height: auto;
+          aspect-ratio: 1/0.8;
+          // display: block;
         }
-        &:hover {
-          color: $color-cinnabar;
+        img {
+          display: none;
+          object-fit: cover;
+          @include below($tablet-lg) {
+            display: block;
+            filter: brightness(0.5);
+          }
+        }
+        .case__banner__inner {
+          @include below($tablet-lg) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 50px;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            height: 100%;
+          }
+          @include below($tablet-lg) {
+            padding: 15px;
+          }
+          .btn-bck {
+            @include below($tablet-lg) {
+              color: $color-white;
+              position: absolute;
+              top: 20px;
+              left: 50px;
+              z-index: 5;
+            }
+            @include below($mobile-lg) {
+              top: 20px;
+              left: 15px;
+              z-index: 5;
+            }
+            span {
+              font-size: 18px;
+              @include below($mobile-lg) {
+                font-size: 16px;
+              }
+            }
+            svg {
+              width: 40px;
+              height: auto;
+              @include below($tablet-lg) {
+                width: 40px;
+                path {
+                  fill: $color-white;
+                }
+              }
+              @include below($mobile-lg) {
+                width: 40px;
+                margin-right: 10px;
+              }
+            }
+          }
+          h1 {
+            @include below($tablet-lg) {
+              color: $color-white;
+            }
+          }
+        }
+        .btn-bck {
+          transition: 0.3s all ease-in-out;
+          display: flex;
+          align-items: center;
+          svg {
+            margin-right: 30px;
+            width: 40px;
+            height: auto;
+            path,
+            line {
+              transition: 0.3s all ease-in-out;
+            }
+          }
+          span {
+            font-size: 1rem;
+          }
+          &:hover {
+            @include above($tablet-lg) {
+              color: $color-cinnabar;
+              svg {
+                path,
+                line {
+                  fill: $color-cinnabar;
+                }
+              }
+            }
+          }
         }
       }
       h1 {
@@ -50,21 +183,33 @@
       p {
         @include fontFace(18px, 1.6, 400, $color-tundora);
         margin-bottom: 1.5rem;
+        text-align: justify;
+
+        @include below($mobile-lg) {
+          font-size: 16px;
+          text-align: left;
+        }
       }
       h3 {
         @include fontFace(22px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
         margin-bottom: 32px;
         margin-top: 54px;
+        @include below($mobile-lg) {
+          font-size: 20px;
+          margin-bottom: 15px;
+        }
       }
       .project_technology {
         position: relative;
-        h3 {
+        h3,
+        h4 {
           @include fontFace(18px, 1.6, 600, $color-tundora);
           margin-bottom: 1.6rem;
           position: relative;
           margin-top: 0;
           padding-bottom: 1.5rem;
+          text-transform: uppercase;
           &::after {
             content: "";
             height: 1px;
@@ -79,6 +224,9 @@
           @include fontFace(18px, 1.6, 400, $color-tundora);
           position: relative;
           padding-bottom: 1.5rem;
+          @include below($mobile-lg) {
+            font-size: 16px;
+          }
           &::after {
             content: "";
             height: 1px;
@@ -110,6 +258,9 @@
             }
             @include fontFace(18px, 1.6, 400, $color-tundora);
             text-transform: uppercase;
+            @include below($mobile-lg) {
+              font-size: 16px;
+            }
           }
           &::after {
             content: "";
@@ -123,11 +274,15 @@
         }
       }
       .cta_secondary {
-        // margin-top: -12%;
-        float: right;
-        transform: translateY(-50%);
-        @include below($desktop-lg) {
-          //   margin-top: -14%;
+        position: fixed;
+        z-index: 99;
+        right: 90px;
+        bottom: 20px;
+        @include below($tablet-lg) {
+          right: 50px;
+        }
+        @include below($mobile-lg) {
+          display: none;
         }
       }
     }
@@ -135,26 +290,60 @@
 }
 
 .project_navigation_link {
-  padding: 110px 0 60px;
+  padding: 150px 30px;
+  width: calc(100% + 24px);
+  margin-left: -24px;
+  margin-top: 50px;
+  position: relative;
+  z-index: 100;
+  // margin-bottom: 50px;
+  & > img {
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.6);
+  }
+  @include below($tablet-lg) {
+    margin-bottom: 50px;
+    width: calc(100% + 30px);
+    margin-left: -15px;
+  }
+  @include below($mobile-lg) {
+    padding: 90px 15px;
+  }
   h5 {
-    @include fontFace(24px, 1.5, 400, $color-black);
+    @include fontFace(24px, 1.5, 400, $color-white);
     text-transform: uppercase;
     margin-bottom: 50px;
+    position: relative;
+    z-index: 5;
+    @include below($mobile-lg) {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
   }
   h3,
   a {
-    display: flex;
+    position: relative;
+    z-index: 5;
+    // display: flex;
     width: max-content;
-    @include fontFace(50px, 0.9, 500, $color-black);
+    @include fontFace(50px, 0.9, 500, $color-white);
     text-transform: uppercase;
     text-decoration: none;
     transition: 0.3s all ease-in-out;
+    max-width: 100%;
+    @include below($mobile-lg) {
+      font-size: 28px;
+    }
     svg {
       margin-left: 30px;
       width: 24px;
       height: auto;
+      display: inline-block;
+      margin-bottom: 4px;
       path,
       line {
+        fill: $color-white;
         transition: 0.3s all ease-in-out;
       }
     }
@@ -168,6 +357,14 @@
           }
         }
       }
+    }
+  }
+}
+.portfolio__details__page {
+  & ~ footer {
+    display: none;
+    @include below($tablet-lg) {
+      display: block;
     }
   }
 }

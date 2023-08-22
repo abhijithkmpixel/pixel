@@ -1,9 +1,11 @@
+/** @format */
+
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const ServiceDetailBanner = () => {
+const ServiceDetailBanner = ({ data }) => {
   let ctx;
 
   useEffect(() => {
@@ -31,7 +33,16 @@ const ServiceDetailBanner = () => {
   }, []);
   return (
     <section className="service__detail__banner">
-      <Image src={"/uploads/servd.jpg"} alt="asd" width={1920} height={500} />
+      <Image
+        src={data?.Background_image?.data?.attributes?.url}
+        alt={
+          data?.Background_image?.data?.attributes?.alternativeText != null
+            ? data?.Background_image?.data?.attributes?.alternativeText
+            : data?.Title
+        }
+        width={1920}
+        height={500}
+      />
       <div className="container-fluid">
         <div className="service__detail__banner__innerwrap">
           <Link href={"/services"} className="go__back">
@@ -41,8 +52,7 @@ const ServiceDetailBanner = () => {
               height="91"
               viewBox="0 0 90 91"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+              xmlns="http://www.w3.org/2000/svg">
               <circle
                 cx="44.625"
                 cy="44.625"
@@ -57,7 +67,7 @@ const ServiceDetailBanner = () => {
               />
             </svg>
           </Link>
-          <h1>web development</h1>
+          <h1>{data?.Title}</h1>
         </div>
       </div>
     </section>

@@ -4,18 +4,35 @@
   overflow: hidden;
   align-items: center;
   width: 100%;
-  background-color: $color-blaze-orange;
+  background-color: $color-pomegranate2;
   height: 100vh;
+  @include below($tablet-lg) {
+    height: auto;
+    padding: 100px 0;
+  }
+  @include below($mobile-lg) {
+    padding: 60px 0;
+  }
   .empower_inner_wrap {
     padding: 100px 0;
     border-top: 1px solid $color-black;
     border-bottom: 1px solid $color-black;
     max-width: 100%;
+    @include below($desktop-lg) {
+      padding: 60px 0;
+    }
+    @include below($mobile-lg) {
+      padding: 40px 0;
+    }
     h5 {
       @include fontFace(30px, 1.2, 500, $color-black);
       margin-bottom: 60px;
       text-transform: capitalize;
       text-align: center;
+      @include below($mobile-lg) {
+        font-size: 17px;
+        margin-bottom: 30px;
+      }
     }
     h2 {
       @include fontFace(150px, 1.2, 700, $color-black);
@@ -24,6 +41,17 @@
       width: max-content;
       padding-left: 300px;
       padding-right: 300px;
+      @include below($tablet-lg) {
+        padding-left: 0px;
+        padding-right: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 80px;
+        margin-bottom: 0px;
+      }
+      @include below($mobile-lg) {
+        font-size: 45px;
+      }
       // text-align: center;
     }
   }
