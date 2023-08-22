@@ -23,21 +23,21 @@ const AiTech = ({ data }) => {
               scrub: true,
             },
           });
-          sideimage2.fromTo(
-            ".ai__technology__block__side_image",
-            {
-              y: 60,
-            },
-            {
-              y: -60,
-              scrollTrigger: {
-                trigger: ".ai__technology__block__side_image",
-                start: "0% 100%",
-                end: "100% 0%",
-                scrub: true,
-              },
-            }
-          );
+          // sideimage2.fromTo(
+          //   ".ai__technology__block__side_image",
+          //   {
+          //     y: 60,
+          //   },
+          //   {
+          //     y: -60,
+          //     scrollTrigger: {
+          //       trigger: ".ai__technology__block__side_image",
+          //       start: "0% 100%",
+          //       end: "100% 0%",
+          //       scrub: true,
+          //     },
+          //   }
+          // );
         });
       }
     }

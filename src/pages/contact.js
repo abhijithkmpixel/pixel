@@ -11,10 +11,12 @@ import axios from "axios";
 import Image from "next/image";
 import GsapMagnetic from "../components/gsap";
 import Link from "next/link";
+import HeadComponent from "@/components/HeadComponent";
 
 const COntactPage = ({ data, header, footer }) => {
   return (
     <>
+      <HeadComponent data={data?.attributes?.Seo} />
       <Header data={header} />
       <ServiceBanner data={data?.attributes?.Banner} id="contactform" />
 

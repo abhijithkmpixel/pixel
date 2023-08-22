@@ -79,7 +79,7 @@ const PortfolioListing = ({ data, options }) => {
   const incrementPagination = () => {
     setloading(true);
     setTimeout(() => {
-      setpagination((pagination) => pagination + 5);
+      setpagination((pagination) => pagination + 6);
     }, 500);
     setTimeout(() => {
       setloading(false);
@@ -173,8 +173,11 @@ const PortfolioListing = ({ data, options }) => {
                         </span>
                         <span>
                           {p?.attributes?.portfolio_categories?.data?.map(
-                            (p) => {
-                              return p?.attributes?.Name.toLowerCase() + ", ";
+                            (p, index) => {
+                              return (
+                                (index > 0 ? ", " : null) +
+                                p?.attributes?.Name.toLowerCase()
+                              );
                             }
                           )}
                         </span>

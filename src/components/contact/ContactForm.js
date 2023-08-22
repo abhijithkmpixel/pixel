@@ -2,12 +2,15 @@
 
 import { gsap } from "gsap";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GsapMagnetic from "../../components/gsap";
+import { message } from "antd";
+import axios from "axios";
 
 const ContactForm = ({ data }) => {
   let ctx;
-
+  const [formLoading, setformLoading] = useState(false);
+  const [formError, setformError] = useState(null);
   useEffect(() => {
     if (typeof document != "undefined") {
       if (window.screen.width > 1200) {
@@ -33,6 +36,74 @@ const ContactForm = ({ data }) => {
       }
     };
   }, []);
+  const firstName = useRef();
+  const emailId = useRef();
+  const messages = useRef();
+  const budget = useRef();
+  function clearFields() {
+    firstName.current.value = "";
+    budget.current.value = "";
+    emailId.current.value = "";
+    messages.current.value = "";
+    document.querySelectorAll('input[type="radio"]').forEach((element) => {
+      element.checked = false;
+    });
+  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setformLoading(true);
+    setformError(false);
+    let values = {
+      name: firstName?.current?.value,
+      email: emailId?.current?.value,
+      category: document.querySelector('input[type="radio"]:checked + label')
+        ? document.querySelector('input[type="radio"]:checked + label')
+            .innerText
+        : "N/P",
+      budget: budget?.current?.value,
+      message: messages?.current?.value,
+    };
+
+    if (values.firstName == "") {
+      setformError("Please fill first name field!");
+    } else if (values.name.length < 2) {
+      setformError("Minimum character length for name is 2");
+    } else if (document.querySelector('input[type="radio"]:checked') == null) {
+      setformError("Please select a category from the above list.");
+    } else if (values.email == "") {
+      setformError("Please fill email field!");
+    } else if (
+      !/^([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63})$/i.test(
+        values.email
+      )
+    ) {
+      setformError("Invalid email");
+    } else if (values.message == "") {
+      setformError("Please fill message field!");
+    } else {
+      setformError(null);
+      const sendMail = await axios
+        .post(`/api/contactform`, { values })
+        .then(function (response) {
+          // handle success
+          return response?.data;
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+      clearFields();
+      message.success({
+        content: sendMail?.message,
+        style: {
+          marginTop: "10vh",
+        },
+        duration: 5,
+      });
+      // toggleState !== undefined && toggleState();
+    }
+    setformLoading(false);
+  };
   return (
     <>
       <section className="contactform" id="contactform">
@@ -60,6 +131,7 @@ const ContactForm = ({ data }) => {
                   <input
                     type="text"
                     placeholder={data?.Form?.Name_placeholder}
+                    ref={firstName}
                   />
                 </fieldset>
                 <fieldset>
@@ -67,6 +139,7 @@ const ContactForm = ({ data }) => {
                   <input
                     type="text"
                     placeholder={data?.Form?.Email_placeholder}
+                    ref={emailId}
                   />
                 </fieldset>
                 <fieldset>
@@ -74,6 +147,7 @@ const ContactForm = ({ data }) => {
                   <input
                     type="text"
                     placeholder={data?.Form?.Message_placeholder}
+                    ref={messages}
                   />
                 </fieldset>
                 <fieldset>
@@ -81,12 +155,31 @@ const ContactForm = ({ data }) => {
                   <input
                     type="text"
                     placeholder={data?.Form?.Budget_placeholder}
+                    ref={budget}
                   />
                 </fieldset>
+                {formError && (
+                  <fieldset className="mb-2">
+                    <span className="error">{formError}</span>
+                  </fieldset>
+                )}
                 <GsapMagnetic>
-                  <button className="cta_primary cta_drk" type="submit">
+                  <button
+                    className="cta_primary cta_drk"
+                    type="button"
+                    disabled={formLoading}
+                    onClick={(e) => handleSubmit(e)}>
                     {" "}
-                    <span>Send</span>{" "}
+                    <span className="d-flex align-items-center">
+                      Send{" "}
+                      {formLoading && (
+                        <div
+                          className="spinner-border spinner-border-sm text-light ms-2"
+                          role="status">
+                          {/* <span className="sr-only">Loading...</span> */}
+                        </div>
+                      )}
+                    </span>{" "}
                   </button>
                 </GsapMagnetic>
               </div>

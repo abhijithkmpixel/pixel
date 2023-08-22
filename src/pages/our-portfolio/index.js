@@ -1,6 +1,7 @@
 /** @format */
 
 import Footer from "@/components/Footer";
+import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
 import GoodCoffee from "@/components/portfolio/GoodCoffee";
 import PortfolioBanner from "@/components/portfolio/PortfolioBanner";
@@ -11,6 +12,7 @@ import React from "react";
 const WebDevelopmentDubai = ({ data, header, footer, options }) => {
   return (
     <>
+      <HeadComponent data={data?.attributes?.Seo} />
       <Header data={header} />
       <PortfolioBanner data={data?.attributes?.Banner} />
       <PortfolioListing data={data?.attributes?.projects} options={options} />

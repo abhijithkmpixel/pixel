@@ -3,11 +3,11 @@
 import Head from "next/head";
 import React from "react";
 
-const HeadComponent = ({ data, title }) => {
+const HeadComponent = ({ data }) => {
   return (
     <>
       <Head>
-        <title>{title != null ? title : data?.Seo_title}</title>
+        <title>{data?.Seo_title}</title>
         <meta property="og:site_name" content={data?.Seo_title} />
         <meta name="description" content={data?.Seo_description}></meta>
         <meta name="keywords" content={data?.Seo_description}></meta>

@@ -322,3 +322,24 @@ html.lenis {
     display: block;
   }
 }
+.error {
+  color: red;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 500;
+}
+.ant-message-notice-content {
+  padding: 12px 20px !important;
+  span {
+    font-size: 20px !important;
+    color: #000;
+    font-weight: 500;
+  }
+  .ant-message-custom-content {
+    display: flex;
+    align-items: center;
+    .anticon {
+      font-size: 20px !important;
+    }
+  }
+}

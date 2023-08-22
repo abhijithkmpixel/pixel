@@ -126,6 +126,10 @@
         //     background-color: $color-white;
         //     color: $color-black;
         // }
+        &[disabled] {
+          pointer-events: none;
+          opacity: 0.5;
+        }
       }
     }
     .image_wrap {

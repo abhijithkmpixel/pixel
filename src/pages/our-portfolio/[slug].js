@@ -9,7 +9,9 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
+import HeadComponent from "@/components/HeadComponent";
 const Portfolio = ({ data, footer, header, portfolios }) => {
+  console.log(data);
   const [nextProject, setnextProject] = useState();
 
   let prevState = 0;
@@ -94,6 +96,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   }
   return (
     <>
+      <HeadComponent data={data?.attributes?.Seo} />
       <Header data={header} />
       <section className="portfolio_details">
         <div className="row portfolio_details__row">
@@ -141,8 +144,16 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                   <h1 className="title_primary">{data?.attributes?.Name}</h1>
                 </div>
                 <Image
-                  src={"/uploads/1.jpg"}
-                  alt="asd"
+                  src={
+                    data?.attributes?.Mobile_banner_image?.data?.attributes?.url
+                  }
+                  alt={
+                    data?.attributes?.Mobile_banner_image?.data?.attributes
+                      ?.alternativeText != null
+                      ? data?.attributes?.Mobile_banner_image?.data?.attributes
+                          ?.alternativeText
+                      : data?.attributes?.Name
+                  }
                   width={1200}
                   height={500}
                 />
