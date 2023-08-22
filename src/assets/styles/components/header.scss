@@ -433,6 +433,7 @@ header {
         .nav_item_wrap {
           overflow: hidden;
           overscroll-behavior: contain;
+          width: 100%;
           &.submenu_wrap {
             @include below($mobile-lg) {
               .link_wrap {
@@ -684,7 +685,7 @@ header {
   left: 50%;
   bottom: 15px;
   transform: translateX(-50%);
-  z-index: 101;
+  z-index: 102;
   transition: 0.5s all ease-in-out;
   transition-delay: 0.8s;
   li {
