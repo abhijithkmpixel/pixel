@@ -3,17 +3,17 @@
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 
 const AiTech = ({ data }) => {
   let ctx;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof document != "undefined") {
       if (window.screen.width > 1200) {
-        let sideimage = gsap.timeline();
-        let sideimage2 = gsap.timeline();
         ctx = gsap.context(() => {
+          let sideimage = gsap.timeline();
+          let sideimage2 = gsap.timeline();
           sideimage.to(".ai__technology__block__side_image > img", {
             objectPosition: "50% 0%",
             scrollTrigger: {
