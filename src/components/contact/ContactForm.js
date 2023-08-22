@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
 
-const ContactForm = () => {
+const ContactForm = ({ data }) => {
   let ctx;
 
   useEffect(() => {
@@ -38,58 +38,49 @@ const ContactForm = () => {
       <section className="contactform" id="contactform">
         <div className="container-fluid">
           <div className="category_wrap">
-            <h3>What would you like us to craft for you?</h3>
-            <p>
-              Want to start a project or need our expert consultation? We’d love
-              to share our expertise with you.
-            </p>
+            <h3>{data?.Main_title}</h3>
+            <p>{data?.Sub_title}</p>
             <div className="button_wrap">
-              <fieldset>
-                <input type="radio" name="regarding" id="Strategy" />
-                <label htmlFor="Strategy">Strategy</label>
-              </fieldset>
-              <fieldset>
-                <input type="radio" name="regarding" id="Brand" />
-                <label htmlFor="Brand">Brand</label>
-              </fieldset>
-              <fieldset>
-                <input type="radio" name="regarding" id="Digital Product" />
-                <label htmlFor="Digital Product">Digital Product</label>
-              </fieldset>
-              <fieldset>
-                <input type="radio" name="regarding" id="Physical Design" />
-                <label htmlFor="Physical Design">Physical Design</label>
-              </fieldset>
-              <fieldset>
-                <input type="radio" name="regarding" id="Innovation" />
-                <label htmlFor="Innovation">Innovation</label>
-              </fieldset>
-              <fieldset>
-                <input type="radio" name="regarding" id="Other" />
-                <label htmlFor="Other">Other</label>
-              </fieldset>
+              {data?.Form_categories &&
+                data?.Form_categories?.map((cat, index) => {
+                  return (
+                    <fieldset key={index}>
+                      <input type="radio" name="regarding" id={cat?.Label} />
+                      <label htmlFor={cat?.Label}>{cat?.Label}</label>
+                    </fieldset>
+                  );
+                })}
             </div>
           </div>
           <div className="row form_wrap">
             <div className="col-lg-8 col-12">
               <div className="form_sec">
                 <fieldset>
-                  <label htmlFor="">What is your name?</label>
-                  <input type="text" placeholder="What is your name?" />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor="">Your Email?</label>
-                  <input type="text" placeholder="Your Email?" />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor="">Whats your thoughts?</label>
-                  <input type="text" placeholder="Whats your thoughts?" />
-                </fieldset>
-                <fieldset>
-                  <label htmlFor="">Please mention your budget?</label>
+                  <label htmlFor="">{data?.Form?.Name_placeholder}</label>
                   <input
                     type="text"
-                    placeholder="Please mention your budget?"
+                    placeholder={data?.Form?.Name_placeholder}
+                  />
+                </fieldset>
+                <fieldset>
+                  <label htmlFor="">{data?.Form?.Email_placeholder}</label>
+                  <input
+                    type="text"
+                    placeholder={data?.Form?.Email_placeholder}
+                  />
+                </fieldset>
+                <fieldset>
+                  <label htmlFor="">{data?.Form?.Message_placeholder}</label>
+                  <input
+                    type="text"
+                    placeholder={data?.Form?.Message_placeholder}
+                  />
+                </fieldset>
+                <fieldset>
+                  <label htmlFor="">{data?.Form?.Budget_placeholder}</label>
+                  <input
+                    type="text"
+                    placeholder={data?.Form?.Budget_placeholder}
                   />
                 </fieldset>
                 <GsapMagnetic>
@@ -103,14 +94,18 @@ const ContactForm = () => {
             <div className="col-md-4 min_820">
               <div className="image_wrap">
                 <Image
-                  src="/uploads/fromimage.jpg"
-                  alt="asdsad"
+                  src={data?.Form?.SIde_image?.data?.attributes?.url}
+                  alt={
+                    data?.Form?.SIde_image?.data?.attributes?.alternativeText !=
+                    null
+                      ? data?.Form?.SIde_image?.data?.attributes
+                          ?.alternativeText
+                      : "contact info image"
+                  }
                   width={500}
                   height={500}
                 />
-                <p>
-                  We work with individually adapted frameworks,but we prefer
-                </p>
+                <p>{data?.Form?.SIde_image_description}</p>
               </div>
             </div>
           </div>

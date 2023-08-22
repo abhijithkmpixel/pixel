@@ -6,9 +6,10 @@ import axios from "axios";
 import api from "../../../lib/api";
 
 export default async function handler(req, res) {
+  const { slug } = req.query;
   const data = await axios
     .get(
-      `${process.env.API_URL}/api/portfolio-page?populate[0]=Banner.Background_image&populate[1]=projects&populate[2]=Seo&populate[3]=Grab_a_coffee&populate[4]=Grab_a_coffee.Icon&populate[5]=projects.portfolio_categories&populate[6]=projects.Portfolio_page_listing_image`
+      `${process.env.API_URL}/api/projects?filters[Slug][$eq]=${slug}&populate=*`
     )
     .then(function (response) {
       // handle success
@@ -18,8 +19,8 @@ export default async function handler(req, res) {
       // handle error
       console.log(error);
     });
-  const options = await axios
-    .get(`${process.env.API_URL}/api/portfolio-categories?populate=*`)
+  const portfolios = await axios
+    .get(`${process.env.API_URL}/api/projects?populate=*`)
     .then(function (response) {
       // handle success
       return response?.data?.data;
@@ -52,7 +53,10 @@ export default async function handler(req, res) {
       // handle error
       console.log(error);
     });
-  res
-    .status(200)
-    .json({ data: data, header: header, footer: footer, options: options });
+  res.status(200).json({
+    data: data,
+    header: header,
+    footer: footer,
+    portfolios: portfolios,
+  });
 }

@@ -8,13 +8,13 @@ import PortfolioListing from "@/components/portfolio/PortfolioListing";
 import axios from "axios";
 import React from "react";
 
-const WebDevelopmentDubai = ({ data, header, footer }) => {
+const WebDevelopmentDubai = ({ data, header, footer, options }) => {
   return (
     <>
       <Header data={header} />
-      <PortfolioBanner />
-      <PortfolioListing />
-      <GoodCoffee />
+      <PortfolioBanner data={data?.attributes?.Banner} />
+      <PortfolioListing data={data?.attributes?.projects} options={options} />
+      <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
       <Footer data={footer} />
     </>
   );
@@ -23,7 +23,7 @@ const WebDevelopmentDubai = ({ data, header, footer }) => {
 export default WebDevelopmentDubai;
 export async function getServerSideProps(context) {
   const data = await axios
-    .get(`${process.env.DOMAIN_URL}/api/servicespage`)
+    .get(`${process.env.DOMAIN_URL}/api/portfoliopage`)
     .then(function (response) {
       // handle success
       return response?.data;
@@ -51,6 +51,12 @@ export async function getServerSideProps(context) {
         Object.keys(data).length > 0
           ? data?.footer && data?.footer !== null
             ? data?.footer
+            : null
+          : null,
+      options:
+        Object.keys(data).length > 0
+          ? data?.options && data?.options !== null
+            ? data?.options
             : null
           : null,
     }, // will be passed to the page component as props

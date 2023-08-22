@@ -1,6 +1,7 @@
 /** @format */
 
 import Footer from "@/components/Footer";
+import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
 import Empowered from "@/components/service/Empowered";
 import ServiceBanner from "@/components/service/ServiceBanner";
@@ -12,6 +13,7 @@ import React from "react";
 const ServicesPage = ({ data, header, footer }) => {
   return (
     <>
+      <HeadComponent data={data?.attributes?.Seo} />
       <Header data={header} />
       <ServiceBanner data={data?.attributes?.Banner} id={"serviceintro"} />
       <ServiceIntro data={data?.attributes?.Service_intro} className="" />

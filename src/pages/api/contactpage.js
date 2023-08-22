@@ -8,18 +8,8 @@ import api from "../../../lib/api";
 export default async function handler(req, res) {
   const data = await axios
     .get(
-      `${process.env.API_URL}/api/portfolio-page?populate[0]=Banner.Background_image&populate[1]=projects&populate[2]=Seo&populate[3]=Grab_a_coffee&populate[4]=Grab_a_coffee.Icon&populate[5]=projects.portfolio_categories&populate[6]=projects.Portfolio_page_listing_image`
+      `${process.env.API_URL}/api/contact-page?populate[0]=Banner&populate[1]=Banner.Background_image&populate[2]=Form.Form_categories&populate[3]=Form.Form&populate[4]=Form.Form.SIde_image&populate[5]=Locations.Location_details&populate[6]=Locations.Location_details.Image&populate[7]=Locations.Location_link&populate[8]=Seo&populate[9]=Business_enquiries`
     )
-    .then(function (response) {
-      // handle success
-      return response?.data?.data;
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
-  const options = await axios
-    .get(`${process.env.API_URL}/api/portfolio-categories?populate=*`)
     .then(function (response) {
       // handle success
       return response?.data?.data;
@@ -52,7 +42,5 @@ export default async function handler(req, res) {
       // handle error
       console.log(error);
     });
-  res
-    .status(200)
-    .json({ data: data, header: header, footer: footer, options: options });
+  res.status(200).json({ data: data, header: header, footer: footer });
 }

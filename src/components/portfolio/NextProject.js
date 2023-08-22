@@ -4,13 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const NextProject = () => {
+const NextProject = ({ data }) => {
   return (
     <div className="project_navigation_link">
-      <Image src={"/uploads/burg.jpeg"} fill alt="aasd" />
+      <Image
+        src={
+          data?.attributes?.Portfolio_page_listing_image?.data?.attributes?.url
+        }
+        fill
+        alt={
+          data?.attributes?.Portfolio_page_listing_image?.data?.attributes
+            ?.alternativeText != null
+            ? data?.attributes?.Portfolio_page_listing_image?.data?.attributes
+                ?.alternativeText
+            : data?.attributes?.Name
+        }
+      />
       <h5>next project /</h5>
-      <Link href={"#"} data-cursor-img-="/uploads/burg.jpeg">
-        burj khalifa
+      <Link
+        href={"/our-portfolio/" + data?.attributes?.Slug}
+        data-cursor-img-="/uploads/burg.jpeg">
+        {data?.attributes?.Name}
         <svg
           width="24"
           height="24"

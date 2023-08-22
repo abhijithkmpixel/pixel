@@ -51,7 +51,7 @@
       @include fontFace(90px, 1, 600, $color-white);
       text-transform: uppercase;
       text-align: right;
-      width: 60%;
+      width: 70%;
       @include below($desktop-lg) {
         font-size: 90px;
       }

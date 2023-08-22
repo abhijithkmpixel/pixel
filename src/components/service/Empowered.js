@@ -10,25 +10,25 @@ const Empowered = ({ data }) => {
       if (window?.screen?.width > 1200) {
         ctx = gsap.context(() => {
           let empoweredtitle = gsap.timeline();
-          if (document.querySelector(".empowered_brand_block")) {
-            let containerwidth = document.querySelector(
-              ".empowered_brand_block .empower_inner_wrap"
-            ).offsetWidth;
-            let titlewidth = document.querySelector(
-              ".empowered_brand_block  h2"
-            ).offsetWidth;
-            let scrollablewidth = titlewidth - containerwidth;
-            empoweredtitle.to(".empowered_brand_block h2", {
-              x: -scrollablewidth,
-              scrollTrigger: {
-                trigger: ".empowered_brand_block",
-                start: "0% 0%",
-                end: `+=${scrollablewidth * 1.5}`,
-                scrub: true,
-                pin: ".empowered_brand_block",
-              },
-            });
-          }
+          // if (document.querySelector(".empowered_brand_block")) {
+          let containerwidth = document.querySelector(
+            ".empowered_brand_block .empower_inner_wrap"
+          ).offsetWidth;
+          let titlewidth = document.querySelector(
+            ".empowered_brand_block  h2"
+          ).offsetWidth;
+          let scrollablewidth = titlewidth - containerwidth;
+          empoweredtitle.to(".empowered_brand_block h2", {
+            x: -scrollablewidth,
+            scrollTrigger: {
+              trigger: ".empowered_brand_block",
+              start: "0% 0%",
+              end: `+=${scrollablewidth * 1.5}`,
+              scrub: true,
+              pin: ".empowered_brand_block",
+            },
+          });
+          // }
         });
       }
     }

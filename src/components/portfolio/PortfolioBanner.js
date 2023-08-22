@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
 
-const PortfolioBanner = () => {
+const PortfolioBanner = ({ data }) => {
   let ctx;
   useEffect(() => {
     if (typeof document != "undefined") {
@@ -42,12 +42,18 @@ const PortfolioBanner = () => {
 
   return (
     <section className="portfolio_hero_banner">
-      <Image src={"/uploads/ort.jpg"} alt="asdasd" width={1920} height={1080} />
+      <Image
+        src={data?.Background_image?.data?.attributes?.url}
+        alt={
+          data?.Background_image?.data?.attributes?.alternativeText != null
+            ? data?.Background_image?.data?.attributes?.alternativeText
+            : data?.Title
+        }
+        width={1920}
+        height={1080}
+      />
       <div className="hero_content_wrap">
-        <h1>
-          DISCOVER <br />
-          <span>our</span> PROJECTS
-        </h1>
+        <h1 dangerouslySetInnerHTML={{ __html: data?.Title }}></h1>
         <GsapMagnetic>
           <Link
             href="#portfolio_list_section"

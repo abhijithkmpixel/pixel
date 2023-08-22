@@ -6,18 +6,32 @@ import NextProject from "@/components/portfolio/NextProject";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
-const Portfolio = ({ data, footer, header }) => {
+const Portfolio = ({ data, footer, header, portfolios }) => {
+  const [nextProject, setnextProject] = useState();
+
+  let prevState = 0;
+  let index = 1;
+
   const router = useRouter();
+  let allImages;
+  let totalNum;
+  // let totalscrollabledist;
   useEffect(() => {
+    let next = portfolios?.filter((p) => {
+      return (
+        new Date(p?.attributes?.createdAt) >
+        new Date(data?.attributes?.createdAt)
+      );
+    });
+    setnextProject(next[0]);
     if (typeof document != "undefined") {
-      let allImages = document.querySelectorAll(".img_wrap img");
-      let totalNum = allImages.length;
+      allImages = document.querySelectorAll(".img_wrap img");
+      totalNum = allImages.length;
       var htmlElement = document.documentElement;
       var bodyElement = document.body;
-
       var height = Math.max(
         htmlElement.clientHeight,
         htmlElement.scrollHeight,
@@ -27,87 +41,83 @@ const Portfolio = ({ data, footer, header }) => {
       );
 
       let totalscrollabledist = height - document.documentElement.clientHeight;
-      let index = 1;
-      if (window.screen.width > 1200) {
-        window.addEventListener("scroll", function () {
-          if (
-            (window.scrollY / totalscrollabledist) * 100 >
-              (100 / totalNum) * index &&
-            (window.scrollY / totalscrollabledist) * 100 <= 100
-          ) {
-            index++;
-            imageUpdate(index - 1);
-          } else if (index <= 1) {
-            index = 1;
-            imageUpdate(index - 1);
-          }
-          //else if (index > totalNum - 1) {
-          //   index = totalNum - 1;
-          //   imageUpdate(index);
-          // }
-          else {
-            index--;
-            // imageUpdate(index - 1);
-          }
-        });
-      }
-      let prevState = 0;
-      function imageUpdate(index) {
-        if (index >= prevState) {
-          allImages.forEach((element) => {
-            // element.style.opacity = 0;
-            // element.style.transform = "translateY(100%)";
-          });
-          allImages[index].style.transform = "translateY(0%)";
-        } else {
-          allImages.forEach((element) => {
-            // element.style.opacity = 0;
-            // element.style.transform = "translateY(100%)";
-          });
-          allImages[index + 1].style.transform = "translateY(100%)";
-        }
-        // allImages[index].style.opacity = 1;
-        // console.log(index);
-        // console.log(prevState);
-        prevState = index;
+      if (window.screen.width > 1200 && allImages.length > 0) {
+        window.addEventListener("scroll", () =>
+          onScroller(totalscrollabledist)
+        );
       }
     }
 
-    return () => {};
+    return () => {
+      window.removeEventListener("scroll", () => onScroller());
+    };
   }, []);
 
+  function onScroller(totalscrollabledist) {
+    if (
+      (window.scrollY / totalscrollabledist) * 100 > (100 / totalNum) * index &&
+      (window.scrollY / totalscrollabledist) * 100 <= 100
+    ) {
+      index++;
+      imageUpdate(index - 1);
+    } else if (index <= 1) {
+      index = 1;
+      imageUpdate(index - 1);
+    }
+    //else if (index > totalNum - 1) {
+    //   index = totalNum - 1;
+    //   imageUpdate(index);
+    // }
+    else {
+      index--;
+      // imageUpdate(index - 1);
+    }
+  }
+  function imageUpdate(index) {
+    if (index >= prevState) {
+      // allImagesState?.forEach((element) => {
+      //   // element.style.opacity = 0;
+      //   // element.style.transform = "translateY(100%)";
+      // });
+      allImages[index].style.transform = "translateY(0%)";
+    } else {
+      // allImagesState?.forEach((element) => {
+      //   // element.style.opacity = 0;
+      //   // element.style.transform = "translateY(100%)";
+      // });
+      allImages[index + 1].style.transform = "translateY(100%)";
+    }
+    // allImages[index].style.opacity = 1;
+    // console.log(index);
+    // console.log(prevState);
+    prevState = index;
+  }
   return (
     <>
       <Header data={header} />
       <section className="portfolio_details">
         <div className="row portfolio_details__row">
           <div className="col-xl-6 col-12">
-            <div className="img_wrap">
-              <Image
-                src="/uploads/1.jpg"
-                alt="portfoli_image"
-                width={960}
-                height={1080}
-              />
-              <Image
-                src="/uploads/2.jpg"
-                alt="portfoli_image"
-                width={960}
-                height={1080}
-              />
-              <Image
-                src="/uploads/3.jpg"
-                alt="portfoli_image"
-                width={960}
-                height={1080}
-              />
-              <Image
-                src="/uploads/4.jpg"
-                alt="portfoli_image"
-                width={960}
-                height={1080}
-              />
-            </div>
+            {data?.attributes?.Images &&
+              data?.attributes?.Images?.data?.length > 0 && (
+                <div className="img_wrap">
+                  {data?.attributes?.Images?.data?.map((img, index) => {
+                    return (
+                      <Image
+                        key={index}
+                        src={img?.attributes?.url}
+                        alt={
+                          img?.attributes?.alternativeText != null
+                            ? img?.attributes?.alternativeText
+                            : "portfoli_image"
+                        }
+                        width={960}
+                        height={1080}
+                      />
+                    );
+                  })}
+                </div>
+              )}
           </div>
           <div className="col-xl-6 col-12">
             <div className="content_holder">
@@ -128,9 +138,7 @@ const Portfolio = ({ data, footer, header }) => {
 
                     <span>Back to the List</span>
                   </Link>
-                  <h1 className="title_primary">
-                    Tribal <br /> Experience
-                  </h1>
+                  <h1 className="title_primary">{data?.attributes?.Name}</h1>
                 </div>
                 <Image
                   src={"/uploads/1.jpg"}
@@ -140,68 +148,31 @@ const Portfolio = ({ data, footer, header }) => {
                 />
               </div>
               <div className="button_year_wrap">
-                <Link className="cta_primary" href="#">
-                  <span>visit website</span>
-                </Link>
-                <p>2023</p>
+                {data?.attributes?.Live_url &&
+                  data?.attributes?.Live_url != null && (
+                    <Link
+                      className="cta_primary"
+                      href={data?.attributes?.Live_url?.Url}>
+                      <span>{data?.attributes?.Live_url?.Text}</span>
+                    </Link>
+                  )}
+                <p>{data?.attributes?.Year}</p>
               </div>
-              <p>
-                Mayee consists of a small team of greentrepreneurs who are
-                passionate about people and the planet. They aspire to make a
-                difference by helping businesses Mayee consists of a small team
-                of greentrepreneurs who are passionate about people and the
-                planet. They aspire to make a difference by helping businesses
-              </p>
-              <p>
-                Mayee consists of a small team of greentrepreneurs who are
-                passionate about people and the planet. They aspire to make a
-                difference by helping businesses Mayee consists of a small team
-                of greentrepreneurs who are passionate about people and the
-                planet. They aspire to make a difference by helping businesses
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Incidunt, non ratione quae saepe iure suscipit, provident
-                perferendis magnam, alias repudiandae perspiciatis sed quibusdam
-                voluptas. Explicabo quaerat ab placeat ex voluptatum. Recusandae
-                beatae quis repellat harum ut iusto placeat. Officiis ullam
-                distinctio, fuga reprehenderit consectetur recusandae eius odio
-                dicta possimus maiores?
-              </p>
-              <h3>about the project</h3>
-              <p>
-                We linked together with the design aspects of their website, the
-                technological parts, using their design files and converting
-                them into the core elements of front-end development.
-              </p>
-              <p>
-                We linked together with the design aspects of their website, the
-                technological parts, using their design files and converting
-                them into the core elements of front-end development.
-              </p>
-              <p>
-                We linked together with the design aspects of their website, the
-                technological parts, using their design files and converting
-                them into the core elements of front-end development.
-              </p>
-              <p>
-                We linked together with the design aspects of their website, the
-                technological parts, using their design files and converting
-                them into the core elements of front-end development.
-              </p>
-              <div className="project_technology">
-                <h3>technology used</h3>
-                <p>Wordpress, HTML5, CSS3, Ajax, Jquery</p>
-              </div>
-              <div className="project_technology">
-                <h3>technology used</h3>
-                <ul>
-                  <li>Branding</li>
-                  <li>Packaging</li>
-                  <li>Photo Shooting</li>
-                  <li>Website UI</li>
-                </ul>
-              </div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: data?.attributes?.Bodycopy,
+                }}></div>
+
+              <div
+                className="project_technology"
+                dangerouslySetInnerHTML={{
+                  __html: data?.attributes?.Technology_used,
+                }}></div>
+              <div
+                className="project_technology"
+                dangerouslySetInnerHTML={{
+                  __html: data?.attributes?.Services_used,
+                }}></div>
               <GsapMagnetic>
                 <Link className="cta_secondary" href="/">
                   <span>Home</span>
@@ -209,14 +180,14 @@ const Portfolio = ({ data, footer, header }) => {
               </GsapMagnetic>
             </div>
             <div className="min_1200">
-              <NextProject />
+              {nextProject && <NextProject data={nextProject} />}
             </div>
           </div>
         </div>
       </section>
       <div className="max_1200">
         <div className="container-fluid">
-          <NextProject />
+          {nextProject && <NextProject data={nextProject} />}
         </div>
       </div>
       <Footer data={footer} />
@@ -225,8 +196,10 @@ const Portfolio = ({ data, footer, header }) => {
 };
 export default Portfolio;
 export async function getServerSideProps(context) {
+  const { params } = context;
+
   const data = await axios
-    .get(`${process.env.DOMAIN_URL}/api/servicespage`)
+    .get(`${process.env.DOMAIN_URL}/api/portfolio?slug=${params.slug}`)
     .then(function (response) {
       // handle success
       return response?.data;
@@ -241,7 +214,7 @@ export async function getServerSideProps(context) {
       data:
         Object.keys(data).length > 0
           ? data?.data && data?.data !== null
-            ? data?.data
+            ? data?.data[0]
             : null
           : null,
       header:
@@ -254,6 +227,12 @@ export async function getServerSideProps(context) {
         Object.keys(data).length > 0
           ? data?.footer && data?.footer !== null
             ? data?.footer
+            : null
+          : null,
+      portfolios:
+        Object.keys(data).length > 0
+          ? data?.portfolios && data?.portfolios !== null
+            ? data?.portfolios
             : null
           : null,
     }, // will be passed to the page component as props

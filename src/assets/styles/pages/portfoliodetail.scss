@@ -202,12 +202,14 @@
       }
       .project_technology {
         position: relative;
-        h3 {
+        h3,
+        h4 {
           @include fontFace(18px, 1.6, 600, $color-tundora);
           margin-bottom: 1.6rem;
           position: relative;
           margin-top: 0;
           padding-bottom: 1.5rem;
+          text-transform: uppercase;
           &::after {
             content: "";
             height: 1px;

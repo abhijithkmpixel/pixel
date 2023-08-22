@@ -193,6 +193,7 @@ export default function App({ Component, pageProps }) {
               alt="pixelflames logo"
               width={120}
               height={130}
+              priority
             />
           </div>
           <div className="preloader__progress_wrap">

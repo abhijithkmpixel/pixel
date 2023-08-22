@@ -102,6 +102,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0 -40px;
+    transition: 0.3s all ease-in-out;
     @include below($tablet-lg) {
       margin: 0 -20px;
     }
