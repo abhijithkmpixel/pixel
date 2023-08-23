@@ -162,6 +162,8 @@ export default function App({ Component, pageProps }) {
           setTimeout(() => {
             setloaderOpen(false);
           }, 2000);
+          document.querySelector("body").classList.remove("overflow-hidden");
+
           // scrollToTarget();
         });
         Router.events.on("routeChangeError", () => {});

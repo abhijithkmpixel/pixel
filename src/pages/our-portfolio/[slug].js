@@ -21,13 +21,14 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   let totalNum;
   // let totalscrollabledist;
   useEffect(() => {
-    let next = portfolios?.filter((p) => {
-      return (
-        new Date(p?.attributes?.createdAt) >
-        new Date(data?.attributes?.createdAt)
-      );
+    let next;
+    portfolios?.attributes?.projects?.data?.map((p, index) => {
+      if (p?.attributes?.Name == data?.attributes?.Name) {
+        // return portfolios?.attributes?.projects?.data[index + 2];
+        setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
+      }
     });
-    setnextProject(next[0]);
+    // setnextProject(next[0]);
     if (typeof document != "undefined") {
       allImages = document.querySelectorAll(".img_wrap img");
       totalNum = allImages.length;
@@ -109,6 +110,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                       <Image
                         key={index}
                         src={img?.attributes?.url}
+                        priority={true}
                         alt={
                           img?.attributes?.alternativeText != null
                             ? img?.attributes?.alternativeText

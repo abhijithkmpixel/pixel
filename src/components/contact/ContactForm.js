@@ -72,7 +72,6 @@ const ContactForm = ({ data }) => {
       setformError("Please fill first name field!");
       firstName.current.classList = "error";
       firstName.current.focus = false;
-      console.log(firstName);
     } else if (values.name.length < 2) {
       firstName.current.classList = "error";
       setformError("Minimum character length for name is 2");

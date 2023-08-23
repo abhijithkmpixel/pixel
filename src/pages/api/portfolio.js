@@ -21,7 +21,9 @@ export default async function handler(req, res) {
       console.log(error);
     });
   const portfolios = await axios
-    .get(`${process.env.API_URL}/api/projects?populate=*`)
+    .get(
+      `${process.env.API_URL}/api/portfolio-page?populate[0]=projects.Portfolio_page_listing_image&populate[1]=projects.Name&`
+    )
     .then(function (response) {
       // handle success
       return response?.data?.data;

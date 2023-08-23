@@ -13,11 +13,6 @@ const Header = ({ data }) => {
       if (window.screen.width > 1200) {
         window.addEventListener("scroll", scrollingFn);
       }
-
-      document
-        .querySelector(".hamburger__menu__icon")
-        .addEventListener("click", hamburger__menu__icon);
-
       document
         .querySelector(".desktop__menu__toggle")
         .addEventListener("click", desktop__menu__toggle);
@@ -55,45 +50,19 @@ const Header = ({ data }) => {
             });
           });
       }
-      if (document.querySelector(".menu_icon_wrap")) {
-        document
-          .querySelector(".menu_icon_wrap")
-          .addEventListener("click", desktopIcons);
-      }
-
-      if (window.screen.width < 720) {
-        document.querySelectorAll(".submenu_wrap").forEach((menu) => {
-          // menu.addEventListener("click", subNavClose(menu));
-          menu.addEventListener("click", function () {
-            if (document.querySelector("subnavopen")) {
-              document.querySelectorAll(".submenu_wrap").forEach((el) => {
-                el.classList.remove("subnavopen");
-              });
-            }
-            if (menu.classList.contains("subnavopen")) {
-              menu.classList.remove("subnavopen");
-            } else {
-              menu.classList.add("subnavopen");
-            }
-          });
-        });
-      }
+      // if (document.querySelector(".menu_icon_wrap")) {
+      //   document
+      //     .querySelector(".menu_icon_wrap")
+      //     .addEventListener("click", desktopIcons);
+      // }
     }
 
     return () => {
       document
         .querySelector(".desktop__menu__toggle")
         .removeEventListener("click", desktop__menu__toggle);
-      document
-        .querySelector(".hamburger__menu__icon")
-        .removeEventListener("click", hamburger__menu__icon);
-      document
-        .querySelector(".menu_icon_wrap")
-        .removeEventListener("click", desktopIcons);
+
       window.removeEventListener("scroll", scrollingFn);
-      // document
-      //   .querySelector(".hamburger__menu__icon")
-      //   .removeEventListener("click", subNavClose);
     };
   }, [navOpen]);
   function desktop__menu__toggle() {
@@ -112,7 +81,9 @@ const Header = ({ data }) => {
       document.querySelectorAll(".submenu_wrap").forEach((el) => {
         el.classList.remove("subnavopen");
       });
+      document.querySelector("body").classList.remove("overflow-hidden");
     } else {
+      document.querySelector("body").classList.add("overflow-hidden");
       setnavOpen(true);
     }
   }
@@ -135,8 +106,29 @@ const Header = ({ data }) => {
       }
     }
   }
-  function desktopIcons() {
-    setnavOpen(true);
+
+  function mobileSubNavToggle(e) {
+    if (window.screen.width < 720) {
+      if (document.querySelector("subnavopen")) {
+        document.querySelectorAll(".submenu_wrap").forEach((el) => {
+          el.classList.remove("subnavopen");
+        });
+      }
+      if (e.target.classList.contains("submenu_wrap")) {
+        e.target.classList.toggle("subnavopen");
+      } else if (
+        e.target
+          .closest("li")
+          .querySelector(".nav_item_wrap")
+          .classList.contains("submenu_wrap")
+      ) {
+        e.target
+          .closest("li")
+          .querySelector(".submenu_wrap")
+          .classList.toggle("subnavopen");
+      }
+    }
+    // this.classList.toggle("subnavopen");
   }
   // function subNavClose(menu) {
   //   if (document.querySelector("subnavopen")) {
@@ -208,7 +200,8 @@ const Header = ({ data }) => {
             className="menu_icon_wrap"
             data-scroll
             data-cursor-stick="#stick-me"
-            data-cursor-text=" ">
+            data-cursor-text=" "
+            onClick={() => setnavOpen(true)}>
             <span>Menu+</span>
             <ul id="stick-me">
               <li></li>
@@ -268,7 +261,10 @@ const Header = ({ data }) => {
                         elm?.Sub_menu?.length > 0
                           ? "nav_item_wrap submenu_wrap"
                           : "nav_item_wrap "
-                      }>
+                      }
+                      onClick={(e) => {
+                        mobileSubNavToggle(e);
+                      }}>
                       <div className="link_wrap">
                         <Link
                           href={elm?.Link?.Url != null ? elm?.Link?.Url : "#"}>
@@ -277,7 +273,9 @@ const Header = ({ data }) => {
                         </Link>
                       </div>
                       {elm?.Sub_menu && elm?.Sub_menu?.length > 0 && (
-                        <ul className="sub_menu">
+                        <ul
+                          className="sub_menu"
+                          onClick={(e) => e.stopPropagation()}>
                           {elm.Sub_menu?.map((selm, index) => {
                             return (
                               <li key={index}>
@@ -321,6 +319,7 @@ const Header = ({ data }) => {
         </div>
       </div>
       <ul
+        onClick={hamburger__menu__icon}
         className={
           navOpen == true
             ? "hamburger__menu__icon open"

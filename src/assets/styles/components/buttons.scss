@@ -43,7 +43,9 @@
       border-color: $color-pomegranate2;
     }
     &:hover {
-      border-color: $color-pomegranate2;
+      @include above($tablet-lg) {
+        border-color: $color-pomegranate2;
+      }
     }
   }
   &::after {

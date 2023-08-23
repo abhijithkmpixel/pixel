@@ -274,6 +274,9 @@
           object-fit: cover;
           transition: 0.4s all ease-in-out;
           filter: grayscale(1);
+          @include below($tablet-lg) {
+            filter: grayscale(0);
+          }
           &:hover {
             filter: grayscale(0);
           }

@@ -459,7 +459,6 @@ header {
           transform: translateY(100px);
           transition: 0.9s transform ease-in-out;
           transform-origin: bottom;
-
           & > a {
             @include fontFace(68px, 1, 700, $color-white);
             text-decoration: none;
@@ -594,7 +593,7 @@ header {
   // position: fixed;
   // left: 50%;
   // transform: translateX(-50%) translateY(200px);
-  padding: 22px 14px;
+  padding: 22px 10px 22px 14px;
   align-items: center;
   z-index: 101;
   transition: 0.3s all ease-in-out;
