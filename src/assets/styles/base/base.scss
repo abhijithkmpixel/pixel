@@ -245,6 +245,7 @@ html.lenis {
 }
 .mf-cursor.-text::before {
   transform: scale(2.8);
+  opacity: 1;
 }
 .mf-cursor-media {
   // z-index: 10;
@@ -327,6 +328,9 @@ html.lenis {
   font-size: 18px;
   line-height: 1;
   font-weight: 500;
+  @include below($mobile-lg) {
+    font-size: 14px;
+  }
 }
 .ant-message-notice-content {
   padding: 12px 20px !important;

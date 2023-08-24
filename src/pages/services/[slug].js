@@ -15,7 +15,7 @@ const ServiceDetail = ({ data, footer, header }) => {
   return (
     <>
       <HeadComponent
-        data={data?.attributes?.Seo}
+        data={data?.attributes?.seo}
         title={data?.attributes?.Banner?.Title}
       />
       <Header data={header} />

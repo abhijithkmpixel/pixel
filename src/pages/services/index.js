@@ -13,7 +13,7 @@ import React from "react";
 const ServicesPage = ({ data, header, footer }) => {
   return (
     <>
-      <HeadComponent data={data?.attributes?.Seo} />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <ServiceBanner data={data?.attributes?.Banner} id={"serviceintro"} />
       <ServiceIntro data={data?.attributes?.Service_intro} className="" />

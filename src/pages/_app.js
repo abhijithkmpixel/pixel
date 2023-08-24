@@ -50,6 +50,7 @@ export default function App({ Component, pageProps }) {
           skewingText: 0,
           skewingIcon: 0,
           skewingMedia: 0,
+          // ease: "none",
         });
 
         const resize = (e) => {

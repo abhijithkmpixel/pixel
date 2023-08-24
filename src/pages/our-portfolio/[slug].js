@@ -97,7 +97,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   }
   return (
     <>
-      <HeadComponent data={data?.attributes?.Seo} />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <section className="portfolio_details">
         <div className="row portfolio_details__row">
