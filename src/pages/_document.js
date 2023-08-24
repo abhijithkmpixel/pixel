@@ -16,6 +16,7 @@ export default function Document() {
         <meta name="robots" content="all" />
         <link href="/favicon.ico" rel="shortcut icon" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon57x57.png" />
+        <meta name="robots" content="max-image-preview:large"></meta>
         <link
           rel="apple-touch-icon"
           sizes="114x114"
@@ -28,14 +29,6 @@ export default function Document() {
         <link href="/favicon.ico" rel="shortcut icon" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="article" />
-        {/* <meta
-          name="keywords"
-          content="wordpress, concrete5, umbraco, sitecore, sitefinity, web design &amp; development, ux design, react development, nuxt.js, opencart, woocommerce, website maintenance, seo optimisation, kentico development, cms consultancy"
-        /> */}
-        {/* <meta
-          property="og:site_name"
-          content="Pixelflames - Great experiences build great brands."
-        /> */}
       </Head>
       <body>
         <Main />

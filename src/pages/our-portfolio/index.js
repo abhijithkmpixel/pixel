@@ -12,7 +12,7 @@ import React from "react";
 const WebDevelopmentDubai = ({ data, header, footer, options }) => {
   return (
     <>
-      <HeadComponent data={data?.attributes?.Seo} />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <PortfolioBanner data={data?.attributes?.Banner} />
       <PortfolioListing data={data?.attributes?.projects} options={options} />

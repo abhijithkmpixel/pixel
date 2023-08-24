@@ -16,7 +16,7 @@ import HeadComponent from "@/components/HeadComponent";
 const COntactPage = ({ data, header, footer }) => {
   return (
     <>
-      <HeadComponent data={data?.attributes?.Seo} />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <ServiceBanner data={data?.attributes?.Banner} id="contactform" />
 

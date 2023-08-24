@@ -50,6 +50,7 @@ export default function App({ Component, pageProps }) {
           skewingText: 0,
           skewingIcon: 0,
           skewingMedia: 0,
+          // ease: "none",
         });
 
         const resize = (e) => {
@@ -162,6 +163,8 @@ export default function App({ Component, pageProps }) {
           setTimeout(() => {
             setloaderOpen(false);
           }, 2000);
+          document.querySelector("body").classList.remove("overflow-hidden");
+
           // scrollToTarget();
         });
         Router.events.on("routeChangeError", () => {});
@@ -201,7 +204,7 @@ export default function App({ Component, pageProps }) {
           </div>
         </div>
       </div>
-      <Component {...pageProps} />
+      <Component {...pageProps} key={router.asPath} />
       {/* </main> */}
       {/* <Footer /> */}
     </>

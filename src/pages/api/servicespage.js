@@ -8,7 +8,7 @@ import api from "../../../lib/api";
 export default async function handler(req, res) {
   const data = await axios
     .get(
-      `${process.env.API_URL}/api/service-page?populate[0]=Banner.Background_image&populate[1]=Banner.Background_image&populate[2]=Service_intro&populate[3]=Service_intro.Image&populate[4]=services&populate[5]=services.Name&populate[6]=services.Listing_description&populate[7]=services.Listing_categories&populate[8]=Unique_service&populate[9]=Seo`
+      `${process.env.API_URL}/api/service-page?populate[0]=Banner.Background_image&populate[1]=Banner.Background_image&populate[2]=Service_intro&populate[3]=Service_intro.Image&populate[4]=services&populate[5]=services.Name&populate[6]=services.Listing_description&populate[7]=services.Listing_categories&populate[8]=Unique_service&populate[9]=seo&populate[10]=seo.metaImage`
     )
     .then(function (response) {
       // handle success

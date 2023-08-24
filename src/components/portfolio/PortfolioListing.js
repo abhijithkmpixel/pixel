@@ -162,8 +162,8 @@ const PortfolioListing = ({ data, options }) => {
                                   ?.data?.attributes?.alternativeText
                               : p?.attributes?.Name
                           }
-                          width={500}
-                          height={350}
+                          width={1200}
+                          height={950}
                         />
                       </figure>
                       <div className="card_footer">
@@ -175,7 +175,7 @@ const PortfolioListing = ({ data, options }) => {
                           {p?.attributes?.portfolio_categories?.data?.map(
                             (p, index) => {
                               return (
-                                (index > 0 ? ", " : null) +
+                                (index > 0 ? ", " : "") +
                                 p?.attributes?.Name.toLowerCase()
                               );
                             }

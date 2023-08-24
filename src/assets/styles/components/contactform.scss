@@ -35,7 +35,7 @@
       flex-wrap: wrap;
       max-width: 950px;
       fieldset {
-        margin-bottom: 50px;
+        margin-bottom: 40px;
         margin-right: 40px;
         @include below($tablet-sm) {
           margin-bottom: 30px;
@@ -71,7 +71,7 @@
     }
   }
   .form_wrap {
-    margin-top: 30px;
+    margin-top: 10px;
     .form_sec {
       fieldset {
         margin-bottom: 56px;
@@ -84,6 +84,7 @@
           border: none;
           border-bottom: 1px solid $color-black;
           padding: 20px 0;
+          transition: 0.3s all ease-in-out;
           @include below($desktop-lg) {
             font-size: 30px;
           }
@@ -94,8 +95,17 @@
           @include below($mobile-lg) {
             font-size: 18px;
           }
+          &.error {
+            color: red;
+            border-color: red;
+            &::placeholder {
+              color: red;
+            }
+          }
         }
         &::placeholder {
+          transition: 0.3s all ease-in-out;
+
           // @include fontFace(40px, 1.2, 500, $color-silver-chalice);
           @include fontStyleInherit();
         }
@@ -231,6 +241,9 @@
         @include fontFace(26px, 1.8, 400, $color-black);
         max-width: 70%;
         margin-bottom: 40px;
+        @include below($desktop-lg) {
+          max-width: 80%;
+        }
         span,
         strong {
           @include fontFace(30px, 1.6, 600, $color-black);
@@ -261,6 +274,9 @@
           object-fit: cover;
           transition: 0.4s all ease-in-out;
           filter: grayscale(1);
+          @include below($tablet-lg) {
+            filter: grayscale(0);
+          }
           &:hover {
             filter: grayscale(0);
           }

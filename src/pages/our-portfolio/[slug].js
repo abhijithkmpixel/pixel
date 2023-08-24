@@ -11,7 +11,6 @@ import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
 const Portfolio = ({ data, footer, header, portfolios }) => {
-  console.log(data);
   const [nextProject, setnextProject] = useState();
 
   let prevState = 0;
@@ -22,13 +21,14 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   let totalNum;
   // let totalscrollabledist;
   useEffect(() => {
-    let next = portfolios?.filter((p) => {
-      return (
-        new Date(p?.attributes?.createdAt) >
-        new Date(data?.attributes?.createdAt)
-      );
+    let next;
+    portfolios?.attributes?.projects?.data?.map((p, index) => {
+      if (p?.attributes?.Name == data?.attributes?.Name) {
+        // return portfolios?.attributes?.projects?.data[index + 2];
+        setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
+      }
     });
-    setnextProject(next[0]);
+    // setnextProject(next[0]);
     if (typeof document != "undefined") {
       allImages = document.querySelectorAll(".img_wrap img");
       totalNum = allImages.length;
@@ -52,8 +52,9 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
 
     return () => {
       window.removeEventListener("scroll", () => onScroller());
+      setnextProject(null);
     };
-  }, []);
+  }, [nextProject]);
 
   function onScroller(totalscrollabledist) {
     if (
@@ -96,7 +97,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   }
   return (
     <>
-      <HeadComponent data={data?.attributes?.Seo} />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <section className="portfolio_details">
         <div className="row portfolio_details__row">
@@ -109,6 +110,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                       <Image
                         key={index}
                         src={img?.attributes?.url}
+                        priority={true}
                         alt={
                           img?.attributes?.alternativeText != null
                             ? img?.attributes?.alternativeText
@@ -163,6 +165,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                   data?.attributes?.Live_url != null && (
                     <Link
                       className="cta_primary"
+                      target="_blank"
                       href={data?.attributes?.Live_url?.Url}>
                       <span>{data?.attributes?.Live_url?.Text}</span>
                     </Link>

@@ -459,7 +459,6 @@ header {
           transform: translateY(100px);
           transition: 0.9s transform ease-in-out;
           transform-origin: bottom;
-
           & > a {
             @include fontFace(68px, 1, 700, $color-white);
             text-decoration: none;
@@ -489,6 +488,7 @@ header {
               font-weight: 500;
               transition: 0.2s all ease-in-out;
               color: #808080;
+              background-image: unset;
             }
             span {
               @include fontFace(17px, 1, 400, $color-white);
@@ -534,6 +534,10 @@ header {
         transition: 0.3s all ease-in-out;
         opacity: 0;
         visibility: hidden;
+        width: 45vw;
+        @include below($tablet-lg) {
+          width: unset;
+        }
         @include below($mobile-lg) {
           transform: translateY(0%);
           column-count: 1;
@@ -573,7 +577,7 @@ header {
 .sticky__sidebar {
   position: fixed;
   top: 50%;
-  transform: translateY(-50%) translateX(100%) translateX(calc(100% - 75px));
+  transform: translateY(-50%) translateX(100%);
   right: 0;
   z-index: 105;
   transition: 0.3s all ease-in-out;
@@ -581,28 +585,41 @@ header {
   @include below($tablet-lg) {
     display: none;
   }
+  background-color: $color-mine-shaft;
+  border-radius: 12px 0px 0px 12px;
+  overflow: hidden;
 }
 .desktop__menu__toggle {
   // position: fixed;
   // left: 50%;
   // transform: translateX(-50%) translateY(200px);
-  bottom: 20px;
-  background-color: $color-mine-shaft;
-  padding: 15px 25px;
-  border-radius: 15px 0px 0px 15px;
-  display: flex;
+  padding: 22px 10px 22px 14px;
   align-items: center;
   z-index: 101;
   transition: 0.3s all ease-in-out;
   cursor: pointer;
-  height: 60px;
+  // height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   // transform: translateX(calc(100% - 75px));
   & + .desktop__menu__toggle {
-    margin-top: 2px;
+    // margin-top: 2px;
+    position: relative;
+    display: block;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      border-bottom: 1px solid #727272;
+    }
   }
   &:hover {
     @include above($tablet-lg) {
-      transform: translateX(calc(-100% + 76px));
+      // transform: translateX(calc(-100% + 76px));
       background-color: $color-pomegranate2;
     }
   }
@@ -613,10 +630,12 @@ header {
     display: none;
   }
   span {
-    @include fontFace(16px, 1, 400, $color-white);
+    @include fontFace(14px, 1, 400, $color-white);
     display: block;
-    margin-left: 22px;
-    min-width: 6ch;
+    // margin-left: 22px;
+    min-width: 5.3ch;
+    text-align: center;
+    margin-top: 15px;
     @include below($desktop-lg) {
       font-size: 14px;
     }
@@ -625,9 +644,11 @@ header {
     width: 30px;
     height: auto;
     object-fit: contain;
+    margin: auto;
+    display: block;
     path,
     line {
-      fill: $color-white;
+      // fill: $color-white;
     }
   }
   ul {
@@ -641,7 +662,7 @@ header {
       transition: 0.3s all ease-in-out;
       transition-delay: 0s;
       & + li {
-        margin-top: 10px;
+        margin-top: 6px;
       }
     }
   }
@@ -656,7 +677,7 @@ header {
           transform: rotate(90deg) translateX(4px) scale(0.7);
         }
         &:nth-child(2) {
-          transform: translateY(-8px) scale(0.7);
+          transform: translateY(-4px) scale(0.7);
         }
       }
     }
@@ -664,7 +685,7 @@ header {
 }
 .desktop_sticky {
   .sticky__sidebar {
-    transform: translateY(-50%) translateX(0%) translateX(calc(100% - 75px));
+    transform: translateY(-50%) translateX(0%);
   }
   .desktop__menu__toggle {
     // transform: translateX(-50%) translateY(0);
@@ -726,7 +747,7 @@ header {
   }
 }
 .desktop_menu.desktop_menu_open ~ .sticky__sidebar {
-  transform: translateY(-50%) translateX(0%) translateX(calc(100% - 75px));
+  transform: translateY(-50%) translateX(0%);
 }
 // .desktop_menu_open {
 .desktop_menu_open.desktop_menu {

@@ -159,7 +159,7 @@ const Services = ({ data }) => {
                         data-scroll
                       />
                       <h4>
-                        {serv?.attributes?.Name}
+                        <span>{serv?.attributes?.Name}</span>
                         <svg
                           width="16"
                           height="16"

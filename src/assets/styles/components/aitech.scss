@@ -29,6 +29,10 @@
         border-radius: 50%;
         display: block;
         transition: 0.2s all ease-in-out;
+        margin-left: 40px;
+        @include below($tablet-lg) {
+          margin-left: 0;
+        }
         svg {
           width: 100%;
           height: auto;
@@ -90,6 +94,9 @@
       p {
         @include fontFace(16px, 1.4, 400, $color-black);
         max-width: 80%;
+        @include below($desktop-lg) {
+          max-width: 95%;
+        }
         @include below($tablet-lg) {
           max-width: 100%;
         }
