@@ -1,3 +1,5 @@
+/** @format */
+
 //plugins
 @import "./plugins/scroll";
 @import "./plugins/cuberto";
@@ -21,6 +23,8 @@
 @import "./pages/service";
 @import "./pages/portfoliodetail";
 @import "./pages/contact";
+@import "./pages/errorpage";
+@import "./pages/dynamiccontent";
 
 //components
 @import "./components/banner";

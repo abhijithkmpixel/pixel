@@ -6,12 +6,14 @@ import NextProject from "@/components/portfolio/NextProject";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
+import { PrevPage } from "../../../context/prevPage";
 const Portfolio = ({ data, footer, header, portfolios }) => {
   const [nextProject, setnextProject] = useState();
+  const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
 
   let prevState = 0;
   let index = 1;
@@ -187,11 +189,13 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                 dangerouslySetInnerHTML={{
                   __html: data?.attributes?.Services_used,
                 }}></div>
-              <GsapMagnetic>
-                <Link className="cta_secondary" href="/">
-                  <span>Home</span>
-                </Link>
-              </GsapMagnetic>
+              {prevPageSLug == "/" && (
+                <GsapMagnetic>
+                  <Link className="cta_secondary" href="/">
+                    <span>Home</span>
+                  </Link>
+                </GsapMagnetic>
+              )}
             </div>
             <div className="min_1200">
               {nextProject && <NextProject data={nextProject} />}

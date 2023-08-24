@@ -1,5 +1,6 @@
 /** @format */
 
+import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 
@@ -51,6 +52,14 @@ const Trends = ({ title, body }) => {
                     return (
                       <div className="col-12 col-md-6 " key={index}>
                         <div className="development__trends__grid__card">
+                          {cnt?.Image && (
+                            <Image
+                              src={cnt?.Image?.data?.attributes?.url}
+                              alt=""
+                              width={100}
+                              height={100}
+                            />
+                          )}
                           <h3>{cnt?.Title}</h3>
                           <div
                             dangerouslySetInnerHTML={{

@@ -14,7 +14,10 @@ const WebDevelopmentDubai = ({ data, header, footer, options }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <PortfolioBanner data={data?.attributes?.Banner} />
+      <PortfolioBanner
+        data={data?.attributes?.Banner}
+        id={"portfolio_list_section"}
+      />
       <PortfolioListing data={data?.attributes?.projects} options={options} />
       <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
       <Footer data={footer} />

@@ -11,6 +11,7 @@ const ServiceIntro = ({ data, classes }) => {
       let titletext = document
         .querySelector(".service_intro .content_inner h2")
         .innerText.split(" ");
+      console.log(titletext);
       document.querySelector(".service_intro .content_inner h2").innerText = "";
       titletext.map((element) => {
         document.querySelector(".service_intro .content_inner h2").innerHTML +=
@@ -71,8 +72,8 @@ const ServiceIntro = ({ data, classes }) => {
                     ? data?.Image?.data?.attributes?.alternativeText
                     : data?.Title
                 }
-                width={663}
-                height={385}
+                width={1363}
+                height={1085}
               />
             </figure>
           </div>

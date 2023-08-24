@@ -3,12 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { PrevPage } from "../../context/prevPage";
 
 const Header = ({ data }) => {
+  const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
   useEffect(() => {
+    if (prevPageSLug == undefined) {
+      setprevPageSLug(router?.pathname);
+    }
+    Router.events.on("routeChangeStart", () => {
+      setprevPageSLug(router?.pathname);
+    });
     if (typeof document != "undefined") {
       if (window.screen.width > 1200) {
         window.addEventListener("scroll", scrollingFn);
@@ -149,17 +157,18 @@ const Header = ({ data }) => {
         className={
           (router.pathname.includes("our-portfolio") ||
           router.pathname.includes("services") ||
+          router.pathname.includes("about-us") ||
           router.pathname.includes("contact")
             ? " header--light "
-            : null) +
+            : "") +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("our-portfolio")
             ? " portfolio__details__page "
-            : null) +
+            : "") +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("services")
             ? " services__detail__page "
-            : null)
+            : "")
         }>
         <div className="header_inner_wrap" data-scroll>
           <Link href={"/"} className="brand_logo">

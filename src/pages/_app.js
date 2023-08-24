@@ -5,7 +5,7 @@ import "@/assets/styles/app.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import gsap, { Bounce, Power0, TweenLite, TweenMax } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Header from "@/components/Header";
@@ -16,23 +16,16 @@ import Lenis from "@studio-freight/lenis";
 import Footer from "@/components/Footer";
 import Router, { useRouter } from "next/router";
 import Image from "next/image";
+import Context, { PrevPage } from "../../context/prevPage";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [loaderOpen, setloaderOpen] = useState(true);
-  const [prevPath, setprevPath] = useState();
+
   useEffect(() => {
     setTimeout(() => {
       setloaderOpen(false);
     }, 3000);
-    if (typeof document != "undefined") {
-      // let prevPath = localStorage.getItem("PREVPATH");
-      // console.log(prevPath);
-      // if (prevPath == null) {
-      //   localStorage.setItem("PREVPATH", router.pathname);
-      //   setprevPath(router.pathname);
-      // }
-    }
 
     return () => {};
   }, []);
@@ -40,6 +33,7 @@ export default function App({ Component, pageProps }) {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
+
     if (typeof window != "undefined") {
       if (window.screen.width > 1200) {
         MouseFollower.registerGSAP(gsap);
@@ -204,7 +198,9 @@ export default function App({ Component, pageProps }) {
           </div>
         </div>
       </div>
-      <Component {...pageProps} key={router.asPath} />
+      <Context>
+        <Component {...pageProps} key={router.asPath} />
+      </Context>
       {/* </main> */}
       {/* <Footer /> */}
     </>

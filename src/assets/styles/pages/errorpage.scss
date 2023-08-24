@@ -1,0 +1,21 @@
+/** @format */
+
+.error__page__block {
+  padding: 90px 0;
+  img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  h1 {
+    @include fontFace(260px, 1, 600, transparent);
+    background-image: linear-gradient(to right, #f5333f, #ff5c00);
+    text-align: center;
+    -webkit-background-clip: text;
+  }
+  p {
+    @include fontFace(20px, 1.5, 500, $color-black);
+    text-align: center;
+  }
+}

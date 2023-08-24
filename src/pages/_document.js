@@ -13,7 +13,6 @@ export default function Document() {
         <meta name="author" content="Pixelflames" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/favicon144x144.png" />
-        <meta name="robots" content="all" />
         <link href="/favicon.ico" rel="shortcut icon" />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon57x57.png" />
         <meta name="robots" content="max-image-preview:large"></meta>

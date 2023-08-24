@@ -53,6 +53,7 @@ const Footer = ({ data }) => {
           data-scroll-section
           className={
             router.pathname.includes("contact") ||
+            router.pathname.includes("about-us") ||
             (router.pathname.includes("our-portfolio") &&
               !router.pathname.includes("[slug]")) ||
             (router.pathname.includes("services") &&
