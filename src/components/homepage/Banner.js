@@ -200,6 +200,13 @@ const Banner = ({ data }) => {
                 data?.projects?.data?.map((elm, index) => {
                   return (
                     <Link
+                      aria-label={
+                        elm?.attributes?.Homepage_banner_image?.data?.attributes
+                          ?.alternativeText
+                          ? elm?.attributes?.Homepage_banner_image?.data
+                              ?.attributes?.alternativeText
+                          : elm?.attributes?.Name
+                      }
                       href={"/our-portfolio/" + elm?.attributes?.Slug}
                       className={
                         index == 0 ? "quick_link mouseOver " : "quick_link"

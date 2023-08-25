@@ -20,6 +20,7 @@ const OfficeLocations = ({ data }) => {
                         __html: loc?.Location_details?.Description,
                       }}></div>
                     <Link
+                      aria-label={"location image"}
                       href={
                         loc?.Location_link?.Url != null
                           ? loc?.Location_link?.Url

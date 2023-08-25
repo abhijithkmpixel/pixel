@@ -51,7 +51,11 @@ const Trends = ({ title, body }) => {
                   {body?.map((cnt, index) => {
                     return (
                       <div className="col-12 col-md-6 " key={index}>
-                        <div className="development__trends__grid__card">
+                        <div
+                          className={
+                            (cnt?.Image ? " d-flex " : " ") +
+                            "development__trends__grid__card "
+                          }>
                           {cnt?.Image && (
                             <Image
                               src={cnt?.Image?.data?.attributes?.url}
@@ -60,11 +64,13 @@ const Trends = ({ title, body }) => {
                               height={100}
                             />
                           )}
-                          <h3>{cnt?.Title}</h3>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: cnt?.Description,
-                            }}></div>
+                          <div className={cnt?.Image && "ms-4"}>
+                            <h3>{cnt?.Title}</h3>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: cnt?.Description,
+                              }}></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -81,7 +87,7 @@ const Trends = ({ title, body }) => {
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-next"} onClick={onClick}>
+    <button className={"slick-arrow slick-next"} title="next" onClick={onClick}>
       <svg
         width="28"
         height="16"
@@ -113,7 +119,10 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-prev"}
+      title="previous"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"

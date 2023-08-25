@@ -17,7 +17,10 @@ const errorPage = () => {
         <div className="container_fluid">
           <h1>404</h1>
           <p>sorry! the page you're looking for cannot be found.</p>
-          <Link className="cta_primary cta_drk mx-auto" href={"/"}>
+          <Link
+            aria-label={"go to homepage"}
+            className="cta_primary cta_drk mx-auto"
+            href={"/"}>
             <span>Homepage</span>
           </Link>
         </div>

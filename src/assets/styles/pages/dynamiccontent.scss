@@ -1,9 +1,31 @@
 /** @format */
 
 .dynamic__content__block {
-  padding: 60px 0;
+  padding: 160px 0 60px;
   @include below($tablet-sm) {
     padding: 50px 0;
+  }
+  h1 {
+    @include fontFace(48px, 1.2, 600, $color-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    @include below($tablet-sm) {
+      font-size: 40px;
+    }
+    @include below($mobile-lg) {
+      font-size: 30px;
+    }
+  }
+  h2 {
+    @include fontFace(45px, 1.2, 600, $color-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    @include below($tablet-sm) {
+      font-size: 38px;
+    }
+    @include below($mobile-lg) {
+      font-size: 28px;
+    }
   }
   h3 {
     @include fontFace(42px, 1.2, 600, $color-black);
@@ -16,8 +38,44 @@
       font-size: 26px;
     }
   }
+  h4 {
+    @include fontFace(38px, 1.2, 600, $color-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    @include below($tablet-sm) {
+      font-size: 30px;
+    }
+    @include below($mobile-lg) {
+      font-size: 24px;
+    }
+  }
+  h5 {
+    @include fontFace(34px, 1.2, 600, $color-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    @include below($tablet-sm) {
+      font-size: 28px;
+    }
+    @include below($mobile-lg) {
+      font-size: 22px;
+    }
+  }
+  h6 {
+    @include fontFace(30px, 1.2, 600, $color-black);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    @include below($tablet-sm) {
+      font-size: 24px;
+    }
+    @include below($mobile-lg) {
+      font-size: 18px;
+    }
+  }
   .title__secondary {
     margin-bottom: 40px;
+  }
+  li {
+    @include fontFace(16px, 1.6, 400, $color-black);
   }
   p {
     @include fontFace(20px, 1.6, 400, $color-black);

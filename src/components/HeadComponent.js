@@ -7,6 +7,9 @@ const HeadComponent = ({ data }) => {
   return (
     <>
       <Head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="author" content="Pixelflames" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{data?.metaTitle}</title>
         <meta
           property="og:site_name"

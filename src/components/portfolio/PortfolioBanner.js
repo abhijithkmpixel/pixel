@@ -51,11 +51,13 @@ const PortfolioBanner = ({ data, id }) => {
         }
         width={1920}
         height={1080}
+        priority
       />
       <div className="hero_content_wrap">
         <h1 dangerouslySetInnerHTML={{ __html: data?.Title }}></h1>
         <GsapMagnetic>
           <Link
+            aria-label={"quick access"}
             href={"#" + id}
             className="scroll_to"
             // data-scrollto

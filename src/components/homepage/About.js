@@ -164,6 +164,7 @@ const About = ({ data }) => {
                     {data?.Redirect_link && (
                       <GsapMagnetic>
                         <Link
+                          aria-label={data?.Redirect_link?.Text}
                           href={
                             data?.Redirect_link?.Url != null
                               ? data?.Redirect_link?.Url

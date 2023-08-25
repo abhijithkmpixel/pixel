@@ -7,6 +7,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PrevPage } from "../../context/prevPage";
 
 const Header = ({ data }) => {
+  console.log(data);
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();
@@ -171,7 +172,7 @@ const Header = ({ data }) => {
             : "")
         }>
         <div className="header_inner_wrap" data-scroll>
-          <Link href={"/"} className="brand_logo">
+          <Link href={"/"} aria-label="pixelflames logo" className="brand_logo">
             <Image
               src={data?.attributes?.Logo_dark?.Image?.data[0]?.attributes?.url}
               width={160}
@@ -187,7 +188,10 @@ const Header = ({ data }) => {
               data-scroll
             />
           </Link>
-          <Link href={"/"} className="brand_logo  brand_logo--white">
+          <Link
+            href={"/"}
+            aria-label="pixelflames logo"
+            className="brand_logo  brand_logo--white">
             <Image
               src={
                 data?.attributes?.Logo_white?.Image?.data[0]?.attributes?.url
@@ -276,6 +280,7 @@ const Header = ({ data }) => {
                       }}>
                       <div className="link_wrap">
                         <Link
+                          aria-label={elm?.Link?.Text}
                           href={elm?.Link?.Url != null ? elm?.Link?.Url : "#"}>
                           <span>{(index <= 9 ? "0" : null) + (index + 1)}</span>
                           {elm?.Link?.Text}
@@ -289,6 +294,7 @@ const Header = ({ data }) => {
                             return (
                               <li key={index}>
                                 <Link
+                                  aria-label={selm?.Text}
                                   href={selm?.Url != null ? selm?.Url : "#"}>
                                   {selm?.Text}
                                 </Link>
@@ -308,7 +314,9 @@ const Header = ({ data }) => {
               data?.attributes?.Social_media_links?.map((elm, index) => {
                 return (
                   <li key={index}>
-                    <Link href={elm?.Url != null ? elm?.Url : "#"}>
+                    <Link
+                      aria-label={"social media icon"}
+                      href={elm?.Url != null ? elm?.Url : "#"}>
                       <Image
                         src={elm?.Icon?.data?.attributes?.url}
                         width={50}
@@ -316,7 +324,7 @@ const Header = ({ data }) => {
                         alt={
                           elm?.Icon?.data?.attributes?.alternativeText != null
                             ? elm?.Icon?.data?.attributes?.alternativeText
-                            : "sicial media icon"
+                            : "social media icon"
                         }
                       />
                       {elm?.Text}
@@ -351,7 +359,10 @@ const Header = ({ data }) => {
           </ul>
           <span>{navOpen == true ? "CLOSE" : "MENU"}</span>
         </div>
-        <Link href={"/contact"} className={"desktop__menu__toggle"}>
+        <Link
+          href={"/contact"}
+          aria-label={"coontact icon"}
+          className={"desktop__menu__toggle"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -366,8 +377,9 @@ const Header = ({ data }) => {
           </svg>
         </Link>
         <Link
-          href={"https://wa.me/+918086007607"}
+          href={"https://wa.me/" + data?.Whatsapp_number}
           target="_blank"
+          aria-label={"whatsapp icon"}
           className={"desktop__menu__toggle"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

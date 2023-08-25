@@ -130,7 +130,10 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
             <div className="content_holder">
               <div className="case__banner">
                 <div className="case__banner__inner">
-                  <Link className="btn-bck " href="/our-portfolio">
+                  <Link
+                    className="btn-bck "
+                    aria-label={"go back to portfolio listing page"}
+                    href="/our-portfolio">
                     <svg
                       width="40"
                       height="13"
@@ -166,6 +169,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                 {data?.attributes?.Live_url &&
                   data?.attributes?.Live_url != null && (
                     <Link
+                      aria-label={data?.attributes?.Live_url?.Text}
                       className="cta_primary"
                       target="_blank"
                       href={data?.attributes?.Live_url?.Url}>
@@ -191,7 +195,10 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                 }}></div>
               {prevPageSLug == "/" && (
                 <GsapMagnetic>
-                  <Link className="cta_secondary" href="/">
+                  <Link
+                    aria-label={"homepage link"}
+                    className="cta_secondary"
+                    href="/">
                     <span>Home</span>
                   </Link>
                 </GsapMagnetic>

@@ -6,9 +6,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <meta name="author" content="Pixelflames" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#e74847" />
         <meta name="author" content="Pixelflames" />
         <meta name="msapplication-TileColor" content="#ffffff" />
