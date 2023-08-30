@@ -87,7 +87,11 @@ const Trends = ({ title, body }) => {
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-next"} title="next" onClick={onClick}>
+    <button
+      className={"slick-arrow slick-next"}
+      aria-label="Next slide"
+      title="next"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"
@@ -122,6 +126,7 @@ function SamplePrevArrow(props) {
     <button
       className={"slick-arrow slick-prev"}
       title="previous"
+      aria-label="Previous slide"
       onClick={onClick}>
       <svg
         width="28"

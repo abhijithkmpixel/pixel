@@ -181,8 +181,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team01.jpg"} alt="" fill />
-                  <Image src={"/uploads/teamh.jpeg"} alt="" fill />
+                  <Image src={"/uploads/team01.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/teamh.jpeg"} priority alt="" fill />
                 </figure>
                 <h5>Vishnu A.V.</h5>
                 <span>Project Manager</span>
@@ -253,8 +253,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>
@@ -325,8 +325,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>
@@ -397,8 +397,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>
@@ -469,8 +469,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>
@@ -541,8 +541,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>
@@ -613,8 +613,8 @@ const AboutUsPage = ({ data, footer, header }) => {
                       </Link>
                     </li>
                   </ul>
-                  <Image src={"/uploads/team03.jpg"} alt="" fill />
-                  <Image src={"/uploads/team04.jpg"} alt="" fill />
+                  <Image src={"/uploads/team03.jpg"} priority alt="" fill />
+                  <Image src={"/uploads/team04.jpg"} priority alt="" fill />
                 </figure>
                 <h5>Mohammad Anshad</h5>
                 <span>Quality Analyst</span>

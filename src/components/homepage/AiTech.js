@@ -118,7 +118,7 @@ const AiTech = ({ data }) => {
                 <div className="col-12 col-md-4 d-flex align-items-center">
                   {data?.Redirect_link && (
                     <Link
-                      aria-label={"read more"}
+                      aria-label={"read more about this article"}
                       className="goto_inerpage"
                       href={
                         data?.Redirect_link?.Url != null

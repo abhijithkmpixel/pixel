@@ -99,6 +99,13 @@
     margin: 50px 0;
   }
 }
+.service_intro + .dynamic__content__block,
+.portfolio_hero_banner + .dynamic__content__block {
+  padding-top: 60px;
+  @include below($tablet-sm) {
+    // padding: 50px 0;
+  }
+}
 
 .our__team__block {
   background-color: $color-gallery;

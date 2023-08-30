@@ -270,6 +270,9 @@
           span {
             @include fontStyleInherit();
             max-width: 24vw;
+            @include below($tablet-lg) {
+              max-width: 100%;
+            }
           }
           svg {
             width: 16px;

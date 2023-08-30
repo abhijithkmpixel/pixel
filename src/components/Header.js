@@ -7,7 +7,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { PrevPage } from "../../context/prevPage";
 
 const Header = ({ data }) => {
-  console.log(data);
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
   const [navOpen, setnavOpen] = useState(false);
   const router = useRouter();

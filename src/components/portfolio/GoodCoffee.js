@@ -52,6 +52,7 @@ const GoodCoffee = ({ data }) => {
             <Image
               src={data?.Icon?.data?.attributes?.url}
               alt=""
+              priority
               width={300}
               height={300}
             />
