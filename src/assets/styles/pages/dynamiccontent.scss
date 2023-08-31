@@ -5,6 +5,19 @@
   @include below($tablet-sm) {
     padding: 50px 0;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li {
+    strong {
+      @include fontStyleInherit();
+      font-weight: 600;
+    }
+  }
   h1 {
     @include fontFace(48px, 1.2, 600, $color-black);
     margin-bottom: 20px;
@@ -74,8 +87,24 @@
   .title__secondary {
     margin-bottom: 40px;
   }
+  ul {
+    padding-left: 10px;
+  }
   li {
     @include fontFace(16px, 1.6, 400, $color-black);
+    display: flex;
+    align-items: flex-start;
+    &::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      display: block;
+      background-color: $color-pomegranate2;
+      margin-top: 9px;
+      margin-right: 10px;
+    }
   }
   p {
     @include fontFace(20px, 1.6, 400, $color-black);
@@ -167,7 +196,7 @@
         padding: 10px;
         transition: 0.3s all ease-in-out;
         svg {
-          transition: 0.3s all ease-in-out;
+          // transition: 0.3s all ease-in-out;
           width: 100%;
           height: auto;
           object-fit: contain;
@@ -207,6 +236,9 @@
       transition: 0.55s all ease-in-out;
       margin: 0;
       z-index: 1;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
       &:nth-of-type(2) {
         // opacity: 0;
         clip-path: polygon(0 0, 100% 0, 100% 0%, 0% 0%);

@@ -1,5 +1,6 @@
 /** @format */
 
+import ErrorMsg from "@/components/ErrorMsg";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,24 +8,11 @@ import React from "react";
 const errorPage = () => {
   return (
     <>
-      <section className="error__page__block">
-        {/* <Image
-          src={"/logo/pixellogo.svg"}
-          alt="pixelflames logo"
-          width={200}
-          height={130}
-        /> */}
-        <div className="container_fluid">
-          <h1>404</h1>
-          <p>sorry! the page you're looking for cannot be found.</p>
-          <Link
-            aria-label={"go to homepage"}
-            className="cta_primary cta_drk mx-auto"
-            href={"/"}>
-            <span>Homepage</span>
-          </Link>
-        </div>
-      </section>
+      <ErrorMsg
+        errerCode="404"
+        errorMsg="sorry! the page you're looking for cannot be found."
+        button={{ link: "/", text: "Homepage" }}
+      />
     </>
   );
 };

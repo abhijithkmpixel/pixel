@@ -172,8 +172,6 @@ export default function App({ Component, pageProps }) {
       <Head>
         <link rel="favicon" href="/favicon.ico" />
       </Head>
-      {/* <Header /> */}
-      {/* <main data-scroll-containerr className="smoothScroller"> */}
       {/* <div className="scrollbar">
         <div className="inner">
           <div className="thumb" id="thumb"></div>
@@ -201,8 +199,6 @@ export default function App({ Component, pageProps }) {
       <Context>
         <Component {...pageProps} key={router.asPath} />
       </Context>
-      {/* </main> */}
-      {/* <Footer /> */}
     </>
   );
 }

@@ -14,10 +14,7 @@ import React from "react";
 const ServiceDetail = ({ data, footer, header }) => {
   return (
     <>
-      <HeadComponent
-        data={data?.attributes?.seo}
-        title={data?.attributes?.Banner?.Title}
-      />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <ServiceDetailBanner data={data?.attributes?.Banner} />
       <ServiceIntro
