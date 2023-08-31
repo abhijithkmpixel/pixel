@@ -1,6 +1,6 @@
 /** @format */
 
-import DynamicHtml from "@/components/DYnamicHtml";
+import DynamicHtml from "@/components/DynamicHtml";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
