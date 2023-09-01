@@ -42,10 +42,14 @@ const ServiceDetailBanner = ({ data }) => {
         }
         width={1920}
         height={500}
+        priority
       />
       <div className="container-fluid">
         <div className="service__detail__banner__innerwrap">
-          <Link href={"/services"} className="go__back">
+          <Link
+            href={"/services"}
+            aria-label={"go Back to services page"}
+            className="go__back">
             Back to services{" "}
             <svg
               width="90"

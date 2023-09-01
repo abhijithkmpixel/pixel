@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
 
-const PortfolioBanner = ({ data }) => {
+const PortfolioBanner = ({ data, id }) => {
   let ctx;
   useEffect(() => {
     if (typeof document != "undefined") {
@@ -51,12 +51,14 @@ const PortfolioBanner = ({ data }) => {
         }
         width={1920}
         height={1080}
+        priority
       />
       <div className="hero_content_wrap">
         <h1 dangerouslySetInnerHTML={{ __html: data?.Title }}></h1>
         <GsapMagnetic>
           <Link
-            href="#portfolio_list_section"
+            aria-label={"quick access"}
+            href={"#" + id}
             className="scroll_to"
             // data-scrollto
           >

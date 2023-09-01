@@ -7,6 +7,9 @@ const HeadComponent = ({ data }) => {
   return (
     <>
       <Head>
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="author" content="Pixelflames" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{data?.metaTitle}</title>
         <meta
           property="og:site_name"
@@ -40,11 +43,16 @@ const HeadComponent = ({ data }) => {
           name="twitter:image"
           content={data?.metaImage?.data?.attributes?.url}></meta>
         <meta name="keywords" content={data?.keywords} key="keywords" />
+        <script type="application/ld+json">
+          {JSON.stringify(data?.structuredData)}
+        </script>
         <meta
           property="og:url"
           key="og:url"
           content={
-            typeof window !== "undefined"
+            data?.canonicalURL != null
+              ? data?.canonicalURL
+              : typeof window !== "undefined"
               ? window.location.href
               : process.env.DOMAIN_URL
           }
@@ -52,16 +60,20 @@ const HeadComponent = ({ data }) => {
         <link
           rel="canonical"
           href={
-            typeof window !== "undefined"
+            data?.canonicalURL != null
+              ? data?.canonicalURL
+              : typeof window !== "undefined"
               ? window.location.href
               : process.env.DOMAIN_URL
           }
         />
-        {data?.preventIndexing && (
+        {data?.preventIndexing == true ? (
           <>
             <meta name="robots" content="noindex" />
             <meta name="googlebot" content="noindex" />
           </>
+        ) : (
+          <meta name="robots" content="all" />
         )}
       </Head>
     </>

@@ -16,23 +16,32 @@ import Footer from "@/components/Footer";
 import AiTech from "@/components/homepage/AiTech";
 import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
+import ErrorMsg from "@/components/ErrorMsg";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, header, footer }) {
   return (
     <>
-      <HeadComponent
-        data={data?.attributes?.seo}
-        // title={data?.attributes?.Banner?.Title}
-      />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <Banner data={data?.attributes?.Banner} />
-      <About data={data?.attributes?.About_us} />
-      <AiTech data={data?.attributes?.Ai_section} />
-      <Services data={data?.attributes?.Service} />
-      <Testimonials data={data?.attributes?.Testimonials} />
-      <Branches data={data?.attributes?.Branches} />
-      <WorkTogether data={data?.attributes?.Work_together} />
+      {data != null && (
+        <>
+          <Banner data={data?.attributes?.Banner} />
+          <About data={data?.attributes?.About_us} />
+          <AiTech data={data?.attributes?.Ai_section} />
+          <Services data={data?.attributes?.Service} />
+          <Testimonials data={data?.attributes?.Testimonials} />
+          <Branches data={data?.attributes?.Branches} />
+          <WorkTogether data={data?.attributes?.Work_together} />
+        </>
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );

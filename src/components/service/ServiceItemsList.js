@@ -49,6 +49,7 @@ const ServiceItemsList = ({ data }) => {
           data?.data?.map((serv, index) => {
             return (
               <Link
+                aria-label={serv?.attributes?.Name}
                 href={"/services/" + serv?.attributes?.Slug}
                 className="row service_list_card"
                 data-cursor-text="read more"

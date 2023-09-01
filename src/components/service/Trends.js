@@ -1,5 +1,6 @@
 /** @format */
 
+import Image from "next/image";
 import React from "react";
 import Slider from "react-slick";
 
@@ -50,12 +51,26 @@ const Trends = ({ title, body }) => {
                   {body?.map((cnt, index) => {
                     return (
                       <div className="col-12 col-md-6 " key={index}>
-                        <div className="development__trends__grid__card">
-                          <h3>{cnt?.Title}</h3>
-                          <div
-                            dangerouslySetInnerHTML={{
-                              __html: cnt?.Description,
-                            }}></div>
+                        <div
+                          className={
+                            (cnt?.Image ? " d-flex " : " ") +
+                            "development__trends__grid__card "
+                          }>
+                          {cnt?.Image && (
+                            <Image
+                              src={cnt?.Image?.data?.attributes?.url}
+                              alt=""
+                              width={100}
+                              height={100}
+                            />
+                          )}
+                          <div className={cnt?.Image && "ms-4"}>
+                            <h3>{cnt?.Title}</h3>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: cnt?.Description,
+                              }}></div>
+                          </div>
                         </div>
                       </div>
                     );
@@ -72,7 +87,11 @@ const Trends = ({ title, body }) => {
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-next"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-next"}
+      aria-label="Next slide"
+      title="next"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"
@@ -104,7 +123,11 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-prev"}
+      title="previous"
+      aria-label="Previous slide"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"

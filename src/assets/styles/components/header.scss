@@ -581,6 +581,7 @@ header {
   right: 0;
   z-index: 105;
   transition: 0.3s all ease-in-out;
+  border: 0;
 
   @include below($tablet-lg) {
     display: none;
@@ -591,6 +592,8 @@ header {
 }
 .desktop__menu__toggle {
   // position: fixed;
+  border: 0;
+
   // left: 50%;
   // transform: translateX(-50%) translateY(200px);
   padding: 22px 10px 22px 14px;

@@ -189,7 +189,11 @@ const Testimonials = ({ data }) => {
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-next"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-next"}
+      aria-label="Next slide"
+      title="next"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"
@@ -221,7 +225,11 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-prev"}
+      title="previous"
+      aria-label="previous slide"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"

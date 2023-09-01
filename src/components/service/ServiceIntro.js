@@ -71,8 +71,8 @@ const ServiceIntro = ({ data, classes }) => {
                     ? data?.Image?.data?.attributes?.alternativeText
                     : data?.Title
                 }
-                width={663}
-                height={385}
+                width={1363}
+                height={1085}
               />
             </figure>
           </div>

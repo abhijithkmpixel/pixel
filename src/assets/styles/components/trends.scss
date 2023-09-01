@@ -1,3 +1,5 @@
+/** @format */
+
 .development__trends {
   width: 100%;
   background-color: $color-white;
@@ -90,6 +92,14 @@
       padding-top: 60px;
       height: 100%;
       border-bottom: 1px solid $color-black;
+      & > div {
+        @include below($tablet-lg) {
+          margin-left: 0 !important;
+        }
+      }
+      @include below($tablet-lg) {
+        flex-flow: column;
+      }
       @include below($tablet-sm) {
         padding-bottom: 30px;
         padding-top: 30px;
@@ -98,9 +108,18 @@
         border-bottom: 0;
         padding-bottom: 0;
       }
+      img {
+        width: 70px;
+        height: 70px;
+        object-fit: contain;
+        margin-bottom: 30px;
+        @include below($mobile-lg) {
+          margin: 0 auto 30px;
+        }
+      }
       h3 {
         @include fontFace(30px, 1.2, 600, $color-black);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         text-transform: uppercase;
         max-width: 80%;
         @include below($desktop-lg) {

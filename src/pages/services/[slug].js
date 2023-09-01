@@ -1,5 +1,6 @@
 /** @format */
 
+import DynamicHtml from "@/components/DynamicHtml";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -14,16 +15,16 @@ import React from "react";
 const ServiceDetail = ({ data, footer, header }) => {
   return (
     <>
-      <HeadComponent
-        data={data?.attributes?.seo}
-        title={data?.attributes?.Banner?.Title}
-      />
+      <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       <ServiceDetailBanner data={data?.attributes?.Banner} />
       <ServiceIntro
         data={data?.attributes?.Service_introduction}
         classes={"service_intro--detail"}
       />
+      {data?.attributes?.Body_description != null && (
+        <DynamicHtml data={data?.attributes?.Body_description} />
+      )}
       <Trends
         title={data?.attributes?.Development_trends_title}
         body={data?.attributes?.Trends_row}

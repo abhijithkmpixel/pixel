@@ -45,13 +45,17 @@ const ServiceBanner = ({ data, id }) => {
             : data?.Title
         }
         width={1920}
+        priority
         height={1080}
       />
       <div className="container-fluid">
         <div className="hero_cnt_wrap">
           <h1>{data?.Title}</h1>
           <GsapMagnetic>
-            <Link href={"#" + id} className="scroll_to">
+            <Link
+              href={"#" + id}
+              aria-label={"quick access"}
+              className="scroll_to">
               <svg
                 width="17"
                 height="29"

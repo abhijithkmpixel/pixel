@@ -53,6 +53,7 @@ const Footer = ({ data }) => {
           data-scroll-section
           className={
             router.pathname.includes("contact") ||
+            router.pathname.includes("about-us") ||
             (router.pathname.includes("our-portfolio") &&
               !router.pathname.includes("[slug]")) ||
             (router.pathname.includes("services") &&
@@ -73,6 +74,7 @@ const Footer = ({ data }) => {
                             return (
                               <li data-scroll key={index}>
                                 <Link
+                                  aria-label={"Social medi icon"}
                                   href={link?.Url != null ? link?.Url : "#"}>
                                   <Image
                                     src={link?.Icon?.data?.attributes?.url}
@@ -124,6 +126,7 @@ const Footer = ({ data }) => {
                     {data?.attributes?.Footer_contact_icon && (
                       <Link
                         href={"/contact"}
+                        aria-label={"get in touch round animated text"}
                         className="contact-btn_wrap"
                         data-scroll
                         data-scroll-speed="1.4"
@@ -204,6 +207,7 @@ const Footer = ({ data }) => {
                                   return (
                                     <li key={index}>
                                       <Link
+                                        aria-label={link?.Text}
                                         href={
                                           link?.Url != null ? link?.Url : "#"
                                         }
@@ -232,6 +236,7 @@ const Footer = ({ data }) => {
                               (link, index) => {
                                 return (
                                   <Link
+                                    aria-label={link?.Text}
                                     key={index}
                                     href={link?.Url != null ? link?.Url : "#"}
                                     className="cta_tertiary cta_light"

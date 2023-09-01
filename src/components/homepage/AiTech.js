@@ -27,10 +27,10 @@ const AiTech = ({ data }) => {
             sideimage2.fromTo(
               ".min_720 .ai__technology__block__side_image",
               {
-                y: 120,
+                y: 80,
               },
               {
-                y: 0,
+                y: -80,
                 scrollTrigger: {
                   trigger: ".ai__technology__block__inner__row",
                   start: "0% 100%",
@@ -118,6 +118,7 @@ const AiTech = ({ data }) => {
                 <div className="col-12 col-md-4 d-flex align-items-center">
                   {data?.Redirect_link && (
                     <Link
+                      aria-label={"read more about this article"}
                       className="goto_inerpage"
                       href={
                         data?.Redirect_link?.Url != null

@@ -134,6 +134,13 @@ const Services = ({ data }) => {
                     data-scroll-offset="300">
                     <span data-scroll>{"0" + (index + 1)}</span>
                     <Link
+                      aria-label={
+                        serv?.attributes?.Homepage_listing_image?.data
+                          ?.attributes?.alternativeText != null
+                          ? serv?.attributes?.Homepage_listing_image?.data
+                              ?.attributes?.alternativeText
+                          : serv?.attributes?.Name
+                      }
                       href={
                         "/services/" +
                         (serv?.attributes?.Slug != null
@@ -256,7 +263,11 @@ const Services = ({ data }) => {
 function SampleNextArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-next"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-next"}
+      aria-label="Next slide"
+      title="next"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"
@@ -288,7 +299,11 @@ function SampleNextArrow(props) {
 function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
-    <button className={"slick-arrow slick-prev"} onClick={onClick}>
+    <button
+      className={"slick-arrow slick-prev"}
+      title="previous"
+      aria-label="Previous slide"
+      onClick={onClick}>
       <svg
         width="28"
         height="16"

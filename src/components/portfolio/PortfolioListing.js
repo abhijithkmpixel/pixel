@@ -94,7 +94,9 @@ const PortfolioListing = ({ data, options }) => {
               ? "portfolio_nav_links open"
               : "portfolio_nav_links "
           }>
-          <button onClick={() => openFilter()}>View Filter</button>
+          <button title="View Filter" onClick={() => openFilter()}>
+            View Filter
+          </button>
           {options && options?.length > 0 && (
             <ul className="">
               <li
@@ -143,6 +145,7 @@ const PortfolioListing = ({ data, options }) => {
                       }
                     )}>
                     <Link
+                      aria-label={p?.attributes?.Name}
                       href={"/our-portfolio/" + p?.attributes?.Slug}
                       className="portfolio_card_inner"
                       onMouseMove={mouseMoveOverCards}
@@ -203,6 +206,7 @@ const PortfolioListing = ({ data, options }) => {
               <button
                 className="cta_primary"
                 data-scroll
+                title="View more"
                 onClick={incrementPagination}>
                 <span>View more</span>
               </button>

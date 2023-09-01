@@ -22,6 +22,7 @@ const WorkTogether = ({ data }) => {
                 <div className="info" data-scroll>
                   {data?.Email_id && (
                     <Link
+                      aria-label={data?.Email_id?.Text}
                       href={
                         data?.Email_id?.Url != null ? data?.Email_id?.Url : "#"
                       }
@@ -33,6 +34,7 @@ const WorkTogether = ({ data }) => {
                   )}
                   {data?.Phone_number && (
                     <Link
+                      aria-label={data?.Phone_number?.Text}
                       href={
                         data?.Phone_number?.Url != null
                           ? data?.Phone_number?.Url
@@ -49,6 +51,7 @@ const WorkTogether = ({ data }) => {
                   <div data-scroll data-scroll-speed="1.3">
                     <GsapMagnetic>
                       <Link
+                        aria-label={data?.Contact_cta?.Text}
                         href={
                           data?.Contact_cta?.Url != null
                             ? data?.Contact_cta?.Url

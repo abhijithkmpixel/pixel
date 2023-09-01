@@ -176,6 +176,7 @@ const ContactForm = ({ data }) => {
                 <button
                   className="cta_primary cta_drk"
                   type="button"
+                  title={"Send"}
                   disabled={formLoading}
                   onClick={(e) => handleSubmit(e)}>
                   {" "}

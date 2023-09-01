@@ -39,12 +39,13 @@
     background-color: $color-black;
     color: $color-white;
     &::after {
-      background-color: $color-pomegranate2;
-      border-color: $color-pomegranate2;
+      background-color: $color-white;
+      border-color: $color-black;
     }
     &:hover {
       @include above($tablet-lg) {
-        border-color: $color-pomegranate2;
+        border-color: $color-black;
+        color: $color-black;
       }
     }
   }

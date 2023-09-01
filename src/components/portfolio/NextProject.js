@@ -22,6 +22,7 @@ const NextProject = ({ data }) => {
       />
       <h5>next project /</h5>
       <Link
+        aria-label={data?.attributes?.Name}
         href={"/our-portfolio/" + data?.attributes?.Slug}
         data-cursor-img-="/uploads/burg.jpeg">
         {data?.attributes?.Name}
