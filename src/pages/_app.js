@@ -156,7 +156,7 @@ export default function App({ Component, pageProps }) {
         Router.events.on("routeChangeComplete", () => {
           setTimeout(() => {
             setloaderOpen(false);
-          }, 2000);
+          }, 1000);
           document.querySelector("body").classList.remove("overflow-hidden");
 
           // scrollToTarget();

@@ -20,7 +20,6 @@ import ErrorMsg from "@/components/ErrorMsg";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, header, footer }) {
-  console.log(data);
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />

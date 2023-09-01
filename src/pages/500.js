@@ -31,16 +31,12 @@ const errorPage = () => {
   };
   return (
     <>
-      {console.log(headerData)}
       <Head>
-        <title>Error 404</title>
+        <title>Error 500</title>
       </Head>
       <Header data={headerData} />
-      <ErrorMsg
-        errerCode="404"
-        errorMsg="sorry! the page you're looking for cannot be found."
-        button={{ link: "/", text: "Homepage" }}
-      />
+
+      <ErrorMsg errerCode="500" errorMsg="Internal server error." />
       <Footer data={footerData} />
     </>
   );

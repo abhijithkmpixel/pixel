@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
+
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
@@ -18,6 +20,7 @@
     "locomotive-scroll": "^4.1.4",
     "mouse-follower": "^1.1.2",
     "next": "13.4.9",
+    "next-sitemap": "^4.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-slick": "^0.29.0",
