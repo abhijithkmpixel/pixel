@@ -40,7 +40,7 @@
     }
     span {
       @include fontStyleInherit();
-      display: inline-block;
+      display: inline;
       position: relative;
       z-index: 5;
       @include below($tablet-sm) {
@@ -67,7 +67,7 @@
       width: 249px;
       height: auto;
       position: absolute;
-      left: 320px;
+      left: -210px;
       bottom: 0%;
       z-index: 3;
       @include below($desktop-lg) {

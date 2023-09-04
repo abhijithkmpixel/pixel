@@ -52,8 +52,12 @@
       }
     }
     .testimony_slider {
-      max-width: 840px;
+      // max-width: 840px;
+      max-width: 65%;
       position: static;
+      @include below($mobile-lg) {
+        max-width: 100%;
+      }
       .slick-arrow {
         width: 80px;
         height: 80px;

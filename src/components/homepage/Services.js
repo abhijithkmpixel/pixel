@@ -16,19 +16,19 @@ const Services = ({ data }) => {
         if (window.screen.width > 1200) {
           serviceTitleTimeline
             .from(".services_listing .title span:first-child", {
-              y: 100,
+              // y: 100,
               opacity: 0,
               duration: 1,
               scrollTrigger: {
                 trigger: ".services_listing .title",
                 start: "100% 100%",
-                end: "+=100",
+                end: "+=150",
                 scrub: true,
                 pin: false,
               },
             })
             .from(".services_listing .title img", {
-              y: 100,
+              y: 200,
               opacity: 0,
               duration: 1,
               // delay: 0.5,
@@ -41,7 +41,7 @@ const Services = ({ data }) => {
               },
             })
             .from(".services_listing .title span:nth-child(2)", {
-              y: 100,
+              // y: 100,
               opacity: 0,
               duration: 1,
               // delay: 0.5,
@@ -111,16 +111,18 @@ const Services = ({ data }) => {
       <div className="container-fluid">
         <h2 className="title" data-scroll data-scroll-offset="200">
           <span dangerouslySetInnerHTML={{ __html: data?.Title_1 }}></span>
-          <span> {data?.Title_2}</span>
-          <Image
-            src="/icons/sphere.svg"
-            alt="pixelated sphere  icon"
-            width={249}
-            height={249}
-            data-scroll
-            data-scroll-speed="1"
-            data-scroll-direction="horizontal"
-          />
+          <span>
+            <Image
+              src="/icons/sphere.svg"
+              alt="pixelated sphere  icon"
+              width={249}
+              height={249}
+              data-scroll
+              data-scroll-speed="1"
+              data-scroll-direction="horizontal"
+            />
+            {data?.Title_2}
+          </span>
         </h2>
         {data?.services && data?.services?.data?.length > 0 && (
           <div className="services_outer_wrap">
@@ -231,7 +233,7 @@ const Services = ({ data }) => {
         )}
 
         <div className="row " data-scroll>
-          <div className="col-12 col-xl-6" data-scroll>
+          <div className="col-12 col-xl-8" data-scroll>
             <p>{data?.Technology_title}</p>
           </div>
         </div>

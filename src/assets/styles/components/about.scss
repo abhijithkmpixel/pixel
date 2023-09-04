@@ -159,7 +159,7 @@
         }
         h4 {
           @include fontFace(24px, 1.65, 600, $color-cod-gray);
-          max-width: 60%;
+          max-width: 83%;
           @include below($mobile-lg) {
             max-width: 100%;
             margin-bottom: 40px;
@@ -233,6 +233,10 @@
       }
       p {
         @include fontFace(14px, 1.1, 300, $color-abbey);
+        max-width: 80%;
+        @include below($mobile-lg) {
+          max-width: 100%;
+        }
       }
       &.is-inview {
         &::after {
@@ -302,6 +306,10 @@
     }
     p {
       @include fontFace(14px, 1.1, 300, $color-abbey);
+      max-width: 80%;
+      @include below($mobile-lg) {
+        max-width: 100%;
+      }
     }
     // &.is-inview {
     &::after {
@@ -309,4 +317,7 @@
     }
     // }
   }
+}
+.development__trends ~ .client_testimonials {
+  padding-top: 50px;
 }

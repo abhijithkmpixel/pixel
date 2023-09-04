@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
 import TeamGrid from "@/components/TeamGrid";
+import Testimonials from "@/components/homepage/Testimonials";
 import GoodCoffee from "@/components/portfolio/GoodCoffee";
 import PortfolioBanner from "@/components/portfolio/PortfolioBanner";
 import ServiceIntro from "@/components/service/ServiceIntro";
@@ -15,6 +16,7 @@ import Link from "next/link";
 import React from "react";
 
 const AboutUsPage = ({ data, footer, header }) => {
+  console.log(data);
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
@@ -29,6 +31,7 @@ const AboutUsPage = ({ data, footer, header }) => {
         title={data?.attributes?.How_we_work_title}
         body={data?.attributes?.How_we_work_cards}
       />
+      <Testimonials data={data?.attributes?.Testimonials} />
 
       <TeamGrid
         title={data?.attributes?.Teams_title}

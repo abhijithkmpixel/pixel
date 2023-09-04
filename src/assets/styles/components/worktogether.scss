@@ -22,7 +22,8 @@
   h5 {
     @include fontFace(30px, 1.4, 400, $color-abbey);
     margin-bottom: 106px;
-    max-width: 750px;
+    // max-width: 750px;
+    max-width: 75%;
     text-transform: uppercase;
 
     @include below($mobile-lg) {

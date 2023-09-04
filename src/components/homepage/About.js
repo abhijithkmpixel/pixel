@@ -213,7 +213,7 @@ const About = ({ data }) => {
                 {data?.Achievements_widget?.map((card, index) => {
                   return (
                     <div
-                      className="col-12  col-sm-6- col-md-4 col-lg-4"
+                      className="col-12  col-sm-6- col-md-3 col-lg-3"
                       data-scroll
                       key={index}>
                       <div
