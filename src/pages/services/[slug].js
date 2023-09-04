@@ -25,12 +25,18 @@ const ServiceDetail = ({ data, footer, header }) => {
       {data?.attributes?.Body_description != null && (
         <DynamicHtml data={data?.attributes?.Body_description} />
       )}
-      <Trends
-        title={data?.attributes?.Development_trends_title}
-        body={data?.attributes?.Trends_row}
-      />
-      <HeloToConect data={data?.attributes?.Here_to_connect} />
-      <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+      {data?.attributes?.Development_trends_title != null && (
+        <Trends
+          title={data?.attributes?.Development_trends_title}
+          body={data?.attributes?.Trends_row}
+        />
+      )}
+      {data?.attributes?.Here_to_connect !== null && (
+        <HeloToConect data={data?.attributes?.Here_to_connect} />
+      )}
+      {data?.attributes?.Grab_a_coffee != null && (
+        <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+      )}
       <Footer data={footer} />
     </>
   );

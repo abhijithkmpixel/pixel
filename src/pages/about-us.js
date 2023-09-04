@@ -16,7 +16,6 @@ import Link from "next/link";
 import React from "react";
 
 const AboutUsPage = ({ data, footer, header }) => {
-  console.log(data);
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
