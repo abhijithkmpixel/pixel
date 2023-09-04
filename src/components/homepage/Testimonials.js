@@ -153,6 +153,7 @@ const Testimonials = ({ data }) => {
                         ? img?.attributes?.alternativeText
                         : ""
                     }
+                    priority
                     width={250}
                     height={70}
                   />
@@ -173,6 +174,7 @@ const Testimonials = ({ data }) => {
                         ? img?.attributes?.alternativeText
                         : ""
                     }
+                    priority
                     width={250}
                     height={70}
                   />

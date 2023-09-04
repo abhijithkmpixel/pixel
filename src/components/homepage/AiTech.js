@@ -113,7 +113,11 @@ const AiTech = ({ data }) => {
                 <div className="col-12 col-md-8">
                   <h3>{data?.Sub_title}</h3>
                   <h4>{data?.Short_title}</h4>
-                  <p>{data?.Sub_title_description}</p>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data?.Sub_title_description,
+                    }}></div>
+                  {/* <p>{data?.Sub_title_description}</p> */}
                 </div>
                 <div className="col-12 col-md-4 d-flex align-items-center">
                   {data?.Redirect_link && (
