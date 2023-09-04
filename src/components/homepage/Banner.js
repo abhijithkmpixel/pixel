@@ -1,5 +1,4 @@
 /** @format */
-
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,12 +32,12 @@ const Banner = ({ data }) => {
             .querySelector("#textOut")
             .getAttribute("data-animator-text")
             .split(",");
+          var bannerTextAnim = gsap.timeline({
+            repeat: -1,
+            repeatDelay: 0,
+            // ease: Power0.easeNone,
+          });
           textArray.forEach((element, index) => {
-            var bannerTextAnim = gsap.timeline({
-              repeat: -1,
-              repeatDelay: 0,
-              // ease: Power0.easeNone,
-            });
             bannerTextAnim
               .to("#textOut", {
                 text: `${element}`,
