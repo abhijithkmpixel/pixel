@@ -17,12 +17,18 @@ import Footer from "@/components/Footer";
 import Router, { useRouter } from "next/router";
 import Image from "next/image";
 import Context, { PrevPage } from "../../context/prevPage";
-
+import { useCookies } from "react-cookie";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [loaderOpen, setloaderOpen] = useState(true);
-
+  const [cookieOpen, setcookieOpen] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["COOKIE_POLICY"]);
   useEffect(() => {
+    if (cookies?.COOKIE_POLICY != true) {
+      setcookieOpen(true);
+    } else {
+      setcookieOpen(false);
+    }
     setTimeout(() => {
       setloaderOpen(false);
     }, 3000);
@@ -166,7 +172,17 @@ export default function App({ Component, pageProps }) {
     }
     return () => {};
   }, []);
-
+  // function closeCookiePolicyPopup() {
+  //   setCookies({}, "SETCOOKIE", true);
+  // }
+  function acceptAllCookies() {
+    setCookie("COOKIE_POLICY", true);
+    document.querySelector(".cookie__policy__popup").style.transform =
+      " translate(-50%,500px)";
+    setTimeout(() => {
+      setcookieOpen(false);
+    }, 2000);
+  }
   return (
     <>
       <Head>
@@ -196,6 +212,19 @@ export default function App({ Component, pageProps }) {
           </div>
         </div>
       </div>
+      {cookieOpen == true && (
+        <div className="cookie__policy__popup">
+          <div className="popup_content__wrap">
+            <h5>
+              By using our website, you consent to the use of cookies as
+              described in this Cookie Policy.
+            </h5>
+            <button className="cta_primary cta_drk" onClick={acceptAllCookies}>
+              <span>Accept All</span>
+            </button>
+          </div>
+        </div>
+      )}
       <Context>
         <Component {...pageProps} key={router.asPath} />
       </Context>
