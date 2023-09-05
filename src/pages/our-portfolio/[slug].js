@@ -127,7 +127,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                 </>
               )}
           </div>
-          <div className="col-xl-6 col-12 d-flex flex-column justify-content-between">
+          <div className="col-xl-6 col-12 d-flex- flex-column- justify-content-between- portfolio__content__holder__wrap">
             <div className="content_holder">
               <div className="case__banner">
                 <div className="case__banner__inner">

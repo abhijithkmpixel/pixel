@@ -52,6 +52,7 @@
         }
       }
     }
+
     .content_holder {
       padding: 52px 90px 52px 58px;
       // text-align: justify;
@@ -305,7 +306,15 @@
     }
   }
 }
-
+.portfolio__content__holder__wrap {
+  .min_1200 {
+    // @include above($tablet-lg) {
+    // position: -webkit-sticky;
+    position: sticky;
+    top: 57.2%;
+    // }
+  }
+}
 .project_navigation_link {
   padding: 150px 30px;
   width: calc(100% + 24px);
