@@ -31,72 +31,72 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
       }
     });
     // setnextProject(next[0]);
-    if (typeof document != "undefined") {
-      allImages = document.querySelectorAll(".img_wrap img");
-      totalNum = allImages.length;
-      var htmlElement = document.documentElement;
-      var bodyElement = document.body;
-      var height = Math.max(
-        htmlElement.clientHeight,
-        htmlElement.scrollHeight,
-        htmlElement.offsetHeight,
-        bodyElement.scrollHeight,
-        bodyElement.offsetHeight
-      );
+    // if (typeof document != "undefined") {
+    //   allImages = document.querySelectorAll(".img_wrap img");
+    //   totalNum = allImages.length;
+    //   var htmlElement = document.documentElement;
+    //   var bodyElement = document.body;
+    //   var height = Math.max(
+    //     htmlElement.clientHeight,
+    //     htmlElement.scrollHeight,
+    //     htmlElement.offsetHeight,
+    //     bodyElement.scrollHeight,
+    //     bodyElement.offsetHeight
+    //   );
 
-      let totalscrollabledist = height - document.documentElement.clientHeight;
-      if (window.screen.width > 1200 && allImages.length > 0) {
-        window.addEventListener("scroll", () =>
-          onScroller(totalscrollabledist)
-        );
-      }
-    }
+    //   let totalscrollabledist = height - document.documentElement.clientHeight;
+    //   if (window.screen.width > 1200 && allImages.length > 0) {
+    //     window.addEventListener("scroll", () =>
+    //       onScroller(totalscrollabledist)
+    //     );
+    //   }
+    // }
 
     return () => {
-      window.removeEventListener("scroll", () => onScroller());
+      // window.removeEventListener("scroll", () => onScroller());
       setnextProject(null);
     };
   }, [nextProject]);
 
-  function onScroller(totalscrollabledist) {
-    if (
-      (window.scrollY / totalscrollabledist) * 100 > (100 / totalNum) * index &&
-      (window.scrollY / totalscrollabledist) * 100 <= 100
-    ) {
-      index++;
-      imageUpdate(index - 1);
-    } else if (index <= 1) {
-      index = 1;
-      imageUpdate(index - 1);
-    }
-    //else if (index > totalNum - 1) {
-    //   index = totalNum - 1;
-    //   imageUpdate(index);
-    // }
-    else {
-      index--;
-      // imageUpdate(index - 1);
-    }
-  }
-  function imageUpdate(index) {
-    if (index >= prevState) {
-      // allImagesState?.forEach((element) => {
-      //   // element.style.opacity = 0;
-      //   // element.style.transform = "translateY(100%)";
-      // });
-      allImages[index].style.transform = "translateY(0%)";
-    } else {
-      // allImagesState?.forEach((element) => {
-      //   // element.style.opacity = 0;
-      //   // element.style.transform = "translateY(100%)";
-      // });
-      allImages[index + 1].style.transform = "translateY(100%)";
-    }
-    // allImages[index].style.opacity = 1;
-    // console.log(index);
-    // console.log(prevState);
-    prevState = index;
-  }
+  // function onScroller(totalscrollabledist) {
+  //   if (
+  //     (window.scrollY / totalscrollabledist) * 100 > (100 / totalNum) * index &&
+  //     (window.scrollY / totalscrollabledist) * 100 <= 100
+  //   ) {
+  //     index++;
+  //     imageUpdate(index - 1);
+  //   } else if (index <= 1) {
+  //     index = 1;
+  //     imageUpdate(index - 1);
+  //   }
+  //   //else if (index > totalNum - 1) {
+  //   //   index = totalNum - 1;
+  //   //   imageUpdate(index);
+  //   // }
+  //   else {
+  //     index--;
+  //     // imageUpdate(index - 1);
+  //   }
+  // }
+  // function imageUpdate(index) {
+  //   if (index >= prevState) {
+  //     // allImagesState?.forEach((element) => {
+  //     //   // element.style.opacity = 0;
+  //     //   // element.style.transform = "translateY(100%)";
+  //     // });
+  //     allImages[index].style.transform = "translateY(0%)";
+  //   } else {
+  //     // allImagesState?.forEach((element) => {
+  //     //   // element.style.opacity = 0;
+  //     //   // element.style.transform = "translateY(100%)";
+  //     // });
+  //     allImages[index + 1].style.transform = "translateY(100%)";
+  //   }
+  //   // allImages[index].style.opacity = 1;
+  //   // console.log(index);
+  //   // console.log(prevState);
+  //   prevState = index;
+  // }
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
@@ -106,27 +106,28 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
           <div className="col-xl-6 col-12">
             {data?.attributes?.Images &&
               data?.attributes?.Images?.data?.length > 0 && (
-                <div className="img_wrap">
+                <>
                   {data?.attributes?.Images?.data?.map((img, index) => {
                     return (
-                      <Image
-                        key={index}
-                        src={img?.attributes?.url}
-                        priority={true}
-                        alt={
-                          img?.attributes?.alternativeText != null
-                            ? img?.attributes?.alternativeText
-                            : "portfoli_image"
-                        }
-                        width={960}
-                        height={1080}
-                      />
+                      <div className="img_wrap" key={index}>
+                        <Image
+                          src={img?.attributes?.url}
+                          priority={true}
+                          alt={
+                            img?.attributes?.alternativeText != null
+                              ? img?.attributes?.alternativeText
+                              : "portfoli_image"
+                          }
+                          width={1920}
+                          height={1080}
+                        />
+                      </div>
                     );
                   })}
-                </div>
+                </>
               )}
           </div>
-          <div className="col-xl-6 col-12">
+          <div className="col-xl-6 col-12 d-flex flex-column justify-content-between">
             <div className="content_holder">
               <div className="case__banner">
                 <div className="case__banner__inner">
@@ -154,6 +155,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                   src={
                     data?.attributes?.Mobile_banner_image?.data?.attributes?.url
                   }
+                  priority={true}
                   alt={
                     data?.attributes?.Mobile_banner_image?.data?.attributes
                       ?.alternativeText != null

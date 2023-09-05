@@ -128,7 +128,8 @@ address {
   z-index: 102;
   transition: 0.5s all ease-in-out;
   box-shadow: 0 0 15px 1px rgba($color: #000000, $alpha: 0.2);
-  @include below($tablet-lg) {
+
+  @include below($tablet-sm) {
     max-width: calc(100vw - 30px);
     width: 100%;
   }
@@ -146,6 +147,13 @@ address {
     h5 {
       max-width: 500px;
       margin-right: 20px;
+      @include below($tablet-lg) {
+        width: max-content;
+        display: block;
+      }
+      @include below($tablet-sm) {
+        width: 100%;
+      }
       @include below($mobile-lg) {
         margin-right: 0;
       }

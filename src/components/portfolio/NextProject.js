@@ -11,6 +11,7 @@ const NextProject = ({ data }) => {
         src={
           data?.attributes?.Portfolio_page_listing_image?.data?.attributes?.url
         }
+        priority={true}
         fill
         alt={
           data?.attributes?.Portfolio_page_listing_image?.data?.attributes
