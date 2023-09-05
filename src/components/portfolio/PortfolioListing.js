@@ -167,6 +167,7 @@ const PortfolioListing = ({ data, options }) => {
                           }
                           width={1200}
                           height={950}
+                          priority
                         />
                       </figure>
                       <div className="card_footer">
