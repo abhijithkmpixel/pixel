@@ -110,7 +110,7 @@ const Testimonials = ({ data }) => {
                       <div className="testimony_wrap" data-scroll key={index}>
                         <div className="bodycopy" data-scroll>
                           <p>
-                            <Image
+                            {/* <Image
                               src={
                                 test?.attributes?.Profile_image?.data
                                   ?.attributes?.url
@@ -125,7 +125,7 @@ const Testimonials = ({ data }) => {
                               width={144}
                               height={54}
                               data-scroll
-                            />
+                            /> */}
                             {test?.attributes?.Testimony_body}
                           </p>
                         </div>
