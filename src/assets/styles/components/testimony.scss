@@ -56,7 +56,7 @@
       // max-width: 840px;
       max-width: 65%;
       position: static;
-      @include below($mobile-lg) {
+      @include below($tablet-lg) {
         max-width: 100%;
       }
       .slick-arrow {
@@ -226,7 +226,7 @@
       // .slick-slide {
       //   width: 30vw !important;
       // }
-      @include below($mobile-lg) {
+      @include below($tablet-sm) {
         margin-top: 10px;
       }
     }
@@ -299,8 +299,8 @@
       flex: 0 0 25vw;
     }
     @include below($mobile-lg) {
-      width: 33.33vw;
-      flex: 0 0 33.33vw;
+      width: 45vw;
+      flex: 0 0 45vw;
     }
     img {
       width: 100%;
