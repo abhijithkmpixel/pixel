@@ -146,7 +146,7 @@ const Testimonials = ({ data }) => {
         </div>
       </div>
       <div className="clients_sliders_wrap">
-        {data?.Logo_slider1 && data?.Logo_slider1.Image?.data?.length > 0 && (
+        {/* {data?.Logo_slider1 && data?.Logo_slider1.Image?.data?.length > 0 && (
           <Slider {...settings2} className="clients_slider">
             {data?.Logo_slider1.Image?.data?.map((img, index) => {
               return (
@@ -187,28 +187,87 @@ const Testimonials = ({ data }) => {
               );
             })}
           </Slider>
-        )}
-        {/* {data?.Logo_slider2 && data?.Logo_slider2.Image?.data?.length > 0 && (
-          <div className="clients_slider ">
-            {data?.Logo_slider2.Image?.data?.map((img, index) => {
-              return (
-                <div className="client" key={index}>
-                  <Image
-                    src={img?.attributes?.url}
-                    alt={
-                      img?.attributes?.alternativeText != null
-                        ? img?.attributes?.alternativeText
-                        : ""
-                    }
-                    priority
-                    width={250}
-                    height={70}
-                  />
-                </div>
-              );
-            })}
-          </div>
         )} */}
+        {data?.Logo_slider1 && data?.Logo_slider1.Image?.data?.length > 0 && (
+          <div className="clients_slider custom__clients__slider">
+            <div className="custom__clients__slider__inner">
+              {data?.Logo_slider1.Image?.data?.map((img, index) => {
+                return (
+                  <div className="client" key={index}>
+                    <Image
+                      src={img?.attributes?.url}
+                      alt={
+                        img?.attributes?.alternativeText != null
+                          ? img?.attributes?.alternativeText
+                          : ""
+                      }
+                      priority
+                      width={250}
+                      height={70}
+                    />
+                  </div>
+                );
+              })}
+              {data?.Logo_slider1.Image?.data?.map((img, index) => {
+                return (
+                  <div className="client" key={index}>
+                    <Image
+                      src={img?.attributes?.url}
+                      alt={
+                        img?.attributes?.alternativeText != null
+                          ? img?.attributes?.alternativeText
+                          : ""
+                      }
+                      priority
+                      width={250}
+                      height={70}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+        {data?.Logo_slider2 && data?.Logo_slider2.Image?.data?.length > 0 && (
+          <div className="clients_slider custom__clients__slider custom__clients__slider--reverse">
+            <div className="custom__clients__slider__inner">
+              {data?.Logo_slider2.Image?.data?.map((img, index) => {
+                return (
+                  <div className="client" key={index}>
+                    <Image
+                      src={img?.attributes?.url}
+                      alt={
+                        img?.attributes?.alternativeText != null
+                          ? img?.attributes?.alternativeText
+                          : ""
+                      }
+                      priority
+                      width={250}
+                      height={70}
+                    />
+                  </div>
+                );
+              })}
+              {data?.Logo_slider2.Image?.data?.map((img, index) => {
+                return (
+                  <div className="client" key={index}>
+                    <Image
+                      src={img?.attributes?.url}
+                      alt={
+                        img?.attributes?.alternativeText != null
+                          ? img?.attributes?.alternativeText
+                          : ""
+                      }
+                      priority
+                      width={250}
+                      height={70}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
