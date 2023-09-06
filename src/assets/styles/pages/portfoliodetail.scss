@@ -11,12 +11,13 @@
   }
   .row {
     .img_wrap {
-      position: sticky;
+      // position: sticky;
       width: 100%;
       top: 0;
       left: 0;
       overflow: hidden;
-      height: 100vh;
+      height: 100dvh;
+      // aspect-ratio: 16/9;
       @include below($tablet-lg) {
         position: static;
         height: auto;
@@ -25,13 +26,16 @@
       @include below($mobile-lg) {
         padding: 0 15px;
       }
+      & + .img_wrap {
+        // margin-top: 60px;
+      }
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        position: absolute;
-        inset: 0;
-        transition: 0.4s all ease-in-out;
+        // position: absolute;
+        // inset: 0;
+        // transition: 0.4s all ease-in-out;
         &:not(:first-child) {
           // opacity: 0;
           transform: translateY(100%);
@@ -41,13 +45,14 @@
           }
         }
         @include below($tablet-lg) {
-          position: static;
-          height: auto;
-          opacity: 1;
+          // position: static;
+          // height: auto;
+          // opacity: 1;
           margin-bottom: 30px;
         }
       }
     }
+
     .content_holder {
       padding: 52px 90px 52px 58px;
       // text-align: justify;
@@ -194,10 +199,20 @@
       h3 {
         @include fontFace(22px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
-        margin-bottom: 32px;
+        margin-bottom: 15px;
         margin-top: 54px;
         @include below($mobile-lg) {
           font-size: 20px;
+          margin-bottom: 15px;
+        }
+      }
+      h4 {
+        @include fontFace(18px, 1.5, 700, $color-woodsmoke);
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        margin-top: 54px;
+        @include below($mobile-lg) {
+          font-size: 16px;
           margin-bottom: 15px;
         }
       }
@@ -291,7 +306,15 @@
     }
   }
 }
-
+.portfolio__content__holder__wrap {
+  .min_1200 {
+    // @include above($tablet-lg) {
+    // position: -webkit-sticky;
+    position: sticky;
+    top: 57.2%;
+    // }
+  }
+}
 .project_navigation_link {
   padding: 150px 30px;
   width: calc(100% + 24px);

@@ -173,11 +173,11 @@
             float: left;
             margin-right: 50px;
             margin-top: -20px;
+            display: none;
             @include below($mobile-lg) {
               // float: none;
               // margin-top: 0;
               // margin-bottom: 15px;
-              display: none;
             }
           }
           p {

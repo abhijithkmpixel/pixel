@@ -15,19 +15,19 @@ const Footer = ({ data }) => {
         let contactbtn = gsap.timeline();
         let contactbtnFooter = gsap.timeline();
         if (window.screen.width > 1200) {
-          if (document.querySelector(".contact-btn_wrap")) {
-            contactbtn.from(".contact-btn_wrap", {
-              x: 150,
-              scrollTrigger: {
-                trigger: ".contact-btn_wrap",
-                start: "0% 100%",
-                end: "+=500",
-                scrub: true,
-              },
-            });
-          }
+          // if (document.querySelector(".contact-btn_wrap")) {
+          //   // contactbtn.from(".contact-btn_wrap", {
+          //   //   x: 150,
+          //   //   scrollTrigger: {
+          //   //     trigger: ".contact-btn_wrap",
+          //   //     start: "0% 100%",
+          //   //     end: "+=500",
+          //   //     scrub: true,
+          //   //   },
+          //   // });
+          // }
           // contactbtnFooter.from("footer .footer_inner_wrap .footer_text span", {
-          //   scale: 1.5,
+          //   y: 200,
           //   scrollTrigger: {
           //     trigger: "footer .footer_inner_wrap .footer_text span",
           //     start: "0% 100%",
@@ -40,9 +40,9 @@ const Footer = ({ data }) => {
     }
 
     return () => {
-      if (ctx) {
-        ctx.revert();
-      }
+      // if (ctx) {
+      ctx.revert();
+      // }
     };
   }, []);
 

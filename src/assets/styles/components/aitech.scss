@@ -94,9 +94,14 @@
       ul {
         padding-left: 5px;
         li {
+          padding-left: 15px;
           position: relative;
           align-items: flex-start;
-          display: flex;
+          // display: flex;
+          strong {
+            @include fontStyleInherit();
+            font-weight: 600;
+          }
           @include below($mobile-lg) {
             text-align: left;
           }
@@ -110,8 +115,11 @@
             flex: 0 0 7px;
             margin-top: 7px;
             margin-right: 10px;
-            display: block;
+            display: inline-block;
             border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
             background-color: $color-black;
           }
         }
