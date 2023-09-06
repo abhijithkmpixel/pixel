@@ -1,5 +1,6 @@
 /** @format */
 
+import ErrorMsg from "@/components/ErrorMsg";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -15,10 +16,21 @@ const ServicesPage = ({ data, header, footer }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <ServiceBanner data={data?.attributes?.Banner} id={"serviceintro"} />
-      <ServiceIntro data={data?.attributes?.Service_intro} className="" />
-      <ServiceItemsList data={data?.attributes?.services} />
-      <Empowered data={data?.attributes?.Unique_service} />
+      {data != null && (
+        <>
+          <ServiceBanner data={data?.attributes?.Banner} id={"serviceintro"} />
+          <ServiceIntro data={data?.attributes?.Service_intro} className="" />
+          <ServiceItemsList data={data?.attributes?.services} />
+          <Empowered data={data?.attributes?.Unique_service} />
+        </>
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );

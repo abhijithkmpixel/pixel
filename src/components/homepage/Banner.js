@@ -98,6 +98,17 @@ const Banner = ({ data }) => {
             y: 0,
           }
         );
+        gsap.fromTo(
+          ".herobanner_inner_wrap .cta_primary",
+          {
+            y: 120,
+          },
+          {
+            delay: 2,
+            duration: 1,
+            y: 0,
+          }
+        );
       });
     }
 
@@ -135,36 +146,40 @@ const Banner = ({ data }) => {
                   </div>
                 </div>
               </h1>
-              {/* <div className="overflow-hidden">
-                <Link href={"#"} className="cta_primary" data-scroll>
-                  book a meeting
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <line
-                      x1="4.31389"
-                      y1="12.2781"
-                      x2="11.2333"
-                      y2="4.03194"
-                      stroke="#181818"
-                      strokeWidth="0.7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M4.21547 4.09155L11.7401 3.43318L12.3985 10.9579"
-                      stroke="#181818"
-                      strokeWidth="0.7"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Link>
-              </div> */}
+              {data?.Banner_cta != null && (
+                <div className="overflow-hidden">
+                  <Link
+                    href={data?.Banner_cta?.Url}
+                    className="cta_primary "
+                    data-scroll>
+                    <span>{data?.Banner_cta?.Text}</span>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <line
+                        x1="4.31389"
+                        y1="12.2781"
+                        x2="11.2333"
+                        y2="4.03194"
+                        stroke="#181818"
+                        strokeWidth="0.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M4.21547 4.09155L11.7401 3.43318L12.3985 10.9579"
+                        stroke="#181818"
+                        strokeWidth="0.7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              )}
             </div>
             <div className="banner_ai_footer">
               <div className="ai_featured_img">
@@ -233,10 +248,13 @@ const Banner = ({ data }) => {
                           <span>{"0" + (index + 1)}</span>
                           <h4>{elm?.attributes?.Name}</h4>
                           <h5>
-                            {
-                              elm?.attributes?.portfolio_categories?.data[0]
-                                ?.attributes?.Name
-                            }
+                            {elm?.attributes?.portfolio_categories?.data?.map(
+                              (el, index) => {
+                                return (
+                                  (index > 0 ? ", " : "") + el?.attributes?.Name
+                                );
+                              }
+                            )}
                           </h5>
                         </div>
                       </div>

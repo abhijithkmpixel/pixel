@@ -1,5 +1,6 @@
 /** @format */
 
+import ErrorMsg from "@/components/ErrorMsg";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -14,12 +15,26 @@ const WebDevelopmentDubai = ({ data, header, footer, options }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <PortfolioBanner
-        data={data?.attributes?.Banner}
-        id={"portfolio_list_section"}
-      />
-      <PortfolioListing data={data?.attributes?.projects} options={options} />
-      <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+      {data != null && (
+        <>
+          <PortfolioBanner
+            data={data?.attributes?.Banner}
+            id={"portfolio_list_section"}
+          />
+          <PortfolioListing
+            data={data?.attributes?.projects}
+            options={options}
+          />
+          <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+        </>
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );

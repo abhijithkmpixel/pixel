@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Slider from "react-slick";
 
@@ -21,12 +21,12 @@ const Testimonials = ({ data }) => {
     dots: false,
     infinite: true,
     arrows: false,
-    speed: 2500,
+    speed: 3500,
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
     variableWidth: true,
-    cssEase: "linear",
+    cssEase: "Linear",
     slidesToScroll: -1,
     // rtl: false,
     pauseOnFocus: false,
@@ -58,12 +58,12 @@ const Testimonials = ({ data }) => {
     dots: false,
     infinite: true,
     arrows: false,
-    speed: 2500,
+    speed: 3500,
     autoplay: true,
     autoplaySpeed: 0,
     slidesToShow: 4,
     variableWidth: true,
-    cssEase: "linear",
+    cssEase: "Linear",
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
@@ -90,6 +90,11 @@ const Testimonials = ({ data }) => {
       },
     ],
   };
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   return (
     <section className="client_testimonials" data-scroll-section>
       <div className="container-fluid">
@@ -110,7 +115,7 @@ const Testimonials = ({ data }) => {
                       <div className="testimony_wrap" data-scroll key={index}>
                         <div className="bodycopy" data-scroll>
                           <p>
-                            <Image
+                            {/* <Image
                               src={
                                 test?.attributes?.Profile_image?.data
                                   ?.attributes?.url
@@ -125,7 +130,7 @@ const Testimonials = ({ data }) => {
                               width={144}
                               height={54}
                               data-scroll
-                            />
+                            /> */}
                             {test?.attributes?.Testimony_body}
                           </p>
                         </div>
@@ -183,6 +188,27 @@ const Testimonials = ({ data }) => {
             })}
           </Slider>
         )}
+        {/* {data?.Logo_slider2 && data?.Logo_slider2.Image?.data?.length > 0 && (
+          <div className="clients_slider ">
+            {data?.Logo_slider2.Image?.data?.map((img, index) => {
+              return (
+                <div className="client" key={index}>
+                  <Image
+                    src={img?.attributes?.url}
+                    alt={
+                      img?.attributes?.alternativeText != null
+                        ? img?.attributes?.alternativeText
+                        : ""
+                    }
+                    priority
+                    width={250}
+                    height={70}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )} */}
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 /** @format */
 
 import DynamicHtml from "@/components/DynamicHtml";
+import ErrorMsg from "@/components/ErrorMsg";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -17,11 +18,15 @@ const ServiceDetail = ({ data, footer, header }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <ServiceDetailBanner data={data?.attributes?.Banner} />
-      <ServiceIntro
-        data={data?.attributes?.Service_introduction}
-        classes={"service_intro--detail"}
-      />
+      {data != null && (
+        <>
+          <ServiceDetailBanner data={data?.attributes?.Banner} />
+          <ServiceIntro
+            data={data?.attributes?.Service_introduction}
+            classes={"service_intro--detail"}
+          />
+        </>
+      )}
       {data?.attributes?.Body_description != null && (
         <DynamicHtml data={data?.attributes?.Body_description} />
       )}
@@ -36,6 +41,13 @@ const ServiceDetail = ({ data, footer, header }) => {
       )}
       {data?.attributes?.Grab_a_coffee != null && (
         <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
       )}
       <Footer data={footer} />
     </>

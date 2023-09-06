@@ -1,6 +1,7 @@
 /** @format */
 
 import DynamicHtml from "@/components/DynamicHtml";
+import ErrorMsg from "@/components/ErrorMsg";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -12,11 +13,19 @@ const PrivacyPolicyPage = ({ data, header, footer }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-
-      <DynamicHtml
-        title={data?.attributes?.Title}
-        data={data?.attributes?.Description}
-      />
+      {data != null && (
+        <DynamicHtml
+          title={data?.attributes?.Title}
+          data={data?.attributes?.Description}
+        />
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );

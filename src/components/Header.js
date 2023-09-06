@@ -376,7 +376,7 @@ const Header = ({ data }) => {
           </svg>
         </Link>
         <Link
-          href={"https://wa.me/" + data?.Whatsapp_number}
+          href={"https://wa.me/" + data?.attributes?.Whatsapp_number}
           target="_blank"
           aria-label={"whatsapp icon"}
           className={"desktop__menu__toggle"}>

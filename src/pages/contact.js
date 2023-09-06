@@ -12,17 +12,29 @@ import Image from "next/image";
 import GsapMagnetic from "../components/gsap";
 import Link from "next/link";
 import HeadComponent from "@/components/HeadComponent";
+import ErrorMsg from "@/components/ErrorMsg";
 
 const COntactPage = ({ data, header, footer }) => {
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <ServiceBanner data={data?.attributes?.Banner} id="contactform" />
+      {data != null && (
+        <>
+          <ServiceBanner data={data?.attributes?.Banner} id="contactform" />
 
-      <ContactForm data={data?.attributes?.Form} />
-      <OfficeLocations data={data?.attributes?.Locations} />
-      <GetInTouch data={data?.attributes?.Business_enquiries} />
+          <ContactForm data={data?.attributes?.Form} />
+          <OfficeLocations data={data?.attributes?.Locations} />
+          <GetInTouch data={data?.attributes?.Business_enquiries} />
+        </>
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );
