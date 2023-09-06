@@ -35,7 +35,9 @@ const PortfolioListing = ({ data, options }) => {
       .forEach((elm) => elm.classList.remove("active_cat"));
     e.target.classList.add("active_cat");
     if (category.toLowerCase() == "all") {
-      setcurrentList(data?.data);
+      setTimeout(() => {
+        setcurrentList(data?.data);
+      }, 500);
     } else {
       let temparr = data?.data?.filter((elm) => {
         let found = false;

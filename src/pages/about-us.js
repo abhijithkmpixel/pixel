@@ -1,6 +1,7 @@
 /** @format */
 
 import DynamicHtml from "@/components/DynamicHtml";
+import ErrorMsg from "@/components/ErrorMsg";
 import Footer from "@/components/Footer";
 import HeadComponent from "@/components/HeadComponent";
 import Header from "@/components/Header";
@@ -20,25 +21,36 @@ const AboutUsPage = ({ data, footer, header }) => {
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
-      <PortfolioBanner data={data?.attributes?.Banner} id="serviceintro" />
-      <ServiceIntro
-        data={data?.attributes?.About_intro}
-        classes={"service_intro--detail"}
-      />
-      <DynamicHtml data={data?.attributes?.Intro_description} />
-      <Trends
-        title={data?.attributes?.How_we_work_title}
-        body={data?.attributes?.How_we_work_cards}
-      />
-      <Testimonials data={data?.attributes?.Testimonials} />
+      {data != null && (
+        <>
+          <PortfolioBanner data={data?.attributes?.Banner} id="serviceintro" />
+          <ServiceIntro
+            data={data?.attributes?.About_intro}
+            classes={"service_intro--detail"}
+          />
+          <DynamicHtml data={data?.attributes?.Intro_description} />
+          <Trends
+            title={data?.attributes?.How_we_work_title}
+            body={data?.attributes?.How_we_work_cards}
+          />
+          <Testimonials data={data?.attributes?.Testimonials} />
 
-      <TeamGrid
-        title={data?.attributes?.Teams_title}
-        subtitle={data?.attributes?.Teams_subtitle}
-        gridCards={data?.attributes?.Team_members}
-      />
+          <TeamGrid
+            title={data?.attributes?.Teams_title}
+            subtitle={data?.attributes?.Teams_subtitle}
+            gridCards={data?.attributes?.Team_members}
+          />
 
-      <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+          <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
+        </>
+      )}
+      {data == null && (
+        <ErrorMsg
+          errerCode="500"
+          errorMsg="Internal Server Error"
+          // button={{ link: "/", text: "Homepage" }}
+        />
+      )}
       <Footer data={footer} />
     </>
   );
