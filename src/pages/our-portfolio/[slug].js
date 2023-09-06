@@ -12,7 +12,9 @@ import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
 import { PrevPage } from "../../../context/prevPage";
 import ErrorMsg from "@/components/ErrorMsg";
+import Slider from "react-slick";
 const Portfolio = ({ data, footer, header, portfolios }) => {
+  console.log(data);
   const [nextProject, setnextProject] = useState();
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
 
@@ -58,7 +60,24 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
       setnextProject(null);
     };
   }, [nextProject]);
-
+  var settings = {
+    dots: false,
+    infinite: false,
+    arrows: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: "unslick",
+      },
+    ],
+  };
   // function onScroller(totalscrollabledist) {
   //   if (
   //     (window.scrollY / totalscrollabledist) * 100 > (100 / totalNum) * index &&
@@ -129,6 +148,31 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                       })}
                     </>
                   )}
+                {data?.attributes?.Images_slider?.data != null && (
+                  <Slider
+                    {...settings}
+                    className="img_wrap img_wrap--slider"
+                    key={index}>
+                    {data?.attributes?.Images_slider?.data?.map(
+                      (img, index) => {
+                        return (
+                          <Image
+                            src={img?.attributes?.url}
+                            priority={true}
+                            key={index}
+                            alt={
+                              img?.attributes?.alternativeText != null
+                                ? img?.attributes?.alternativeText
+                                : "portfoli_image"
+                            }
+                            width={1200}
+                            height={1080}
+                          />
+                        );
+                      }
+                    )}
+                  </Slider>
+                )}
               </div>
               <div className="col-xl-6 col-12 d-flex- flex-column- justify-content-between- portfolio__content__holder__wrap">
                 <div className="content_holder">
@@ -279,4 +323,77 @@ export async function getServerSideProps(context) {
           : null,
     }, // will be passed to the page component as props
   };
+}
+
+function SampleNextArrow(props) {
+  const { onClick, className } = props;
+  return (
+    <button
+      className={className + " slick_arrow slick_next"}
+      aria-label="Next slide"
+      title="next"
+      onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <line
+          x1="0.684881"
+          y1="8.15252"
+          x2="26.0974"
+          y2="8.15252"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M19.833 1L26.7828 7.99995L19.833 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick, className } = props;
+  return (
+    <button
+      className={className + " slick_arrow slick_prev"}
+      title="previous"
+      aria-label="previous slide"
+      onClick={onClick}>
+      <svg
+        width="28"
+        height="16"
+        viewBox="0 0 28 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <line
+          x1="0.684881"
+          y1="-0.684881"
+          x2="26.0974"
+          y2="-0.684881"
+          transform="matrix(-1 0 0 1 27.7827 8.8374)"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.94971 1L0.999961 7.99995L7.94971 15"
+          stroke="#181818"
+          strokeWidth="1.36976"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </button>
+  );
 }

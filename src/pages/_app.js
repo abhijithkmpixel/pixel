@@ -19,6 +19,7 @@ import Image from "next/image";
 import Context, { PrevPage } from "../../context/prevPage";
 import { useCookies } from "react-cookie";
 import $ from "jquery";
+
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const [loaderOpen, setloaderOpen] = useState(true);
