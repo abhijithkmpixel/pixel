@@ -116,7 +116,7 @@ const Header = ({ data }) => {
   }
 
   function mobileSubNavToggle(e) {
-    if (window.screen.width < 720) {
+    if (window.screen.width < 1200) {
       if (document.querySelector("subnavopen")) {
         document.querySelectorAll(".submenu_wrap").forEach((el) => {
           el.classList.remove("subnavopen");

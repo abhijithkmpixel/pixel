@@ -34,12 +34,13 @@ const AboutUsPage = ({ data, footer, header }) => {
             body={data?.attributes?.How_we_work_cards}
           />
           <Testimonials data={data?.attributes?.Testimonials} />
-
-          <TeamGrid
-            title={data?.attributes?.Teams_title}
-            subtitle={data?.attributes?.Teams_subtitle}
-            gridCards={data?.attributes?.Team_members}
-          />
+          {data?.attributes?.Show_team_members == true && (
+            <TeamGrid
+              title={data?.attributes?.Teams_title}
+              subtitle={data?.attributes?.Teams_subtitle}
+              gridCards={data?.attributes?.Team_members}
+            />
+          )}
 
           <GoodCoffee data={data?.attributes?.Grab_a_coffee} />
         </>

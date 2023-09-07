@@ -26,12 +26,12 @@
     }
   }
   .help__to__connect__row {
-    margin: 0 -75px;
+    margin: 0 -55px;
     @include below($tablet-lg) {
       margin: 0 -15px;
     }
     & > div {
-      padding: 0 75px;
+      padding: 0 55px;
       @include below($tablet-lg) {
         padding: 0 15px;
       }
@@ -78,6 +78,7 @@
         width: auto;
         display: block;
         height: 60px;
+        // margin-right: 40px;
 
         // padding: 0 35px;
         margin-bottom: 50px;

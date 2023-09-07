@@ -22,6 +22,9 @@
   .content_inner {
     padding-right: 70px;
     height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
     @include below($tablet-lg) {
       padding-right: 30px;
     }
@@ -65,10 +68,11 @@
     h3 {
       @include fontFace(20px, 1.4, 400, $color-black);
       max-width: 50%;
-      position: absolute;
+      // position: absolute;
       bottom: 0;
       right: 70px;
       z-index: 1;
+      margin-left: auto;
       @include below($desktop-lg) {
         font-size: 16px;
       }
@@ -106,7 +110,7 @@
       }
     }
     .content_inner {
-      margin-bottom: 97px;
+      margin-bottom: 70px;
       @include below($tablet-sm) {
         margin-bottom: 0;
       }
@@ -116,12 +120,17 @@
           max-width: 100%;
         }
       }
-      h4 {
+      h4,
+      h3 {
+        position: absolute;
+
         right: auto;
         left: 0;
-        top: calc(100% + 90px);
-        max-width: 19%;
+        top: calc(100% + 70px);
+        max-width: 25%;
+
         @include below($tablet-sm) {
+          position: static;
           max-width: 100%;
         }
         @include below($mobile-lg) {
@@ -130,4 +139,13 @@
       }
     }
   }
+}
+.service__detail__banner + .service_intro.service_intro--detail {
+  padding-top: 100px;
+  @include below($mobile-lg) {
+    padding-top: 50px;
+  }
+}
+.service_intro.service_intro--detail + .dynamic__content__block {
+  padding: 0px 0 20px;
 }

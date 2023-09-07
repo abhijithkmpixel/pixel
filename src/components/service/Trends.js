@@ -39,7 +39,7 @@ const Trends = ({ title, body }) => {
   return (
     <section className="development__trends">
       <div className="container-fluid">
-        <h2 className="title__secondary">{title}</h2>
+        {title && <h2 className="title__secondary">{title}</h2>}
         <div className="development__trends__grid">
           <div className=" row">
             <div className="col-12 col-lg-3"></div>
