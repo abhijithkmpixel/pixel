@@ -30,7 +30,7 @@ const ServiceDetail = ({ data, footer, header }) => {
       {data?.attributes?.Body_description != null && (
         <DynamicHtml data={data?.attributes?.Body_description} />
       )}
-      {data?.attributes?.Development_trends_title != null && (
+      {data?.attributes?.Trends_row != null && (
         <Trends
           title={data?.attributes?.Development_trends_title}
           body={data?.attributes?.Trends_row}

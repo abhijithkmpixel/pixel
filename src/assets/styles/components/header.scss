@@ -276,8 +276,10 @@ header {
   @include below($tablet-lg) {
     align-items: flex-start;
     padding-top: 60px;
+    padding-bottom: 160px;
   }
   @include below($mobile-lg) {
+    padding-bottom: 0px;
     top: 5px;
     left: 5px;
     transform: scaleY(0);
@@ -340,8 +342,9 @@ header {
     z-index: 5;
     width: 100%;
     max-height: 100%;
-    @include below($mobile-lg) {
+    @include below($tablet-lg) {
       overflow-y: scroll;
+      padding: 0px 0 140px;
     }
     .social_menia_links {
       display: flex;
@@ -357,10 +360,10 @@ header {
       }
       @include below($tablet-lg) {
         left: 40px;
+        flex-flow: column;
       }
       @include below($mobile-lg) {
         left: 20px;
-        flex-flow: column;
         display: none;
       }
       li {
@@ -374,7 +377,7 @@ header {
           @include below($desktop-sm) {
             margin-left: 80px;
           }
-          @include below($mobile-lg) {
+          @include below($tablet-lg) {
             margin-left: 0px;
             margin-top: 15px;
           }
@@ -435,7 +438,7 @@ header {
           overscroll-behavior: contain;
           width: 100%;
           &.submenu_wrap {
-            @include below($mobile-lg) {
+            @include below($tablet-lg) {
               .link_wrap {
                 position: relative;
 
@@ -447,9 +450,14 @@ header {
                   transform: translateY(-50%);
                   width: 0;
                   height: 0;
-                  border-left: 7px solid transparent;
-                  border-right: 7px solid transparent;
-                  border-top: 7px solid #d9d9d9;
+                  border-left: 10px solid transparent;
+                  border-right: 10px solid transparent;
+                  border-top: 10px solid #d9d9d9;
+                  @include below($mobile-lg) {
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid transparent;
+                    border-top: 7px solid #d9d9d9;
+                  }
                 }
               }
             }
@@ -525,8 +533,8 @@ header {
         }
       }
       .sub_menu {
-        column-count: 2;
-        gap: 50px;
+        // column-count: 2;
+        // gap: 50px;
         position: absolute;
         left: 45%;
         top: 50%;
@@ -535,21 +543,32 @@ header {
         opacity: 0;
         visibility: hidden;
         width: 45vw;
+        display: flex;
+        flex-wrap: wrap;
         @include below($tablet-lg) {
           width: unset;
-        }
-        @include below($mobile-lg) {
           transform: translateY(0%);
-          column-count: 1;
+          // column-count: 1;
           position: static;
+          display: none;
           opacity: 1;
           visibility: visible;
           margin-top: 20px;
-          display: none;
+          margin-left: 40px;
+        }
+        @include below($mobile-lg) {
+          margin-left: 0;
         }
         li {
           // margin-bottom: 50px;
           padding: 25px 0;
+          width: 50%;
+          flex: 0 0 50%;
+          @include below($tablet-lg) {
+            width: 100%;
+            flex: 0 0 100%;
+            padding: 15px 0;
+          }
           @include below($mobile-lg) {
             padding: 10px 0;
           }
@@ -565,8 +584,13 @@ header {
             @include below($desktop-md) {
               font-size: 16px;
             }
+            @include below($tablet-lg) {
+              color: $color-pomegranate2;
+              font-size: 20px;
+            }
             @include below($mobile-lg) {
               color: $color-pomegranate2;
+              font-size: 16px;
             }
           }
         }
@@ -733,7 +757,9 @@ header {
     transition-delay: 0s;
 
     transform: translateX(-50%) rotate(45deg);
-
+    @include below($tablet-lg) {
+      display: flex;
+    }
     li {
       transition-delay: 0s;
 

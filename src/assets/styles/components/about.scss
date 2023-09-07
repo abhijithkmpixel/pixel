@@ -198,7 +198,7 @@
           transition: 1s all ease-out;
         }
       }
-      @include below($tablet-sm) {
+      @include below($tablet-lg) {
         margin-bottom: 50px;
       }
       @include below($mobile-lg) {

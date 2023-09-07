@@ -81,6 +81,7 @@ const ServiceIntro = ({ data, classes }) => {
                 }
                 width={1363}
                 height={1085}
+                priority
               />
             </figure>
           </div>

@@ -110,6 +110,9 @@
     @include fontFace(20px, 1.6, 400, $color-black);
     margin-bottom: 25px;
     max-width: 80%;
+    &:last-child {
+      margin-bottom: 0;
+    }
     @include below($tablet-lg) {
       max-width: 100%;
     }
@@ -131,8 +134,8 @@
 .service_intro + .dynamic__content__block,
 .portfolio_hero_banner + .dynamic__content__block {
   padding-top: 60px;
-  @include below($tablet-sm) {
-    // padding: 50px 0;
+  @include below($mobile-lg) {
+    padding-top: 30px;
   }
 }
 

@@ -75,7 +75,8 @@
       }
       @include below($tablet-lg) {
         width: 140px;
-        left: 240px;
+        // left: 240px;
+        left: -120px;
       }
       @include below($tablet-sm) {
         display: none;

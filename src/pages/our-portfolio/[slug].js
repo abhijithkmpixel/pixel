@@ -13,8 +13,8 @@ import HeadComponent from "@/components/HeadComponent";
 import { PrevPage } from "../../../context/prevPage";
 import ErrorMsg from "@/components/ErrorMsg";
 import Slider from "react-slick";
+// import { truncat } from "../../../lib/truncat";
 const Portfolio = ({ data, footer, header, portfolios }) => {
-  console.log(data);
   const [nextProject, setnextProject] = useState();
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
 
@@ -33,6 +33,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
         setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
       }
     });
+
     // setnextProject(next[0]);
     // if (typeof document != "undefined") {
     //   allImages = document.querySelectorAll(".img_wrap img");
@@ -117,6 +118,25 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
   //   // console.log(prevState);
   //   prevState = index;
   // }
+  const truncat = (text) => {
+    let textLength = text.length;
+    if (typeof document != "undefined") {
+      if (textLength > 14 && window?.screen?.width > 1200) {
+        if (window?.screen?.width > 1450) {
+          let first = text.slice(0, 13);
+          let last = text.slice(13, textLength);
+
+          return first + " - " + last;
+        } else {
+          let first = text.slice(0, 10);
+          let last = text.slice(10, textLength);
+          return first + " - " + last;
+        }
+      } else {
+        return text;
+      }
+    }
+  };
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
@@ -197,7 +217,8 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                         <span>Back to the List</span>
                       </Link>
                       <h1 className="title_primary">
-                        {data?.attributes?.Name}
+                        {/* {data?.attributes?.Name} */}
+                        {truncat(data?.attributes?.Name)}
                       </h1>
                     </div>
                     <Image
