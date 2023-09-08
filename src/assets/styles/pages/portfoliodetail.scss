@@ -119,8 +119,8 @@
       }
       .case__banner {
         @include below($tablet-lg) {
-          width: calc(100% + 60px);
-          margin-left: -30px;
+          width: calc(100% + 100px);
+          margin-left: -50px;
           margin-bottom: 40px;
           height: 600px;
           position: relative;
@@ -154,7 +154,7 @@
             align-items: center;
             height: 100%;
           }
-          @include below($tablet-lg) {
+          @include below($mobile-lg) {
             padding: 15px;
           }
           .btn-bck {
@@ -162,13 +162,14 @@
               color: $color-white;
               position: absolute;
               top: 20px;
-              left: 15px;
-              z-index: 5;
+              left: 50px;
+              z-index: 110;
+              display: none;
             }
             @include below($mobile-lg) {
               top: 20px;
               left: 15px;
-              z-index: 5;
+              // z-index: 5;
             }
             span {
               font-size: 18px;
@@ -194,35 +195,6 @@
           h1 {
             @include below($tablet-lg) {
               color: $color-white;
-            }
-          }
-        }
-        .btn-bck {
-          transition: 0.3s all ease-in-out;
-          display: flex;
-          align-items: center;
-          width: max-content;
-          svg {
-            margin-right: 30px;
-            width: 40px;
-            height: auto;
-            path,
-            line {
-              transition: 0.3s all ease-in-out;
-            }
-          }
-          span {
-            font-size: 1rem;
-          }
-          &:hover {
-            @include above($tablet-lg) {
-              color: $color-cinnabar;
-              svg {
-                path,
-                line {
-                  fill: $color-cinnabar;
-                }
-              }
             }
           }
         }
@@ -365,6 +337,66 @@
   }
 }
 .portfolio__content__holder__wrap {
+  .btn-bck {
+    transition: 0.3s all ease-in-out;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    @include below($tablet-lg) {
+      color: $color-white;
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      z-index: 110;
+    }
+    svg {
+      margin-right: 30px;
+      width: 40px;
+      height: auto;
+      path,
+      line {
+        transition: 0.3s all ease-in-out;
+      }
+      @include below($tablet-lg) {
+        width: 40px;
+        path {
+          fill: $color-white;
+        }
+      }
+      @include below($mobile-lg) {
+        width: 40px;
+        margin-right: 10px;
+      }
+    }
+    span {
+      font-size: 1rem;
+    }
+    &:hover {
+      @include above($tablet-lg) {
+        color: $color-cinnabar;
+        svg {
+          path,
+          line {
+            fill: $color-cinnabar;
+          }
+        }
+      }
+    }
+  }
+  & > .btn-bck {
+    display: none;
+    @include below($tablet-lg) {
+      display: flex;
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      z-index: 100;
+    }
+    @include below($mobile-lg) {
+      top: 20px;
+      left: 15px;
+    }
+  }
   .min_1200 {
     // @include above($tablet-lg) {
     // position: -webkit-sticky;

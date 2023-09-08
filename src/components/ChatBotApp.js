@@ -23,10 +23,10 @@ const ChatBotApp = () => {
       );
       div.innerText = userInput;
       objDiv.append(div);
-      setTimeout(() => {
-        objDiv.scrollTop = objDiv.scrollHeight;
-        inputRef.current.value = "";
-      }, 200);
+      //   setTimeout(() => {
+      objDiv.scrollTop = objDiv.scrollHeight;
+      inputRef.current.value = "";
+      //   }, 200);
       const data = await axios
         .post(`/api/chatbotapi`, { user_input: userInput })
         .then(function (response) {

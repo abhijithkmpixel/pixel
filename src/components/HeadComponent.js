@@ -50,9 +50,7 @@ const HeadComponent = ({ data }) => {
           property="og:url"
           key="og:url"
           content={
-            data?.canonicalURL != null
-              ? data?.canonicalURL
-              : typeof window !== "undefined"
+            typeof window !== "undefined"
               ? window.location.href
               : process.env.DOMAIN_URL
           }

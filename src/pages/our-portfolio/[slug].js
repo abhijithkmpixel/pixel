@@ -195,11 +195,29 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                 )}
               </div>
               <div className="col-xl-6 col-12 d-flex- flex-column- justify-content-between- portfolio__content__holder__wrap">
+                <Link
+                  className="btn-bck"
+                  aria-label={"go back to portfolio listing page"}
+                  href="/our-portfolio">
+                  <svg
+                    width="40"
+                    height="13"
+                    viewBox="0 0 40 13"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M6.68535 0.155718C6.89524 0.365599 6.88847 0.697347 6.68535 0.920768L2.18952 5.9579L38.9593 5.66001C39.2572 5.66001 39.501 5.90374 39.501 6.20164C39.501 6.49953 39.2572 6.74326 38.9593 6.74326L2.18952 7.04116L6.67858 12.0783C6.87494 12.3085 6.89524 12.6267 6.68535 12.8366C6.47545 13.0465 6.10983 13.06 5.91348 12.8433C5.91348 12.8433 0.550976 6.95314 0.496811 6.88544C0.442646 6.81774 0.334312 6.69587 0.334312 6.49953C0.334312 6.30319 0.442646 6.16778 0.496811 6.11362C0.550976 6.05946 5.91348 0.155718 5.91348 0.155718C6.01504 0.054163 6.15723 0 6.29942 0C6.4416 0 6.57701 0.054163 6.68535 0.155718Z"
+                      fill="black"
+                    />
+                  </svg>
+
+                  <span>Back to the List</span>
+                </Link>
                 <div className="content_holder">
                   <div className="case__banner">
                     <div className="case__banner__inner">
                       <Link
-                        className="btn-bck "
+                        className="btn-bck"
                         aria-label={"go back to portfolio listing page"}
                         href="/our-portfolio">
                         <svg
