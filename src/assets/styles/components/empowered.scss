@@ -1,3 +1,5 @@
+/** @format */
+
 .empowered_brand_block {
   // padding: 120px 90px;
   display: flex;
@@ -30,7 +32,7 @@
       text-transform: capitalize;
       text-align: center;
       @include below($mobile-lg) {
-        font-size: 17px;
+        font-size: 18px;
         margin-bottom: 30px;
       }
     }

@@ -13,36 +13,22 @@ const ChatBotApp = () => {
   const handleChatBot = async (e) => {
     e.preventDefault();
     // console.log(inputRef.current.value);
+    var objDiv = document.getElementById("chatBox");
     if (inputRef.current.value != "") {
+      let userInput = inputRef.current.value;
       let div = document.createElement("div");
       div.setAttribute(
         "class",
         "chat__bot__ai__chat__box__msg chat__bot__ai__chat__box__msg--me"
       );
-      div.innerText = inputRef.current.value;
-      document
-        .querySelector(".chat__bot__ai__chat__box__innerwrap")
-        .append(div);
+      div.innerText = userInput;
+      objDiv.append(div);
       setTimeout(() => {
-        var objDiv = document.getElementById("chatBox");
         objDiv.scrollTop = objDiv.scrollHeight;
-        // inputRef.current.value = "";
+        inputRef.current.value = "";
       }, 200);
       const data = await axios
-        .post(
-          `https://pixelchatbotapi-112256d03bc9.herokuapp.com/chat`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "http://localhost:3000/",
-              "Access-Control-Allow-Methods":
-                "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-              "Access-Control-Allow-Headers": "*",
-              "Access-Control-Allow-Credentials": "true",
-            },
-          },
-          { body: JSON.stringify({ user_input: inputRef.current.value }) }
-        )
+        .post(`/api/chatbotapi`, { user_input: userInput })
         .then(function (response) {
           // handle success
           return response?.data;
@@ -51,7 +37,7 @@ const ChatBotApp = () => {
           // handle error
           console.log(error);
         });
-      console.log(data);
+      addResponseText(data?.message);
 
       //   getChatMsg(inputRef.current.value)
     } else {
@@ -60,7 +46,17 @@ const ChatBotApp = () => {
   useEffect(() => {
     return () => {};
   }, [chatOpen]);
-
+  const addResponseText = (text) => {
+    var objDiv = document.getElementById("chatBox");
+    let p = document.createElement("p");
+    p.setAttribute(
+      "class",
+      "chat__bot__ai__chat__box__msg chat__bot__ai__chat__box__msg--bot"
+    );
+    p.innerText = text;
+    objDiv.append(p);
+    objDiv.scrollTop = objDiv.scrollHeight;
+  };
   return (
     <aside className="chat__bot__ai d-none">
       <div
@@ -71,10 +67,11 @@ const ChatBotApp = () => {
         // title="Tooltip on left"
       >
         <Image
-          src={"/icons/chatai.png"}
+          src={"/icons/chataibot1.png"}
           alt="Chat bot"
           width={100}
           height={100}
+          priority
         />
       </div>
       <div
