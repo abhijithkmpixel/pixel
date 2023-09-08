@@ -40,9 +40,9 @@ export default function App({ Component, pageProps }) {
     }, 3000);
     // router.events.on("routeChangeComplete", handleRouteChange);
 
-    return () => {
-      // router.events.off("routeChangeComplete", handleRouteChange);
-    };
+    // return () => {
+    //   // router.events.off("routeChangeComplete", handleRouteChange);
+    // };
 
     return () => {};
   }, []);
@@ -84,7 +84,7 @@ export default function App({ Component, pageProps }) {
             // wrapper: document.querySelector("main"),
             // content: document.querySelector(".scroll__container__inner"),
             // wheelEventsTarget: document.querySelector("main"),
-            wheelEventsTarget: document.querySelector(".scroll__container"),
+            // wheelEventsTarget: document.querySelector("main"),
             // infinite:true
           });
 
@@ -101,14 +101,16 @@ export default function App({ Component, pageProps }) {
         scrollToTarget();
         Router.events.on("routeChangeStart", () => {
           setloaderOpen(true);
-        });
-        Router.events.on("routeChangeComplete", () => {
           ScrollTrigger.refresh();
 
+        });
+        Router.events.on("routeChangeComplete", () => {
+          
           setTimeout(() => {
+            ScrollTrigger.refresh();
             setloaderOpen(false);
+            ScrollTrigger.update();
           }, 1000);
-          ScrollTrigger.update();
 
           // if (!isSafari) {
           //   lenis.scrollTo("top");
@@ -243,11 +245,9 @@ export default function App({ Component, pageProps }) {
       <Context>
         <ChatBotApp />
 
-        <main className="scroll__container">
-          <div className="scroll__container__inner">
+        {/* <main className="scroll__container"> */}
             <Component {...pageProps} key={router.asPath} />
-          </div>
-        </main>
+        {/* </main> */}
       </Context>
     </>
   );
