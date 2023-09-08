@@ -5,6 +5,7 @@ import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { PrevPage } from "../../context/prevPage";
+import ChatBotApp from "./ChatBotApp";
 
 const Header = ({ data }) => {
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);

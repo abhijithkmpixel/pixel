@@ -19,6 +19,7 @@ import Image from "next/image";
 import Context, { PrevPage } from "../../context/prevPage";
 import { useCookies } from "react-cookie";
 import $ from "jquery";
+import ChatBotApp from "@/components/ChatBotApp";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -72,6 +73,10 @@ export default function App({ Component, pageProps }) {
             lerp: 0.07,
             smoothWheel: true,
             wheelMultiplier: 1.5,
+            // wrapper: document.querySelector("main"),
+            // content: document.querySelector(".scroll__container__inner"),
+            // wheelEventsTarget: document.querySelector("main"),
+            wheelEventsTarget: document.querySelector(".scroll__container"),
             // infinite:true
           });
 
@@ -228,7 +233,13 @@ export default function App({ Component, pageProps }) {
         </div>
       )}
       <Context>
-        <Component {...pageProps} key={router.asPath} />
+        <ChatBotApp />
+
+        <main className="scroll__container">
+          <div className="scroll__container__inner">
+            <Component {...pageProps} key={router.asPath} />
+          </div>
+        </main>
       </Context>
     </>
   );

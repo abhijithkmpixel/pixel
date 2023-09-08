@@ -217,7 +217,6 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                         <span>Back to the List</span>
                       </Link>
                       <h1 className="title_primary">
-                        {/* {data?.attributes?.Name} */}
                         {truncat(data?.attributes?.Name)}
                       </h1>
                     </div>
