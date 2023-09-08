@@ -31,17 +31,17 @@ const errorPage = () => {
   };
   return (
     <>
-      {console.log(headerData)}
+      {/* {console.log(headerData)} */}
       <Head>
         <title>Error 404</title>
       </Head>
-      <Header data={headerData} />
+      {/* <Header data={headerData} /> */}
       <ErrorMsg
         errerCode="404"
         errorMsg="sorry! the page you're looking for cannot be found."
         button={{ link: "/", text: "Homepage" }}
       />
-      <Footer data={footerData} />
+      {/* <Footer data={footerData} /> */}
     </>
   );
 };

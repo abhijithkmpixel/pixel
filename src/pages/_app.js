@@ -27,9 +27,9 @@ export default function App({ Component, pageProps }) {
   const [cookieOpen, setcookieOpen] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["COOKIE_POLICY"]);
   useEffect(() => {
-    const handleRouteChange = () => {
-      window.scrollTo(0, 0);
-    };
+    // const handleRouteChange = () => {
+    //   window.scrollTo(0, 0);
+    // };
     if (cookies?.COOKIE_POLICY != true) {
       setcookieOpen(true);
     } else {
@@ -38,10 +38,10 @@ export default function App({ Component, pageProps }) {
     setTimeout(() => {
       setloaderOpen(false);
     }, 3000);
-    router.events.on("routeChangeComplete", handleRouteChange);
+    // router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      // router.events.off("routeChangeComplete", handleRouteChange);
     };
 
     return () => {};
@@ -113,7 +113,7 @@ export default function App({ Component, pageProps }) {
           // if (!isSafari) {
           //   lenis.scrollTo("top");
           // }
-          // window.scrollTo(0, 0);
+          window.scrollTo(0, 0);
           cursor.removeText();
           cursor.removeImg();
           cursor.removeIcon();

@@ -188,15 +188,20 @@ const nextConfig = {
         destination: "/our-portfolio/al-gurg-building-services",
         permanent: true,
       },
+      {
+        source: "/cases/dubai-holding",
+        destination: "/our-portfolio",
+        permanent: true,
+      },
       // services
       {
-        source: "/service/ux-design/",
+        source: "/service/ux-design",
         destination: "/services/ux-ui-strategy-and-design",
         permanent: true,
       },
       {
         source: "/service/wordpress-development-company-uae",
-        destination: "/services/cms-consultancy-and-implementation",
+        destination: "/services",
         permanent: true,
       },
       {
@@ -250,12 +255,27 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/service/reactnative-software-development-uae",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/expressjs",
         destination: "/services",
         permanent: true,
       },
       {
         source: "/service/react",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/service/newsletter-management-software-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/service/nextjs-development-uae",
         destination: "/services",
         permanent: true,
       },
@@ -288,6 +308,12 @@ const nextConfig = {
       },
       {
         source:
+          "/blog/effective-digital-marketing-strategy-to-increase-your-brand-awareness-with-dubai-expo-2020",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source:
           "/blog/how-to-choose-a-top-mobile-app-development-company-in-uae",
         destination: "/",
         permanent: true,
@@ -298,6 +324,7 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      // events
       {
         source: "/event/get-together",
         destination: "/",
@@ -313,6 +340,7 @@ const nextConfig = {
         destination: "/",
         permanent: true,
       },
+      // Other
       {
         source: "/Technogies/react",
         destination: "/",
@@ -320,6 +348,11 @@ const nextConfig = {
       },
       {
         source: "/Technogies/woocommerce",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/Technogies/opencart",
         destination: "/",
         permanent: true,
       },

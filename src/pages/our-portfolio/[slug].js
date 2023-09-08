@@ -17,6 +17,7 @@ import Slider from "react-slick";
 const Portfolio = ({ data, footer, header, portfolios }) => {
   const [nextProject, setnextProject] = useState();
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
+  const [isClient, setisClient] = useState(false);
 
   let prevState = 0;
   let index = 1;
@@ -33,6 +34,7 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
         setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
       }
     });
+    setisClient(true);
 
     // setnextProject(next[0]);
     // if (typeof document != "undefined") {
@@ -235,7 +237,9 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                         <span>Back to the List</span>
                       </Link>
                       <h1 className="title_primary">
-                        {truncat(data?.attributes?.Name)}
+                        {isClient == true
+                          ? truncat(data?.attributes?.Name)
+                          : data?.attributes?.Name}
                       </h1>
                     </div>
                     <Image
