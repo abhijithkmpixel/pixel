@@ -50,7 +50,7 @@ const ProductPage = ({ data, footer, header }) => {
   const truncat = (text) => {
     let textLength = text.length;
     if (typeof document != "undefined") {
-      if (textLength > 14 && window?.screen?.width > 1200) {
+      if (textLength > 14 && window?.screen?.width > 1200 && !/\s/.test(text)) {
         if (window?.screen?.width > 1450) {
           let first = text.slice(0, 13);
           let last = text.slice(13, textLength);

@@ -6,8 +6,11 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const ChatBotApp = () => {
+  const router = useRouter();
+
   const [chatOpen, setchatOpen] = useState(false);
   const inputRef = useRef();
   const handleChatBot = async (e) => {
@@ -44,7 +47,14 @@ const ChatBotApp = () => {
     }
   };
   useEffect(() => {
-    return () => {};
+    const handleRouteChange = () => {
+      setchatOpen(false);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
   }, [chatOpen]);
   const addResponseText = (text) => {
     var objDiv = document.getElementById("chatBox");

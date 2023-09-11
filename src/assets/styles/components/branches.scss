@@ -59,6 +59,10 @@
         position: relative;
         transform: translateY(35px);
         margin-left: 50px;
+        strong{
+          @include fontStyleInherit();
+          font-weight: 700;
+        }
         @include below($tablet-lg) {
           margin-left: 0px;
           position: static;
