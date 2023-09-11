@@ -2,6 +2,7 @@
 
 import { gsap } from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect } from "react";
 
 const Branches = ({ data }) => {
@@ -52,7 +53,72 @@ const Branches = ({ data }) => {
             </h2>
             <h4 data-scroll>{data?.Subtitle}</h4>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: data?.Body }}></div>
+          {/* {data?.Body && (
+            <div
+              className="mb-5"
+              dangerouslySetInnerHTML={{ __html: data?.Body }}></div>
+          )} */}
+          {data?.Products?.data?.length > 0 && (
+            <div className="row">
+              {data?.Products?.data?.map((p, index) => {
+                return (
+                  <div key={index} className="col-12 col-lg-6">
+                    <Link
+                      href={`/products/${p?.attributes?.Slug}`}
+                      className="products__card__wrap">
+                      <figure>
+                        <Image
+                          src={
+                            p?.attributes?.Homepage_listing_image?.data
+                              ?.attributes?.url
+                          }
+                          alt={
+                            p?.attributes?.Homepage_listing_image?.data
+                              ?.attributes?.alternativeText != null
+                              ? p?.attributes?.Homepage_listing_image?.data
+                                  ?.attributes?.alternativeText
+                              : p?.attributes?.Name
+                          }
+                          width={1080}
+                          height={540}
+                        />
+                      </figure>
+                      <h4>{p?.attributes?.Name}</h4>
+                      <p>
+                        <div className="btn_wrap">
+                          <svg
+                            width="15"
+                            height="16"
+                            viewBox="0 0 15 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line
+                              x1="4.22297"
+                              y1="11.0943"
+                              x2="10.1555"
+                              y2="4.02421"
+                              stroke="#F0F0F0"
+                              strokeًidth="1.38932"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M4.17773 4.03369L11.1472 3.42389L11.7569 10.3934"
+                              stroke="#F0F0F0"
+                              strokeًidth="1.38932"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                        {p?.attributes?.Short_description}
+                      </p>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </section>

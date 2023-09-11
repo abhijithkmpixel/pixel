@@ -9,7 +9,7 @@
       }
     }
   }
-  .slick_arrow {
+  .slick_arrow ,.slick_arrow:focus{
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -116,6 +116,27 @@
       }
       @include below($mobile-lg) {
         padding: 0px 15px 20px;
+      }
+      ul {
+        padding-left: 20px;
+        li {
+          position: relative;
+          & + li {
+            margin-top: 15px;
+          }
+          &::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            position: absolute;
+            top: 8px;
+            left: -15px;
+            border-radius: 50%;
+            background-color: $color-black;
+            display: block;
+          }
+        }
       }
       .case__banner {
         @include below($tablet-lg) {
@@ -226,6 +247,16 @@
           text-align: left;
         }
       }
+      h2 {
+        @include fontFace(26px, 1.5, 700, $color-woodsmoke);
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        margin-top: 54px;
+        @include below($mobile-lg) {
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+      }
       h3 {
         @include fontFace(22px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
@@ -240,7 +271,7 @@
         @include fontFace(18px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
         margin-bottom: 15px;
-        margin-top: 54px;
+        // margin-top: 54px;
         @include below($mobile-lg) {
           font-size: 16px;
           margin-bottom: 15px;

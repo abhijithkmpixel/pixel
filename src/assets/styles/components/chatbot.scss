@@ -88,8 +88,13 @@
           padding: 5px 12px;
           border-radius: 5px;
           //   background-color: $color-white;
+          margin-bottom: 20px;
+          margin-top: 0px;
           background-color: #eee;
           position: relative;
+          &:last-child{
+            margin-bottom: 10px;
+          }
           &::after {
             content: "";
             width: 0;

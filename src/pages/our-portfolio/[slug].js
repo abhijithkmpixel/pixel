@@ -31,9 +31,14 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
     portfolios?.attributes?.projects?.data?.map((p, index) => {
       if (p?.attributes?.Name == data?.attributes?.Name) {
         // return portfolios?.attributes?.projects?.data[index + 2];
-        setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
+        if (portfolios?.attributes?.projects?.data[index + 1] == undefined) {
+          setnextProject(portfolios?.attributes?.projects?.data[0]);
+        } else {
+          setnextProject(portfolios?.attributes?.projects?.data[index + 1]);
+        }
       }
     });
+
     setisClient(true);
 
     // setnextProject(next[0]);

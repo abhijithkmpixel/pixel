@@ -535,7 +535,7 @@ header {
       .sub_menu {
         // column-count: 2;
         // gap: 50px;
-        position: absolute;
+        position: fixed;
         left: 45%;
         top: 50%;
         transform: translateY(-50%);

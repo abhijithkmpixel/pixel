@@ -27,9 +27,9 @@ export default function App({ Component, pageProps }) {
   const [cookieOpen, setcookieOpen] = useState(false);
   const [cookies, setCookie, removeCookie] = useCookies(["COOKIE_POLICY"]);
   useEffect(() => {
-    // const handleRouteChange = () => {
-    //   window.scrollTo(0, 0);
-    // };
+    const handleRouteChange = () => {
+      window.scrollTo(0, 0);
+    };
     if (cookies?.COOKIE_POLICY != true) {
       setcookieOpen(true);
     } else {
@@ -38,11 +38,11 @@ export default function App({ Component, pageProps }) {
     setTimeout(() => {
       setloaderOpen(false);
     }, 3000);
-    // router.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
-    // return () => {
-    //   // router.events.off("routeChangeComplete", handleRouteChange);
-    // };
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
 
     return () => {};
   }, []);
@@ -83,8 +83,7 @@ export default function App({ Component, pageProps }) {
             wheelMultiplier: 1.5,
             // wrapper: document.querySelector("main"),
             // content: document.querySelector(".scroll__container__inner"),
-            // wheelEventsTarget: document.querySelector("main"),
-            // wheelEventsTarget: document.querySelector("main"),
+            wheelEventsTarget: document.querySelector("main"),
             // infinite:true
           });
 
@@ -102,10 +101,8 @@ export default function App({ Component, pageProps }) {
         Router.events.on("routeChangeStart", () => {
           setloaderOpen(true);
           ScrollTrigger.refresh();
-
         });
         Router.events.on("routeChangeComplete", () => {
-          
           setTimeout(() => {
             ScrollTrigger.refresh();
             setloaderOpen(false);
@@ -115,7 +112,7 @@ export default function App({ Component, pageProps }) {
           // if (!isSafari) {
           //   lenis.scrollTo("top");
           // }
-          window.scrollTo(0, 0);
+          // window.scrollTo(0, 0);
           cursor.removeText();
           cursor.removeImg();
           cursor.removeIcon();
@@ -244,10 +241,9 @@ export default function App({ Component, pageProps }) {
       )}
       <Context>
         <ChatBotApp />
-
-        {/* <main className="scroll__container"> */}
-            <Component {...pageProps} key={router.asPath} />
-        {/* </main> */}
+        <main className="scroll__container">
+          <Component {...pageProps} key={router.asPath} />
+        </main>
       </Context>
     </>
   );
