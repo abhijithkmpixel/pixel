@@ -422,9 +422,9 @@ header {
       & > li {
         position: relative;
         & + li {
-          margin-top: 60px;
+          margin-top: 50px;
           @include below($desktop-lg) {
-            margin-top: 50px;
+            margin-top: 40px;
           }
           @include below($desktop-sm) {
             margin-top: 50px;
@@ -468,7 +468,7 @@ header {
           transition: 0.9s transform ease-in-out;
           transform-origin: bottom;
           & > a {
-            @include fontFace(68px, 1, 700, $color-white);
+            @include fontFace(64px, 1, 700, $color-white);
             text-decoration: none;
             -webkit-background-clip: text;
             transition: 0.2s all ease-in-out;
@@ -480,7 +480,7 @@ header {
             text-transform: uppercase;
             width: max-content;
             @include below($desktop-lg) {
-              font-size: 60px;
+              font-size: 55px;
             }
             @include below($desktop-md) {
               font-size: 50px;
@@ -499,6 +499,7 @@ header {
               background-image: unset;
             }
             span {
+              background-image: none;
               @include fontFace(17px, 1, 400, $color-white);
               display: block;
               margin-right: 40px;
