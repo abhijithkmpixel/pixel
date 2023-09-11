@@ -66,7 +66,7 @@ const Branches = ({ data }) => {
                 return (
                   <div key={index} className="col-12 col-lg-6">
                     <Link
-                      href={`/products/${p?.attributes?.Slug}`}
+                      href={`/our-products/${p?.attributes?.Slug}`}
                       className="products__card__wrap">
                       <figure>
                         <Image

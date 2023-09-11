@@ -6,7 +6,7 @@ import NextProject from "@/components/portfolio/NextProject";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import GsapMagnetic from "../../components/gsap";
 import axios from "axios";
 import HeadComponent from "@/components/HeadComponent";
@@ -14,10 +14,17 @@ import { PrevPage } from "../../../context/prevPage";
 import ErrorMsg from "@/components/ErrorMsg";
 import Slider from "react-slick";
 // import { truncat } from "../../../lib/truncat";
+import { message } from "antd";
+
 const ProductPage = ({ data, footer, header }) => {
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
   const [isClient, setisClient] = useState(false);
-
+  const [formOpen, setformOpen] = useState(false);
+  const [formLoading, setformLoading] = useState(false);
+  const [formError, setformError] = useState(null);
+  const userName = useRef();
+  const userEmail = useRef();
+  const userMsg = useRef();
   let index = 1;
 
   const router = useRouter();
@@ -66,12 +73,143 @@ const ProductPage = ({ data, footer, header }) => {
       }
     }
   };
+  const openDemoForm = () => {
+    setformOpen(formOpen == true ? false : true);
+  };
+  const handleDemoFormSubmit = async (e) => {
+    e.preventDefault();
+    setformError(null);
+    setformLoading(true);
+    userName.current.classList = "";
+    userEmail.current.classList = "";
+    const values = {
+      name: userName.current.value,
+      email: userEmail.current.value,
+      message: userMsg.current.value,
+    };
+    if (userName.current.value == "") {
+      setformError("Please input name");
+      userName.current.classList = "error";
+    } else if (userName.current.value.length < 3) {
+      setformError("Minimum character length for name is 3");
+      userName.current.classList = "error";
+    } else if (userEmail.current.value == "") {
+      setformError("Please input email");
+      userEmail.current.classList = "error";
+    } else if (
+      !/^([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,63})$/i.test(
+        userEmail.current.value
+      )
+    ) {
+      userEmail.current.classList = "error";
+
+      setformError("Please enter a valid email");
+    } else {
+      const sendMail = await axios
+        .post(`/api/scheduledemo`, { values })
+        .then(function (response) {
+          // handle success
+          return response?.data;
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+      message.success({
+        content: sendMail?.message,
+        style: {
+          marginTop: "10vh",
+        },
+        duration: 5,
+      });
+      userName.current.value = "";
+      userEmail.current.value = "";
+      userMsg.current.value = "";
+      setformOpen(false);
+    }
+    setformLoading(false);
+  };
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
       <Header data={header} />
       {data != null && (
         <>
+          <div
+            onClick={openDemoForm}
+            className={
+              formOpen == true ? "form__overlay overlayOpen" : "form__overlay"
+            }></div>
+          <div
+            className={
+              formOpen == true
+                ? "schedule__demo__contact__form formOpen"
+                : "schedule__demo__contact__form"
+            }>
+            <h5>
+              Let's talk?{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-x-lg"
+                viewBox="0 0 16 16"
+                onClick={openDemoForm}>
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+              </svg>
+            </h5>
+            <form onSubmit={(e) => handleDemoFormSubmit(e)}>
+              <fieldset>
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  ref={userName}
+                  placeholder="Name"
+                />
+              </fieldset>
+              <fieldset>
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  ref={userEmail}
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                />
+              </fieldset>
+              <fieldset>
+                <label htmlFor="message">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  ref={userMsg}
+                  placeholder="Message"
+                  rows="10"></textarea>
+              </fieldset>
+              <fieldset>
+                {formError && <p className="error">{formError}</p>}
+                <button
+                  className="cta_primary cta_drk"
+                  type="submit"
+                  title={"Send"}
+                  disabled={formLoading}>
+                  {" "}
+                  <span className="d-flex align-items-center">
+                    Send
+                    {formLoading && (
+                      <div
+                        className="spinner-border spinner-border-sm text-light ms-2"
+                        role="status"></div>
+                    )}
+                  </span>{" "}
+                </button>
+              </fieldset>
+            </form>
+          </div>
           <section className="portfolio_details">
             <div className="row portfolio_details__row">
               <div className="col-xl-6 col-12">
@@ -186,24 +324,47 @@ const ProductPage = ({ data, footer, header }) => {
                       height={500}
                     />
                   </div>
-                  {/* <div className="button_year_wrap">
-                    {data?.attributes?.Live_url &&
-                      data?.attributes?.Live_url != null && (
-                        <Link
-                          aria-label={data?.attributes?.Live_url?.Text}
-                          className="cta_primary"
-                          target="_blank"
-                          href={data?.attributes?.Live_url?.Url}>
-                          <span>{data?.attributes?.Live_url?.Text}</span>
-                        </Link>
-                      )}
-                    <p>{data?.attributes?.Year}</p>
-                  </div> */}
+
                   <div
                     dangerouslySetInnerHTML={{
                       __html: data?.attributes?.Bodycopy,
                     }}></div>
-
+                  <div className="button_year_wrap">
+                    {/* {data?.attributes?.Live_url &&
+                      data?.attributes?.Live_url != null && ( */}
+                    <button
+                      aria-label={"Schedule a demo"}
+                      className="cta_primary mt-4"
+                      onClick={openDemoForm}>
+                      <span>{"Schedule a demo"}</span>
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <line
+                          x1="4.31389"
+                          y1="12.2781"
+                          x2="11.2333"
+                          y2="4.03194"
+                          stroke="#181818"
+                          strokeWidth="0.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M4.21547 4.09155L11.7401 3.43318L12.3985 10.9579"
+                          stroke="#181818"
+                          strokeWidth="0.7"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                    {/* // )} */}
+                    {/* <p>{data?.attributes?.Year}</p> */}
+                  </div>
                   {/* <div
                     className="project_technology"
                     dangerouslySetInnerHTML={{
