@@ -1,5 +1,5 @@
 .title_primary {
-  @include fontFace(75px, .9, 700, $color-cod-gray);
+  @include fontFace(75px, 1.05, 700, $color-cod-gray);
   text-transform: uppercase;
   span {
     @include fontStyleInherit();

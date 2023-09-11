@@ -49,6 +49,8 @@
           border: 1px solid $color-black;
           border-radius: 15px;
           padding: 20px 35px;
+          cursor: pointer;
+          transition: .2s all ease-in-out;
           @include below($desktop-lg) {
             padding: 16px 30px;
             font-size: 18px;

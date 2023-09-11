@@ -24,6 +24,9 @@
     width: max-content;
     max-width: calc(100vw - 100px);
     transform: translate(-50%, -50%);
+    @include below($mobile-lg) {
+      max-width: calc(100vw - 30px);
+    }
     h1 {
       @include fontFace(140px, 1, 700, transparent);
       background-image: linear-gradient(to bottom, #f5333f, #ff5c00);

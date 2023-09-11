@@ -16,12 +16,12 @@ const ErrorMsg = ({ errerCode, errorMsg, button }) => {
         <h1>{errerCode}</h1>
         <p>{errorMsg}</p>
         {button && (
-          <Link
+          <a
             aria-label={"go to homepage"}
             className="cta_primary cta_drk mx-auto"
             href={button?.link}>
             <span>{button?.text}</span>
-          </Link>
+          </a>
         )}
       </div>
     </section>

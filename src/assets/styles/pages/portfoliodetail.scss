@@ -9,7 +9,8 @@
       }
     }
   }
-  .slick_arrow {
+  .slick_arrow,
+  .slick_arrow:focus {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -25,6 +26,7 @@
     transform: translateY(-50%);
     z-index: 100;
     transition: 0.3s all ease-in-out;
+    box-shadow: 0 0 10px 1px rgba($color: #000000, $alpha: 0.09);
     &.slick-disabled {
       opacity: 0;
     }
@@ -115,12 +117,33 @@
         padding: 0px 50px 58px;
       }
       @include below($mobile-lg) {
-        padding: 0px 15px 58px;
+        padding: 0px 15px 20px;
+      }
+      ul {
+        padding-left: 20px;
+        li {
+          position: relative;
+          & + li {
+            margin-top: 15px;
+          }
+          &::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            position: absolute;
+            top: 8px;
+            left: -15px;
+            border-radius: 50%;
+            background-color: $color-black;
+            display: block;
+          }
+        }
       }
       .case__banner {
         @include below($tablet-lg) {
-          width: calc(100% + 60px);
-          margin-left: -30px;
+          width: calc(100% + 100px);
+          margin-left: -50px;
           margin-bottom: 40px;
           height: 600px;
           position: relative;
@@ -154,7 +177,7 @@
             align-items: center;
             height: 100%;
           }
-          @include below($tablet-lg) {
+          @include below($mobile-lg) {
             padding: 15px;
           }
           .btn-bck {
@@ -163,12 +186,13 @@
               position: absolute;
               top: 20px;
               left: 50px;
-              z-index: 5;
+              z-index: 110;
+              display: none;
             }
             @include below($mobile-lg) {
               top: 20px;
               left: 15px;
-              z-index: 5;
+              // z-index: 5;
             }
             span {
               font-size: 18px;
@@ -197,35 +221,6 @@
             }
           }
         }
-        .btn-bck {
-          transition: 0.3s all ease-in-out;
-          display: flex;
-          align-items: center;
-          width: max-content;
-          svg {
-            margin-right: 30px;
-            width: 40px;
-            height: auto;
-            path,
-            line {
-              transition: 0.3s all ease-in-out;
-            }
-          }
-          span {
-            font-size: 1rem;
-          }
-          &:hover {
-            @include above($tablet-lg) {
-              color: $color-cinnabar;
-              svg {
-                path,
-                line {
-                  fill: $color-cinnabar;
-                }
-              }
-            }
-          }
-        }
       }
       h1 {
         margin-bottom: 55px;
@@ -236,6 +231,9 @@
         justify-content: space-between;
         margin-bottom: 50px;
         align-items: center;
+        @include below($mobile-lg) {
+          margin-bottom: 20px;
+        }
         p {
           @include fontFace(20px, 1, 400, $color-black);
           margin: 0;
@@ -249,6 +247,16 @@
         @include below($mobile-lg) {
           font-size: 16px;
           text-align: left;
+        }
+      }
+      h2 {
+        @include fontFace(26px, 1.5, 700, $color-woodsmoke);
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        margin-top: 54px;
+        @include below($mobile-lg) {
+          font-size: 24px;
+          margin-bottom: 15px;
         }
       }
       h3 {
@@ -265,7 +273,7 @@
         @include fontFace(18px, 1.5, 700, $color-woodsmoke);
         text-transform: uppercase;
         margin-bottom: 15px;
-        margin-top: 54px;
+        // margin-top: 54px;
         @include below($mobile-lg) {
           font-size: 16px;
           margin-bottom: 15px;
@@ -362,6 +370,66 @@
   }
 }
 .portfolio__content__holder__wrap {
+  .btn-bck {
+    transition: 0.3s all ease-in-out;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    @include below($tablet-lg) {
+      color: $color-white;
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      z-index: 110;
+    }
+    svg {
+      margin-right: 30px;
+      width: 40px;
+      height: auto;
+      path,
+      line {
+        transition: 0.3s all ease-in-out;
+      }
+      @include below($tablet-lg) {
+        width: 40px;
+        path {
+          fill: $color-white;
+        }
+      }
+      @include below($mobile-lg) {
+        width: 40px;
+        margin-right: 10px;
+      }
+    }
+    span {
+      font-size: 1rem;
+    }
+    &:hover {
+      @include above($tablet-lg) {
+        color: $color-cinnabar;
+        svg {
+          path,
+          line {
+            fill: $color-cinnabar;
+          }
+        }
+      }
+    }
+  }
+  & > .btn-bck {
+    display: none;
+    @include below($tablet-lg) {
+      display: flex;
+      position: absolute;
+      top: 20px;
+      left: 50px;
+      z-index: 100;
+    }
+    @include below($mobile-lg) {
+      top: 20px;
+      left: 15px;
+    }
+  }
   .min_1200 {
     // @include above($tablet-lg) {
     // position: -webkit-sticky;
@@ -468,11 +536,158 @@
     }
   }
 }
-.portfolio__details__page {
-  & ~ footer {
-    display: none;
-    @include below($tablet-lg) {
-      display: block;
+// .portfolio__details__page {
+//   & ~ footer {
+//     display: none;
+//     @include below($tablet-lg) {
+//       display: block;
+//     }
+//   }
+// }
+.form__overlay {
+  position: fixed;
+  z-index: 101;
+  inset: 0;
+  transition: 0.2s all ease-in-out;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba($color: $color-black, $alpha: 0.4);
+  &.overlayOpen {
+    pointer-events: all;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.schedule__demo__contact__form {
+  position: fixed;
+  z-index: 101;
+  background-color: $color-white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: calc(100vw - 30px);
+  max-height: calc(100dvh - 30px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  transition: 0.5s all ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  min-width: 750px;
+  @include below($tablet-sm) {
+    min-width: unset;
+    width: 100%;
+  }
+  @include below($mobile-lg) {
+    padding: 20px;
+    top: 30px;
+    transform: translate(-50%, 0%);
+  }
+  h5 {
+    @include fontFace(55px, 1.1, 600, $color-black);
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    @include below($desktop-lg) {
+      font-size: 45px;
+    }
+    @include below($mobile-lg) {
+      font-size: 35px;
+    }
+    svg {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  }
+  form {
+    width: 100%;
+    background-color: inherit;
+    fieldset {
+      & + fieldset {
+        margin-top: 20px;
+      }
+      label {
+        display: none;
+      }
+      .cta_primary {
+        font-size: 20px;
+        min-width: 210px;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 45px;
+        // margin-top: 20px;
+        @include below($desktop-lg) {
+          padding: 20px 30px;
+        }
+        @include below($tablet-lg) {
+          margin-top: 20px;
+        }
+        @include below($mobile-lg) {
+          padding: 17px 48px;
+          font-size: 14px;
+          margin-top: 0;
+          min-width: unset;
+        }
+        // &::after{
+        //     background-color: $color-white;
+        //     color: $color-black;
+        // }
+        &[disabled] {
+          pointer-events: none;
+          opacity: 0.5;
+        }
+      }
+      input,
+      textarea {
+        @include fontFace(30px, 1.2, 400, $color-black);
+        width: 90%;
+        border: none;
+        border-bottom: 1px solid $color-black;
+        padding: 20px 0;
+        transition: 0.3s all ease-in-out;
+        resize: none;
+        width: 100%;
+        // height: 77px;
+        @include below($desktop-lg) {
+          font-size: 25px;
+        }
+        @include below($tablet-sm) {
+          max-width: 100%;
+          width: 100%;
+        }
+        @include below($mobile-lg) {
+          font-size: 18px;
+        }
+        &::placeholder {
+          @include fontStyleInherit();
+          color: #7d7d7d;
+        }
+        &.error {
+          color: red;
+          border-color: red;
+          &::placeholder {
+            color: red;
+          }
+        }
+      }
+      textarea {
+        height: 200px;
+        @include below($mobile-lg) {
+          height: 120px;
+        }
+      }
+    }
+  }
+  &.formOpen {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.3s;
+    @include below($mobile-lg) {
+      transform: translate(-50%, 0%);
     }
   }
 }

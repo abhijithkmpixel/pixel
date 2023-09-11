@@ -17,7 +17,7 @@
   //   background-color: rgba($color: $color-cod-gray, $alpha: 0.5);
   //   z-index: 2;
   // }
-  img {
+  & > img {
     position: absolute;
     inset: 0;
     object-fit: cover;
@@ -32,13 +32,14 @@
     .branch_header {
       display: flex;
       align-items: flex-end;
-      margin-bottom: 70px;
+      margin-bottom: 90px;
       @include below($tablet-lg) {
         flex-flow: column;
         align-items: flex-start;
       }
       @include below($mobile-lg) {
         margin-bottom: 30px;
+        align-items: center;
       }
       .title_primary {
         color: $color-white;
@@ -48,6 +49,7 @@
         }
         @include below($mobile-lg) {
           text-align: center;
+          max-width: 100%;
         }
       }
       h4 {
@@ -57,9 +59,14 @@
         position: relative;
         transform: translateY(35px);
         margin-left: 50px;
+        strong{
+          @include fontStyleInherit();
+          font-weight: 700;
+        }
         @include below($tablet-lg) {
           margin-left: 0px;
           position: static;
+          transform: translateY(0px);
         }
         @include below($mobile-lg) {
           text-align: center;
@@ -154,6 +161,104 @@
       @include below($mobile-lg) {
         font-size: 16px;
         text-align: center;
+      }
+    }
+    .row {
+      margin: 0 -30px;
+      @include below($tablet-lg) {
+        margin: 0 -15px;
+      }
+      & > div {
+        padding: 0 30px;
+        @include below($tablet-lg) {
+          padding: 0 15px;
+        }
+      }
+    }
+    .products__card__wrap {
+      width: 100%;
+      display: block;
+      & + .products__card__wrap {
+        @include below($tablet-sm) {
+          margin-bottom: 60px;
+        }
+      }
+      figure {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/8;
+        overflow: hidden;
+        margin-bottom: 30px;
+        img {
+          object-fit: cover;
+          transition: 0.3s filter ease-in-out;
+        }
+      }
+      h4 {
+        @include fontFace(30px, 1.2, 600, $color-white);
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        @include below($tablet-lg) {
+          font-size: 24px;
+        }
+        @include below($tablet-sm) {
+          font-size: 22px;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
+        }
+      }
+      p {
+        @include fontFace(18px, 1.5, 400, $color-white);
+        @include below($tablet-lg) {
+          font-size: 16px;
+        }
+        .btn_wrap {
+          width: 60px;
+          height: 60px;
+          background-color: transparent;
+          border-radius: 50%;
+          border: 1px solid $color-white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          float: right;
+          margin-left: 15px;
+          transition: 0.3s all ease-in-out;
+          @include below($mobile-lg) {
+            display: none;
+          }
+          svg {
+            width: 20px;
+            height: auto;
+            path,
+            line {
+              transition: 0.3s all ease-in-out;
+            }
+          }
+        }
+      }
+      &:hover {
+        @include above($tablet-lg) {
+          .btn_wrap {
+            background-color: $color-white;
+            svg {
+              path,
+              line {
+                stroke: $color-black;
+              }
+            }
+          }
+          figure {
+            img {
+              // transform: scale(1.03);
+              filter: brightness(0.8);
+            }
+          }
+          h4 {
+            // color: $color-pomegranate;
+          }
+        }
       }
     }
   }

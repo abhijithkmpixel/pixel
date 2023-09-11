@@ -5,6 +5,7 @@ import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { PrevPage } from "../../context/prevPage";
+import ChatBotApp from "./ChatBotApp";
 
 const Header = ({ data }) => {
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
@@ -156,6 +157,7 @@ const Header = ({ data }) => {
         data-scroll-section
         className={
           (router.pathname.includes("our-portfolio") ||
+          router.pathname.includes("products") ||
           router.pathname.includes("services") ||
           router.pathname.includes("about-us") ||
           router.pathname.includes("contact")
@@ -163,6 +165,10 @@ const Header = ({ data }) => {
             : "") +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("our-portfolio")
+            ? " portfolio__details__page "
+            : "") +
+          (router.pathname.includes("[slug]") &&
+          router.pathname.includes("products")
             ? " portfolio__details__page "
             : "") +
           (router.pathname.includes("[slug]") &&
