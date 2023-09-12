@@ -128,28 +128,7 @@
           aspect-ratio: 16/9;
         }
       }
-      ul {
-        padding-left: 20px;
-        margin-bottom: 30px;
-        li {
-          position: relative;
-          & + li {
-            margin-top: 15px;
-          }
-          &::before {
-            content: "";
-            width: 7px;
-            height: 7px;
-            flex: 0 0 7px;
-            position: absolute;
-            top: 8px;
-            left: -15px;
-            border-radius: 50%;
-            background-color: $color-black;
-            display: block;
-          }
-        }
-      }
+   
       .case__banner {
         @include below($tablet-lg) {
           width: calc(100% + 100px);
@@ -249,7 +228,7 @@
           margin: 0;
         }
       }
-      p {
+      p ,li{
         @include fontFace(18px, 1.6, 400, $color-tundora);
         margin-bottom: 1.5rem;
         text-align: justify;
@@ -374,6 +353,29 @@
         }
         @include below($mobile-lg) {
           display: none;
+        }
+      }
+         ul {
+        padding-left: 20px;
+        margin-bottom: 30px;
+        li {
+          position: relative;
+          text-align: left;
+          & + li {
+            margin-top: 15px;
+          }
+          &::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            position: absolute;
+            top: 8px;
+            left: -15px;
+            border-radius: 50%;
+            background-color: $color-black;
+            display: block;
+          }
         }
       }
     }
