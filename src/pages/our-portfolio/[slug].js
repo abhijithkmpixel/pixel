@@ -135,13 +135,18 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
           let last = text.slice(13, textLength);
 
           return first + " - " + last;
-        } else {
+        } else if (
+          window?.screen?.width < 1450 &&
+          window?.screen?.width > 720
+        ) {
           let first = text.slice(0, 10);
           let last = text.slice(10, textLength);
           return first + " - " + last;
         }
       } else {
-        return text;
+        let first = text.slice(0, 12);
+        let last = text.slice(12, textLength);
+        return first + " - " + last;
       }
     }
   };
