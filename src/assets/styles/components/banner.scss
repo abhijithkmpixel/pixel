@@ -306,18 +306,21 @@
             .link_footer {
               position: absolute;
               z-index: 5;
-              bottom: 55px;
-              right: 80px;
-              width: calc(100% - 90px);
+              top: calc(100% - 190px);
+              right: 60px;
+              width: calc(100% - 120px);
               text-align: right;
               transform: translateY(15px);
               transition: 0.4s all ease-in-out;
-              @include below($desktop-sm) {
+              @include below($desktop-lg) {
                 right: 50px;
+                width: calc(100% - 100px);
               }
               @include below($tablet-lg) {
                 text-align: left;
                 transform: translateY(0px);
+                top: auto;
+                bottom: 30px;
               }
               @include below($mobile-lg) {
                 right: 30px;
@@ -340,7 +343,7 @@
                 margin-bottom: 10px;
                 transition: 0.3s all ease-in-out;
                 text-transform: uppercase;
-                @include below($desktop-sm) {
+                @include below($desktop-lg) {
                   font-size: 25px;
                 }
                 @include below($tablet-lg) {

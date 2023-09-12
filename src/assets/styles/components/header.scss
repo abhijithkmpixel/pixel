@@ -53,6 +53,45 @@ header {
         height: auto;
       }
     }
+    .header__contact__number {
+      position: absolute;
+      top: 56px;
+      left: calc(50vw - 100px);
+      transform: translateX(-50%);
+      @include fontFace(22px, 1, 500, $color-black);
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      @include below($desktop-lg) {
+        font-size: 20px;
+      }
+      @include below($tablet-lg) {
+        display: none;
+      }
+      .header__contact__number_icons_wrap {
+        width: 35px;
+        height: 35px;
+        flex: 0 0 35px;
+        padding: 8px;
+        border-radius: 50%;
+        border: 1px solid $color-pomegranate2;
+        margin-right: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include below($desktop-lg) {
+          width: 30px;
+          height: 30px;
+          flex: 0 0 30px;
+        }
+        svg {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+          fill: $color-pomegranate2;
+        }
+      }
+    }
     .menu_icon_wrap {
       display: flex;
       align-items: center;
