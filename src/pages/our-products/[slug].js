@@ -15,6 +15,7 @@ import ErrorMsg from "@/components/ErrorMsg";
 import Slider from "react-slick";
 // import { truncat } from "../../../lib/truncat";
 import { message } from "antd";
+import MagneticButton from "@/components/MagneticButton";
 
 const ProductPage = ({ data, footer, header }) => {
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
@@ -376,14 +377,12 @@ const ProductPage = ({ data, footer, header }) => {
                       __html: data?.attributes?.Services_used,
                     }}></div> */}
                   {prevPageSLug == "/" && (
-                    <GsapMagnetic>
-                      <Link
-                        aria-label={"homepage link"}
-                        className="cta_secondary"
-                        href="/">
-                        <span>Home</span>
-                      </Link>
-                    </GsapMagnetic>
+                    <MagneticButton
+                      text={"Home"}
+                      url={"/"}
+                      icon={false}
+                      arialabel={"Home"}
+                    />
                   )}
                 </div>
                 {/* <div className="min_1200">

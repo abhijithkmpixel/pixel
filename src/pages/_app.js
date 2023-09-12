@@ -144,22 +144,22 @@ export default function App({ Component, pageProps }) {
               }
             });
           });
-          document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
-            elm.addEventListener("mouseenter", function (e) {
-              var rect = e.target.getBoundingClientRect();
-              var x = e.clientX - rect.left; //x position within the element.
-              var y = e.clientY - rect.top; //y position within the element.
-              elm.style.setProperty("--x", x + "px");
-              elm.style.setProperty("--y", y + "px");
-            });
-            elm.addEventListener("mouseleave", function (e) {
-              var rect = e.target.getBoundingClientRect();
-              var x = e.clientX - rect.left; //x position within the element.
-              var y = e.clientY - rect.top; //y position within the element.
-              elm.style.setProperty("--x", x + "px");
-              elm.style.setProperty("--y", y + "px");
-            });
-          });
+          // document.querySelectorAll(".cta_secondary").forEach((elm, index) => {
+          //   elm.addEventListener("mouseenter", function (e) {
+          //     var rect = e.target.getBoundingClientRect();
+          //     var x = e.clientX - rect.left; //x position within the element.
+          //     var y = e.clientY - rect.top; //y position within the element.
+          //     elm.style.setProperty("--x", x + "px");
+          //     elm.style.setProperty("--y", y + "px");
+          //   });
+          //   elm.addEventListener("mouseleave", function (e) {
+          //     var rect = e.target.getBoundingClientRect();
+          //     var x = e.clientX - rect.left; //x position within the element.
+          //     var y = e.clientY - rect.top; //y position within the element.
+          //     elm.style.setProperty("--x", x + "px");
+          //     elm.style.setProperty("--y", y + "px");
+          //   });
+          // });
         }
       }
       if (window.screen.width < 1200) {

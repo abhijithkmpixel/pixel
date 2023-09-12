@@ -3,6 +3,7 @@
 import Link from "next/link";
 import React from "react";
 import GsapMagnetic from "../../components/gsap";
+import MagneticButton from "../MagneticButton";
 
 const WorkTogether = ({ data }) => {
   return (
@@ -49,43 +50,12 @@ const WorkTogether = ({ data }) => {
                 </div>
                 {data?.Contact_cta && (
                   <div data-scroll data-scroll-speed="1.3">
-                    <GsapMagnetic>
-                      <Link
-                        aria-label={data?.Contact_cta?.Text}
-                        href={
-                          data?.Contact_cta?.Url != null
-                            ? data?.Contact_cta?.Url
-                            : "#"
-                        }
-                        className="cta_secondary"
-                        data-scroll>
-                        <span>{data?.Contact_cta?.Text} </span>
-                        <svg
-                          width="16"
-                          height="16"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <line
-                            x1="4.34872"
-                            y1="11.7146"
-                            x2="10.7539"
-                            y2="4.08125"
-                            stroke="#F0F0F0"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                            stroke="#F0F0F0"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </Link>
-                    </GsapMagnetic>
+                    <MagneticButton
+                      text={data?.Contact_cta?.Text}
+                      url={data?.Contact_cta?.Url}
+                      icon={true}
+                      arialabel={data?.Contact_cta?.Text}
+                    />
                   </div>
                 )}
               </div>

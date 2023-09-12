@@ -19,17 +19,19 @@ const HeloToConect = ({ data }) => {
                 <div className="help__to__connect__row__grid">
                   {data?.Technology_icons?.data?.map((tech, index) => {
                     return (
-                      <Image
-                        key={index}
-                        src={tech?.attributes?.url}
-                        alt={
-                          tech?.attributes?.alternativeText != null
-                            ? tech?.attributes?.alternativeText
-                            : "technology icon"
-                        }
-                        width={400}
-                        height={300}
-                      />
+                      <div className="help__to__connect__row__grid__imagewrap">
+                        <Image
+                          key={index}
+                          src={tech?.attributes?.url}
+                          alt={
+                            tech?.attributes?.alternativeText != null
+                              ? tech?.attributes?.alternativeText
+                              : "technology icon"
+                          }
+                          width={400}
+                          height={300}
+                        />
+                      </div>
                     );
                   })}
                 </div>
