@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const { slug } = req.query;
   const data = await axios
     .get(
-      `${process.env.API_URL}/api/products?filters[Slug][$eq]=${slug}&populate[0]=Bodycopy&populate[1]=Images&populate[2]=Name&populate[3]=seo&populate[4]=Slug&populate[5]=seo.metaImage&populate[6]=Images_slider`
+      `${process.env.API_URL}/api/products?filters[Slug][$eq]=${slug}&populate[0]=Bodycopy&populate[1]=Images&populate[2]=Name&populate[3]=seo&populate[4]=Slug&populate[5]=seo.metaImage&populate[6]=Images_slider&populate[7]=Mobile_banner_image`
     )
     .then(function (response) {
       // handle success

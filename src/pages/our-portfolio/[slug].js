@@ -13,6 +13,7 @@ import HeadComponent from "@/components/HeadComponent";
 import { PrevPage } from "../../../context/prevPage";
 import ErrorMsg from "@/components/ErrorMsg";
 import Slider from "react-slick";
+import MagneticButton from "@/components/MagneticButton";
 // import { truncat } from "../../../lib/truncat";
 const Portfolio = ({ data, footer, header, portfolios }) => {
   const [nextProject, setnextProject] = useState();
@@ -293,14 +294,12 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                       __html: data?.attributes?.Services_used,
                     }}></div>
                   {prevPageSLug == "/" && (
-                    <GsapMagnetic>
-                      <Link
-                        aria-label={"homepage link"}
-                        className="cta_secondary"
-                        href="/">
-                        <span>Home</span>
-                      </Link>
-                    </GsapMagnetic>
+                    <MagneticButton
+                      text={"Home"}
+                      url={"/"}
+                      icon={false}
+                      arialabel={"Home"}
+                    />
                   )}
                 </div>
                 <div className="min_1200">

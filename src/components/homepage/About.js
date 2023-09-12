@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import GsapMagnetic from "../../components/gsap";
+import MagneticButton from "../MagneticButton";
 
 const About = ({ data }) => {
   useEffect(() => {
@@ -162,45 +163,12 @@ const About = ({ data }) => {
                   <h4 data-scroll>{data?.Short_title}</h4>
                   <div data-scroll data-scroll-speed="1.5" className="ms-auto">
                     {data?.Redirect_link && (
-                      <GsapMagnetic>
-                        <Link
-                          aria-label={data?.Redirect_link?.Text}
-                          href={
-                            data?.Redirect_link?.Url != null
-                              ? data?.Redirect_link?.Url
-                              : "#"
-                          }
-                          className="cta_secondary"
-                          data-scroll
-                          style={{ "--x": "10px", "--y": "10px" }}
-                          id="magnetic-area">
-                          <span>{data?.Redirect_link?.Text} </span>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <line
-                              x1="4.34872"
-                              y1="11.7146"
-                              x2="10.7539"
-                              y2="4.08125"
-                              stroke="#F0F0F0"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M4.29962 4.09155L11.8243 3.43318L12.4826 10.9579"
-                              stroke="#F0F0F0"
-                              strokeWidth="1.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </Link>
-                      </GsapMagnetic>
+                      <MagneticButton
+                        text={data?.Redirect_link?.Text}
+                        url={data?.Redirect_link?.Url}
+                        icon={true}
+                        arialabel={data?.Redirect_link?.Text}
+                      />
                     )}
                   </div>
                 </div>

@@ -86,37 +86,35 @@ const Branches = ({ data }) => {
                         />
                       </figure>
                       <h4>{p?.attributes?.Name}</h4>
-                      <p>
-                        <>
-                          <div className="btn_wrap">
-                            <svg
-                              width="15"
-                              height="16"
-                              viewBox="0 0 15 16"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg">
-                              <line
-                                x1="4.22297"
-                                y1="11.0943"
-                                x2="10.1555"
-                                y2="4.02421"
-                                stroke="#F0F0F0"
-                                strokeًidth="1.38932"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                              <path
-                                d="M4.17773 4.03369L11.1472 3.42389L11.7569 10.3934"
-                                stroke="#F0F0F0"
-                                strokeًidth="1.38932"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </div>
-                          {p?.attributes?.Short_description}
-                        </>
-                      </p>
+                      <div>
+                        <div className="btn_wrap">
+                          <svg
+                            width="15"
+                            height="16"
+                            viewBox="0 0 15 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <line
+                              x1="4.22297"
+                              y1="11.0943"
+                              x2="10.1555"
+                              y2="4.02421"
+                              stroke="#F0F0F0"
+                              strokeًidth="1.38932"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M4.17773 4.03369L11.1472 3.42389L11.7569 10.3934"
+                              stroke="#F0F0F0"
+                              strokeًidth="1.38932"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                        <p>{p?.attributes?.Short_description}</p>
+                      </div>
                     </Link>
                   </div>
                 );

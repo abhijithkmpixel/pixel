@@ -14,6 +14,7 @@ import axios from "axios";
 import React from "react";
 
 const ServiceDetail = ({ data, footer, header }) => {
+  console.log(data);
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
@@ -35,6 +36,9 @@ const ServiceDetail = ({ data, footer, header }) => {
           title={data?.attributes?.Development_trends_title}
           body={data?.attributes?.Trends_row}
         />
+      )}
+      {data?.attributes?.Body_description2 != null && (
+        <DynamicHtml data={data?.attributes?.Body_description2} />
       )}
       {data?.attributes?.Here_to_connect !== null && (
         <HeloToConect data={data?.attributes?.Here_to_connect} />

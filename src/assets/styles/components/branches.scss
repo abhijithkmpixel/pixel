@@ -208,34 +208,36 @@
           text-align: center;
         }
       }
+      .btn_wrap {
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 1px solid $color-white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: right;
+        margin-left: 15px;
+        transition: 0.3s all ease-in-out;
+        @include below($mobile-lg) {
+          display: none;
+        }
+        svg {
+          width: 20px;
+          height: auto;
+          path,
+          line {
+            transition: 0.3s all ease-in-out;
+          }
+        }
+      }
       p {
         @include fontFace(18px, 1.5, 400, $color-white);
+        max-width: 90%;
         @include below($tablet-lg) {
+          max-width: 100%;
           font-size: 16px;
-        }
-        .btn_wrap {
-          width: 60px;
-          height: 60px;
-          background-color: transparent;
-          border-radius: 50%;
-          border: 1px solid $color-white;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          float: right;
-          margin-left: 15px;
-          transition: 0.3s all ease-in-out;
-          @include below($mobile-lg) {
-            display: none;
-          }
-          svg {
-            width: 20px;
-            height: auto;
-            path,
-            line {
-              transition: 0.3s all ease-in-out;
-            }
-          }
         }
       }
       &:hover {
