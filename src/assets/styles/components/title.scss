@@ -4,11 +4,11 @@
   span {
     @include fontStyleInherit();
   }
-  @include below(1366px) {
-    font-size: 65px;
-  }
+  // @include below(1366px) {
+  //   font-size: 65px;
+  // }
   @include below($desktop-lg) {
-    font-size: 65px;
+    font-size: 60px;
   }
   @include below($desktop-sm) {
     font-size: 58px;

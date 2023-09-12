@@ -490,9 +490,11 @@ header {
             }
             @include below($tablet-lg) {
               font-weight: 700;
+              padding-right: 30px;
+              width: 100%;
             }
             @include below($mobile-lg) {
-              font-size: 30px;
+              font-size: 28px;
               font-weight: 500;
               transition: 0.2s all ease-in-out;
               color: #808080;

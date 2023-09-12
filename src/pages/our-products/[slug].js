@@ -18,6 +18,7 @@ import { message } from "antd";
 import MagneticButton from "@/components/MagneticButton";
 
 const ProductPage = ({ data, footer, header }) => {
+  console.log(data);
   const { prevPageSLug, setprevPageSLug } = useContext(PrevPage);
   const [isClient, setisClient] = useState(false);
   const [formOpen, setformOpen] = useState(false);
@@ -331,8 +332,6 @@ const ProductPage = ({ data, footer, header }) => {
                       __html: data?.attributes?.Bodycopy,
                     }}></div>
                   <div className="button_year_wrap">
-                    {/* {data?.attributes?.Live_url &&
-                      data?.attributes?.Live_url != null && ( */}
                     <button
                       aria-label={"Schedule a demo"}
                       className="cta_primary mt-4"
@@ -363,9 +362,13 @@ const ProductPage = ({ data, footer, header }) => {
                         />
                       </svg>
                     </button>
-                    {/* // )} */}
-                    {/* <p>{data?.attributes?.Year}</p> */}
                   </div>
+
+                  <div
+                    className="embeded__videos__wrap"
+                    dangerouslySetInnerHTML={{
+                      __html: data?.attributes?.Embeded_video,
+                    }}></div>
                   {/* <div
                     className="project_technology"
                     dangerouslySetInnerHTML={{
