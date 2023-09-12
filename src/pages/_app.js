@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
 
-    return () => {};
+    // return () => {};
   }, []);
 
   useLayoutEffect(() => {
@@ -86,7 +86,14 @@ export default function App({ Component, pageProps }) {
             wheelEventsTarget: document.querySelector("main"),
             // infinite:true
           });
-
+          Router.events.on("routeChangeComplete", () => {
+            if (!router?.asPath?.includes("#")) {
+              lenis.scrollTo(0);
+            }
+          });
+          Router.events.on("routeChangeStart", () => {
+            // lenis.scrollTo(0);
+          });
           lenis.on(
             "scroll",
             ({ scroll, limit, velocity, direction, progress }) => {
