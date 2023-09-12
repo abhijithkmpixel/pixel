@@ -214,11 +214,26 @@
       h1 {
         margin-bottom: 55px;
         margin-top: 95px;
+        font-size: 65px;
+        @include below($desktop-lg) {
+          font-size: 45px;
+        }
+        @include below($tablet-lg) {
+          font-size: 55px;
+        }
+        @include below($tablet-sm) {
+          font-size: 46px;
+        }
+        @include below($mobile-lg) {
+          font-size: 30px;
+          word-wrap: break-word;
+          width: 100%;
+        }
       }
       .button_year_wrap {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         align-items: center;
         @include below($mobile-lg) {
           margin-bottom: 20px;
