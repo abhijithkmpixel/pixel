@@ -304,9 +304,12 @@ const ProductPage = ({ data, footer, header }) => {
                         <span>Back to the List</span>
                       </Link> */}
                       <h1 className="title_primary">
-                        {isClient == true
-                          ? truncat(data?.attributes?.Name)
-                          : data?.attributes?.Name}
+                        {
+                          // isClient == true
+                          //   ? truncat(data?.attributes?.Name)
+                          //   :
+                          data?.attributes?.Name
+                        }
                       </h1>
                     </div>
                     <Image
