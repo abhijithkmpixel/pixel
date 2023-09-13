@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
     }
     setTimeout(() => {
       setloaderOpen(false);
-    }, 3000);
+    }, 2000);
     router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
