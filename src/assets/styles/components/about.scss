@@ -325,4 +325,7 @@
 }
 .development__trends ~ .client_testimonials {
   padding-top: 50px;
+  @include below($mobile-lg) {
+    padding-top: 20px;
+  }
 }

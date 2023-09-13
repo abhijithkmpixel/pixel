@@ -283,7 +283,7 @@ footer {
         .cta_tertiary {
           &:not(:last-child) {
             @include below($tablet-sm) {
-              margin-right: 20px;
+              margin-right: 10px;
             }
           }
           & + .cta_tertiary {
@@ -380,6 +380,7 @@ footer {
         a {
           @include fontStyleInherit();
           font-weight: 500;
+          display: block;
           margin-top: 5px;
           color: $color-gallery !important;
           @include below($mobile-lg) {
@@ -389,6 +390,7 @@ footer {
           }
         }
         a {
+          display: inline-block;
           line-height: 0.9;
         }
       }

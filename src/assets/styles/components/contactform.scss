@@ -262,6 +262,7 @@
           @include below($mobile-lg) {
             display: flex;
             flex-wrap: wrap;
+            margin-bottom: 0;
           }
         }
         @include below($desktop-lg) {
