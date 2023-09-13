@@ -178,10 +178,10 @@
     .products__card__wrap {
       width: 100%;
       display: block;
+      @include below($tablet-sm) {
+        margin-bottom: 60px;
+      }
       & + .products__card__wrap {
-        @include below($tablet-sm) {
-          margin-bottom: 60px;
-        }
       }
       figure {
         width: 100%;

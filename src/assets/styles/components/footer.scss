@@ -278,9 +278,14 @@ footer {
         }
         @include below($mobile-lg) {
           margin-bottom: 30px;
-          justify-content: space-between;
+          justify-content: center;
         }
         .cta_tertiary {
+          &:not(:last-child) {
+            @include below($tablet-sm) {
+              margin-right: 20px;
+            }
+          }
           & + .cta_tertiary {
             margin-left: 45px;
             @include below($mobile-lg) {
