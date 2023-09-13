@@ -278,9 +278,14 @@ footer {
         }
         @include below($mobile-lg) {
           margin-bottom: 30px;
-          justify-content: space-between;
+          justify-content: center;
         }
         .cta_tertiary {
+          &:not(:last-child) {
+            @include below($tablet-sm) {
+              margin-right: 10px;
+            }
+          }
           & + .cta_tertiary {
             margin-left: 45px;
             @include below($mobile-lg) {
@@ -371,11 +376,22 @@ footer {
         @include below($tablet-sm) {
           max-width: 100%;
         }
-        span {
+        span,
+        a {
           @include fontStyleInherit();
-          display: block;
           font-weight: 500;
+          display: block;
           margin-top: 5px;
+          color: $color-gallery !important;
+          @include below($mobile-lg) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+        a {
+          display: inline-block;
+          line-height: 0.9;
         }
       }
     }

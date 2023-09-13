@@ -250,14 +250,19 @@
           max-width: 80%;
         }
         span,
+        a,
         strong {
           @include fontFace(30px, 1.6, 600, $color-black);
-          display: block;
           @include below($desktop-lg) {
             font-size: 25px;
           }
           @include below($tablet-lg) {
             font-size: 20px;
+          }
+          @include below($mobile-lg) {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 0;
           }
         }
         @include below($desktop-lg) {

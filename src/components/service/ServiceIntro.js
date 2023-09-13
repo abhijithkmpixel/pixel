@@ -61,7 +61,7 @@ const ServiceIntro = ({ data, classes }) => {
           <div className="col-12 col-lg-6 p-0 ">
             {(data?.Title || data?.Description) && (
               <div className="content_inner position-relative">
-                <h2>{data?.Title}</h2>
+                {data?.Title && <h2>{data?.Title}</h2>}
                 <div
                   dangerouslySetInnerHTML={{
                     __html: data?.Description,

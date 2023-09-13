@@ -10,6 +10,9 @@
   @include below($tablet-sm) {
     padding: 100px 0 100px;
   }
+  @include below($mobile-lg) {
+    padding: 60px 0 ;
+  }
   // &::after {
   //   content: "";
   //   position: absolute;
@@ -178,10 +181,10 @@
     .products__card__wrap {
       width: 100%;
       display: block;
+      @include below($tablet-sm) {
+        margin-bottom: 60px;
+      }
       & + .products__card__wrap {
-        @include below($tablet-sm) {
-          margin-bottom: 60px;
-        }
       }
       figure {
         width: 100%;

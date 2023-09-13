@@ -91,7 +91,23 @@
           }
         }
       }
-      ul {
+    
+      p,
+      li {
+        @include fontFace(16px, 1.4, 400, $color-black);
+        max-width: 80%;
+        @include below($desktop-lg) {
+          max-width: 95%;
+        }
+        @include below($tablet-lg) {
+          max-width: 100%;
+        }
+        @include below($mobile-lg) {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+      }
+        ul {
         padding-left: 5px;
         li {
           padding-left: 15px;
@@ -104,6 +120,8 @@
           }
           @include below($mobile-lg) {
             text-align: left;
+          margin-bottom: 10px;
+
           }
           & + li {
             margin-top: 15px;
@@ -124,21 +142,6 @@
           }
         }
       }
-      p,
-      li {
-        @include fontFace(16px, 1.4, 400, $color-black);
-        max-width: 80%;
-        @include below($desktop-lg) {
-          max-width: 95%;
-        }
-        @include below($tablet-lg) {
-          max-width: 100%;
-        }
-        @include below($mobile-lg) {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-      }
       h3 {
         @include fontFace(45px, 1, 900, $color-black);
         margin-bottom: 25px;
@@ -155,7 +158,7 @@
         margin-bottom: 15px;
         @include below($mobile-lg) {
           text-align: center;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
           font-size: 22px;
         }
       }

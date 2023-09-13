@@ -7,6 +7,9 @@
   @include below($tablet-sm) {
     padding: 100px 0 50px;
   }
+  @include below($mobile-lg) {
+    padding: 50px 0 20px;
+  }
   .scroller_text {
     position: absolute;
     right: -20px;
@@ -50,7 +53,7 @@
     }
     @include below($mobile-lg) {
       max-width: 100%;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
   }
   .intro_block {
@@ -143,6 +146,8 @@
       }
       @include below($mobile-lg) {
         margin-top: 20px;
+
+        margin-bottom: 50px;
         margin-left: 0;
       }
       p {
@@ -320,4 +325,7 @@
 }
 .development__trends ~ .client_testimonials {
   padding-top: 50px;
+  @include below($mobile-lg) {
+    padding-top: 20px;
+  }
 }
