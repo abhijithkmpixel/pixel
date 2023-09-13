@@ -307,7 +307,8 @@ const Header = ({ data }) => {
                       <div className="link_wrap">
                         <Link
                           aria-label={elm?.Link?.Text}
-                          href={elm?.Link?.Url != null ? elm?.Link?.Url : "#"}>
+                          href={elm?.Link?.Url != null ? elm?.Link?.Url : "#"}
+                          onClick={(e) => e.stopPropagation()}>
                           <span>{(index <= 9 ? "0" : null) + (index + 1)}</span>
                           {elm?.Link?.Text}
                         </Link>
