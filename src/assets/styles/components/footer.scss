@@ -379,12 +379,17 @@ footer {
         span,
         a {
           @include fontStyleInherit();
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
           font-weight: 500;
           margin-top: 5px;
           color: $color-gallery !important;
+          @include below($mobile-lg) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+        a {
+          line-height: 0.9;
         }
       }
     }
