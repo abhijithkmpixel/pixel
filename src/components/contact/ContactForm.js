@@ -69,7 +69,7 @@ const ContactForm = ({ data }) => {
     };
 
     if (values.name == "") {
-      setformError("Please fill first name field!");
+      setformError("Please fill name field!");
       firstName.current.classList = "error";
       firstName.current.focus = false;
     } else if (values.name.length < 2) {

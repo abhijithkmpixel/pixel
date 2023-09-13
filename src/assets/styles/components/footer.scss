@@ -371,11 +371,13 @@ footer {
         @include below($tablet-sm) {
           max-width: 100%;
         }
-        span {
+        span,
+        a {
           @include fontStyleInherit();
           display: block;
           font-weight: 500;
           margin-top: 5px;
+          color: $color-gallery !important;
         }
       }
     }
