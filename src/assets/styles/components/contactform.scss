@@ -252,7 +252,8 @@
         span,a,
         strong {
           @include fontFace(30px, 1.6, 600, $color-black);
-          display: block;
+          display: flex;
+          flex-wrap: wrap;
           @include below($desktop-lg) {
             font-size: 25px;
           }

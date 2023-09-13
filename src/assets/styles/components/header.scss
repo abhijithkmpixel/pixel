@@ -304,7 +304,6 @@ header {
   top: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 101;
   display: flex;
   transform: scaleY(0);
   transform-origin: top;
@@ -312,7 +311,7 @@ header {
   transition-delay: 0.6s;
   background-color: #151515;
   overscroll-behavior: contain;
-  z-index: 102;
+  z-index: 110;
   @include below($tablet-lg) {
     align-items: flex-start;
     padding-top: 60px;
@@ -779,7 +778,7 @@ header {
   left: 50%;
   bottom: 15px;
   transform: translateX(-50%);
-  z-index: 102;
+  z-index: 120;
   transition: 0.5s all ease-in-out;
   transition-delay: 0.8s;
   li {

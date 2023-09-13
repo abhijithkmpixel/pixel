@@ -379,7 +379,9 @@ footer {
         span,
         a {
           @include fontStyleInherit();
-          display: block;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           font-weight: 500;
           margin-top: 5px;
           color: $color-gallery !important;
