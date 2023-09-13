@@ -128,7 +128,7 @@
           aspect-ratio: 16/9;
         }
       }
-   
+
       .case__banner {
         @include below($tablet-lg) {
           width: calc(100% + 100px);
@@ -214,11 +214,26 @@
       h1 {
         margin-bottom: 55px;
         margin-top: 95px;
+        font-size: 65px;
+        @include below($desktop-lg) {
+          font-size: 45px;
+        }
+        @include below($tablet-lg) {
+          font-size: 55px;
+        }
+        @include below($tablet-sm) {
+          font-size: 46px;
+        }
+        @include below($mobile-lg) {
+          font-size: 30px;
+          word-wrap: break-word;
+          width: 100%;
+        }
       }
       .button_year_wrap {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         align-items: center;
         @include below($mobile-lg) {
           margin-bottom: 20px;
@@ -228,7 +243,8 @@
           margin: 0;
         }
       }
-      p ,li{
+      p,
+      li {
         @include fontFace(18px, 1.6, 400, $color-tundora);
         margin-bottom: 1.5rem;
         text-align: justify;
@@ -355,12 +371,13 @@
           display: none;
         }
       }
-         ul {
+      ul {
         padding-left: 20px;
         margin-bottom: 30px;
         li {
           position: relative;
           text-align: left;
+          margin-bottom: 0px;
           & + li {
             margin-top: 15px;
           }

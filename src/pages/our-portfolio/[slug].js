@@ -131,8 +131,8 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
     if (typeof document != "undefined") {
       if (textLength > 14 && window?.screen?.width > 1200 && !/\s/.test(text)) {
         if (window?.screen?.width > 1450) {
-          let first = text.slice(0, 13);
-          let last = text.slice(13, textLength);
+          let first = text.slice(0, 14);
+          let last = text.slice(14, textLength);
 
           return first + " - " + last;
         } else if (
@@ -248,9 +248,11 @@ const Portfolio = ({ data, footer, header, portfolios }) => {
                         <span>Back to the List</span>
                       </Link>
                       <h1 className="title_primary">
-                        {isClient == true
-                          ? truncat(data?.attributes?.Name)
-                          : data?.attributes?.Name}
+                        {
+                        // isClient == true
+                        //   ? truncat(data?.attributes?.Name)
+                        //   : 
+                          data?.attributes?.Name}
                       </h1>
                     </div>
                     <Image

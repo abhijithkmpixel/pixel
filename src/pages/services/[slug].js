@@ -14,7 +14,6 @@ import axios from "axios";
 import React from "react";
 
 const ServiceDetail = ({ data, footer, header }) => {
-  console.log(data);
   return (
     <>
       <HeadComponent data={data?.attributes?.seo} />
