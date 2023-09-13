@@ -28,6 +28,7 @@ const Trends = ({ title, body }) => {
         breakpoint: 720,
         settings: {
           settings: "slick",
+          // adaptiveHeight: true,
           useTransform: false,
           slidesToShow: 1,
           slidesToScroll: 1,

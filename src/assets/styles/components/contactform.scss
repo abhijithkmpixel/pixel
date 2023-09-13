@@ -249,7 +249,7 @@
         @include below($desktop-lg) {
           max-width: 80%;
         }
-        span,
+        span,a,
         strong {
           @include fontFace(30px, 1.6, 600, $color-black);
           display: block;

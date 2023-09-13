@@ -24,6 +24,7 @@ header {
   @include below($tablet-lg) {
     padding: 25px 50px;
     position: fixed;
+    z-index: 102;
   }
   @include below($mobile-lg) {
     padding: 25px 15px;
@@ -107,7 +108,7 @@ header {
         margin-left: auto;
       }
       @include below($mobile-lg) {
-        display: none;
+        // display: none;
       }
       span {
         @include fontFace(18px, 1, 400, $color-cod-gray);
@@ -529,8 +530,8 @@ header {
             }
             @include below($tablet-lg) {
               font-weight: 700;
-              padding-right: 30px;
-              width: 100%;
+              // margin-right: 50px;
+              width: calc(100% - 80px);
             }
             @include below($mobile-lg) {
               font-size: 28px;
@@ -538,6 +539,8 @@ header {
               transition: 0.2s all ease-in-out;
               color: #808080;
               background-image: unset;
+              width: calc(100% - 50px);
+
             }
             span {
               background-image: none;
@@ -793,7 +796,7 @@ header {
     }
   }
   @include below($mobile-lg) {
-    display: flex;
+    // display: flex;
   }
   &.open {
     // transition-delay: 0.9s;
@@ -875,6 +878,15 @@ header.services__detail__page.header--light {
       display: none;
     }
   }
+     &.products__details__page{
+      .header_inner_wrap .brand_logo.brand_logo--white {
+        @include below($mobile-lg){
+
+          display: block ;
+        }
+      }
+
+    }
 }
 .sticky_header {
   header.portfolio__details__page.header--light,

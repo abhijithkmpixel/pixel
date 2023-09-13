@@ -27,18 +27,20 @@ const ServiceDetail = ({ data, footer, header }) => {
           />
         </>
       )}
-      {data?.attributes?.Body_description != null && (
-        <DynamicHtml data={data?.attributes?.Body_description} />
-      )}
+      {data?.attributes?.Body_description != null &&
+        data?.attributes?.Body_description != "" && (
+          <DynamicHtml data={data?.attributes?.Body_description} />
+        )}
       {data?.attributes?.Trends_row != null && (
         <Trends
           title={data?.attributes?.Development_trends_title}
           body={data?.attributes?.Trends_row}
         />
       )}
-      {data?.attributes?.Body_description2 != null && (
-        <DynamicHtml data={data?.attributes?.Body_description2} />
-      )}
+      {data?.attributes?.Body_description2 != null &&
+        data?.attributes?.Body_description2 != "" && (
+          <DynamicHtml data={data?.attributes?.Body_description2} />
+        )}
       {data?.attributes?.Here_to_connect !== null && (
         <HeloToConect data={data?.attributes?.Here_to_connect} />
       )}

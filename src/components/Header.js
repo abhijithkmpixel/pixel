@@ -169,7 +169,7 @@ const Header = ({ data }) => {
             : "") +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("products")
-            ? " portfolio__details__page "
+            ? " portfolio__details__page products__details__page"
             : "") +
           (router.pathname.includes("[slug]") &&
           router.pathname.includes("services")

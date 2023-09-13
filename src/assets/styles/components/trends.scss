@@ -153,3 +153,8 @@
 .development__trends + .dynamic__content__block {
   padding-top: 20px;
 }
+.service_intro + .development__trends {
+  @include below($mobile-lg) {
+    padding-top: 0;
+  }
+}

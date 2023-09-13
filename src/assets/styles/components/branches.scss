@@ -10,6 +10,9 @@
   @include below($tablet-sm) {
     padding: 100px 0 100px;
   }
+  @include below($mobile-lg) {
+    padding: 60px 0 ;
+  }
   // &::after {
   //   content: "";
   //   position: absolute;

@@ -285,6 +285,9 @@
           margin-bottom: 60px;
         }
         @include below($mobile-lg) {
+          margin-bottom: 20px;
+        }
+        @include below($mobile-lg) {
           flex: 0 0 100%;
           width: 100%;
         }
