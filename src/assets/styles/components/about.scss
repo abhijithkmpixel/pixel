@@ -151,7 +151,7 @@
         margin-left: 0;
       }
       p {
-        @include fontFace(20px, 1.8, 400, $color-tundora);
+        @include fontFace(20px, 1.8, 400, $color-black);
         margin-bottom: 54px;
         @include below($mobile-lg) {
           font-size: 16px;
@@ -168,7 +168,8 @@
           @include below($mobile-lg) {
             max-width: 100%;
             margin-bottom: 40px;
-            font-size: 22px;
+            font-size: 24px;
+            line-height: 1.4;
           }
         }
         .ms-auto {
@@ -237,10 +238,11 @@
         margin-bottom: 5px;
       }
       p {
-        @include fontFace(14px, 1.1, 300, $color-abbey);
+        @include fontFace(14px, 1.1, 300, $color-black);
         max-width: 80%;
         @include below($mobile-lg) {
           max-width: 100%;
+          font-size: 16px;
         }
       }
       &.is-inview {
@@ -310,7 +312,7 @@
       margin-bottom: 5px;
     }
     p {
-      @include fontFace(14px, 1.1, 300, $color-abbey);
+      @include fontFace(14px, 1.1, 300, $color-black);
       max-width: 80%;
       @include below($mobile-lg) {
         max-width: 100%;

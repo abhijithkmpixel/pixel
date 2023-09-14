@@ -17,6 +17,7 @@ const PrivacyPolicyPage = ({ data, header, footer }) => {
         <DynamicHtml
           title={data?.attributes?.Title}
           data={data?.attributes?.Description}
+          classes={"detail__pages"}
         />
       )}
       {data == null && (
