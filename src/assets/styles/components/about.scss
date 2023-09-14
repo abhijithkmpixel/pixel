@@ -238,7 +238,7 @@
         margin-bottom: 5px;
       }
       p {
-        @include fontFace(14px, 1.1, 300, $color-black);
+        @include fontFace(14px, 1.1, 300, $color-abbey);
         max-width: 80%;
         @include below($mobile-lg) {
           max-width: 100%;
