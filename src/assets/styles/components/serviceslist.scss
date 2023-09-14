@@ -332,6 +332,10 @@
   }
   .tech_logo {
     margin-top: 116px;
+    @include below($mobile-lg){
+      margin-top: 50px;
+
+    }
     img {
       // width: 250px;
       height: 90px;

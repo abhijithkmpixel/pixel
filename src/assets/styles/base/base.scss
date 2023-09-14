@@ -119,7 +119,7 @@ address {
   transform: translateX(-50%);
   bottom: 15px;
   position: fixed;
-  padding: 18px 25px;
+  padding: 15px 15px;
   border-radius: 10px;
   background-color: $color-gallery;
   display: flex;
@@ -134,7 +134,7 @@ address {
     width: 100%;
   }
   @include below($mobile-lg) {
-    bottom: 100px;
+    // bottom: 100px;
     flex-flow: column;
     padding: 15px;
   }
@@ -145,7 +145,7 @@ address {
       flex-flow: column;
     }
     h5 {
-      max-width: 400px;
+      max-width: 350px;
       margin-right: 20px;
       font-size: 14px;
       @include below($tablet-lg) {
