@@ -206,6 +206,22 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-X1LWQNN0C6"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-X1LWQNN0C6');
+        `,
+        }}
+      />
       <Head>
         <link rel="favicon" href="/favicon.ico" />
       </Head>
