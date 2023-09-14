@@ -252,6 +252,11 @@
         @include below($mobile-lg) {
           font-size: 16px;
           text-align: left;
+          color: $color-black;
+        }
+        strong {
+          @include fontStyleInherit();
+          font-weight: 700;
         }
       }
       h2 {
@@ -262,6 +267,7 @@
         @include below($mobile-lg) {
           font-size: 24px;
           margin-bottom: 15px;
+          color: $color-black;
         }
       }
       h3 {
@@ -272,6 +278,7 @@
         @include below($mobile-lg) {
           font-size: 20px;
           margin-bottom: 15px;
+          color: $color-black;
         }
       }
       h4 {
@@ -282,6 +289,7 @@
         @include below($mobile-lg) {
           font-size: 16px;
           margin-bottom: 15px;
+          color: $color-black;
         }
       }
       .project_technology {
@@ -294,6 +302,10 @@
           margin-top: 0;
           padding-bottom: 1.5rem;
           text-transform: uppercase;
+          @include below($mobile-lg) {
+            color: $color-black;
+          }
+
           &::after {
             content: "";
             height: 1px;

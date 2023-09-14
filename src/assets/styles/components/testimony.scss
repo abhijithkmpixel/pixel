@@ -182,7 +182,7 @@
             }
           }
           p {
-            @include fontFace(32px, 1.5, 400, $color-abbey);
+            @include fontFace(32px, 1.5, 400, $color-black);
             @include below($desktop-lg) {
               font-size: 30px;
             }
@@ -196,7 +196,7 @@
           }
         }
         h5 {
-          @include fontFace(25px, 1.5, 500, $color-cod-gray);
+          @include fontFace(25px, 1.5, 500, $color-black);
           @include below($mobile-lg) {
             font-size: 18px;
             text-align: center;
@@ -206,7 +206,7 @@
           @include fontFace(25px, 1.6, 400, $color-abbey);
           display: block;
           @include below($mobile-lg) {
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
           }
         }

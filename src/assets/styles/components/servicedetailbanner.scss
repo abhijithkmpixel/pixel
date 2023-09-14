@@ -47,7 +47,7 @@
         flex-flow: row-reverse;
         top: 15px;
         left: 0px;
-        z-index: 110;
+        z-index: 105;
       }
       &:hover {
         @include above($tablet-lg) {

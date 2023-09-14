@@ -147,6 +147,14 @@
     object-fit: cover;
     margin: 50px 0;
   }
+  &.detail__pages{
+    @include below($tablet-sm){
+      padding-top: 120px;
+    }
+    @include below($mobile-lg){
+      padding-top: 100px;
+    }
+  }
 }
 .service_intro + .dynamic__content__block,
 .portfolio_hero_banner + .dynamic__content__block {
@@ -164,6 +172,7 @@
   }
   p {
     max-width: 60%;
+    @include fontFace(20px, 1.5, 400, $color-black);
     @include below($tablet-sm) {
       max-width: 100%;
     }

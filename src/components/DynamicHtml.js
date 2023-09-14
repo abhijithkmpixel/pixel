@@ -2,9 +2,9 @@
 
 import React from "react";
 
-const DynamicHtml = ({ title, data }) => {
+const DynamicHtml = ({ title, data ,classes}) => {
   return (
-    <section className="dynamic__content__block" id="dynamiccontent">
+    <section className={"dynamic__content__block "+ classes} id="dynamiccontent">
       <div className="container-fluid">
         <h1>{title}</h1>
 

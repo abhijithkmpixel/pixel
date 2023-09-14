@@ -13,10 +13,7 @@
   position: relative;
   overflow: hidden;
   // transition: 0.3s all ease-in-out;
-  @include below($mobile-lg) {
-    padding: 10px 20px;
-    font-size: 12px;
-  }
+
   span {
     @include fontStyleInherit();
     position: relative;
@@ -100,6 +97,10 @@
   }
   @include below($desktop-lg) {
     padding: 14px 23px;
+  }
+    @include below($mobile-lg) {
+    padding: 10px 18px;
+    font-size: 14px;
   }
 }
 .cta_tertiary {

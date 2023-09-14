@@ -40,7 +40,7 @@
         @include below($mobile-lg) {
           width: 60px;
           height: 60px;
-          margin: auto;
+          margin: 15px auto 0;
         }
         &:hover {
           @include above($tablet-lg) {
