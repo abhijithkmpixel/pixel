@@ -252,6 +252,11 @@
         @include below($mobile-lg) {
           font-size: 16px;
           text-align: left;
+          color: $color-black;
+        }
+        strong {
+          @include fontStyleInherit();
+          font-weight: 700;
         }
       }
       h2 {

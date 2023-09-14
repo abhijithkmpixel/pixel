@@ -121,16 +121,11 @@ const Banner = ({ data }) => {
   }, []);
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     arrows: true,
     speed: 500,
-    autoplay: false,
-    autoplayScpped: 1000,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    pauseOnFocus: false,
-    pauseOnHover: false,
-    variableWidth: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -143,8 +138,6 @@ const Banner = ({ data }) => {
         settings: {
           settings: "slick",
           useTransform: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
           variableWidth: false,
         },
       },
@@ -152,20 +145,20 @@ const Banner = ({ data }) => {
         breakpoint: 990,
         settings: {
           settings: "slick",
-          useTransform: false,
-          slidesToShow: 1,
-          slidesToScroll: 1,
           variableWidth: false,
         },
       },
     ],
   };
   const mouseOver = (e) => {
+    document
+      .querySelectorAll(
+        ".hero_banner .herobanner_inner_wrap .quick_links_wrap .hero_quick_links .quick_link"
+      )
+      .forEach((elm) => elm.classList.remove("mouseOver"));
     e.target.classList.add("mouseOver");
   };
-  const mouseLeave = (e) => {
-    e.target.classList.remove("mouseOver");
-  };
+
   return (
     <section className="hero_banner" data-scroll-section id="banner">
       <div
@@ -271,7 +264,6 @@ const Banner = ({ data }) => {
                           : elm?.attributes?.Name
                       }
                       onMouseOver={(e) => mouseOver(e)}
-                      onMouseLeave={(e) => mouseLeave(e)}
                       href={"/our-portfolio/" + elm?.attributes?.Slug}
                       className={
                         index == 0 ? "quick_link mouseOver " : "quick_link"
@@ -378,10 +370,10 @@ const Banner = ({ data }) => {
 
 export default Banner;
 function SampleNextArrow(props) {
-  const { onClick } = props;
+  const { onClick, className } = props;
   return (
     <button
-      className={"slick_arrow slick_next"}
+      className={"slick-arrow slick-next " + className}
       aria-label="Next slide"
       title="next"
       onClick={onClick}>
@@ -414,10 +406,10 @@ function SampleNextArrow(props) {
 }
 
 function SamplePrevArrow(props) {
-  const { onClick } = props;
+  const { onClick, className } = props;
   return (
     <button
-      className={"slick_arrow slick_prev"}
+      className={"slick-arrow slick-prev " + className}
       title="previous"
       aria-label="Previous slide"
       onClick={onClick}>
