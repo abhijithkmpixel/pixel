@@ -6,28 +6,15 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
-  <loc>https://pixelflames.ae/page-sitemap.xml</loc>
+  <loc>https://pixelflames.ae/our-products/ucelostore-ecommerce-marketplace-application</loc>
   <lastmod>2023-09-14T08:28:59+00:00</lastmod>
-  <priority>1.00</priority>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://pixelflames.ae/services-sitemap.xml</loc>
+  <loc>https://pixelflames.ae/our-products/open-ai-custom-trained-chatbot</loc>
   <lastmod>2023-09-14T08:28:59+00:00</lastmod>
-  <priority>1.00</priority>
+  <priority>0.80</priority>
 </url>
-<url>
-  <loc>https://pixelflames.ae/our-portfolio-sitemap.xml</loc>
-  <lastmod>2023-09-14T08:28:59+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://pixelflames.ae/our-products-sitemap.xml</loc>
-  <lastmod>2023-09-14T08:28:59+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-
-
 
 </urlset>
