@@ -200,7 +200,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/ux-design",
+        destination: "/services/ux-ui-strategy-and-design",
+        permanent: true,
+      },
+      {
         source: "/service/wordpress-development-company-uae",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/wordpress-development-company-uae",
         destination: "/services",
         permanent: true,
       },
@@ -210,7 +220,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/mobile-app-development-company-uae",
+        destination: "/services/mobile-application-development",
+        permanent: true,
+      },
+      {
         source: "/service/branding",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/branding",
         destination: "/services",
         permanent: true,
       },
@@ -220,7 +240,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/digital-marketing",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/kentico-cms-implementation",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/kentico-cms-implementation",
         destination: "/services",
         permanent: true,
       },
@@ -230,7 +260,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/sitecore-cms-implementation",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/umbraco-cms-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/umbraco-cms-dubai",
         destination: "/services",
         permanent: true,
       },
@@ -240,7 +280,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/laravel-development-company-uae",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/front-end-development",
+        destination: "/services/web-development",
+        permanent: true,
+      },
+      {
+        source: "/services/front-end-development",
         destination: "/services/web-development",
         permanent: true,
       },
@@ -250,7 +300,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/website-maintenance",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/mongodb",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/mongodb",
         destination: "/services",
         permanent: true,
       },
@@ -260,7 +320,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/reactnative-software-development-uae",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/expressjs",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/expressjs",
         destination: "/services",
         permanent: true,
       },
@@ -270,7 +340,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/react",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/newsletter-management-software-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/newsletter-management-software-dubai",
         destination: "/services",
         permanent: true,
       },
@@ -280,7 +360,17 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/nextjs-development-uae",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/dnndotnetnuke-cms-implementation",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/dnndotnetnuke-cms-implementation",
         destination: "/services",
         permanent: true,
       },
@@ -290,7 +380,22 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/services/drupal-web-development-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
         source: "/service/sitefinity-website-development-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/sitefinity-website-development-dubai",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/services/[slug]",
         destination: "/services",
         permanent: true,
       },
