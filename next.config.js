@@ -134,6 +134,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/our-portfolio/[slug]",
+        destination: "/our-portfolio",
+        permanent: true,
+      },
+      {
         source: "/cases/aspire",
         destination: "/our-portfolio/aspire",
         permanent: true,
@@ -191,6 +196,12 @@ const nextConfig = {
       {
         source: "/cases/dubai-holding",
         destination: "/our-portfolio",
+        permanent: true,
+      },
+      {
+        source: "/our-products/[slug]",
+        destination:
+          "/our-products/ucelostore-ecommerce-marketplace-application",
         permanent: true,
       },
       // services
