@@ -43,9 +43,11 @@ const HeadComponent = ({ data }) => {
           name="twitter:image"
           content={data?.metaImage?.data?.attributes?.url}></meta>
         <meta name="keywords" content={data?.keywords} key="keywords" />
-        <script type="application/ld+json">
-          {JSON.stringify(data?.structuredData)}
-        </script>
+        {data?.structuredData != null && (
+          <script type="application/ld+json">
+            {JSON.stringify(data?.structuredData)}
+          </script>
+        )}
         <meta
           property="og:url"
           key="og:url"
