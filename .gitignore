@@ -8,7 +8,6 @@
 package-lock.json
 # testing
 /coverage
-/public/robots.txt
 # next.js
 /.next/
 /out/

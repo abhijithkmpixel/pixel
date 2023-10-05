@@ -1,0 +1,25 @@
+User-agent: *
+Disallow: /web-development-services-dubai
+Disallow: /web-development-services-dubai/
+Disallow: /cases/safqat
+Disallow: /cases/safqat/
+Disallow: /service/umbraco-cms-dubai
+Disallow: /service/umbraco-cms-dubai/
+Disallow: /cases/sib
+Disallow: /cases/sib/
+Disallow: /web-development-dubai
+Disallow: /web-development-dubai/
+Disallow: /service/drupal-web-development-dubai
+Disallow: /service/newsletter-management-software-dubai
+Disallow: /web-development-services-company-dubai
+Disallow: /ui-design-services-dubai
+
+# Allow all other pages to be indexed
+Allow: /
+
+# Block specific crawlers or bots
+# User-agent: BadBot
+# Disallow: /
+
+# Sitemap location
+Sitemap: https://pixelflames.ae/sitemap.xml 
