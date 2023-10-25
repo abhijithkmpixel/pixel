@@ -11,6 +11,7 @@ const HeadComponent = ({ data }) => {
         <meta name="author" content="Pixelflames" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{data?.metaTitle}</title>
+        <meta name="title" content={data?.metaTitle} key="title"/>
         <meta
           property="og:site_name"
           content={data?.metaTitle}
