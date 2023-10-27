@@ -230,7 +230,7 @@ export default function App({ Component, pageProps }) {
           <div className="thumb" id="thumb"></div>
         </div>
       </div> */}
-      <div
+      {/* <div
         className={
           loaderOpen == true ? "preloader" : "preloader preloader--loaded"
         }>
@@ -248,7 +248,7 @@ export default function App({ Component, pageProps }) {
             <span></span>
           </div>
         </div>
-      </div>
+      </div> */}
       {cookieOpen == true && (
         <div className="cookie__policy__popup">
           <div className="popup_content__wrap">

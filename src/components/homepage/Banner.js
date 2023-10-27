@@ -48,7 +48,7 @@ const Banner = ({ data }) => {
               .to("#textOut", {
                 text: "",
                 duration: 0,
-                delay: 2,
+                delay: .5,
               });
           });
         }
