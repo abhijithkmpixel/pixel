@@ -34,7 +34,8 @@ header {
     align-items: center;
     justify-content: space-between;
     .brand_logo {
-      width: 160px;
+      // width: 160px;
+      width: 190px;
       height: auto;
       position: absolute;
       top: 50px;
@@ -46,6 +47,8 @@ header {
       }
       @include below($tablet-lg) {
         position: static;
+      width: 160px;
+
       }
       @include below($mobile-lg) {
         width: 120px;
