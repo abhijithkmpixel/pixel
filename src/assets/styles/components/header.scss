@@ -47,11 +47,10 @@ header {
       }
       @include below($tablet-lg) {
         position: static;
-      width: 160px;
-
+        width: 160px;
       }
       @include below($mobile-lg) {
-        width: 120px;
+        width: 140px;
       }
       img {
         height: auto;
@@ -542,7 +541,6 @@ header {
               color: #808080;
               background-image: unset;
               width: calc(100% - 50px);
-
             }
             span {
               background-image: none;
@@ -880,15 +878,13 @@ header.services__detail__page.header--light {
       display: none;
     }
   }
-     &.products__details__page{
-      .header_inner_wrap .brand_logo.brand_logo--white {
-        @include below($mobile-lg){
-
-          display: block ;
-        }
+  &.products__details__page {
+    .header_inner_wrap .brand_logo.brand_logo--white {
+      @include below($mobile-lg) {
+        display: block;
       }
-
     }
+  }
 }
 .sticky_header {
   header.portfolio__details__page.header--light,
